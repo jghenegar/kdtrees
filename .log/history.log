@@ -1,0 +1,872 @@
+--[ 2022.11.11.13.15.58.079.0 ]--
+NewLogger: P05_KDTrees
+Version: 1.5
+--[ 2022.11.11.13.15.58.793.0 ]--
+InitTree:
+/src/algs4.jar
+/src/Mouse.java
+/src/Point.java
+/src/stdlib.jar
+/src/KeyPress.java
+/src/PSKDTree.java
+/src/Partition.java
+/src/PointDist.java
+/src/Visualizer.java
+/src/PointSearch.java
+/src/PSBruteForce.java
+/src/FastFoodVisualizer.java
+/src/NearestNeighborVisualizer.java
+/.log/history.log
+/.idea/copyright/profiles_settings.xml
+/.idea/libraries/algs4.xml
+/.idea/libraries/stdlib.xml
+/.idea/.name
+/.idea/vcs.xml
+/.idea/misc.xml
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/compiler.xml
+/.idea/workspace.xml
+/.idea/uiDesigner.xml
+/tests/.donotlog
+/tests/input1M.txt
+/tests/input100K.txt
+/tests/burgerking.csv
+/.cos265
+/readme.html
+/P05_KDTrees.iml
+
+--[ 2022.11.11.13.15.58.798.0 ]--
+InitFile: /src/NearestNeighborVisualizer.java
+import java.awt.event.KeyEvent;
+
+/**
+ * Visualizes nearest neighbors to mouse cursor and partitioning data
+ */
+public class NearestNeighborVisualizer {
+
+    // number of dots to add at start
+    private final static int nGaussian = 100;
+    private final static int nUniform  = 100;
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    // creates a new PointSearch data structure
+    // note: you can swap between PSKDTree and PSBruteForce to debug your code
+    private static PointSearch<Character> createNewPS() {
+        return new PSKDTree<>();
+    }
+
+    public static void main(String[] args) {
+        PointSearch<Character> ps = createNewPS();
+
+        // add some random points
+        for(int i = 0; i < nGaussian; i++) ps.put(Point.gaussian(), 'g');
+        for(int i = 0; i < nUniform; i++) ps.put(Point.uniform(), 'u');
+
+        // add points to match assignment write-up
+        /*
+        ps.put(new Point(0.8, 0.9), 'A');
+        ps.put(new Point(0.5, 0.4), 'B');
+        ps.put(new Point(0.2, 0.6), 'C');
+        ps.put(new Point(0.3, 0.1), 'D');
+        ps.put(new Point(0.9, 0.4), 'E');
+        */
+
+        StdDraw.show(0);
+
+        int k = 10;
+        boolean drawClosest = true;
+        boolean drawPartitions = false;
+        boolean drawBoundingBox = false;
+
+        KeyPress keyP    = new KeyPress(KeyEvent.VK_P);
+        KeyPress keyUp   = new KeyPress(KeyEvent.VK_UP);
+        KeyPress keyDown = new KeyPress(KeyEvent.VK_DOWN);
+        KeyPress keyC    = new KeyPress(KeyEvent.VK_C);
+        KeyPress keyN    = new KeyPress(KeyEvent.VK_N);
+        KeyPress keyB    = new KeyPress(KeyEvent.VK_B);
+        Mouse    mouse   = new Mouse(24, 36, 464, 464);
+
+        while(true) {
+            Point loc = mouse.getLocation();
+
+            if(keyC.isPressed()) ps = createNewPS();
+            if(keyUp.isPressed()) k++;
+            if(keyDown.isPressed() && k > 0) k--;
+            if(keyN.isPressed()) drawClosest = !drawClosest;
+            if(keyP.isPressed()) drawPartitions = !drawPartitions;
+            if(keyB.isPressed()) drawBoundingBox = !drawBoundingBox;
+            if(mouse.isPressed()) ps.put(loc, 'm');
+
+            Visualizer.clear();
+            Visualizer.drawKDTree(ps, drawPartitions, drawBoundingBox);
+            Visualizer.drawNeighbors(ps, loc, drawClosest, k);
+
+            StdDraw.show(DELAY);
+        }
+    }
+}
+
+--[ 2022.11.11.13.15.58.798.1 ]--
+InitFile: /src/PSBruteForce.java
+import java.util.Iterator;
+
+/**
+ * PSBruteForce is a Point collection that provides brute force
+ * nearest neighbor searching using red-black tree.
+ */
+public class PSBruteForce<Value> implements PointSearch<Value> {
+    // constructor makes empty collection
+    public PSBruteForce() { }
+
+    // add the given Point to KDTree
+    public void put(Point p, Value v) {
+    }
+
+    public Value get(Point p) {
+        return null;
+    }
+
+    public boolean contains(Point p) {
+        return false;
+    }
+
+    // return an iterable of all points in collection
+    public Iterable<Point> points() {
+        return null;
+    }
+
+    // return the Point that is closest to the given Point
+    public Point nearest(Point p) {
+        return null;
+    }
+
+    // return the Value associated to the Point that is closest to the given Point
+    public Value getNearest(Point p) {
+        return null;
+    }
+
+    // return the min and max for all Points in collection.
+    // The min-max pair will form a bounding box for all Points.
+    // if KDTree is empty, return null.
+    public Point min() { return null; }
+    public Point max() { return null; }
+
+    // return the k nearest Points to the given Point
+    public Iterable<Point> nearest(Point p, int k) {
+        return null;
+    }
+
+    public Iterable<Partition> partitions() { return null; }
+
+    // return the number of Points in KDTree
+    public int size() { return 0; }
+
+    // return whether the KDTree is empty
+    public boolean isEmpty() { return true; }
+
+    // place your timing code or unit testing here
+    public static void main(String[] args) {
+    }
+}
+
+--[ 2022.11.11.13.15.58.799.0 ]--
+InitFile: /src/Partition.java
+/**
+ * Partition is a simple class that stores two points and a direction,
+ * where the two points make up a partition along the given direction.
+ */
+public final class Partition {
+    // enumeration of all partition directions: Left-Right and Up-Down
+    public enum Direction {
+        LEFTRIGHT,
+        DOWNUP
+    }
+
+    // returns the next direction in the enumeration
+    public static Direction nextDirection(Direction dir) {
+        if(dir == Direction.LEFTRIGHT) return Direction.DOWNUP;
+        return Direction.LEFTRIGHT;
+    }
+
+    private final Point p0;
+    private final Point p1;
+    private final Direction dir;
+
+    public Partition(Point p0, Point p1, Direction dir) {
+        this.p0 = p0;
+        this.p1 = p1;
+        this.dir = dir;
+    }
+
+    public Partition(double x0, double y0, double x1, double y1, Direction dir) {
+        this.p0 = new Point(x0, y0);
+        this.p1 = new Point(x1, y1);
+        this.dir = dir;
+    }
+
+    public Point p0() { return p0; }
+
+    public Point p1() { return p1; }
+
+    public Direction dir() { return dir; }
+}
+
+--[ 2022.11.11.13.15.58.800.0 ]--
+InitFile: /src/Point.java
+import java.util.Comparator;
+
+/**
+ * Point is a simple tuple of doubles with some handy functions.  Point is useful for
+ * storing and computing 2D points.
+ */
+public final class Point implements Comparable<Point> {
+    private final double x;
+    private final double y;
+
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Point(Point p) {
+        this.x = p.x;
+        this.y = p.y;
+    }
+
+    // generates a Point with location chosen uniformly at random in the unit square [0,1]^2
+    public static Point uniform() {
+        return new Point(StdRandom.uniform(), StdRandom.uniform());
+    }
+
+    // generates a Point with location chosen with gaussian distribution in unit square [0,1]^2
+    // with mean of 0.5 and stddev of 0.12
+    public static Point gaussian() {
+        double x = -1, y = -1;
+        // do not return an x,y that is outside the unit square
+        while(x < 0 || y < 0 || x > 1 || y > 1) {
+            x = StdRandom.gaussian(0.5, 0.12);
+            y = StdRandom.gaussian(0.5, 0.12);
+        }
+        return new Point(x, y);
+    }
+
+
+    /**
+     * the functions below can be used to find the min/max x/y which
+     * can be used to find the bounding box of points
+     */
+
+    // returns a point with minimum component values
+    public static Point min(Point p0, Point p1) {
+        return new Point(Math.min(p0.x, p1.x), Math.min(p0.y, p1.y));
+    }
+
+    // returns a point with maximum component values
+    public static Point max(Point p0, Point p1) {
+        return new Point(Math.max(p0.x, p1.x), Math.max(p0.y, p1.y));
+    }
+
+
+    /**
+     * use the following functions to compare Points in different ways.
+     * Points are Comparable, so they know how to compareTo one another,
+     * but the other functions return Comparator objects which can compare
+     * Points in different ways.
+     */
+
+    // compares this to that, first by y component then by x
+    public int compareTo(Point that) {
+        if(this.y < that.y) return -1;
+        if(this.y > that.y) return +1;
+        if(this.x < that.x) return -1;
+        if(this.x > that.x) return +1;
+        return 0;
+    }
+
+    // do the components of this equal the components of that?
+    public boolean equals(Object that) {
+        if(this == that) return true;
+        if(that == null) return false;
+        if(that.getClass() != this.getClass()) return false;
+        Point thatp = (Point)that;
+        if(Double.compare(this.x, thatp.x) != 0) return false;
+        if(Double.compare(this.y, thatp.y) != 0) return false;
+        return true;
+    }
+
+    // returns a Comparator, comparing x first then y
+    public static Comparator<Point> xyComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                if(o0.x < o1.x) return -1;
+                if(o0.x > o1.x) return +1;
+                if(o0.y < o1.y) return -1;
+                if(o0.y > o1.y) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator, comparing y fist then x
+    public static Comparator<Point> yxComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                if(o0.y < o1.y) return -1;
+                if(o0.y > o1.y) return +1;
+                if(o0.x < o1.x) return -1;
+                if(o0.x > o1.x) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator, comparing the polar radius (dist from (0,0))
+    public static Comparator<Point> polarRadiusComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                double d0 = (o0.x*o0.x + o0.y*o0.y);
+                double d1 = (o1.x*o1.x + o1.y*o1.y);
+                if(d0 < d1) return -1;
+                if(d0 > d1) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator for this, comparing dist between first given
+    // point and this and dist between second given point and this
+    public Comparator<Point> distanceToComparator() {
+        return new Comparator<Point>() {
+            private final double ox = x;
+            private final double oy = y;
+            @Override
+            public int compare(Point o0, Point o1) {
+                double d0 = (o0.x-ox)*(o0.x-ox) + (o0.y-oy)*(o0.y-oy);
+                double d1 = (o1.x-ox)*(o1.x-ox) + (o1.y-oy)*(o1.y-oy);
+                if(d0 < d1) return -1;
+                if(d0 > d1) return +1;
+                return 0;
+            }
+        };
+    }
+
+
+    /**
+     * getters and setters
+     */
+
+    // getters of x and y
+    public double x() { return x; }
+    public double y() { return y; }
+
+    // getter of either x or y depending on dir
+    // dir = LEFTRIGHT => returns x
+    // dir = DOWNUP    => returns y
+    public double xy(Partition.Direction dir) {
+        if(dir == Partition.Direction.LEFTRIGHT) return x;
+        else return y;
+    }
+
+
+    /**
+     * functions for computing distances
+     */
+
+    // computes distance^2 between this point and (x,y)
+    public double distSquared(double x, double y) {
+        return (this.x-x)*(this.x-x) + (this.y-y)*(this.y-y);
+    }
+
+    // computes distance^2 between this point and another (p)
+    public double distSquared(Point p) {
+        return distSquared(p.x, p.y);
+    }
+
+    // computes distance between this point and (x,y)
+    public double dist(double x, double y) {
+        return Math.sqrt(distSquared(x, y));
+    }
+
+    // computes distance between this point and another (p)
+    public double dist(Point p) {
+        return dist(p.x, p.y);
+    }
+
+
+    /**
+     * misc functions
+     */
+
+    // returns a new point that has values added to components
+    public Point add(double x, double y) {
+        return new Point(this.x + x, this.y + y);
+    }
+
+    // returns a new point that has values added to components
+    public Point add(Point p) {
+        return add(p.x, p.y);
+    }
+
+    // returns whether point is within given min and max bounds
+    public boolean isInBounds(double x0, double y0, double x1, double y1) {
+        if(Double.compare(x,x0) <= 0) return false;
+        if(Double.compare(y,y0) <= 0) return false;
+        if(Double.compare(x1,x) <= 0) return false;
+        if(Double.compare(y1,y) <= 0) return false;
+        return true;
+    }
+
+    public boolean isInBounds(Point min, Point max) {
+        return isInBounds(min.x, min.y, max.x, max.y);
+    }
+
+    // produces a String representation of Point
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+}
+
+--[ 2022.11.11.13.15.58.833.0 ]--
+InitFile: /src/FastFoodVisualizer.java
+import java.awt.*;
+
+/**
+ * Loads and visualizes location data, and reports information on the closest
+ * data point to mouse cursor
+ */
+public class FastFoodVisualizer {
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    private static final Color cText = new Color(64,64,64);
+
+    private static void parseCSVLine(String line, String[] data) {
+        boolean inQuote = false;
+        int s = -1;
+        int j = 0;
+        for(int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if(c == ',' && !inQuote) {
+                if(line.charAt(s+1) == '"' && line.charAt(i-1) == '"') {
+                    data[j] = line.substring(s+2,i-1);
+                } else {
+                    data[j] = line.substring(s + 1, i);
+                }
+                j++;
+                s = i;
+                continue;
+            }
+            if(c=='"') {
+                inQuote = !inQuote;
+            }
+        }
+        int i = line.length();
+        if(s < i) {
+            if(line.charAt(s+1) == '"' && line.charAt(i-1) == '"') {
+                data[j] = line.substring(s+2,i-1);
+            } else {
+                data[j] = line.substring(s + 1, i);
+            }
+        }
+    }
+
+    private static String[][] readCSV(String filename, int m) {
+        String[] lines = (new In(filename)).readAllLines();
+        int n = lines.length;
+        String[][] a = new String[n][m];
+        for(int i = 0; i < n; i++) parseCSVLine(lines[i], a[i]);
+        return a;
+    }
+
+    private static void insertCSV(String filename, PointSearch<String[]> ps) {
+        String[][] data = readCSV(filename, 4);
+        for(int i = 0; i < data.length; i++) {
+            double longitude = Double.parseDouble(data[i][0]);
+            double latitude = Double.parseDouble(data[i][1]);
+            String[] loc = {data[i][2], data[i][3]};
+            ps.put(new Point(longitude, latitude), loc);
+        }
+    }
+
+    public static void main(String[] args) {
+        PointSearch<String[]> psBurgerKings = new PSKDTree<>();
+
+        insertCSV("burgerking.csv", psBurgerKings);
+
+        Visualizer.setScaling(psBurgerKings.min(), psBurgerKings.max());
+
+        StdDraw.show(0);
+
+        Mouse mouse = new Mouse(24, 36, 464, 464);
+
+        while(true) {
+            Point loc = Visualizer.xformInv(mouse.getLocation());
+
+            Visualizer.clear();
+            Visualizer.drawKDTree(psBurgerKings, false, false);
+            Visualizer.drawNeighbors(psBurgerKings, loc, true, 0);
+
+            StdDraw.setPenColor(cText);
+            int i = 464;
+            String[] value = psBurgerKings.getNearest(loc);
+            if(value != null) {
+                for (String l : value) {
+                    StdDraw.text(256, i, l);
+                    i -= 16;
+                }
+            }
+
+            StdDraw.show(DELAY);
+        }
+
+
+    }
+}
+
+--[ 2022.11.11.13.15.58.834.0 ]--
+InitFile: /src/PSKDTree.java
+import java.util.Iterator;
+
+/**
+ * PSKDTree is a Point collection that provides nearest neighbor searching using
+ * 2d tree
+ */
+public class PSKDTree<Value> implements PointSearch<Value> {
+
+    private class Node {
+        Point p;
+        Value v;
+        Node left, right;
+        Partition.Direction dir;
+    }
+
+    // constructor makes empty kD-tree
+    public PSKDTree() { }
+
+    // add the given Point to kD-tree
+    public void put(Point p, Value v) {
+    }
+
+    public Value get(Point p) {
+        return null;
+    }
+
+    public boolean contains(Point p) {
+        return false;
+    }
+
+    public Value getNearest(Point p) {
+        return null;
+    }
+
+    // return an iterable of all points in collection
+    public Iterable<Point> points() { return null; }
+
+    // return an iterable of all partitions that make up the kD-tree
+    public Iterable<Partition> partitions() {
+        return null;
+    }
+
+    // return the Point that is closest to the given Point
+    public Point nearest(Point p) {
+        return null;
+    }
+
+    // return the k nearest Points to the given Point
+    public Iterable<Point> nearest(Point p, int k) {
+        return null;
+    }
+
+    // return the min and max for all Points in collection.
+    // The min-max pair will form a bounding box for all Points.
+    // if kD-tree is empty, return null.
+    public Point min() { return null; }
+    public Point max() { return null; }
+
+    // return the number of Points in kD-tree
+    public int size() { return 0; }
+
+    // return whether the kD-tree is empty
+    public boolean isEmpty() { return true; }
+
+    // place your timing code or unit testing here
+    public static void main(String[] args) {
+    }
+
+}
+
+--[ 2022.11.11.13.15.58.835.0 ]--
+InitFile: /src/PointDist.java
+/**
+ * PointDist is a simple tuple of a Point and a dist.
+ * This class is helpful for storing, passing, or returning the pair.
+ */
+public final class PointDist implements Comparable<PointDist> {
+    private final Point p;
+    private final double d;
+
+    public PointDist(Point p, double d) {
+        this.p = p;
+        this.d = d;
+    }
+
+    public Point p() { return p; }
+
+    public double d() { return d; }
+
+    public int compareTo(PointDist that) {
+        return Double.compare(this.d, that.d);
+    }
+}
+
+--[ 2022.11.11.13.15.58.836.0 ]--
+InitFile: /P05_KDTrees.iml
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="algs4" level="project" />
+    <orderEntry type="library" name="stdlib" level="project" />
+  </component>
+</module>
+
+--[ 2022.11.11.13.15.58.836.1 ]--
+InitFile: /src/Mouse.java
+/**
+ * Mouse is a helper class for detecting mouse presses (not just whether the mouse is pressed)
+ * and for transforming the cursor location from window-space to program-space
+ */
+public class Mouse {
+    private boolean pressed;
+    private final int xOffset, yOffset, width, height;
+
+    public Mouse(int xOffset, int yOffset, int width, int height) {
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
+        this.width = width;
+        this.height = height;
+    }
+
+    public boolean isPressed() {
+        boolean p = StdDraw.mousePressed();
+        boolean v = !pressed && p;
+        pressed = p;
+        return v;
+    }
+
+    public Point getLocation() {
+        double mouseX = (StdDraw.mouseX() - (float)xOffset) / (float)width;
+        double mouseY = (StdDraw.mouseY() - (float)yOffset) / (float)height;
+        return new Point(mouseX, mouseY);
+    }
+}
+
+--[ 2022.11.11.13.15.58.837.0 ]--
+InitFile: /.cos265
+
+
+--[ 2022.11.11.13.15.58.837.1 ]--
+InitFile: /src/KeyPress.java
+/**
+ * KeyPress is a helper class for detecting key presses (not just whether the key is pressed)
+ */
+public class KeyPress {
+    private final int key;
+    private boolean pressed;
+
+    public KeyPress(int key) {
+        this.key = key;
+    }
+
+    public boolean isDown() {
+        return StdDraw.isKeyPressed(this.key);
+    }
+
+    public boolean isUp() {
+        return !isDown();
+    }
+
+    public boolean isPressed() {
+        boolean p = StdDraw.isKeyPressed(this.key);
+        boolean v = !pressed && p;
+        pressed = p;
+        return v;
+    }
+}
+
+--[ 2022.11.11.13.15.58.837.2 ]--
+InitFile: /src/PointSearch.java
+/**
+ * This interface defines the basic API for a 2D symbol table
+ * where the keys are Points and the values are the generic
+ * type Value
+ */
+public interface PointSearch<Value> {
+    boolean isEmpty();
+    int size();
+
+    Point min();
+    Point max();
+
+    void put(Point p, Value v);
+    Iterable<Point> points();
+    boolean contains(Point p);
+    Value get(Point p);
+    Value getNearest(Point p);
+
+    Point nearest(Point p);
+    Iterable<Point> nearest(Point p, int k);
+
+    Iterable<Partition> partitions();
+}
+
+--[ 2022.11.11.13.15.58.837.3 ]--
+InitFile: /src/Visualizer.java
+import java.awt.*;
+
+/**
+ * Created by jdenning on 11/2/15.
+ */
+public class Visualizer {
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    // colors for vizualization
+    private static final Color cDot = new Color(64,64,64);      // point (small box)
+    private static final Color cKNN = new Color(200,200,255);   // k nearest neighbors
+    private static final Color cNN  = new Color(64,64,255);     // nearest neighbor
+    private static final Color cLR  = new Color(255,128,128);   // left-right partition
+    private static final Color cUD  = new Color(128,255,128);   // up-down partition
+    private static final Color cBox = new Color(192,192,192);   // bounding box
+
+    private static double offsetX = 0.0;
+    private static double offsetY = 0.0;
+    private static double scale = 1.0;
+
+    private static double dotSize = 1.0;
+
+    public static void setScale(double scale) { Visualizer.scale = scale; }
+    public static double getScale() { return Visualizer.scale; }
+    public static void setOffsetX(double offsetX) { Visualizer.offsetX = offsetX; };
+    public static double getOffsetX() { return Visualizer.offsetX; }
+    public static void setOffsetY(double offsetY) { Visualizer.offsetY = offsetY; };
+    public static double getOffsetY() { return Visualizer.offsetY; }
+    public static void setScaling(double minX, double minY, double maxX, double maxY) {
+        offsetX = minX; offsetY = minY;
+        double d = Math.max(maxX - minX, maxY - minY);
+        if(d == 0.0) scale = 0.0;
+        else scale = 1.0 / d;
+    }
+    public static void setScaling(Point min, Point max) {
+        if(min == null || max == null) return;
+        setScaling(min.x(), min.y(), max.x(), max.y());
+    }
+
+    public static double getDotSize() { return dotSize; }
+    public static void setDotSize(double dotSize) { Visualizer.dotSize = dotSize; }
+
+    public static void clear() {
+        StdDraw.clear();
+        StdDraw.setXscale(0, 512);
+        StdDraw.setYscale(0, 512);
+    }
+    public static void drawNeighbors(PointSearch ps, Point loc, boolean drawClosest, int k) {
+        if(ps.isEmpty()) return;
+
+        Iterable<Point> nearest = ps.nearest(loc, k);
+        if(nearest != null) {
+            StdDraw.setPenColor(cKNN);
+            for (Point p : nearest) drawLine(loc, p);
+        }
+
+        if(drawClosest) {
+            Point closest = ps.nearest(loc);
+            if (closest != null) {
+                StdDraw.setPenColor(cNN);
+                StdDraw.setPenRadius(0.005);
+                drawLine(loc, closest);
+                StdDraw.setPenRadius();
+            }
+        }
+    }
+    public static void drawKDTree(PointSearch ps, boolean drawPartitions, boolean drawBoundingBox) {
+        if(ps.isEmpty()) return;
+
+        if(drawBoundingBox) {
+            StdDraw.setPenColor(cBox);
+            drawBox(ps.min(), ps.max());
+        }
+
+        if(drawPartitions) {
+            Iterable<Partition> partitions = ps.partitions();
+            if(partitions != null) {
+                StdDraw.setPenRadius(0.005);
+                for (Partition p : partitions) {
+                    if (p.dir() == Partition.Direction.LEFTRIGHT) StdDraw.setPenColor(cLR);
+                    else StdDraw.setPenColor(cUD);
+                    drawLine(p.p0(), p.p1());
+                }
+                StdDraw.setPenRadius();
+            }
+        }
+
+        Iterable<Point> points = ps.points();
+        if(points != null) {
+            StdDraw.setPenColor(cDot);
+            setDotSize(Math.max(1.0, 5.0 / Math.pow(ps.size() + 1, 0.5)));
+            for (Point p : points) drawDot(p);
+        }
+    }
+
+    private static double xformX(double x) { return (x - offsetX) * scale; }
+    private static double xformY(double y) { return (y - offsetY) * scale; }
+    private static double xformInvX(double x) { return x / scale + offsetX; }
+    private static double xformInvY(double y) { return y / scale + offsetY; }
+    public static Point xform(Point p) {
+        return new Point(xformX(p.x()), xformY(p.y()));
+    }
+    public static Point xformInv(Point p) {
+        return new Point(xformInvX(p.x()), xformInvY(p.y()));
+    }
+
+
+    public static void drawDot(double x, double y) {
+        StdDraw.square(xformX(x) * 464 + 24, xformY(y) * 464 + 36, dotSize);
+    }
+    public static void drawDot(Point p) {
+        drawDot(p.x(), p.y());
+    }
+
+    public static void drawLine(double x0, double y0, double x1, double y1) {
+        StdDraw.line(
+                xformX(x0) * 464 + 24, xformY(y0) * 464 + 36,
+                xformX(x1) * 464 + 24, xformY(y1) * 464 + 36
+        );
+    }
+    public static void drawLine(Point p0, Point p1) {
+        drawLine(p0.x(), p0.y(), p1.x(), p1.y());
+    }
+
+    public static void drawBox(Point p0, Point p1) {
+        drawLine(p0.x(), p0.y(), p1.x(), p0.y());
+        drawLine(p1.x(), p0.y(), p1.x(), p1.y());
+        drawLine(p1.x(), p1.y(), p0.x(), p1.y());
+        drawLine(p0.x(), p1.y(), p0.x(), p0.y());
+    }
+
+}
+
