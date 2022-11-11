@@ -4,6 +4,9 @@ import java.util.Iterator;
  * PSBruteForce is a Point collection that provides brute force
  * nearest neighbor searching using red-black tree.
  */
+
+// Testing Git -- kmikels
+
 public class PSBruteForce<Value> implements PointSearch<Value> {
     // constructor makes empty collection
     public PSBruteForce() { }
