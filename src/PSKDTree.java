@@ -12,15 +12,23 @@ public class PSKDTree<Value> implements PointSearch<Value> {
         Node left, right;
         Partition.Direction dir;
     }
-
+    BST<Point, Value> kdt;
+    int count=0;
+    Point minimum;
+    Point maximum;
     // constructor makes empty kD-tree
-    public PSKDTree() { }
+    public PSKDTree() {
+        kdt = new BST<Point, Value>();
+    }
 
     // add the given Point to kD-tree
-    public void put(Point p, Value v) {
+    public void put(Point p, Value v) {  //change??
+        kdt.put(p,v);
+        count++;
     }
 
     public Value get(Point p) {
+        if(isEmpty()) return null;
         return null;
     }
 
@@ -29,6 +37,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     }
 
     public Value getNearest(Point p) {
+        if(isEmpty()) return null;
         return null;
     }
 
@@ -53,14 +62,20 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     // return the min and max for all Points in collection.
     // The min-max pair will form a bounding box for all Points.
     // if kD-tree is empty, return null.
-    public Point min() { return null; }
-    public Point max() { return null; }
+    public Point min() {
+        if(isEmpty()) return null;
+        return null;
+    }
+    public Point max() {
+        if(isEmpty()) return null;
+        return null;
+    }
 
     // return the number of Points in kD-tree
-    public int size() { return 0; }
+    public int size() { return count; }
 
     // return whether the kD-tree is empty
-    public boolean isEmpty() { return true; }
+    public boolean isEmpty() { return count==0; }
 
     // place your timing code or unit testing here
     public static void main(String[] args) {

@@ -1845,3 +1845,983 @@ r 8 // Testing Git -- kmike
 r 8 // Testing Git -- kmikel
 --[ 2022.11.11.13.29.11.174.0 ]--
 r 8 // Testing Git -- kmikels
+--[ 2022.11.11.13.29.50.882.0 ]--
+:/src/PSBruteForce.java
++ 7 
++ 8 // Testing Git -- kmikels
++ 9 
+--[ 2022.11.11.13.29.50.959.0 ]--
+UpdateTree (AD): 72 0
++ /.git/info/exclude
++ /.git/logs/refs/heads/main
++ /.git/logs/refs/remotes/origin/main
++ /.git/logs/HEAD
++ /.git/refs/heads/main
++ /.git/refs/remotes/origin/main
++ /.git/hooks/update.sample
++ /.git/hooks/pre-push.sample
++ /.git/hooks/commit-msg.sample
++ /.git/hooks/pre-commit.sample
++ /.git/hooks/pre-rebase.sample
++ /.git/hooks/post-update.sample
++ /.git/hooks/pre-receive.sample
++ /.git/hooks/applypatch-msg.sample
++ /.git/hooks/pre-applypatch.sample
++ /.git/hooks/pre-merge-commit.sample
++ /.git/hooks/push-to-checkout.sample
++ /.git/hooks/fsmonitor-watchman.sample
++ /.git/hooks/prepare-commit-msg.sample
++ /.git/objects/01/93c2673203020e3726e397a6870107f9e38aa9
++ /.git/objects/05/054a55af449d7a3d22569a0d9278837d3116b7
++ /.git/objects/05/aa0754159021ad4bb196249ebed23fcaee0f05
++ /.git/objects/0d/90a95e4569ab236f012c54a903f79e23f7e45d
++ /.git/objects/0f/05624ad8de377d4bdf3ec1558d477af125661c
++ /.git/objects/11/6f5b50e2bd7e5a645224f577c702fc62092122
++ /.git/objects/1a/49d62b998226393c172907eef021434d19be9a
++ /.git/objects/1f/b9dc988a5179e983b847d789447e3c5fa79e57
++ /.git/objects/26/3963a64f2a64659282fd9cbe561dd7a5e4a676
++ /.git/objects/2b/5f9208bfadbbc9019b47a713b74462b9cd2613
++ /.git/objects/30/6f36bddc52f2e08ccf8a41536340870eb1829c
++ /.git/objects/34/c40469b8879baee4fbd8d7ee3c930ed59cb6f3
++ /.git/objects/39/5d98ffb25a1aa9df31eb7f0e6c2af2e28bc31d
++ /.git/objects/3c/91061820fd12503e015c3c19cec90b78494358
++ /.git/objects/43/34e267d8776aabbeb38713c0a502fa328ceb68
++ /.git/objects/49/554703073ae63a7122c05b80a894ac3ff48370
++ /.git/objects/4f/ce1d86b49521afe1cee4ed1c13b6396ebbc6f3
++ /.git/objects/5c/98b428844d9f7d529e2b6fb918d15bf072f3df
++ /.git/objects/65/427e6010f1b59257bc8ac509401e7eeb2698d4
++ /.git/objects/68/2820a134168b0d23787b376165bef89b511f00
++ /.git/objects/74/a6a5d585c5ea37685f0464c4d008732ed403d9
++ /.git/objects/7d/61ee6e1564fdc3e562582a8ca1c55185fd2b09
++ /.git/objects/80/8df08d052527e9a626a08c732fb0fb470708c8
++ /.git/objects/8b/e37e197c873cbcd2952f364d9e3a447bc4e692
++ /.git/objects/8c/333a97e7dbd1f8d32d947ad097e8e247f9f041
++ /.git/objects/91/4c3a82a059ff11e1e2248c3ee1ce32a78bc63a
++ /.git/objects/96/cc43efa6a0885098044e976cd780bb42c68a70
++ /.git/objects/9c/780ff1eacdac600ca19795de4e5f1220a1bf3e
++ /.git/objects/aa/90a9d65e85ba8dedaeee57dbca845093794f15
++ /.git/objects/aa/d3f0402094e10cd99e06ba2a544a57396b1919
++ /.git/objects/ae/39a65a74d4111e721807c06e27bd6754992fbb
++ /.git/objects/b4/a758f2f8c8a18b851825e056e555c5620ae676
++ /.git/objects/b6/90d19ac158bfa6e1ae11cef101f0d1a7434bd9
++ /.git/objects/c2/828bc31a68ae45ce1922d19323206b232cbda4
++ /.git/objects/c3/fde00d07458f153bdb5082ceb011de8dcc9721
++ /.git/objects/ca/22da9b6c126b0744cfde03b32ebdff29cb41ab
++ /.git/objects/ca/9a474fc415e206e1d701688a299fa1b8bbd628
++ /.git/objects/d2/e73db08c8563911c081a8651a77f67c4b48b43
++ /.git/objects/de/c87ed246fc3ca006dddb4db1972a0e1d67919e
++ /.git/objects/e2/3a8b692a016f63a83e1997a2326d3be18d8d1e
++ /.git/objects/e5/f5f06b6f0fb91e529051f1cb6651cc60ce2f48
++ /.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
++ /.git/objects/e7/bedf3377d40335424fd605124d4761390218bb
++ /.git/objects/e9/6534fb27b68192f27f985d3879e173ec77adb8
++ /.git/objects/ef/89a8450022222b69a62814d66e3f6c8ecb5a60
++ /.git/objects/f1/9e236587050cfbf8e8761a3460ac0c95e5fb0c
++ /.git/objects/f6/cca8a6084310f182dc287fadbb82c5ebcfffe8
++ /.git/objects/fb/e4187a868130477a51ea5c1bc60e0dce69cec4
++ /.git/HEAD
++ /.git/index
++ /.git/config
++ /.git/description
++ /.git/COMMIT_EDITMSG
+
+--[ 2022.11.11.13.29.57.388.0 ]--
+UpdateTree (AD): 1 0
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_11_22,_1_29_PM_[Default]/shelved.patch
+
+--[ 2022.11.11.13.29.57.425.0 ]--
+UpdateTree (AD): 1 0
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_11_22__1_29_PM__Default_.xml
+
+--[ 2022.11.11.13.30.43.260.0 ]--
+UpdateTree (AD): 2 0
++ /.git/ORIG_HEAD
++ /.git/FETCH_HEAD
+
+--[ 2022.11.11.13.40.15.511.0 ]--
+:/src/PSKDTree.java
++ 17     public PSKDTree() { 
+r 18     }
+--[ 2022.11.11.13.40.16.006.0 ]--
++ 18         
+--[ 2022.11.11.13.40.25.154.0 ]--
+r 15     
+--[ 2022.11.11.13.40.25.526.0 ]--
++ 15     
+--[ 2022.11.11.13.40.25.818.0 ]--
+r 16         
+--[ 2022.11.11.13.40.26.525.0 ]--
+r 16     
+--[ 2022.11.11.13.41.19.526.0 ]--
+r 15 
+r 16 
+r 18     public PSKDTree() {
+--[ 2022.11.11.13.42.29.694.0 ]--
+r 19         BST<String, Integer> st = new BST<String, Integer>();
+--[ 2022.11.11.13.42.56.385.0 ]--
+r 19         BST<Pa, Integer> st = new BST<String, Integer>();
+--[ 2022.11.11.13.42.56.971.0 ]--
+r 19         BST<P, Integer> st = new BST<String, Integer>();
+--[ 2022.11.11.13.42.57.517.0 ]--
+r 19         BST<Po, Integer> st = new BST<String, Integer>();
+--[ 2022.11.11.13.42.57.672.0 ]--
+r 19         BST<Poi, Integer> st = new BST<String, Integer>();
+--[ 2022.11.11.13.42.57.725.0 ]--
+r 19         BST<Poin, Integer> st = new BST<String, Integer>();
+--[ 2022.11.11.13.42.57.933.0 ]--
+r 19         BST<Point, Integer> st = new BST<String, Integer>();
+--[ 2022.11.11.13.42.59.625.0 ]--
+r 19         BST<Point, V> st = new BST<String, Integer>();
+--[ 2022.11.11.13.42.59.751.0 ]--
+r 19         BST<Point, Va> st = new BST<String, Integer>();
+--[ 2022.11.11.13.42.59.791.0 ]--
+r 19         BST<Point, Val> st = new BST<String, Integer>();
+--[ 2022.11.11.13.43.00.043.0 ]--
+r 19         BST<Point, Valu> st = new BST<String, Integer>();
+--[ 2022.11.11.13.43.00.079.0 ]--
+r 19         BST<Point, Value> st = new BST<String, Integer>();
+--[ 2022.11.11.13.43.01.661.0 ]--
+r 19         BST<Point, Value> st = new BST<P, Integer>();
+--[ 2022.11.11.13.43.01.779.0 ]--
+r 19         BST<Point, Value> st = new BST<Po, Integer>();
+--[ 2022.11.11.13.43.01.887.0 ]--
+r 19         BST<Point, Value> st = new BST<Poi, Integer>();
+--[ 2022.11.11.13.43.02.039.0 ]--
+r 19         BST<Point, Value> st = new BST<Poin, Integer>();
+--[ 2022.11.11.13.43.02.312.0 ]--
+r 19         BST<Point, Value> st = new BST<Point, Integer>();
+--[ 2022.11.11.13.43.03.932.0 ]--
+r 19         BST<Point, Value> st = new BST<Point, V>();
+--[ 2022.11.11.13.43.04.135.0 ]--
+r 19         BST<Point, Value> st = new BST<Point, Va>();
+--[ 2022.11.11.13.43.04.328.0 ]--
+r 19         BST<Point, Value> st = new BST<Point, Val>();
+--[ 2022.11.11.13.43.04.449.0 ]--
+r 19         BST<Point, Value> st = new BST<Point, Valu>();
+--[ 2022.11.11.13.43.04.551.0 ]--
+r 19         BST<Point, Value> st = new BST<Point, Value>();
+--[ 2022.11.11.13.43.07.204.0 ]--
+r 19         
+--[ 2022.11.11.13.43.08.931.0 ]--
+r 15 BST<Point, Value> st = new BST<Point, Value>();
+--[ 2022.11.11.13.43.09.019.0 ]--
+r 15     BST<Point, Value> st = new BST<Point, Value>();
+--[ 2022.11.11.13.43.11.360.0 ]--
+r 15     BST<Point, Value> s = new BST<Point, Value>();
+--[ 2022.11.11.13.43.11.777.0 ]--
+r 15     BST<Point, Value>  = new BST<Point, Value>();
+--[ 2022.11.11.13.43.32.364.0 ]--
+r 15     BST<Point, Value> k = new BST<Point, Value>();
+--[ 2022.11.11.13.43.32.551.0 ]--
+r 15     BST<Point, Value> ki = new BST<Point, Value>();
+--[ 2022.11.11.13.43.32.810.0 ]--
+r 15     BST<Point, Value> kid = new BST<Point, Value>();
+--[ 2022.11.11.13.43.33.138.0 ]--
+r 15     BST<Point, Value> ki = new BST<Point, Value>();
+--[ 2022.11.11.13.43.33.284.0 ]--
+r 15     BST<Point, Value> k = new BST<Point, Value>();
+--[ 2022.11.11.13.43.33.381.0 ]--
+r 15     BST<Point, Value> kd = new BST<Point, Value>();
+--[ 2022.11.11.13.43.33.621.0 ]--
+r 15     BST<Point, Value> kdt = new BST<Point, Value>();
+--[ 2022.11.11.13.43.48.111.0 ]--
+r 15     BST<Point, Value> kdt; = new BST<Point, Value>();
+--[ 2022.11.11.13.43.50.918.0 ]--
+r 15     BST<Point, Value> kdt; 
+--[ 2022.11.11.13.43.51.897.0 ]--
+r 19         k
+--[ 2022.11.11.13.43.52.190.0 ]--
+r 19         kd
+--[ 2022.11.11.13.43.52.959.0 ]--
+r 19         kdt
+--[ 2022.11.11.13.43.53.077.0 ]--
+r 19         kdt=
+--[ 2022.11.11.13.43.53.255.0 ]--
+r 19         kdt== new BST<Point, Value>();
+--[ 2022.11.11.13.43.59.665.0 ]--
+r 19         kdt== new BST();
+--[ 2022.11.11.13.44.12.650.0 ]--
+r 19         kdt== new BST<Point, Value>();
+--[ 2022.11.11.13.44.15.316.0 ]--
+r 19         kdt= new BST<Point, Value>();
+--[ 2022.11.11.13.44.19.219.0 ]--
+r 19         kdt = new BST<Point, Value>();
+--[ 2022.11.11.13.44.31.105.0 ]--
+r 23     public void put(Point p, Value v) {''
+--[ 2022.11.11.13.44.39.214.0 ]--
+r 23     public void put(Point p, Value v) {'
+--[ 2022.11.11.13.44.39.351.0 ]--
+r 23     public void put(Point p, Value v) {
+--[ 2022.11.11.13.45.33.022.0 ]--
+r 15     BST<Point, Value> kdt;
+--[ 2022.11.11.13.46.48.583.0 ]--
++ 24         
+--[ 2022.11.11.13.46.50.719.0 ]--
+r 24         k
+--[ 2022.11.11.13.46.51.186.0 ]--
+r 24         kd
+--[ 2022.11.11.13.46.51.420.0 ]--
+r 24         kdt
+--[ 2022.11.11.13.46.51.572.0 ]--
+r 24         kdt.
+--[ 2022.11.11.13.46.52.148.0 ]--
+r 24         kdt.p
+--[ 2022.11.11.13.46.52.539.0 ]--
+r 24         kdt.pu
+--[ 2022.11.11.13.46.53.008.0 ]--
+r 24         kdt.put
+--[ 2022.11.11.13.46.56.733.0 ]--
+r 24         kdt.put()
+--[ 2022.11.11.13.46.58.718.0 ]--
+r 24         kdt.put(p,)
+--[ 2022.11.11.13.46.58.944.0 ]--
+r 24         kdt.put(p,v)
+--[ 2022.11.11.13.47.00.106.0 ]--
+r 24         kdt.put(p,v);
+--[ 2022.11.11.13.47.11.832.0 ]--
++ 71         
+--[ 2022.11.11.13.47.25.921.0 ]--
+r 71         P
+--[ 2022.11.11.13.47.26.221.0 ]--
+r 71         PS
+--[ 2022.11.11.13.47.26.558.0 ]--
+r 71         PSK
+--[ 2022.11.11.13.47.26.883.0 ]--
+r 71         PSKD
+--[ 2022.11.11.13.47.27.568.0 ]--
+r 71         PSKDT
+--[ 2022.11.11.13.47.27.893.0 ]--
+r 71         PSKDTr
+--[ 2022.11.11.13.47.28.401.0 ]--
+r 71         PSKDTre
+--[ 2022.11.11.13.47.28.941.0 ]--
+r 71         PSKDTree
+--[ 2022.11.11.13.47.33.880.0 ]--
+r 71         PSKDTree<>
+--[ 2022.11.11.13.47.34.343.0 ]--
+r 71         PSKDTree<i>
+--[ 2022.11.11.13.47.34.526.0 ]--
+r 71         PSKDTree<in>
+--[ 2022.11.11.13.47.34.729.0 ]--
+r 71         PSKDTree<int>
+--[ 2022.11.11.13.47.36.112.0 ]--
+r 71         PSKDTree<int
+--[ 2022.11.11.13.47.36.452.0 ]--
+r 71         PSKDTree<in
+--[ 2022.11.11.13.47.36.587.0 ]--
+r 71         PSKDTree<i
+--[ 2022.11.11.13.47.36.683.0 ]--
+r 71         PSKDTree<
+--[ 2022.11.11.13.47.37.110.0 ]--
+r 71         PSKDTree<I
+--[ 2022.11.11.13.47.37.216.0 ]--
+r 71         PSKDTree<In
+--[ 2022.11.11.13.47.37.333.0 ]--
+r 71         PSKDTree<Int
+--[ 2022.11.11.13.47.37.628.0 ]--
+r 71         PSKDTree<Inte
+--[ 2022.11.11.13.47.37.977.0 ]--
+r 71         PSKDTree<Integ
+--[ 2022.11.11.13.47.38.136.0 ]--
+r 71         PSKDTree<Intege
+--[ 2022.11.11.13.47.38.235.0 ]--
+r 71         PSKDTree<Integer
+--[ 2022.11.11.13.47.38.786.0 ]--
+r 71         PSKDTree<Integer>
+--[ 2022.11.11.13.47.39.026.0 ]--
+r 71         PSKDTree<Integer> 
+--[ 2022.11.11.13.47.42.811.0 ]--
+r 71         PSKDTree<Integer> =
+--[ 2022.11.11.13.47.42.936.0 ]--
+r 71         PSKDTree<Integer> = 
+--[ 2022.11.11.13.47.43.519.0 ]--
+r 71         PSKDTree<Integer> =
+--[ 2022.11.11.13.47.43.649.0 ]--
+r 71         PSKDTree<Integer> 
+--[ 2022.11.11.13.47.43.814.0 ]--
+r 71         PSKDTree<Integer>
+--[ 2022.11.11.13.47.44.256.0 ]--
+r 71         PSKDTree<Integer> 
+--[ 2022.11.11.13.47.45.553.0 ]--
+r 71         PSKDTree<Integer> t
+--[ 2022.11.11.13.47.45.690.0 ]--
+r 71         PSKDTree<Integer> te
+--[ 2022.11.11.13.47.45.756.0 ]--
+r 71         PSKDTree<Integer> tes
+--[ 2022.11.11.13.47.45.888.0 ]--
+r 71         PSKDTree<Integer> test
+--[ 2022.11.11.13.47.46.052.0 ]--
+r 71         PSKDTree<Integer> test 
+--[ 2022.11.11.13.47.46.165.0 ]--
+r 71         PSKDTree<Integer> test =
+--[ 2022.11.11.13.47.46.279.0 ]--
+r 71         PSKDTree<Integer> test = 
+--[ 2022.11.11.13.47.49.153.0 ]--
+r 71         PSKDTree<Integer> test = n
+--[ 2022.11.11.13.47.49.286.0 ]--
+r 71         PSKDTree<Integer> test = ne
+--[ 2022.11.11.13.47.49.409.0 ]--
+r 71         PSKDTree<Integer> test = new
+--[ 2022.11.11.13.47.49.768.0 ]--
+r 71         PSKDTree<Integer> test = new 
+--[ 2022.11.11.13.47.50.759.0 ]--
+r 71         PSKDTree<Integer> test = new P
+--[ 2022.11.11.13.47.51.513.0 ]--
+r 71         PSKDTree<Integer> test = new PS
+--[ 2022.11.11.13.47.52.104.0 ]--
+r 71         PSKDTree<Integer> test = new PSK
+--[ 2022.11.11.13.47.52.667.0 ]--
+r 71         PSKDTree<Integer> test = new PSKD
+--[ 2022.11.11.13.47.52.990.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDT
+--[ 2022.11.11.13.47.53.188.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTr
+--[ 2022.11.11.13.47.53.377.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTre
+--[ 2022.11.11.13.47.53.544.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree
+--[ 2022.11.11.13.47.54.582.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree()
+--[ 2022.11.11.13.47.55.849.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(I)
+--[ 2022.11.11.13.47.56.019.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(In)
+--[ 2022.11.11.13.47.56.499.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Int)
+--[ 2022.11.11.13.47.57.091.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Inte)
+--[ 2022.11.11.13.47.57.370.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Integ)
+--[ 2022.11.11.13.47.57.689.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Intege)
+--[ 2022.11.11.13.47.57.753.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Integer)
+--[ 2022.11.11.13.48.05.897.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Integer
+--[ 2022.11.11.13.48.06.007.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Intege
+--[ 2022.11.11.13.48.06.156.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Integ
+--[ 2022.11.11.13.48.06.304.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Inte
+--[ 2022.11.11.13.48.06.465.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(Int
+--[ 2022.11.11.13.48.06.618.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(In
+--[ 2022.11.11.13.48.06.781.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(I
+--[ 2022.11.11.13.48.06.925.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree(
+--[ 2022.11.11.13.48.07.076.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree
+--[ 2022.11.11.13.48.07.745.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<>
+--[ 2022.11.11.13.48.08.254.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<I>
+--[ 2022.11.11.13.48.08.390.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<In>
+--[ 2022.11.11.13.48.08.709.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<Int>
+--[ 2022.11.11.13.48.09.053.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<Inte>
+--[ 2022.11.11.13.48.09.224.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<Integ>
+--[ 2022.11.11.13.48.09.368.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<Intege>
+--[ 2022.11.11.13.48.09.477.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<Integer>
+--[ 2022.11.11.13.48.10.289.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<Integer>()
+--[ 2022.11.11.13.48.10.653.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<Integer>();
+--[ 2022.11.11.13.48.11.104.0 ]--
+r 71         PSKDTree<Integer> test = new PSKDTree<Integer>(); 
+--[ 2022.11.11.13.48.15.385.0 ]--
++ 72         
+--[ 2022.11.11.13.48.16.435.0 ]--
+r 72         t
+--[ 2022.11.11.13.48.16.549.0 ]--
+r 72         te
+--[ 2022.11.11.13.48.16.729.0 ]--
+r 72         tes
+--[ 2022.11.11.13.48.17.015.0 ]--
+r 72         test
+--[ 2022.11.11.13.48.17.234.0 ]--
+r 72         test.
+--[ 2022.11.11.13.48.17.564.0 ]--
+r 72         test.p
+--[ 2022.11.11.13.48.17.898.0 ]--
+r 72         test.pu
+--[ 2022.11.11.13.48.18.269.0 ]--
+r 72         test.put
+--[ 2022.11.11.13.48.34.135.0 ]--
+r 72         test.put()
+--[ 2022.11.11.13.48.45.783.0 ]--
++ 71         
+--[ 2022.11.11.13.48.46.664.0 ]--
+r 71         P
+--[ 2022.11.11.13.48.47.204.0 ]--
+r 71         Po
+--[ 2022.11.11.13.48.47.463.0 ]--
+r 71         Poi
+--[ 2022.11.11.13.48.48.142.0 ]--
+r 71         Poin
+--[ 2022.11.11.13.48.48.700.0 ]--
+r 71         Point
+--[ 2022.11.11.13.48.49.081.0 ]--
+r 71         Point 
+--[ 2022.11.11.13.48.49.552.0 ]--
+r 71         Point  
+--[ 2022.11.11.13.48.50.163.0 ]--
+r 71         Point  t
+--[ 2022.11.11.13.48.50.514.0 ]--
+r 71         Point  
+--[ 2022.11.11.13.48.50.654.0 ]--
+r 71         Point 
+--[ 2022.11.11.13.48.50.767.0 ]--
+r 71         Point
+--[ 2022.11.11.13.48.51.277.0 ]--
+r 71         Point 
+--[ 2022.11.11.13.48.51.602.0 ]--
+r 71         Point x
+--[ 2022.11.11.13.48.51.995.0 ]--
+r 71         Point x 
+--[ 2022.11.11.13.48.52.445.0 ]--
+r 71         Point x =
+--[ 2022.11.11.13.48.52.827.0 ]--
+r 71         Point x = 
+--[ 2022.11.11.13.49.00.733.0 ]--
+r 71         Point x = ne
+--[ 2022.11.11.13.49.00.873.0 ]--
+r 71         Point x = new
+--[ 2022.11.11.13.49.01.015.0 ]--
+r 71         Point x = new 
+--[ 2022.11.11.13.49.01.267.0 ]--
+r 71         Point x = new P
+--[ 2022.11.11.13.49.01.687.0 ]--
+r 71         Point x = new Po
+--[ 2022.11.11.13.49.01.788.0 ]--
+r 71         Point x = new Poi
+--[ 2022.11.11.13.49.01.852.0 ]--
+r 71         Point x = new Poin
+--[ 2022.11.11.13.49.01.948.0 ]--
+r 71         Point x = new Point
+--[ 2022.11.11.13.49.02.430.0 ]--
+r 71         Point x = new Point()
+--[ 2022.11.11.13.49.03.654.0 ]--
+r 71         Point x = new Point(1)
+--[ 2022.11.11.13.49.03.733.0 ]--
+r 71         Point x = new Point(1.)
+--[ 2022.11.11.13.49.03.892.0 ]--
+r 71         Point x = new Point(1.0)
+--[ 2022.11.11.13.49.04.091.0 ]--
+r 71         Point x = new Point(1.0,)
+--[ 2022.11.11.13.49.04.686.0 ]--
+r 71         Point x = new Point(1.0,2.0)
+--[ 2022.11.11.13.49.06.068.0 ]--
+r 71         Point x = new Point(1.0,2.0);
+--[ 2022.11.11.13.49.10.406.0 ]--
+r 73         test.put(x)
+--[ 2022.11.11.13.49.10.672.0 ]--
+r 73         test.put(x,)
+--[ 2022.11.11.13.49.11.240.0 ]--
+r 73         test.put(x, )
+--[ 2022.11.11.13.49.12.242.0 ]--
+r 73         test.put(x, 3)
+--[ 2022.11.11.13.49.13.407.0 ]--
+r 73         test.put(x, 3);
+--[ 2022.11.11.13.49.50.158.0 ]--
++ 74         
+--[ 2022.11.11.13.49.50.414.0 ]--
+r 74         f
+--[ 2022.11.11.13.49.50.658.0 ]--
+r 74         fo
+--[ 2022.11.11.13.49.50.942.0 ]--
+r 74         for
+--[ 2022.11.11.13.49.51.214.0 ]--
+r 74         for 
+--[ 2022.11.11.13.49.52.235.0 ]--
+r 74         for ()
+--[ 2022.11.11.13.49.55.379.0 ]--
+r 74         for (S)
+--[ 2022.11.11.13.49.56.322.0 ]--
+r 74         for (ST)
+--[ 2022.11.11.13.49.56.614.0 ]--
+r 74         for (STr)
+--[ 2022.11.11.13.49.57.065.0 ]--
+r 74         for (ST)
+--[ 2022.11.11.13.49.57.141.0 ]--
+r 74         for (S)
+--[ 2022.11.11.13.49.57.266.0 ]--
+r 74         for (St)
+--[ 2022.11.11.13.49.57.531.0 ]--
+r 74         for (Str)
+--[ 2022.11.11.13.49.58.313.0 ]--
+r 74         for (String)
+--[ 2022.11.11.13.49.58.618.0 ]--
+r 74         for (String )
+--[ 2022.11.11.13.49.59.610.0 ]--
+r 74         for (String)
+--[ 2022.11.11.13.49.59.663.0 ]--
+r 74         for (Strin)
+--[ 2022.11.11.13.49.59.791.0 ]--
+r 74         for (Stri)
+--[ 2022.11.11.13.49.59.939.0 ]--
+r 74         for (Str)
+--[ 2022.11.11.13.50.00.086.0 ]--
+r 74         for (St)
+--[ 2022.11.11.13.50.00.221.0 ]--
+r 74         for (S)
+--[ 2022.11.11.13.50.00.365.0 ]--
+r 74         for ()
+--[ 2022.11.11.13.50.09.894.0 ]--
+r 74         for (P)
+--[ 2022.11.11.13.50.10.206.0 ]--
+r 74         for (Po)
+--[ 2022.11.11.13.50.10.269.0 ]--
+r 74         for (Poi)
+--[ 2022.11.11.13.50.10.367.0 ]--
+r 74         for (Poin)
+--[ 2022.11.11.13.50.10.572.0 ]--
+r 74         for (Point)
+--[ 2022.11.11.13.50.11.554.0 ]--
+r 74         for (Point )
+--[ 2022.11.11.13.50.12.059.0 ]--
+r 74         for (Point s)
+--[ 2022.11.11.13.50.12.401.0 ]--
+r 74         for (Point s:)
+--[ 2022.11.11.13.50.13.502.0 ]--
+r 74         for (Point s:s)
+--[ 2022.11.11.13.50.13.802.0 ]--
+r 74         for (Point s:st)
+--[ 2022.11.11.13.50.14.623.0 ]--
+r 74         for (Point s:s)
+--[ 2022.11.11.13.50.14.736.0 ]--
+r 74         for (Point s:)
+--[ 2022.11.11.13.50.17.814.0 ]--
+r 74         for (Point s:t)
+--[ 2022.11.11.13.50.18.282.0 ]--
+r 74         for (Point s:te)
+--[ 2022.11.11.13.50.18.397.0 ]--
+r 74         for (Point s:tes)
+--[ 2022.11.11.13.50.18.587.0 ]--
+r 74         for (Point s:test)
+--[ 2022.11.11.13.50.19.707.0 ]--
+r 74         for (Point s:test.)
+--[ 2022.11.11.13.50.20.029.0 ]--
+r 74         for (Point s:test.k)
+--[ 2022.11.11.13.50.20.196.0 ]--
+r 74         for (Point s:test.ke)
+--[ 2022.11.11.13.50.20.360.0 ]--
+r 74         for (Point s:test.key)
+--[ 2022.11.11.13.50.20.853.0 ]--
+r 74         for (Point s:test.keys)
+--[ 2022.11.11.13.50.21.434.0 ]--
+r 74         for (Point s:test.keys())
+--[ 2022.11.11.13.50.30.971.0 ]--
+r 74         
+--[ 2022.11.11.13.50.34.300.0 ]--
+- 71
+- 71
+r 71         
+--[ 2022.11.11.13.50.34.836.0 ]--
+- 71
+--[ 2022.11.11.13.50.35.541.0 ]--
+r 70     public static void main(String[] args) 
+--[ 2022.11.11.13.50.36.571.0 ]--
+r 70     public static void main(String[] args) {
+--[ 2022.11.11.13.50.38.288.0 ]--
+- 71
+--[ 2022.11.11.13.51.18.405.0 ]--
+r 23     public void put(Point p, Value v) { 
+--[ 2022.11.11.13.51.18.465.0 ]--
+r 23     public void put(Point p, Value v) {  
+--[ 2022.11.11.13.51.19.128.0 ]--
+r 23     public void put(Point p, Value v) {  /
+--[ 2022.11.11.13.51.19.240.0 ]--
+r 23     public void put(Point p, Value v) {  //
+--[ 2022.11.11.13.51.19.740.0 ]--
+r 23     public void put(Point p, Value v) {  //c
+--[ 2022.11.11.13.51.19.908.0 ]--
+r 23     public void put(Point p, Value v) {  //ca
+--[ 2022.11.11.13.51.20.059.0 ]--
+r 23     public void put(Point p, Value v) {  //cah
+--[ 2022.11.11.13.51.20.264.0 ]--
+r 23     public void put(Point p, Value v) {  //cahn
+--[ 2022.11.11.13.51.20.368.0 ]--
+r 23     public void put(Point p, Value v) {  //cahng
+--[ 2022.11.11.13.51.20.574.0 ]--
+r 23     public void put(Point p, Value v) {  //cahnge
+--[ 2022.11.11.13.51.21.732.0 ]--
+r 23     public void put(Point p, Value v) {  //cahng
+--[ 2022.11.11.13.51.21.839.0 ]--
+r 23     public void put(Point p, Value v) {  //cahn
+--[ 2022.11.11.13.51.22.013.0 ]--
+r 23     public void put(Point p, Value v) {  //cah
+--[ 2022.11.11.13.51.22.158.0 ]--
+r 23     public void put(Point p, Value v) {  //ca
+--[ 2022.11.11.13.51.22.291.0 ]--
+r 23     public void put(Point p, Value v) {  //c
+--[ 2022.11.11.13.51.22.683.0 ]--
+r 23     public void put(Point p, Value v) {  //ch
+--[ 2022.11.11.13.51.22.789.0 ]--
+r 23     public void put(Point p, Value v) {  //cha
+--[ 2022.11.11.13.51.22.873.0 ]--
+r 23     public void put(Point p, Value v) {  //chan
+--[ 2022.11.11.13.51.23.126.0 ]--
+r 23     public void put(Point p, Value v) {  //chang
+--[ 2022.11.11.13.51.23.843.0 ]--
+r 23     public void put(Point p, Value v) {  //change
+--[ 2022.11.11.13.51.24.402.0 ]--
+r 23     public void put(Point p, Value v) {  //change?
+--[ 2022.11.11.13.51.24.531.0 ]--
+r 23     public void put(Point p, Value v) {  //change??
+--[ 2022.11.11.13.54.01.140.0 ]--
++ 16     
+--[ 2022.11.11.13.54.02.807.0 ]--
+r 16     i
+--[ 2022.11.11.13.54.02.870.0 ]--
+r 16     in
+--[ 2022.11.11.13.54.03.141.0 ]--
+r 16     int
+--[ 2022.11.11.13.54.03.175.0 ]--
+r 16     int 
+--[ 2022.11.11.13.54.03.412.0 ]--
+r 16     int s
+--[ 2022.11.11.13.54.03.507.0 ]--
+r 16     int si
+--[ 2022.11.11.13.54.03.759.0 ]--
+r 16     int siz
+--[ 2022.11.11.13.54.04.043.0 ]--
+r 16     int size
+--[ 2022.11.11.13.54.04.600.0 ]--
+r 16     int size;
+--[ 2022.11.11.13.54.06.885.0 ]--
+r 16     int c;
+--[ 2022.11.11.13.54.06.997.0 ]--
+r 16     int cp;
+--[ 2022.11.11.13.54.07.045.0 ]--
+r 16     int cpo;
+--[ 2022.11.11.13.54.07.392.0 ]--
+r 16     int cp;
+--[ 2022.11.11.13.54.07.503.0 ]--
+r 16     int c;
+--[ 2022.11.11.13.54.08.109.0 ]--
+r 16     int co;
+--[ 2022.11.11.13.54.08.196.0 ]--
+r 16     int cou;
+--[ 2022.11.11.13.54.08.387.0 ]--
+r 16     int coun;
+--[ 2022.11.11.13.54.08.516.0 ]--
+r 16     int count;
+--[ 2022.11.11.13.54.14.019.0 ]--
+r 16     int count=;
+--[ 2022.11.11.13.54.14.177.0 ]--
+r 16     int count=0;
+--[ 2022.11.11.13.54.17.530.0 ]--
++ 26         
+--[ 2022.11.11.13.54.17.886.0 ]--
+r 26         c
+--[ 2022.11.11.13.54.17.979.0 ]--
+r 26         co
+--[ 2022.11.11.13.54.18.147.0 ]--
+r 26         cou
+--[ 2022.11.11.13.54.18.250.0 ]--
+r 26         cout
+--[ 2022.11.11.13.54.18.566.0 ]--
+r 26         cout+
+--[ 2022.11.11.13.54.18.690.0 ]--
+r 26         cout++
+--[ 2022.11.11.13.54.18.879.0 ]--
+r 26         cout++;
+--[ 2022.11.11.13.54.21.288.0 ]--
+r 26         count++;
+--[ 2022.11.11.13.54.30.943.0 ]--
+r 69     public boolean isEmpty() { return tc; }
+--[ 2022.11.11.13.54.31.214.0 ]--
+r 69     public boolean isEmpty() { return t; }
+--[ 2022.11.11.13.54.31.339.0 ]--
+r 69     public boolean isEmpty() { return ; }
+--[ 2022.11.11.13.54.31.684.0 ]--
+r 69     public boolean isEmpty() { return c; }
+--[ 2022.11.11.13.54.31.964.0 ]--
+r 69     public boolean isEmpty() { return co; }
+--[ 2022.11.11.13.54.32.140.0 ]--
+r 69     public boolean isEmpty() { return cou; }
+--[ 2022.11.11.13.54.32.407.0 ]--
+r 69     public boolean isEmpty() { return coun; }
+--[ 2022.11.11.13.54.32.527.0 ]--
+r 69     public boolean isEmpty() { return count; }
+--[ 2022.11.11.13.54.32.809.0 ]--
+r 69     public boolean isEmpty() { return count=; }
+--[ 2022.11.11.13.54.33.172.0 ]--
+r 69     public boolean isEmpty() { return count==; }
+--[ 2022.11.11.13.54.33.441.0 ]--
+r 69     public boolean isEmpty() { return count==0; }
+--[ 2022.11.11.13.54.35.263.0 ]--
+r 66     public int size() { return ; }
+--[ 2022.11.11.13.54.35.523.0 ]--
+r 66     public int size() { return c; }
+--[ 2022.11.11.13.54.35.732.0 ]--
+r 66     public int size() { return co; }
+--[ 2022.11.11.13.54.35.783.0 ]--
+r 66     public int size() { return cou; }
+--[ 2022.11.11.13.54.36.007.0 ]--
+r 66     public int size() { return coun; }
+--[ 2022.11.11.13.54.36.163.0 ]--
+r 66     public int size() { return count; }
+--[ 2022.11.11.13.55.15.679.0 ]--
+r 17     
+--[ 2022.11.11.13.55.49.049.0 ]--
+r 17     e
+--[ 2022.11.11.13.55.51.175.0 ]--
+r 17     
+--[ 2022.11.11.13.55.58.305.0 ]--
+r 17     P
+--[ 2022.11.11.13.55.58.501.0 ]--
+r 17     Po
+--[ 2022.11.11.13.55.58.602.0 ]--
+r 17     Poi
+--[ 2022.11.11.13.55.58.716.0 ]--
+r 17     Poin
+--[ 2022.11.11.13.55.58.884.0 ]--
+r 17     Point
+--[ 2022.11.11.13.55.58.990.0 ]--
+r 17     Point 
+--[ 2022.11.11.13.55.59.084.0 ]--
+r 17     Point m
+--[ 2022.11.11.13.55.59.223.0 ]--
+r 17     Point mi
+--[ 2022.11.11.13.55.59.433.0 ]--
+r 17     Point min
+--[ 2022.11.11.13.55.59.806.0 ]--
+r 17     Point mini
+--[ 2022.11.11.13.56.00.554.0 ]--
+r 17     Point minim
+--[ 2022.11.11.13.56.00.722.0 ]--
+r 17     Point minimu
+--[ 2022.11.11.13.56.00.898.0 ]--
+r 17     Point minimun
+--[ 2022.11.11.13.56.01.588.0 ]--
+r 17     Point minimu
+--[ 2022.11.11.13.56.01.903.0 ]--
+r 17     Point minimum
+--[ 2022.11.11.13.56.02.160.0 ]--
+r 17     Point minimum;
+--[ 2022.11.11.13.56.02.462.0 ]--
++ 18     
+--[ 2022.11.11.13.56.03.745.0 ]--
+r 18     Poi
+--[ 2022.11.11.13.56.03.960.0 ]--
+r 18     Poin
+--[ 2022.11.11.13.56.04.416.0 ]--
+r 18     Point
+--[ 2022.11.11.13.56.07.165.0 ]--
+r 18     Point 
+--[ 2022.11.11.13.56.07.286.0 ]--
+r 18     Point m
+--[ 2022.11.11.13.56.07.525.0 ]--
+r 18     Point ma
+--[ 2022.11.11.13.56.08.320.0 ]--
+r 18     Point max
+--[ 2022.11.11.13.56.08.539.0 ]--
+r 18     Point maxi
+--[ 2022.11.11.13.56.08.828.0 ]--
+r 18     Point maxim
+--[ 2022.11.11.13.56.09.067.0 ]--
+r 18     Point maximu
+--[ 2022.11.11.13.56.09.274.0 ]--
+r 18     Point maximum
+--[ 2022.11.11.13.56.09.630.0 ]--
+r 18     Point maximum;
+--[ 2022.11.11.21.34.27.936.0 ]--
++ 63     public Point min() { 
+r 64         return null; }
+--[ 2022.11.11.21.34.29.308.0 ]--
++ 64         return null; 
+r 65     }
+--[ 2022.11.11.21.34.30.933.0 ]--
++ 64         
+--[ 2022.11.11.21.34.31.376.0 ]--
+r 64         i
+--[ 2022.11.11.21.34.31.487.0 ]--
+r 64         if
+--[ 2022.11.11.21.34.32.190.0 ]--
+r 64         if()
+--[ 2022.11.11.21.34.32.350.0 ]--
+r 64         if(i)
+--[ 2022.11.11.21.34.32.488.0 ]--
+r 64         if(is)
+--[ 2022.11.11.21.34.32.855.0 ]--
+r 64         if(isE)
+--[ 2022.11.11.21.34.32.964.0 ]--
+r 64         if(isEm)
+--[ 2022.11.11.21.34.34.069.0 ]--
+r 64         if(isEmp)
+--[ 2022.11.11.21.34.34.349.0 ]--
+r 64         if(isEmpt)
+--[ 2022.11.11.21.34.34.924.0 ]--
+r 64         if(isEmpty)
+--[ 2022.11.11.21.34.35.480.0 ]--
+r 64         if(isEmpty())
+--[ 2022.11.11.21.34.38.678.0 ]--
+r 64         if(isEmpty()) 
+--[ 2022.11.11.21.34.38.832.0 ]--
+r 64         if(isEmpty()) r
+--[ 2022.11.11.21.34.39.106.0 ]--
+r 64         if(isEmpty()) re
+--[ 2022.11.11.21.34.39.276.0 ]--
+r 64         if(isEmpty()) ret
+--[ 2022.11.11.21.34.39.386.0 ]--
+r 64         if(isEmpty()) retu
+--[ 2022.11.11.21.34.39.512.0 ]--
+r 64         if(isEmpty()) retur
+--[ 2022.11.11.21.34.39.973.0 ]--
+r 64         if(isEmpty()) return
+--[ 2022.11.11.21.34.40.145.0 ]--
+r 64         if(isEmpty()) return 
+--[ 2022.11.11.21.34.40.328.0 ]--
+r 64         if(isEmpty()) return n
+--[ 2022.11.11.21.34.40.516.0 ]--
+r 64         if(isEmpty()) return nu
+--[ 2022.11.11.21.34.40.747.0 ]--
+r 64         if(isEmpty()) return nul
+--[ 2022.11.11.21.34.40.874.0 ]--
+r 64         if(isEmpty()) return null
+--[ 2022.11.11.21.34.41.339.0 ]--
+r 64         if(isEmpty()) return null;
+--[ 2022.11.11.21.34.45.856.0 ]--
+r 65        
+--[ 2022.11.11.21.34.46.234.0 ]--
+- 65
+--[ 2022.11.11.21.34.53.260.0 ]--
+r 66     public Point max() { if(isEmpty()) return null; }
+--[ 2022.11.11.21.34.54.359.0 ]--
++ 66     public Point max() { if(isEmpty()) return null;
+r 67     }
+--[ 2022.11.11.21.34.55.758.0 ]--
++ 66     public Point max() { 
+r 67         if(isEmpty()) return null;
+--[ 2022.11.11.21.34.58.794.0 ]--
++ 68         
+--[ 2022.11.11.21.35.00.513.0 ]--
+r 68         r
+--[ 2022.11.11.21.35.00.626.0 ]--
+r 68         re
+--[ 2022.11.11.21.35.00.779.0 ]--
+r 68         ret
+--[ 2022.11.11.21.35.01.811.0 ]--
+r 68         retu
+--[ 2022.11.11.21.35.02.177.0 ]--
+r 68         retur
+--[ 2022.11.11.21.35.02.273.0 ]--
+r 68         return
+--[ 2022.11.11.21.35.02.416.0 ]--
+r 68         return 
+--[ 2022.11.11.21.35.02.975.0 ]--
+r 68         return n
+--[ 2022.11.11.21.35.03.183.0 ]--
+r 68         return nu
+--[ 2022.11.11.21.35.03.389.0 ]--
+r 68         return nul
+--[ 2022.11.11.21.35.04.092.0 ]--
+r 68         return null
+--[ 2022.11.11.21.35.04.246.0 ]--
+r 68         return null;
+--[ 2022.11.11.21.35.05.563.0 ]--
++ 65         
+--[ 2022.11.11.21.35.05.831.0 ]--
+r 65         r
+--[ 2022.11.11.21.35.05.989.0 ]--
+r 65         re
+--[ 2022.11.11.21.35.06.169.0 ]--
+r 65         ret
+--[ 2022.11.11.21.35.06.524.0 ]--
+r 65         retu
+--[ 2022.11.11.21.35.06.738.0 ]--
+r 65         retur
+--[ 2022.11.11.21.35.06.908.0 ]--
+r 65         return
+--[ 2022.11.11.21.35.07.332.0 ]--
+r 65         return 
+--[ 2022.11.11.21.35.07.653.0 ]--
+r 65         return n
+--[ 2022.11.11.21.35.07.881.0 ]--
+r 65         return nu
+--[ 2022.11.11.21.35.08.124.0 ]--
+r 65         return nul
+--[ 2022.11.11.21.35.08.231.0 ]--
+r 65         return null
+--[ 2022.11.11.21.35.08.611.0 ]--
+r 65         return null;
+--[ 2022.11.11.21.35.17.289.0 ]--
+r 63     public Point min() {
+r 67     public Point max() {
+--[ 2022.11.11.21.35.33.183.0 ]--
++ 31         
+--[ 2022.11.11.21.35.33.464.0 ]--
+r 31         i
+--[ 2022.11.11.21.35.33.610.0 ]--
+r 31         if
+--[ 2022.11.11.21.35.43.782.0 ]--
+r 31         if()
+--[ 2022.11.11.21.35.43.991.0 ]--
+r 31         if(i)
+--[ 2022.11.11.21.35.44.225.0 ]--
+r 31         if(is)
+--[ 2022.11.11.21.35.44.547.0 ]--
+r 31         if(isE)
+--[ 2022.11.11.21.35.44.673.0 ]--
+r 31         if(isEm)
+--[ 2022.11.11.21.35.44.903.0 ]--
+r 31         if(isEmp)
+--[ 2022.11.11.21.35.45.146.0 ]--
+r 31         if(isEmpt)
+--[ 2022.11.11.21.35.45.378.0 ]--
+r 31         if(isEmpty)
+--[ 2022.11.11.21.35.46.039.0 ]--
+r 31         if(isEmpty())
+--[ 2022.11.11.21.36.04.198.0 ]--
+r 31         if(isEmpty()) 
+--[ 2022.11.11.21.36.04.388.0 ]--
+r 31         if(isEmpty()) r
+--[ 2022.11.11.21.36.04.531.0 ]--
+r 31         if(isEmpty()) re
+--[ 2022.11.11.21.36.04.697.0 ]--
+r 31         if(isEmpty()) ret
+--[ 2022.11.11.21.36.04.820.0 ]--
+r 31         if(isEmpty()) retu
+--[ 2022.11.11.21.36.05.028.0 ]--
+r 31         if(isEmpty()) retur
+--[ 2022.11.11.21.36.05.226.0 ]--
+r 31         if(isEmpty()) return
+--[ 2022.11.11.21.36.05.398.0 ]--
+r 31         if(isEmpty()) return 
+--[ 2022.11.11.21.36.05.547.0 ]--
+r 31         if(isEmpty()) return n
+--[ 2022.11.11.21.36.05.739.0 ]--
+r 31         if(isEmpty()) return nu
+--[ 2022.11.11.21.36.05.967.0 ]--
+r 31         if(isEmpty()) return nuo
+--[ 2022.11.11.21.36.06.092.0 ]--
+r 31         if(isEmpty()) return nuoo
+--[ 2022.11.11.21.36.06.620.0 ]--
+r 31         if(isEmpty()) return nuo
+--[ 2022.11.11.21.36.07.600.0 ]--
+r 31         if(isEmpty()) return nu
+--[ 2022.11.11.21.36.08.252.0 ]--
+r 31         if(isEmpty()) return nu;
+--[ 2022.11.11.21.36.08.428.0 ]--
+r 31         if(isEmpty()) return nu;;
+--[ 2022.11.11.21.36.09.037.0 ]--
+r 31         if(isEmpty()) return nu;
+--[ 2022.11.11.21.36.09.186.0 ]--
+r 31         if(isEmpty()) return nu
+--[ 2022.11.11.21.36.09.724.0 ]--
+r 31         if(isEmpty()) return nul
+--[ 2022.11.11.21.36.10.391.0 ]--
+r 31         if(isEmpty()) return null;
+--[ 2022.11.11.21.37.30.547.0 ]--
++ 40         
+--[ 2022.11.11.21.37.32.551.0 ]--
+r 40         if(isEmpty()) return null;
