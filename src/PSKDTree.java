@@ -14,6 +14,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     }
     BST<Point, Value> kdt;
     int count=0;
+
     Point minimum;
     Point maximum;
     // constructor makes empty kD-tree
@@ -22,18 +23,19 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     }
 
     // add the given Point to kD-tree
-    public void put(Point p, Value v) {  //change??
+    public void put(Point p, Value v) {  //change?? remember to alternate x and y coords for inserting
         kdt.put(p,v);
         count++;
+
     }
 
     public Value get(Point p) {
         if(isEmpty()) return null;
-        return null;
+        return null; //search through the tree instead of returning null
     }
 
     public boolean contains(Point p) {
-        return false;
+        return false; //searching again for p in the bst
     }
 
     public Value getNearest(Point p) {
@@ -42,7 +44,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     }
 
     // return an iterable of all points in collection
-    public Iterable<Point> points() { return null; }
+    public Iterable<Point> points() { return null; } //account for deletions?
 
     // return an iterable of all partitions that make up the kD-tree
     public Iterable<Partition> partitions() {
