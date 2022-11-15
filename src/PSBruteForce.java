@@ -91,21 +91,18 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
 
     // return the k nearest Points to the given Point
     public Iterable<Point> nearest(Point p, int k) {
-        MaxPQ<PointDist> ptpq = new MaxPQ<>(k, PointDist::compareTo);
+        MaxPQ<PointDist> ptpq = new MaxPQ<>();
 
         Iterable<Point> iter = points();
         for( Point i : iter ) {
-            if (i != p) {
-                PointDist distance = new PointDist(p, p.dist(i));
+
+                PointDist distance = new PointDist(i, p.dist(i));
                 ptpq.insert(distance);
                 while (ptpq.size()>k) ptpq.delMax();
-
-            }
-
         }
         Stack<Point> ptstack = new Stack<>();
-        for(int idx=0; idx<k; idx++) {
-            ptstack.push(ptpq.delMax().p());
+        for(PointDist pd : ptpq) {
+            ptstack.push(pd.p());
         }
         return ptstack;
     }

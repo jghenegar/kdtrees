@@ -22,11 +22,12 @@ public class PSKDTree<Value> implements PointSearch<Value> {
         kdt = new BST<Point, Value>();
     }
 
-    // add the given Point to kD-tree
+    // add the given Point to kD-tree -- here is 2D (x and y)
     public void put(Point p, Value v) {  //change?? remember to alternate x and y coords for inserting
-        kdt.put(p,v);
-        count++;
+        if (v == null) { return; } // can't do anything with a null value
 
+
+        count++;
     }
 
     public Value get(Point p) {
