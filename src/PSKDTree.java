@@ -11,12 +11,19 @@ public class PSKDTree<Value> implements PointSearch<Value> {
         Value v;
         Node left, right;
         Partition.Direction dir;
+
+        public Node(Point pt, Value val) {
+            p = pt;
+            v = val;
+        }
     }
+
     BST<Point, Value> kdt;
     int count=0;
 
     Point minimum;
     Point maximum;
+    Node root=null;
     // constructor makes empty kD-tree
     public PSKDTree() {
         kdt = new BST<Point, Value>();
@@ -26,8 +33,31 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     public void put(Point p, Value v) {  //change?? remember to alternate x and y coords for inserting
         if (v == null) { return; } // can't do anything with a null value
 
-
+        if(root==null) {
+            Node x = new Node();
+            x.p=p;
+            x.v=v;
+            x.left=null;
+            x.right=null;
+            x.dir= Partition.Direction.DOWNUP;
+            root=x;
+        }
+        else put(root, p, v);
         count++;
+    }
+
+    private Node put(Node x, Point p, Value v) {
+        if (x == null) return new Node(p, v);
+        Partition.Direction parentDir = x.dir;
+        if(parentDir == Partition.Direction.DOWNUP) {
+            if(x.p.x() > p.x()) x.left = put(x.left, p, v);
+            else x.right = put(x.right,p,v);
+        }
+        else {
+            if(x.p.y() > p.y()) x.left = put(x.left, p, v);
+            else x.right = put(x.right,p,v);
+        }
+        return x;
     }
 
     public Value get(Point p) {
