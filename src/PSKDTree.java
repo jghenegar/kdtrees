@@ -26,6 +26,8 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     double maxx;
     double maxy;
     Node root=null;
+    MaxPQ<PointDist> ptpq = new MaxPQ<>();
+
 
     //point stack
     Stack<Point> ps = new Stack<>();    //doesn't account for deletions
@@ -133,17 +135,106 @@ public class PSKDTree<Value> implements PointSearch<Value> {
 
     // return the Point that is closest to the given Point
     public Point nearest(Point p) {
-        Point currentNear = root.p;
-        double nearDist = p.dist(root.p);
+        if(isEmpty()) return null;
 
+        return nearest(root, p, root.p, root.p.dist(p));
+    }
+    private Point nearest(Node current, Point p, Point currentNear, double nearDist) {
+        if(current == null) return currentNear;
+
+        //1. Check against the current point...  closer?
+        if(current.p.dist(p) < nearDist) {      //get distance to the query point from the partition point)
+            currentNear = current.p;
+            nearDist = current.p.dist(p);
+        }
+        //2. Check which side the query point is on
+        if(current.dir == Partition.Direction.DOWNUP) {
+            if(p.x() > current.p.x()) {
+                currentNear = nearest(current.right, p, currentNear, nearDist);
+            }
+            else currentNear = nearest(current.left, p, currentNear, nearDist);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.x() - p.x();
+            if (partDist < 0) partDist = -1 * partDist;
+            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (nearDist > partDist) {
+                if (p.x() > current.p.x()) nearest(current.left, p, currentNear, nearDist);
+                else nearest(current.right, p, currentNear, nearDist);
+            }
+        }
+        else {    // dir is LEFTRIGHT
+            if(p.y() > current.p.y()) {
+                currentNear = nearest(current.right, p, currentNear, nearDist);
+            }
+            else currentNear = nearest(current.left, p, currentNear, nearDist);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.y() - p.y();
+            if (partDist < 0) partDist = -1 * partDist;
+            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (nearDist > partDist) {
+                if (p.y() > current.p.y()) nearest(current.left, p, currentNear, nearDist);
+                else nearest(current.right, p, currentNear, nearDist);
+            }
+        }
 
         return currentNear;
     }
 
     // return the k nearest Points to the given Point
     public Iterable<Point> nearest(Point p, int k) {
-        return null;
+        //add things to the global maxpq!
+        kNearest(root, p, k);
+        Stack<Point> ptstack = new Stack<>();
+        for(PointDist pd : ptpq) {
+            ptstack.push(pd.p());
+        }
+        return ptstack;
     }
+
+    private void kNearest(Node current, Point p, int k) {
+        if(current == null) return;
+
+        //1. Check against the current point...  closer?
+        ptpq.insert(new PointDist(current.p, current.p.dist(p)));
+        if( ptpq.size() > k ) ptpq.delMax();
+
+        //stopped walking here 11/18
+
+        //2. Check which side the query point is on
+        if(current.dir == Partition.Direction.DOWNUP) {
+            if(p.x() > current.p.x()) {
+                kNearest(current.right, p, k);
+            }
+            else kNearest(current.left, p, k);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.x() - p.x();
+            if (partDist < 0) partDist = -1 * partDist;
+            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (nearDist > partDist) {
+                if (p.x() > current.p.x()) kNearest(current.left, p, k);
+                else kNearest(current.right, p, k);
+            }
+        }
+        else {    // dir is LEFTRIGHT
+            if(p.y() > current.p.y()) {
+                kNearest(current.right, p, k);
+            }
+            else kNearest(current.left, p,  k);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.y() - p.y();
+            if (partDist < 0) partDist = -1 * partDist;
+            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (nearDist > partDist) {
+                if (p.y() > current.p.y()) kNearest(current.left, p, k);
+                else kNearest(current.right, p, k);
+            }
+        }
+    }
+
 
     // return the min and max for all Points in collection.
     // The min-max pair will form a bounding box for all Points.
