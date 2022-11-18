@@ -15,7 +15,7 @@ public class NearestNeighborVisualizer {
     // creates a new PointSearch data structure
     // note: you can swap between PSKDTree and PSBruteForce to debug your code
     private static PointSearch<Character> createNewPS() {
-        return new PSBruteForce<>();
+        return new PSKDTree<>();
     }
 
     public static void main(String[] args) {

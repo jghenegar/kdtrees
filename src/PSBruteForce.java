@@ -15,6 +15,7 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
     double miny;
     double maxx;
     double maxy;
+
     public PSBruteForce() {
         rbst = new RedBlackBST<>();
     }
