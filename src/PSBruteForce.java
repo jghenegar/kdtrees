@@ -58,13 +58,13 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
         double nearDist = 0;
         int idx = 0;
         Iterable<Point> iter = points();
+
         for( Point i : iter ) {
-            if(i != p ) {
-                double distance = p.dist(i);
-                if(idx == 0 || distance < nearDist) {
-                    nearDist = distance;
-                    currentNear = i;
-                }
+
+            double distance = p.dist(i);
+            if(idx == 0 || distance < nearDist) {
+                nearDist = distance;
+                currentNear = i;
             }
             idx++;
         }
@@ -81,10 +81,12 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
     // The min-max pair will form a bounding box for all Points.
     // if KDTree is empty, return null.
     public Point min() {
+        if(isEmpty()) return null;
         //for each iterable loop, remember the min
         return new Point(minx, miny);
     }
     public Point max() {
+        if(isEmpty()) return null;
         //same as min, but with max
         return new Point(maxx, maxy);
     }
@@ -118,5 +120,15 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
 
     // place your timing code or unit testing here
     public static void main(String[] args) {
+        PSBruteForce<Integer> bf = new PSBruteForce<>();
+        RedBlackBST<Point, Integer> rb = new RedBlackBST<>();
+        Point p = new Point(1.0, 1.0);
+        Point t = new Point(2.0, 2.0);
+        Point q = new Point(3.0, 3.0);
+        bf.put(p, 10);
+        bf.put(t, 20);
+        bf.put(q, 30);
+        StdOut.println(bf.nearest(new Point (4.0,4.0)));
+
     }
 }

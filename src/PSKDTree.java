@@ -185,6 +185,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     // return the k nearest Points to the given Point
     public Iterable<Point> nearest(Point p, int k) {
         //add things to the global maxpq!
+        ptpq.insert(new PointDist(root.p, root.p.dist(p)));
         kNearest(root, p, k);
         Stack<Point> ptstack = new Stack<>();
         for(PointDist pd : ptpq) {
@@ -198,7 +199,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
 
         //1. Check against the current point...  closer?
         ptpq.insert(new PointDist(current.p, current.p.dist(p)));
-        if( ptpq.size() > k ) ptpq.delMax();
+        while( ptpq.size() > k ) ptpq.delMax();
 
         //stopped walking here 11/18
 
@@ -211,9 +212,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
 
             //3. Check if we should check the other side!
             double partDist = current.p.x() - p.x();
-            if (partDist < 0) partDist = -1 * partDist;
-            if (nearDist < 0) nearDist = -1 * nearDist;
-            if (nearDist > partDist) {
+            if (ptpq.max().d() > partDist) {
                 if (p.x() > current.p.x()) kNearest(current.left, p, k);
                 else kNearest(current.right, p, k);
             }
@@ -222,13 +221,13 @@ public class PSKDTree<Value> implements PointSearch<Value> {
             if(p.y() > current.p.y()) {
                 kNearest(current.right, p, k);
             }
-            else kNearest(current.left, p,  k);
+            else kNearest(current.left, p, k);
 
             //3. Check if we should check the other side!
             double partDist = current.p.y() - p.y();
-            if (partDist < 0) partDist = -1 * partDist;
-            if (nearDist < 0) nearDist = -1 * nearDist;
-            if (nearDist > partDist) {
+//            if (partDist < 0) partDist = -1 * partDist;
+//            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (ptpq.max().d() > partDist) {
                 if (p.y() > current.p.y()) kNearest(current.left, p, k);
                 else kNearest(current.right, p, k);
             }
