@@ -22,6 +22,7 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
 
     // add the given Point to KDTree
     public void put(Point p, Value v) {
+        if(p == null) throw new NullPointerException("p must be initialized");
         rbst.put(p,v);
         if(rbst.size() == 1) {
             minx = p.x();
@@ -40,10 +41,12 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
     }
 
     public Value get(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
         return rbst.get(p);
     }
 
     public boolean contains(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
         return rbst.contains(p);
     }
 
@@ -54,6 +57,7 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
 
     // return the Point that is closest to the given Point
     public Point nearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
         Point currentNear = null;
         double nearDist = 0;
         int idx = 0;
@@ -73,6 +77,7 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
 
     // return the Value associated to the Point that is closest to the given Point
     public Value getNearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
         Point nearestPoint = nearest(p);
         return rbst.get(nearestPoint);
     }
@@ -94,6 +99,8 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
 
     // return the k nearest Points to the given Point
     public Iterable<Point> nearest(Point p, int k) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+
         MaxPQ<PointDist> ptpq = new MaxPQ<>();
 
         Iterable<Point> iter = points();

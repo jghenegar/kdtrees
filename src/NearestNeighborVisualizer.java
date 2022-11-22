@@ -6,8 +6,8 @@ import java.awt.event.KeyEvent;
 public class NearestNeighborVisualizer {
 
     // number of dots to add at start
-    private final static int nGaussian = 100;
-    private final static int nUniform  = 100;
+    private final static int nGaussian = 10;
+    private final static int nUniform  = 10;
 
     // delay in milliseconds (controls animation speed)
     private final static int DELAY = 10;
@@ -36,7 +36,7 @@ public class NearestNeighborVisualizer {
 
         StdDraw.show(0);
 
-        int k = 10;
+        int k = 1;
         boolean drawClosest = true;
         boolean drawPartitions = false;
         boolean drawBoundingBox = false;
