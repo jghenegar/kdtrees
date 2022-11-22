@@ -25157,3 +25157,3302 @@ public interface PointSearch<Value> {
     Iterable<Partition> partitions();
 }
 
+--[ 2022.11.21.21.43.04.002.0 ]--
+:/src/PSKDTree.java
+r 193         /ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+--[ 2022.11.21.21.43.04.017.0 ]--
+UpdateTree (AD): 8 0
++ /.git/objects/09/bd3ab462c2a54f2f734a663b4d0d55dbefa856
++ /.git/objects/0c/324b92a8f6c06aa72c7d1a7b6a4b3a471f2f9f
++ /.git/objects/2e/39673052a1f295d801c985e388b4f7474189b5
++ /.git/objects/35/3cb223ed1906f7fafb0088b405f95a94d48049
++ /.git/objects/47/2708597a52c84fb05917e78f58bfd5c9595103
++ /.git/objects/63/f769006f85ce8b975f16e9c895bd3395504579
++ /.git/objects/68/33ac541d58999c846b37793c0ca6bb09e43f21
++ /.git/objects/f1/f318c26c20a6cefd43a41e41a4c26c668d97ea
+
+--[ 2022.11.21.21.43.04.069.0 ]--
+r 193         //ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+--[ 2022.11.21.21.43.09.625.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.44.44.339.0 ]--
+r 189 //        if(root == null) throw new NullPointerException("Null root has no nearest");
+--[ 2022.11.21.21.45.06.629.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.46.54.629.0 ]--
+- 124
+--[ 2022.11.21.21.46.56.674.0 ]--
++ 123         
+--[ 2022.11.21.21.46.57.195.0 ]--
++ 123                 if(p == null) throw new NullPointerException("p must be initialized");
+r 124 
+--[ 2022.11.21.21.46.57.224.0 ]--
+r 123         if(p == null) throw new NullPointerException("p must be initialized");
+--[ 2022.11.21.21.46.58.094.0 ]--
+- 124
+--[ 2022.11.21.21.47.04.718.0 ]--
+- 99
+--[ 2022.11.21.21.47.05.926.0 ]--
++ 98         
+--[ 2022.11.21.21.47.06.603.0 ]--
++ 98                 if(p == null) throw new NullPointerException("p must be initialized");
+r 99 
+--[ 2022.11.21.21.47.06.632.0 ]--
+r 98         if(p == null) throw new NullPointerException("p must be initialized");
+--[ 2022.11.21.21.47.07.231.0 ]--
+- 99
+--[ 2022.11.21.21.47.31.662.0 ]--
+- 140
+--[ 2022.11.21.21.47.33.234.0 ]--
++ 139         
+--[ 2022.11.21.21.47.33.958.0 ]--
++ 139                 if(p == null || root == null) throw new NullPointerException("p and root must be initialized");
+r 140 
+--[ 2022.11.21.21.47.33.991.0 ]--
+r 139         if(p == null || root == null) throw new NullPointerException("p and root must be initialized");
+--[ 2022.11.21.21.47.34.830.0 ]--
+- 140
+--[ 2022.11.21.21.47.48.491.0 ]--
+r 139         if(p == null) throw new NullPointerException("p and root must be initialized");
+--[ 2022.11.21.21.48.58.738.0 ]--
+:/src/PSBruteForce.java
+- 131
+--[ 2022.11.21.21.49.01.916.0 ]--
+:/src/PSKDTree.java
++ 269         
+--[ 2022.11.21.21.49.02.177.0 ]--
++ 269                 PSBruteForce<Integer> bf = new PSBruteForce<>();
+r 270 
+--[ 2022.11.21.21.49.02.203.0 ]--
+r 269         PSBruteForce<Integer> bf = new PSBruteForce<>();
+--[ 2022.11.21.21.49.04.760.0 ]--
+r 269         P<Integer> bf = new PSBruteForce<>();
+--[ 2022.11.21.21.49.04.961.0 ]--
+r 269         PS<Integer> bf = new PSBruteForce<>();
+--[ 2022.11.21.21.49.05.447.0 ]--
+r 269         PSK<Integer> bf = new PSBruteForce<>();
+--[ 2022.11.21.21.49.06.271.0 ]--
+r 269         PSKDTree<Integer> bf = new PSBruteForce<>();
+--[ 2022.11.21.21.49.08.887.0 ]--
+r 269         PSKDTree<Integer> bf = new P<>();
+--[ 2022.11.21.21.49.09.064.0 ]--
+r 269         PSKDTree<Integer> bf = new PS<>();
+--[ 2022.11.21.21.49.09.600.0 ]--
+r 269         PSKDTree<Integer> bf = new PSKDTree<>();
+--[ 2022.11.21.21.49.09.611.0 ]--
+r 269         PSKDTree<Integer> bf = new PSKDTree();
+--[ 2022.11.21.21.49.09.627.0 ]--
+r 269         PSKDTree<Integer> bf = new PSKDTree<>();
+--[ 2022.11.21.21.49.12.248.0 ]--
++ 270         
+--[ 2022.11.21.21.49.14.556.0 ]--
+r 270         P
+--[ 2022.11.21.21.49.14.977.0 ]--
+r 270         Po
+--[ 2022.11.21.21.49.15.083.0 ]--
+r 270         Poi
+--[ 2022.11.21.21.49.15.316.0 ]--
+r 270         Poin
+--[ 2022.11.21.21.49.15.461.0 ]--
+r 270         Point
+--[ 2022.11.21.21.49.16.483.0 ]--
+r 270         Point 
+--[ 2022.11.21.21.49.16.638.0 ]--
+r 270         Point p
+--[ 2022.11.21.21.49.17.663.0 ]--
+r 270         Point p 
+--[ 2022.11.21.21.49.17.786.0 ]--
+r 270         Point p =
+--[ 2022.11.21.21.49.17.883.0 ]--
+r 270         Point p = 
+--[ 2022.11.21.21.49.27.619.0 ]--
++ 270        Point p = new Point(1.0, 1.0);
++ 271         Point t = new Point(2.0, 2.0);
+r 272         Point q = new Point(3.0, 3.0);
+r 273  
+--[ 2022.11.21.21.49.27.650.0 ]--
+r 270         Point p = new Point(1.0, 1.0);
+r 273 
+--[ 2022.11.21.21.49.29.467.0 ]--
+r 273     
+--[ 2022.11.21.21.49.29.973.0 ]--
+r 273         
+--[ 2022.11.21.21.49.30.853.0 ]--
+r 273         b
+--[ 2022.11.21.21.49.31.672.0 ]--
+r 273         
+--[ 2022.11.21.21.49.34.181.0 ]--
+r 269         PSKDTree<Integer> p = new PSKDTree<>();
+--[ 2022.11.21.21.49.34.290.0 ]--
+r 269         PSKDTree<Integer> ps = new PSKDTree<>();
+--[ 2022.11.21.21.49.35.843.0 ]--
+r 269         PSKDTree<Integer> psj = new PSKDTree<>();
+--[ 2022.11.21.21.49.35.865.0 ]--
+r 269         PSKDTree<Integer> psjd = new PSKDTree<>();
+--[ 2022.11.21.21.49.36.851.0 ]--
+r 269         PSKDTree<Integer> psj = new PSKDTree<>();
+--[ 2022.11.21.21.49.37.045.0 ]--
+r 269         PSKDTree<Integer> ps = new PSKDTree<>();
+--[ 2022.11.21.21.49.37.364.0 ]--
+r 269         PSKDTree<Integer> psk = new PSKDTree<>();
+--[ 2022.11.21.21.49.38.332.0 ]--
+r 269         PSKDTree<Integer> pskd = new PSKDTree<>();
+--[ 2022.11.21.21.49.40.131.0 ]--
+r 273         p
+--[ 2022.11.21.21.49.40.273.0 ]--
+r 273         ps
+--[ 2022.11.21.21.49.40.570.0 ]--
+r 273         psk
+--[ 2022.11.21.21.49.40.786.0 ]--
+r 273         pskd
+--[ 2022.11.21.21.49.43.159.0 ]--
+r 273         pskd.
+--[ 2022.11.21.21.49.45.445.0 ]--
+r 273         pskd.i
+--[ 2022.11.21.21.49.45.578.0 ]--
+r 273         pskd.in
+--[ 2022.11.21.21.49.47.639.0 ]--
+r 273         pskd.i
+--[ 2022.11.21.21.49.47.761.0 ]--
+r 273         pskd.
+--[ 2022.11.21.21.49.48.549.0 ]--
+r 273         pskd.p
+--[ 2022.11.21.21.49.49.235.0 ]--
+r 273         pskd.ps
+--[ 2022.11.21.21.49.49.998.0 ]--
+r 273         pskd.p
+--[ 2022.11.21.21.49.50.332.0 ]--
+r 273         pskd.pu
+--[ 2022.11.21.21.49.51.268.0 ]--
+r 273         pskd.put
+--[ 2022.11.21.21.49.51.284.0 ]--
+r 273         pskd.put()
+--[ 2022.11.21.21.49.51.291.0 ]--
+r 273         pskd.put();
+--[ 2022.11.21.21.49.54.178.0 ]--
+r 273         pskd.put(p);
+--[ 2022.11.21.21.50.00.342.0 ]--
+r 273         pskd.put(p,);
+--[ 2022.11.21.21.50.00.510.0 ]--
+r 273         pskd.put(p, );
+--[ 2022.11.21.21.50.00.795.0 ]--
+r 273         pskd.put(p, 1);
+--[ 2022.11.21.21.50.00.861.0 ]--
+r 273         pskd.put(p, 10);
+--[ 2022.11.21.21.50.04.296.0 ]--
++ 274 
+--[ 2022.11.21.21.50.05.365.0 ]--
++ 273         pskd.put(p, 10);
+--[ 2022.11.21.21.50.05.656.0 ]--
++ 273         pskd.put(p, 10);
+--[ 2022.11.21.21.50.07.671.0 ]--
+r 274         pskd.put(p, 0);
+--[ 2022.11.21.21.50.07.838.0 ]--
+r 274         pskd.put(p, 20);
+--[ 2022.11.21.21.50.08.660.0 ]--
+r 275         pskd.put(p, 0);
+--[ 2022.11.21.21.50.08.735.0 ]--
+r 275         pskd.put(p, 20);
+--[ 2022.11.21.21.50.09.198.0 ]--
+r 275         pskd.put(p, 230);
+--[ 2022.11.21.21.50.09.503.0 ]--
+r 275         pskd.put(p, 20);
+--[ 2022.11.21.21.50.09.597.0 ]--
+r 275         pskd.put(p, 0);
+--[ 2022.11.21.21.50.09.719.0 ]--
+r 275         pskd.put(p, 30);
+--[ 2022.11.21.21.50.11.685.0 ]--
+r 274         pskd.put(, 20);
+--[ 2022.11.21.21.50.11.750.0 ]--
+r 274         pskd.put(t, 20);
+--[ 2022.11.21.21.50.14.958.0 ]--
+r 275         pskd.put(, 30);
+--[ 2022.11.21.21.50.15.068.0 ]--
+r 275         pskd.put(q, 30);
+--[ 2022.11.21.21.50.37.591.0 ]--
++ 276         StdOut.println(bf.nearest(new Point (4.0,4.0)));
+--[ 2022.11.21.21.50.39.153.0 ]--
+r 276         StdOut.println(b.nearest(new Point (4.0,4.0)));
+--[ 2022.11.21.21.50.39.254.0 ]--
+r 276         StdOut.println(.nearest(new Point (4.0,4.0)));
+--[ 2022.11.21.21.50.39.867.0 ]--
+r 276         StdOut.println(p.nearest(new Point (4.0,4.0)));
+--[ 2022.11.21.21.50.39.980.0 ]--
+r 276         StdOut.println(ps.nearest(new Point (4.0,4.0)));
+--[ 2022.11.21.21.50.40.121.0 ]--
+r 276         StdOut.println(psp.nearest(new Point (4.0,4.0)));
+--[ 2022.11.21.21.50.40.566.0 ]--
+r 276         StdOut.println(ps.nearest(new Point (4.0,4.0)));
+--[ 2022.11.21.21.50.40.753.0 ]--
+r 276         StdOut.println(psk.nearest(new Point (4.0,4.0)));
+--[ 2022.11.21.21.50.40.865.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (4.0,4.0)));
+--[ 2022.11.21.21.50.45.466.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.50.49.832.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (.0,4.0)));
+--[ 2022.11.21.21.50.49.932.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0.0,4.0)));
+--[ 2022.11.21.21.50.52.432.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0.0,.0)));
+--[ 2022.11.21.21.50.52.535.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0.0,0.0)));
+--[ 2022.11.21.21.50.55.238.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.51.01.415.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0)));
+--[ 2022.11.21.21.51.01.590.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0,)));
+--[ 2022.11.21.21.51.01.734.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0,0)));
+--[ 2022.11.21.21.51.04.455.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.51.26.651.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0,0),));
+--[ 2022.11.21.21.51.27.372.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0,0),2));
+--[ 2022.11.21.21.51.33.000.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.51.35.558.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0,0),));
+--[ 2022.11.21.21.51.35.632.0 ]--
+r 276         StdOut.println(pskd.nearest(new Point (0,0),0));
+--[ 2022.11.21.21.51.38.051.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.51.53.737.0 ]--
++ 189         
+--[ 2022.11.21.21.51.54.844.0 ]--
+r 189         i
+--[ 2022.11.21.21.51.54.985.0 ]--
+r 189         if
+--[ 2022.11.21.21.51.56.320.0 ]--
+r 189         if()
+--[ 2022.11.21.21.51.56.884.0 ]--
+r 189         if(k)
+--[ 2022.11.21.21.51.57.148.0 ]--
+r 189         if(k )
+--[ 2022.11.21.21.51.57.370.0 ]--
+r 189         if(k =)
+--[ 2022.11.21.21.51.57.478.0 ]--
+r 189         if(k ==)
+--[ 2022.11.21.21.51.57.625.0 ]--
+r 189         if(k == )
+--[ 2022.11.21.21.51.58.182.0 ]--
+r 189         if(k == 0)
+--[ 2022.11.21.21.52.09.311.0 ]--
+r 189         if(k == 0) 
+--[ 2022.11.21.21.52.09.521.0 ]--
+r 189         if(k == 0) r
+--[ 2022.11.21.21.52.09.614.0 ]--
+r 189         if(k == 0) re
+--[ 2022.11.21.21.52.09.752.0 ]--
+r 189         if(k == 0) ret
+--[ 2022.11.21.21.52.09.842.0 ]--
+r 189         if(k == 0) retu
+--[ 2022.11.21.21.52.09.985.0 ]--
+r 189         if(k == 0) retur
+--[ 2022.11.21.21.52.10.094.0 ]--
+r 189         if(k == 0) return
+--[ 2022.11.21.21.52.10.220.0 ]--
+r 189         if(k == 0) return 
+--[ 2022.11.21.21.52.10.468.0 ]--
+r 189         if(k == 0) return n
+--[ 2022.11.21.21.52.10.658.0 ]--
+r 189         if(k == 0) return nu
+--[ 2022.11.21.21.52.10.868.0 ]--
+r 189         if(k == 0) return nul
+--[ 2022.11.21.21.52.10.982.0 ]--
+r 189         if(k == 0) return null
+--[ 2022.11.21.21.52.13.813.0 ]--
+r 189         if(k = 0) return null
+--[ 2022.11.21.21.52.14.329.0 ]--
+r 189         if(k <= 0) return null
+--[ 2022.11.21.21.52.17.749.0 ]--
+r 189         if(k <= 0) return null;
+--[ 2022.11.21.21.52.20.354.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.52.55.616.0 ]--
+r 209         i( ptpq.size() > k ) {
+--[ 2022.11.21.21.52.55.670.0 ]--
+r 209         if( ptpq.size() > k ) {
+--[ 2022.11.21.21.53.00.830.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.53.07.385.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.53.33.640.0 ]--
+r 189         /if(k <= 0) return null;
+--[ 2022.11.21.21.53.33.783.0 ]--
+r 189         //if(k <= 0) return null;
+--[ 2022.11.21.21.53.38.153.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.55.26.397.0 ]--
+r 194         /ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+--[ 2022.11.21.21.55.26.574.0 ]--
+r 194         ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+--[ 2022.11.21.21.55.29.900.0 ]--
+r 190         if(root == null) throw new NullPointerException("Null root has no nearest");
+--[ 2022.11.21.21.55.34.625.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.56.09.171.0 ]--
+:/src/NearestNeighborVisualizer.java
+r 39         int k = ;
+--[ 2022.11.21.21.56.09.641.0 ]--
+r 39         int k = 2;
+--[ 2022.11.21.21.56.13.204.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.21.56.36.021.0 ]--
+:/src/PSKDTree.java
+r 194 //        ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+--[ 2022.11.21.21.56.37.537.0 ]--
+r 190 //        if(root == null) throw new NullPointerException("Null root has no nearest");
+--[ 2022.11.21.21.56.52.298.0 ]--
+:/src/NearestNeighborVisualizer.java
+r 39         int k = ;
+--[ 2022.11.21.21.56.52.384.0 ]--
+r 39         int k = 0;
+--[ 2022.11.21.21.56.54.775.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.00.10.265.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.00.16.657.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.00.50.831.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.03.36.016.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.03.52.327.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.05.27.362.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.07.08.253.0 ]--
+:/src/PSKDTree.java
++ 156             
+--[ 2022.11.21.22.07.09.133.0 ]--
+r 156             e
+--[ 2022.11.21.22.07.09.260.0 ]--
+r 156             el
+--[ 2022.11.21.22.07.09.376.0 ]--
+r 156             els
+--[ 2022.11.21.22.07.09.470.0 ]--
+r 156             else
+--[ 2022.11.21.22.07.10.101.0 ]--
+r 156             else 
+--[ 2022.11.21.22.07.10.257.0 ]--
+r 156             else i
+--[ 2022.11.21.22.07.10.358.0 ]--
+r 156             else if
+--[ 2022.11.21.22.07.11.393.0 ]--
+r 156             else if 
+--[ 2022.11.21.22.07.11.612.0 ]--
+r 156             else if {
+--[ 2022.11.21.22.07.11.870.0 ]--
++ 157 
++ 158 }
+--[ 2022.11.21.22.07.11.918.0 ]--
+r 158             }
+--[ 2022.11.21.22.07.11.936.0 ]--
+r 157                 
+--[ 2022.11.21.22.07.15.520.0 ]--
+r 156             else if{
+--[ 2022.11.21.22.07.16.135.0 ]--
+r 156             else if(){
+--[ 2022.11.21.22.07.16.568.0 ]--
+r 156             else if() {
+--[ 2022.11.21.22.07.19.905.0 ]--
+r 156             else if(p) {
+--[ 2022.11.21.22.07.20.298.0 ]--
+r 156             else if(p.) {
+--[ 2022.11.21.22.07.20.474.0 ]--
+r 156             else if(p.x) {
+--[ 2022.11.21.22.07.21.696.0 ]--
+r 156             else if(p.x()) {
+--[ 2022.11.21.22.07.22.261.0 ]--
+r 156             else if(p.x() ) {
+--[ 2022.11.21.22.07.22.769.0 ]--
+r 156             else if(p.x() >) {
+--[ 2022.11.21.22.07.23.145.0 ]--
+r 156             else if(p.x() > ) {
+--[ 2022.11.21.22.07.23.810.0 ]--
+r 156             else if(p.x() > c) {
+--[ 2022.11.21.22.07.23.936.0 ]--
+r 156             else if(p.x() > cu) {
+--[ 2022.11.21.22.07.24.166.0 ]--
+r 156             else if(p.x() > cur) {
+--[ 2022.11.21.22.07.24.300.0 ]--
+r 156             else if(p.x() > curr) {
+--[ 2022.11.21.22.07.24.436.0 ]--
+r 156             else if(p.x() > curre) {
+--[ 2022.11.21.22.07.24.620.0 ]--
+r 156             else if(p.x() > curren) {
+--[ 2022.11.21.22.07.24.750.0 ]--
+r 156             else if(p.x() > current) {
+--[ 2022.11.21.22.07.24.998.0 ]--
+r 156             else if(p.x() > current.) {
+--[ 2022.11.21.22.07.26.233.0 ]--
+r 156             else if(p.x() > current.p) {
+--[ 2022.11.21.22.07.26.724.0 ]--
+r 156             else if(p.x() > current.p.) {
+--[ 2022.11.21.22.07.26.905.0 ]--
+r 156             else if(p.x() > current.p.x) {
+--[ 2022.11.21.22.07.27.578.0 ]--
+r 156             else if(p.x() > current.p.x()) {
+--[ 2022.11.21.22.07.29.928.0 ]--
+r 156             else if(p.x()  current.p.x()) {
+--[ 2022.11.21.22.07.30.269.0 ]--
+r 156             else if(p.x() = current.p.x()) {
+--[ 2022.11.21.22.07.30.377.0 ]--
+r 156             else if(p.x() == current.p.x()) {
+--[ 2022.11.21.22.07.37.037.0 ]--
+r 157                 i
+--[ 2022.11.21.22.07.37.070.0 ]--
+r 157                 if
+--[ 2022.11.21.22.07.38.091.0 ]--
+r 157                 if 
+--[ 2022.11.21.22.07.38.229.0 ]--
+r 157                 if p
+--[ 2022.11.21.22.07.38.914.0 ]--
+r 157                 if 
+--[ 2022.11.21.22.07.39.052.0 ]--
+r 157                 if
+--[ 2022.11.21.22.07.39.538.0 ]--
+r 157                 if()
+--[ 2022.11.21.22.07.39.932.0 ]--
+r 157                 if(p)
+--[ 2022.11.21.22.07.40.184.0 ]--
+r 157                 if(p.)
+--[ 2022.11.21.22.07.40.450.0 ]--
+r 157                 if(p.y)
+--[ 2022.11.21.22.07.41.128.0 ]--
+r 157                 if(p.y())
+--[ 2022.11.21.22.07.41.812.0 ]--
+r 157                 if(p.y() )
+--[ 2022.11.21.22.07.59.620.0 ]--
+r 157                 if(p.y())
+--[ 2022.11.21.22.07.59.918.0 ]--
+r 157                 if(p.y()
+--[ 2022.11.21.22.08.00.062.0 ]--
+r 157                 if(p.y)
+--[ 2022.11.21.22.08.00.184.0 ]--
+r 157                 if(p.)
+--[ 2022.11.21.22.08.00.298.0 ]--
+r 157                 if(p)
+--[ 2022.11.21.22.08.00.418.0 ]--
+r 157                 if()
+--[ 2022.11.21.22.08.00.668.0 ]--
+r 157                 if
+--[ 2022.11.21.22.08.00.816.0 ]--
+r 157                 i
+--[ 2022.11.21.22.08.01.381.0 ]--
+r 157                 
+--[ 2022.11.21.22.08.01.783.0 ]--
+r 157                 c
+--[ 2022.11.21.22.08.01.887.0 ]--
+r 157                 cu
+--[ 2022.11.21.22.08.02.061.0 ]--
+r 157                 cur
+--[ 2022.11.21.22.08.02.188.0 ]--
+r 157                 curr
+--[ 2022.11.21.22.08.02.283.0 ]--
+r 157                 curre
+--[ 2022.11.21.22.08.02.405.0 ]--
+r 157                 curren
+--[ 2022.11.21.22.08.02.511.0 ]--
+r 157                 current
+--[ 2022.11.21.22.08.02.706.0 ]--
+r 157                 current.
+--[ 2022.11.21.22.08.03.165.0 ]--
+r 157                 current
+--[ 2022.11.21.22.08.03.438.0 ]--
+r 157                 currentN
+--[ 2022.11.21.22.08.03.803.0 ]--
+r 157                 currentNear
+--[ 2022.11.21.22.08.06.089.0 ]--
+r 157                 currentNear 
+--[ 2022.11.21.22.08.06.577.0 ]--
+r 157                 currentNear =
+--[ 2022.11.21.22.08.06.754.0 ]--
+r 157                 currentNear = 
+--[ 2022.11.21.22.08.14.693.0 ]--
+r 157                 currentNear = = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.19.119.0 ]--
++ 158                 
+--[ 2022.11.21.22.08.19.665.0 ]--
++ 158                                 currentNear = = nearest(current.right, p, currentNear, nearDist);
+r 159 
+--[ 2022.11.21.22.08.19.682.0 ]--
+r 158                 currentNear = = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.21.261.0 ]--
+r 157                 currentNear == nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.21.371.0 ]--
+r 157                 currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.22.538.0 ]--
+r 158                 currentNear == nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.22.644.0 ]--
+r 158                 currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.24.072.0 ]--
+- 159
+--[ 2022.11.21.22.08.41.128.0 ]--
++ 173                 currentNear = nearest(current.right, p, currentNear, nearDist);
++ 174             }            else if(p.x() == current.p.x()) {
++ 175                 currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.43.495.0 ]--
++ 174             }            
+r 175             else if(p.x() == current.p.x()) {
+--[ 2022.11.21.22.08.46.118.0 ]--
+r 175             else if(p.() == current.p.x()) {
+--[ 2022.11.21.22.08.46.268.0 ]--
+r 175             else if(p.y() == current.p.x()) {
+--[ 2022.11.21.22.08.48.062.0 ]--
+r 175             else if(p.y() == current.p.()) {
+--[ 2022.11.21.22.08.48.146.0 ]--
+r 175             else if(p.y() == current.p.y()) {
+--[ 2022.11.21.22.08.51.680.0 ]--
+r 176                 currentNear = nearest(current.l, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.51.768.0 ]--
+r 176                 currentNear = nearest(current.le, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.51.817.0 ]--
+r 176                 currentNear = nearest(current.lef, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.52.032.0 ]--
+r 176                 currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.57.121.0 ]--
+r 158                 currentNear = nearest(current.l, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.57.318.0 ]--
+r 158                 currentNear = nearest(current.le, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.57.505.0 ]--
+r 158                 currentNear = nearest(current.lef, p, currentNear, nearDist);
+--[ 2022.11.21.22.08.57.716.0 ]--
+r 158                 currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.09.16.874.0 ]--
+r 174             }
+--[ 2022.11.21.22.09.17.737.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.10.24.909.0 ]--
+r 185             /if (nearDist > partDist) {
+--[ 2022.11.21.22.10.25.028.0 ]--
+r 185             //if (nearDist > partDist) {
+--[ 2022.11.21.22.10.28.210.0 ]--
+r 188             /}
+--[ 2022.11.21.22.10.28.340.0 ]--
+r 188             //}
+--[ 2022.11.21.22.10.30.660.0 ]--
+r 169             /}
+--[ 2022.11.21.22.10.30.836.0 ]--
+r 169             //}
+--[ 2022.11.21.22.10.31.996.0 ]--
+r 166             /if (nearDist > partDist) {
+--[ 2022.11.21.22.10.32.150.0 ]--
+r 166             //if (nearDist > partDist) {
+--[ 2022.11.21.22.10.37.253.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.11.27.410.0 ]--
+r 168                 else cnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.27.570.0 ]--
+r 168                 else cunearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.27.667.0 ]--
+r 168                 else curnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.27.795.0 ]--
+r 168                 else currnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.28.017.0 ]--
+r 168                 else currenearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.28.165.0 ]--
+r 168                 else currennearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.28.310.0 ]--
+r 168                 else currentnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.28.663.0 ]--
+r 168                 else currentNnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.28.816.0 ]--
+r 168                 else currentNenearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.28.955.0 ]--
+r 168                 else currentNeanearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.29.026.0 ]--
+r 168                 else currentNearnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.29.444.0 ]--
+r 168                 else currentNear nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.29.578.0 ]--
+r 168                 else currentNear =nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.29.690.0 ]--
+r 168                 else currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.31.692.0 ]--
+r 167                 if (p.x() > current.p.x()) cnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.31.826.0 ]--
+r 167                 if (p.x() > current.p.x()) cunearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.31.982.0 ]--
+r 167                 if (p.x() > current.p.x()) curnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.32.103.0 ]--
+r 167                 if (p.x() > current.p.x()) currnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.32.210.0 ]--
+r 167                 if (p.x() > current.p.x()) currenearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.32.320.0 ]--
+r 167                 if (p.x() > current.p.x()) currennearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.32.458.0 ]--
+r 167                 if (p.x() > current.p.x()) currentnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.32.983.0 ]--
+r 167             if (p.x() > current.p.x()) currentnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.34.811.0 ]--
+r 167             if (p.x() > current.p.x()) currentNnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.35.093.0 ]--
+r 167             if (p.x() > current.p.x()) currentNenearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.35.218.0 ]--
+r 167             if (p.x() > current.p.x()) currentNeanearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.35.295.0 ]--
+r 167             if (p.x() > current.p.x()) currentNearnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.36.120.0 ]--
+r 167             if (p.x() > current.p.x()) currentNear nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.36.217.0 ]--
+r 167             if (p.x() > current.p.x()) currentNear =nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.36.301.0 ]--
+r 167             if (p.x() > current.p.x()) currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.40.167.0 ]--
+r 186                 if (p.y() > current.p.y()) cnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.40.283.0 ]--
+r 186                 if (p.y() > current.p.y()) cunearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.40.644.0 ]--
+r 186                 if (p.y() > current.p.y()) curnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.40.776.0 ]--
+r 186                 if (p.y() > current.p.y()) currnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.40.889.0 ]--
+r 186                 if (p.y() > current.p.y()) currenearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.41.020.0 ]--
+r 186                 if (p.y() > current.p.y()) currennearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.41.131.0 ]--
+r 186                 if (p.y() > current.p.y()) currentnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.41.434.0 ]--
+r 186                 if (p.y() > current.p.y()) currentNnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.42.077.0 ]--
+r 186                 if (p.y() > current.p.y()) currentNearnearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.42.083.0 ]--
+r 186                 if (p.y() > current.p.y()) currentNear(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.42.876.0 ]--
+r 186                 if (p.y() > current.p.y()) currentNear (current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.43.000.0 ]--
+r 186                 if (p.y() > current.p.y()) currentNear =(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.43.110.0 ]--
+r 186                 if (p.y() > current.p.y()) currentNear = (current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.44.651.0 ]--
+r 187                 else cnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.44.767.0 ]--
+r 187                 else cunearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.44.934.0 ]--
+r 187                 else curnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.45.092.0 ]--
+r 187                 else currnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.45.223.0 ]--
+r 187                 else currenearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.45.348.0 ]--
+r 187                 else currennearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.45.444.0 ]--
+r 187                 else currentnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.45.694.0 ]--
+r 187                 else currentNnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.45.827.0 ]--
+r 187                 else currentNenearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.45.954.0 ]--
+r 187                 else currentNeanearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.46.035.0 ]--
+r 187                 else currentNearnearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.46.310.0 ]--
+r 187                 else currentNear nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.46.532.0 ]--
+r 187                 else currentNear =nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.46.608.0 ]--
+r 187                 else currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.11.48.838.0 ]--
+r 185             if (nearDist > partDist) {
+--[ 2022.11.21.22.11.50.613.0 ]--
+r 188             }
+--[ 2022.11.21.22.11.52.783.0 ]--
+r 169             ///}
+--[ 2022.11.21.22.11.53.532.0 ]--
+r 169             /}
+--[ 2022.11.21.22.11.55.511.0 ]--
+r 169             }
+--[ 2022.11.21.22.11.57.815.0 ]--
+r 166             if (nearDist > partDist) {
+--[ 2022.11.21.22.11.58.635.0 ]--
+r 167                 if (p.x() > current.p.x()) currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.12.18.700.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = (current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.12.53.593.0 ]--
+r 182             double partDist = current.p.y() - p.y();)
+--[ 2022.11.21.22.12.58.503.0 ]--
+r 182             double partDist = current.p.y() - p.y();
+--[ 2022.11.21.22.13.20.514.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = (current.left, p, currentNear, nearDist));
+--[ 2022.11.21.22.13.22.599.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = (current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.13.23.064.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = (current.left, p, currentNear, nearDist;
+--[ 2022.11.21.22.13.43.365.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = (current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.13.51.009.0 ]--
+r 185 //            if (nearDist > partDist) {
+r 186 //                if(p.y() > current.p.y()) currentNear = (current.left, p, currentNear, nearDist);
+r 187 //                else currentNear = nearest(current.right, p, currentNear, nearDist);
+r 188 //            }
+--[ 2022.11.21.22.14.01.354.0 ]--
++ 189 
+--[ 2022.11.21.22.14.01.387.0 ]--
+r 189             
+--[ 2022.11.21.22.14.02.118.0 ]--
++ 189                         if (nearDist > partDist) {
++ 190                 if (p.x() > current.p.x()) currentNear = nearest(current.left, p, currentNear, nearDist);
++ 191                 else currentNear = nearest(current.right, p, currentNear, nearDist);
+r 192             }
+--[ 2022.11.21.22.14.02.135.0 ]--
+r 189             if (nearDist > partDist) {
+--[ 2022.11.21.22.14.06.841.0 ]--
+r 190                 if (p.() > current.p.x()) currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.06.936.0 ]--
+r 190                 if (p.y() > current.p.x()) currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.09.121.0 ]--
+r 190                 if (p.y() > current.p.()) currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.09.214.0 ]--
+r 190                 if (p.y() > current.p.y()) currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.37.103.0 ]--
+r 185             if (nearDist > partDist) {
+r 186                 if(p.y() > current.p.y()) currentNear = (current.left, p, currentNear, nearDist);
+r 187                 else currentNear = nearest(current.right, p, currentNear, nearDist);
+r 188             }
+--[ 2022.11.21.22.14.38.944.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = n(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.39.065.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = ne(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.39.164.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = nea(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.39.257.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = near(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.39.408.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = neare(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.39.598.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = neares(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.39.744.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.14.44.030.0 ]--
+- 189
+- 189
+- 189
+r 189 
+--[ 2022.11.21.22.14.44.386.0 ]--
+- 189
+--[ 2022.11.21.22.14.51.503.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.15.45.390.0 ]--
+r 186                 if(p.y() > current.p.y())  nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.15.48.363.0 ]--
+r 187                 else nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.15.50.324.0 ]--
+r 186                 if(p.y() > current.p.y()) nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.03.914.0 ]--
+r 167                 if (p.x() > current.p.x())  nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.05.874.0 ]--
+r 168                 else nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.07.610.0 ]--
+r 167                 if (p.x() > current.p.x()) nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.13.887.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.16.30.637.0 ]--
+r 173                 nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.32.981.0 ]--
+r 176                  nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.35.435.0 ]--
+r 177                 nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.36.704.0 ]--
+r 176                 nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.41.786.0 ]--
+r 154                 nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.43.995.0 ]--
+r 157                 nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.46.387.0 ]--
+r 158                 nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.16.48.987.0 ]--
+r 160             else nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.17.04.358.0 ]--
+r 179             else nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.17.30.482.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.17.55.391.0 ]--
+r 179             else currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.17.56.583.0 ]--
+r 160             else currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.17.57.270.0 ]--
+r 158                 currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.17.57.813.0 ]--
+r 157                 currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.17.58.359.0 ]--
+r 154                 currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.17.59.827.0 ]--
+r 176                  nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.00.437.0 ]--
+r 177                 currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.01.125.0 ]--
+r 176                 currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.02.334.0 ]--
+r 173                 currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.04.566.0 ]--
+r 167                 if (p.x() > current.p.x())  nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.05.906.0 ]--
+r 168                 else currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.07.002.0 ]--
+r 167                 if (p.x() > current.p.x()) currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.09.478.0 ]--
+r 186                 if(p.y() > current.p.y())  nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.10.421.0 ]--
+r 187                 else currentNear = nearest(current.right, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.12.063.0 ]--
+r 186                 if(p.y() > current.p.y()) currentNear = nearest(current.left, p, currentNear, nearDist);
+--[ 2022.11.21.22.18.14.448.0 ]--
++ 189 
+--[ 2022.11.21.22.18.15.570.0 ]--
++ 189             if (nearDist > partDist) {
++ 190                 if (p.y() > current.p.y()) currentNear = nearest(current.left, p, currentNear, nearDist);
++ 191                 else currentNear = nearest(current.right, p, currentNear, nearDist);
+r 192             }
+--[ 2022.11.21.22.18.16.823.0 ]--
+- 189
+- 189
+- 189
+r 189 
+--[ 2022.11.21.22.18.17.515.0 ]--
+- 189
+--[ 2022.11.21.22.18.23.546.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.20.13.596.0 ]--
++ 138     
+--[ 2022.11.21.22.20.15.584.0 ]--
+r 138     d
+--[ 2022.11.21.22.20.15.636.0 ]--
+r 138     do
+--[ 2022.11.21.22.20.15.748.0 ]--
+r 138     dou
+--[ 2022.11.21.22.20.15.936.0 ]--
+r 138     doub
+--[ 2022.11.21.22.20.16.050.0 ]--
+r 138     doubl
+--[ 2022.11.21.22.20.16.178.0 ]--
+r 138     double
+--[ 2022.11.21.22.20.16.896.0 ]--
+r 138     double 
+--[ 2022.11.21.22.20.17.207.0 ]--
+r 138     double n
+--[ 2022.11.21.22.20.17.333.0 ]--
+r 138     double ne
+--[ 2022.11.21.22.20.17.453.0 ]--
+r 138     double nea
+--[ 2022.11.21.22.20.17.533.0 ]--
+r 138     double near
+--[ 2022.11.21.22.20.17.953.0 ]--
+r 138     double nearD
+--[ 2022.11.21.22.20.18.390.0 ]--
+r 138     double nearDi
+--[ 2022.11.21.22.20.18.401.0 ]--
+r 138     double nearDis
+--[ 2022.11.21.22.20.18.541.0 ]--
+r 138     double nearDist
+--[ 2022.11.21.22.20.21.021.0 ]--
+r 138     double nearDist;
+--[ 2022.11.21.22.20.21.907.0 ]--
+r 138     double nearDist
+--[ 2022.11.21.22.20.22.088.0 ]--
+r 138     double nearDist 
+--[ 2022.11.21.22.20.22.216.0 ]--
+r 138     double nearDist =
+--[ 2022.11.21.22.20.22.371.0 ]--
+r 138     double nearDist = 
+--[ 2022.11.21.22.20.22.507.0 ]--
+r 138     double nearDist = 0
+--[ 2022.11.21.22.20.22.845.0 ]--
+r 138     double nearDist = 0;
+--[ 2022.11.21.22.20.28.637.0 ]--
+r 138     double n = 0;
+--[ 2022.11.21.22.20.28.900.0 ]--
+r 138     double nD = 0;
+--[ 2022.11.21.22.20.36.568.0 ]--
++ 142         
+--[ 2022.11.21.22.20.40.127.0 ]--
+r 143         return nearest(root, p, root.p, );
+--[ 2022.11.21.22.20.41.389.0 ]--
+r 142         root.p.dist(p)
+--[ 2022.11.21.22.20.42.721.0 ]--
+r 142         root.p.dist(p);
+--[ 2022.11.21.22.20.44.241.0 ]--
+r 142         nroot.p.dist(p);
+--[ 2022.11.21.22.20.44.499.0 ]--
+r 142         nDroot.p.dist(p);
+--[ 2022.11.21.22.20.44.817.0 ]--
+r 142         nD root.p.dist(p);
+--[ 2022.11.21.22.20.45.195.0 ]--
+r 142         nD =root.p.dist(p);
+--[ 2022.11.21.22.20.45.302.0 ]--
+r 142         nD = root.p.dist(p);
+--[ 2022.11.21.22.20.47.195.0 ]--
+r 143         return nearest(root, p, root.p,  );
+--[ 2022.11.21.22.20.47.373.0 ]--
+r 143         return nearest(root, p, root.p, n );
+--[ 2022.11.21.22.20.47.669.0 ]--
+r 143         return nearest(root, p, root.p, nD );
+--[ 2022.11.21.22.20.56.262.0 ]--
+r 151             nD = current.p.dist(p);
+--[ 2022.11.21.22.20.58.041.0 ]--
+r 156                 currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.20.58.969.0 ]--
+r 159                 currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.20.59.652.0 ]--
+r 160                 currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.21.01.384.0 ]--
+r 162             else currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.21.03.540.0 ]--
+r 170                 else currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.21.06.091.0 ]--
+r 169                 if (p.x() > current.p.x()) currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.21.07.935.0 ]--
+r 175                 currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.21.08.993.0 ]--
+r 178                 currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.21.09.792.0 ]--
+r 179                 currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.21.11.495.0 ]--
+r 181             else currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.21.19.974.0 ]--
+r 188                 if(p.y() > current.p.y()) currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.21.20.741.0 ]--
+r 189                 else currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.21.28.605.0 ]--
+r 187             if (nD > partDist) {
+--[ 2022.11.21.22.21.32.422.0 ]--
+r 168             if (nD > partDist) {
+--[ 2022.11.21.22.21.47.427.0 ]--
+r 149         if(current.p.dist(p) < nD) {      //get distance to the query point from the partition point)
+--[ 2022.11.21.22.22.08.324.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.25.15.072.0 ]--
+r 145     private PointD nearest(Node current, Point p, Point currentNear, double nearDist) {
+--[ 2022.11.21.22.25.15.383.0 ]--
+r 145     private PointDi nearest(Node current, Point p, Point currentNear, double nearDist) {
+--[ 2022.11.21.22.25.15.456.0 ]--
+r 145     private PointDis nearest(Node current, Point p, Point currentNear, double nearDist) {
+--[ 2022.11.21.22.25.15.640.0 ]--
+r 145     private PointDist nearest(Node current, Point p, Point currentNear, double nearDist) {
+--[ 2022.11.21.22.25.17.996.0 ]--
++ 145     
+--[ 2022.11.21.22.25.19.287.0 ]--
+r 145     /
+--[ 2022.11.21.22.25.19.424.0 ]--
+r 145     //
+--[ 2022.11.21.22.25.19.681.0 ]--
+r 145     //t
+--[ 2022.11.21.22.25.19.772.0 ]--
+r 145     //th
+--[ 2022.11.21.22.25.19.868.0 ]--
+r 145     //thi
+--[ 2022.11.21.22.25.19.942.0 ]--
+r 145     //this
+--[ 2022.11.21.22.25.20.089.0 ]--
+r 145     //this 
+--[ 2022.11.21.22.25.20.332.0 ]--
+r 145     //this r
+--[ 2022.11.21.22.25.20.352.0 ]--
+r 145     //this re
+--[ 2022.11.21.22.25.20.550.0 ]--
+r 145     //this ret
+--[ 2022.11.21.22.25.20.660.0 ]--
+r 145     //this retu
+--[ 2022.11.21.22.25.20.773.0 ]--
+r 145     //this retur
+--[ 2022.11.21.22.25.20.868.0 ]--
+r 145     //this return
+--[ 2022.11.21.22.25.21.020.0 ]--
+r 145     //this returns
+--[ 2022.11.21.22.25.21.162.0 ]--
+r 145     //this returns 
+--[ 2022.11.21.22.25.21.287.0 ]--
+r 145     //this returns a
+--[ 2022.11.21.22.25.21.394.0 ]--
+r 145     //this returns a 
+--[ 2022.11.21.22.25.21.664.0 ]--
+r 145     //this returns a p
+--[ 2022.11.21.22.25.21.822.0 ]--
+r 145     //this returns a po
+--[ 2022.11.21.22.25.21.967.0 ]--
+r 145     //this returns a poi
+--[ 2022.11.21.22.25.22.121.0 ]--
+r 145     //this returns a poin
+--[ 2022.11.21.22.25.22.241.0 ]--
+r 145     //this returns a point
+--[ 2022.11.21.22.25.22.424.0 ]--
+r 145     //this returns a point 
+--[ 2022.11.21.22.25.22.637.0 ]--
+r 145     //this returns a point d
+--[ 2022.11.21.22.25.22.769.0 ]--
+r 145     //this returns a point di
+--[ 2022.11.21.22.25.23.097.0 ]--
+r 145     //this returns a point d
+--[ 2022.11.21.22.25.23.225.0 ]--
+r 145     //this returns a point 
+--[ 2022.11.21.22.25.23.344.0 ]--
+r 145     //this returns a point
+--[ 2022.11.21.22.25.23.756.0 ]--
+r 145     //this returns a pointD
+--[ 2022.11.21.22.25.23.953.0 ]--
+r 145     //this returns a pointDi
+--[ 2022.11.21.22.25.24.073.0 ]--
+r 145     //this returns a pointDis
+--[ 2022.11.21.22.25.24.204.0 ]--
+r 145     //this returns a pointDist
+--[ 2022.11.21.22.25.24.535.0 ]--
+r 145     //this returns a pointDist 
+--[ 2022.11.21.22.25.24.701.0 ]--
+r 145     //this returns a pointDist s
+--[ 2022.11.21.22.25.24.769.0 ]--
+r 145     //this returns a pointDist so
+--[ 2022.11.21.22.25.24.884.0 ]--
+r 145     //this returns a pointDist so 
+--[ 2022.11.21.22.25.25.324.0 ]--
+r 145     //this returns a pointDist so y
+--[ 2022.11.21.22.25.26.304.0 ]--
+r 145     //this returns a pointDist so 
+--[ 2022.11.21.22.25.27.886.0 ]--
+r 145     //this returns a pointDist so t
+--[ 2022.11.21.22.25.28.024.0 ]--
+r 145     //this returns a pointDist so th
+--[ 2022.11.21.22.25.28.037.0 ]--
+r 145     //this returns a pointDist so tha
+--[ 2022.11.21.22.25.28.238.0 ]--
+r 145     //this returns a pointDist so that
+--[ 2022.11.21.22.25.30.135.0 ]--
+r 145     //this returns a pointDist so that 
+--[ 2022.11.21.22.25.30.404.0 ]--
+r 145     //this returns a pointDist so that w
+--[ 2022.11.21.22.25.30.487.0 ]--
+r 145     //this returns a pointDist so that we
+--[ 2022.11.21.22.25.30.659.0 ]--
+r 145     //this returns a pointDist so that we 
+--[ 2022.11.21.22.25.30.830.0 ]--
+r 145     //this returns a pointDist so that we c
+--[ 2022.11.21.22.25.31.006.0 ]--
+r 145     //this returns a pointDist so that we ca
+--[ 2022.11.21.22.25.31.104.0 ]--
+r 145     //this returns a pointDist so that we can
+--[ 2022.11.21.22.25.31.232.0 ]--
+r 145     //this returns a pointDist so that we can 
+--[ 2022.11.21.22.25.36.413.0 ]--
+r 146     private Point nearest(Node current, Point p, Point currentNear, double nearDist) {
+--[ 2022.11.21.22.25.53.623.0 ]--
+r 138     double nD = ;
+--[ 2022.11.21.22.25.53.738.0 ]--
+r 138     double nD =;
+--[ 2022.11.21.22.25.53.873.0 ]--
+r 138     double nD ;
+--[ 2022.11.21.22.25.54.323.0 ]--
+r 138     double nD;
+--[ 2022.11.21.22.26.00.073.0 ]--
+r 145     //this returns a pointDist so that we can
+--[ 2022.11.21.22.26.01.000.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.26.13.104.0 ]--
+:/src/NearestNeighborVisualizer.java
+r 39         int k = ;
+--[ 2022.11.21.22.26.13.199.0 ]--
+r 39         int k = 4;
+--[ 2022.11.21.22.26.16.741.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.26.25.496.0 ]--
+r 39         int k = 41;
+--[ 2022.11.21.22.26.25.543.0 ]--
+r 39         int k = 4;
+--[ 2022.11.21.22.26.25.790.0 ]--
+r 39         int k = ;
+--[ 2022.11.21.22.26.26.179.0 ]--
+r 39         int k = 1;
+--[ 2022.11.21.22.26.28.509.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.26.48.827.0 ]--
+:/src/PSKDTree.java
+r 146     private Point nearest(Node current, Point p, Point currentNear) {
+--[ 2022.11.21.22.26.51.826.0 ]--
+r 143         return nearest(root, p, root.p);
+--[ 2022.11.21.22.26.55.973.0 ]--
+r 157                 currentNear = nearest(current.right, p, currentNear;
+--[ 2022.11.21.22.26.59.282.0 ]--
+r 160                 currentNear = nearest(current.right, p, currentNear,;
+--[ 2022.11.21.22.26.59.389.0 ]--
+r 160                 currentNear = nearest(current.right, p, currentNear;
+--[ 2022.11.21.22.27.01.927.0 ]--
+r 161                 currentNear = nearest(current.left, p, currentNear);
+--[ 2022.11.21.22.27.03.475.0 ]--
+r 163             else currentNear = nearest(current.left, p, currentNear, );
+--[ 2022.11.21.22.27.03.587.0 ]--
+r 163             else currentNear = nearest(current.left, p, currentNear,);
+--[ 2022.11.21.22.27.03.707.0 ]--
+r 163             else currentNear = nearest(current.left, p, currentNear);
+--[ 2022.11.21.22.27.06.941.0 ]--
+r 170                 if (p.x() > current.p.x()) currentNear = nearest(current.left, p, currentNear);
+--[ 2022.11.21.22.27.10.428.0 ]--
+r 171                 else currentNear = nearest(current.right, p, currentNear);
+--[ 2022.11.21.22.27.13.895.0 ]--
+r 176                 currentNear = nearest(current.right, p, currentNear);
+--[ 2022.11.21.22.27.16.226.0 ]--
+r 179                 currentNear = nearest(current.left, p, currentNear);
+--[ 2022.11.21.22.27.18.462.0 ]--
+r 180                 currentNear = nearest(current.right, p, currentNear);
+--[ 2022.11.21.22.27.20.910.0 ]--
+r 182             else currentNear = nearest(current.left, p, currentNear);
+--[ 2022.11.21.22.27.24.772.0 ]--
+r 189                 if(p.y() > current.p.y()) currentNear = nearest(current.left, p, currentNear);
+--[ 2022.11.21.22.27.27.540.0 ]--
+r 190                 else currentNear = nearest(current.right, p, currentNear,);
+--[ 2022.11.21.22.27.27.999.0 ]--
+r 190                 else currentNear = nearest(current.right, p, currentNear);
+--[ 2022.11.21.22.27.47.203.0 ]--
+r 157                 currentNear = nearest(current.right, p, currentNear);
+--[ 2022.11.21.22.27.48.974.0 ]--
+r 160                 currentNear = nearest(current.right, p, currentNear);
+--[ 2022.11.21.22.30.02.881.0 ]--
+r 160                 currentNear = nearest(current.right, p, currentNear;
+--[ 2022.11.21.22.30.03.247.0 ]--
+r 157                 currentNear = nearest(current.right, p, currentNear;
+--[ 2022.11.21.22.30.03.581.0 ]--
+r 190                 else currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.30.03.930.0 ]--
+r 189                 if(p.y() > current.p.y()) currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.30.04.298.0 ]--
+r 182             else currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.30.04.648.0 ]--
+r 180                 currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.30.05.012.0 ]--
+r 179                 currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.30.05.377.0 ]--
+r 176                 currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.30.05.787.0 ]--
+r 171                 else currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.30.06.212.0 ]--
+r 170                 if (p.x() > current.p.x()) currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.30.07.611.0 ]--
+r 163             else currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.30.08.755.0 ]--
+r 161                 currentNear = nearest(current.left, p, currentNear, nD);
+--[ 2022.11.21.22.30.09.543.0 ]--
+r 160                 currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.30.10.264.0 ]--
+r 157                 currentNear = nearest(current.right, p, currentNear, nD);
+--[ 2022.11.21.22.30.11.739.0 ]--
+r 143         return nearest(root, p, root.p, nD );
+--[ 2022.11.21.22.30.13.250.0 ]--
+r 146     private Point nearest(Node current, Point p, Point currentNear, double nearDist) {
+--[ 2022.11.21.22.30.21.347.0 ]--
+- 138
+--[ 2022.11.21.22.30.25.577.0 ]--
+r 141         PnD = root.p.dist(p);
+--[ 2022.11.21.22.30.26.206.0 ]--
+r 141         PoinD = root.p.dist(p);
+--[ 2022.11.21.22.30.26.760.0 ]--
+r 141         PoinnD = root.p.dist(p);
+--[ 2022.11.21.22.30.26.906.0 ]--
+r 141         PointnD = root.p.dist(p);
+--[ 2022.11.21.22.30.27.279.0 ]--
+r 141         PointDnD = root.p.dist(p);
+--[ 2022.11.21.22.30.27.489.0 ]--
+r 141         PointDinD = root.p.dist(p);
+--[ 2022.11.21.22.30.27.594.0 ]--
+r 141         PointDisnD = root.p.dist(p);
+--[ 2022.11.21.22.30.27.717.0 ]--
+r 141         PointDistnD = root.p.dist(p);
+--[ 2022.11.21.22.30.28.093.0 ]--
+r 141         PointDist nD = root.p.dist(p);
+--[ 2022.11.21.22.30.30.650.0 ]--
+r 141         PointDist nD = nroot.p.dist(p);
+--[ 2022.11.21.22.30.30.748.0 ]--
+r 141         PointDist nD = neroot.p.dist(p);
+--[ 2022.11.21.22.30.30.848.0 ]--
+r 141         PointDist nD = newroot.p.dist(p);
+--[ 2022.11.21.22.30.31.211.0 ]--
+r 141         PointDist nD = newProot.p.dist(p);
+--[ 2022.11.21.22.30.31.970.0 ]--
+r 141         PointDist nD = newP root.p.dist(p);
+--[ 2022.11.21.22.30.33.073.0 ]--
+r 141         PointDist nD = newProot.p.dist(p);
+--[ 2022.11.21.22.30.33.167.0 ]--
+r 141         PointDist nD = newroot.p.dist(p);
+--[ 2022.11.21.22.30.33.461.0 ]--
+r 141         PointDist nD = new root.p.dist(p);
+--[ 2022.11.21.22.30.33.723.0 ]--
+r 141         PointDist nD = new Proot.p.dist(p);
+--[ 2022.11.21.22.30.34.379.0 ]--
+r 141         PointDist nD = new PointDistroot.p.dist(p);
+--[ 2022.11.21.22.30.34.384.0 ]--
+r 141         PointDist nD = new PointDist.p.dist(p);
+--[ 2022.11.21.22.30.34.388.0 ]--
+r 141         PointDist nD = new PointDist(p);
+--[ 2022.11.21.22.30.36.414.0 ]--
+r 141         PointDist nD = new Proot.p.dist(p);
+--[ 2022.11.21.22.30.37.889.0 ]--
+r 141         PointDist nD = new P root.p.dist(p);
+--[ 2022.11.21.22.30.39.161.0 ]--
+r 141         PointDist nD = new Po root.p.dist(p);
+--[ 2022.11.21.22.30.39.275.0 ]--
+r 141         PointDist nD = new Poi root.p.dist(p);
+--[ 2022.11.21.22.30.39.895.0 ]--
+r 141         PointDist nD = new PointDist root.p.dist(p);
+--[ 2022.11.21.22.30.39.910.0 ]--
+r 141         PointDist nD = new PointDist() root.p.dist(p);
+--[ 2022.11.21.22.30.41.363.0 ]--
+r 141         PointDist nD = new PointDist( root.p.dist(p);
+--[ 2022.11.21.22.30.41.722.0 ]--
+r 141         PointDist nD = new PointDist root.p.dist(p);
+--[ 2022.11.21.22.30.42.703.0 ]--
+r 141         PointDist nD = new PointDist() root.p.dist(p);
+--[ 2022.11.21.22.30.43.281.0 ]--
+r 141         PointDist nD = new PointDist( root.p.dist(p);
+--[ 2022.11.21.22.30.44.186.0 ]--
+r 141         PointDist nD = new PointDist(root.p.dist(p);
+--[ 2022.11.21.22.30.46.512.0 ]--
+r 141         PointDist nD = new PointDist(root.p.dist(p),;
+--[ 2022.11.21.22.30.46.650.0 ]--
+r 141         PointDist nD = new PointDist(root.p.dist(p), ;
+--[ 2022.11.21.22.30.47.219.0 ]--
+r 141         PointDist nD = new PointDist(root.p.dist(p),;
+--[ 2022.11.21.22.30.47.329.0 ]--
+r 141         PointDist nD = new PointDist(root.p.dist(p);
+--[ 2022.11.21.22.30.47.812.0 ]--
+r 141         PointDist nD = new PointDist(root.p.dist(p));
+--[ 2022.11.21.22.30.50.612.0 ]--
+r 141         PointDist nD = new PointDist(rroot.p.dist(p));
+--[ 2022.11.21.22.30.50.702.0 ]--
+r 141         PointDist nD = new PointDist(roroot.p.dist(p));
+--[ 2022.11.21.22.30.50.801.0 ]--
+r 141         PointDist nD = new PointDist(rooroot.p.dist(p));
+--[ 2022.11.21.22.30.50.924.0 ]--
+r 141         PointDist nD = new PointDist(rootroot.p.dist(p));
+--[ 2022.11.21.22.30.51.243.0 ]--
+r 141         PointDist nD = new PointDist(root.root.p.dist(p));
+--[ 2022.11.21.22.30.51.499.0 ]--
+r 141         PointDist nD = new PointDist(root.proot.p.dist(p));
+--[ 2022.11.21.22.30.52.175.0 ]--
+r 141         PointDist nD = new PointDist(root.p root.p.dist(p));
+--[ 2022.11.21.22.30.53.094.0 ]--
+r 141         PointDist nD = new PointDist(root.proot.p.dist(p));
+--[ 2022.11.21.22.30.53.586.0 ]--
+r 141         PointDist nD = new PointDist(root.p,root.p.dist(p));
+--[ 2022.11.21.22.30.54.157.0 ]--
+r 141         PointDist nD = new PointDist(root.p, root.p.dist(p));
+--[ 2022.11.21.22.31.07.252.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, P) {
+--[ 2022.11.21.22.31.07.549.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, Po) {
+--[ 2022.11.21.22.31.07.609.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, Poi) {
+--[ 2022.11.21.22.31.07.856.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, Poin) {
+--[ 2022.11.21.22.31.07.921.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, Point) {
+--[ 2022.11.21.22.31.08.279.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointD) {
+--[ 2022.11.21.22.31.08.410.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDi) {
+--[ 2022.11.21.22.31.08.502.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDis) {
+--[ 2022.11.21.22.31.08.641.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist) {
+--[ 2022.11.21.22.31.09.252.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist ) {
+--[ 2022.11.21.22.31.09.444.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist n) {
+--[ 2022.11.21.22.31.09.539.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist ne) {
+--[ 2022.11.21.22.31.09.638.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist nea) {
+--[ 2022.11.21.22.31.09.742.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist near) {
+--[ 2022.11.21.22.31.09.903.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist neare) {
+--[ 2022.11.21.22.31.10.108.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist neares) {
+--[ 2022.11.21.22.31.10.254.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist nearest) {
+--[ 2022.11.21.22.31.18.141.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist nearestP) {
+--[ 2022.11.21.22.31.21.174.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist nearest) {
+--[ 2022.11.21.22.31.21.308.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist neares) {
+--[ 2022.11.21.22.31.21.441.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist neare) {
+--[ 2022.11.21.22.31.21.572.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist near) {
+--[ 2022.11.21.22.31.21.694.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist nea) {
+--[ 2022.11.21.22.31.22.388.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist near) {
+--[ 2022.11.21.22.31.22.524.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist nearP) {
+--[ 2022.11.21.22.31.25.081.0 ]--
+r 141         PointDist n = new PointDist(root.p, root.p.dist(p));
+--[ 2022.11.21.22.31.25.381.0 ]--
+r 141         PointDist ne = new PointDist(root.p, root.p.dist(p));
+--[ 2022.11.21.22.31.25.470.0 ]--
+r 141         PointDist nea = new PointDist(root.p, root.p.dist(p));
+--[ 2022.11.21.22.31.25.542.0 ]--
+r 141         PointDist near = new PointDist(root.p, root.p.dist(p));
+--[ 2022.11.21.22.31.26.548.0 ]--
+r 141         PointDist nearP = new PointDist(root.p, root.p.dist(p));
+--[ 2022.11.21.22.31.26.999.0 ]--
+r 141         PointDist nearPt = new PointDist(root.p, root.p.dist(p));
+--[ 2022.11.21.22.31.28.517.0 ]--
+r 145     private Point nearest(Node current, Point p, Point currentNear, PointDist nearPt) {
+--[ 2022.11.21.22.31.41.682.0 ]--
+r 145     private Point nearest(Node current, Point p, PointD currentNear, PointDist nearPt) {
+--[ 2022.11.21.22.31.42.350.0 ]--
+r 145     private Point nearest(Node current, Point p, PointDist currentNear, PointDist nearPt) {
+--[ 2022.11.21.22.32.03.564.0 ]--
+r 145     private Point nearest(Node current, Point p, PointDist currentNear) {
+--[ 2022.11.21.22.32.08.018.0 ]--
+r 145     private Point nearest(Node current, Point p, PointDist near) {
+--[ 2022.11.21.22.32.09.505.0 ]--
+r 145     private Point nearest(Node current, Point p, PointDist nearP) {
+--[ 2022.11.21.22.32.09.827.0 ]--
+r 145     private Point nearest(Node current, Point p, PointDist nearPt) {
+--[ 2022.11.21.22.32.14.186.0 ]--
+r 142         return nearest(root, p, n );
+--[ 2022.11.21.22.32.14.239.0 ]--
+r 142         return nearest(root, p, ne );
+--[ 2022.11.21.22.32.14.378.0 ]--
+r 142         return nearest(root, p, nea );
+--[ 2022.11.21.22.32.14.455.0 ]--
+r 142         return nearest(root, p, near );
+--[ 2022.11.21.22.32.15.408.0 ]--
+r 142         return nearest(root, p, nearp );
+--[ 2022.11.21.22.32.16.290.0 ]--
+r 142         return nearest(root, p, near );
+--[ 2022.11.21.22.32.16.673.0 ]--
+r 142         return nearest(root, p, nearP );
+--[ 2022.11.21.22.32.17.015.0 ]--
+r 142         return nearest(root, p, nearPt );
+--[ 2022.11.21.22.32.19.917.0 ]--
+r 146         if(current == null) return n;
+--[ 2022.11.21.22.32.20.005.0 ]--
+r 146         if(current == null) return ne;
+--[ 2022.11.21.22.32.20.113.0 ]--
+r 146         if(current == null) return nea;
+--[ 2022.11.21.22.32.20.189.0 ]--
+r 146         if(current == null) return near;
+--[ 2022.11.21.22.32.20.566.0 ]--
+r 146         if(current == null) return nearP;
+--[ 2022.11.21.22.32.20.900.0 ]--
+r 146         if(current == null) return nearPt;
+--[ 2022.11.21.22.32.25.762.0 ]--
+r 145     private PointD nearest(Node current, Point p, PointDist nearPt) {
+--[ 2022.11.21.22.32.26.061.0 ]--
+r 145     private PointDi nearest(Node current, Point p, PointDist nearPt) {
+--[ 2022.11.21.22.32.26.146.0 ]--
+r 145     private PointDis nearest(Node current, Point p, PointDist nearPt) {
+--[ 2022.11.21.22.32.26.249.0 ]--
+r 145     private PointDist nearest(Node current, Point p, PointDist nearPt) {
+--[ 2022.11.21.22.32.32.803.0 ]--
+r 142         return nearest(root, p, nearPt ).;
+--[ 2022.11.21.22.32.33.032.0 ]--
+r 142         return nearest(root, p, nearPt ).p;
+--[ 2022.11.21.22.32.37.157.0 ]--
+r 142         return nearest(root, p, nearPt ).p();
+--[ 2022.11.21.22.32.43.372.0 ]--
+r 149         if(current.p.dist(p) < nearPt) {      //get distance to the query point from the partition point)
+--[ 2022.11.21.22.32.46.567.0 ]--
+r 156                 currentNear = nearest(current.right, p, nearPt);
+--[ 2022.11.21.22.32.50.225.0 ]--
+r 159                 currentNear = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.32.52.064.0 ]--
+r 156                 currentNear = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.32.54.643.0 ]--
+r 160                 currentNear = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.32.57.485.0 ]--
+r 162             else currentNear = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.33.01.151.0 ]--
+r 169                 if (p.x() > current.p.x()) currentNear = nearest(current.left, pnearPt);
+--[ 2022.11.21.22.33.04.043.0 ]--
+r 170                 else currentNear = nearest(current.right, p,);
+--[ 2022.11.21.22.33.04.169.0 ]--
+r 170                 else currentNear = nearest(current.right, p);
+--[ 2022.11.21.22.33.04.429.0 ]--
+r 170                 else currentNear = nearest(current.right, pnearPt);
+--[ 2022.11.21.22.33.07.104.0 ]--
+r 170                 else currentNear = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.33.07.147.0 ]--
+r 170                 else currentNear = nearest(current.right, p, nearPt);
+--[ 2022.11.21.22.33.12.399.0 ]--
+r 175                 currentNear = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.33.15.057.0 ]--
+r 178                 currentNear = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.33.17.433.0 ]--
+r 179                 currentNear = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.33.20.376.0 ]--
+r 181             else currentNear = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.33.23.861.0 ]--
+r 188                 if(p.y() > current.p.y()) currentNear = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.33.26.327.0 ]--
+r 189                 else currentNear = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.33.30.749.0 ]--
+r 169                 if (p.x() > current.p.x()) currentNear = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.33.30.846.0 ]--
+r 169                 if (p.x() > current.p.x()) currentNear = nearest(current.left, p, nearPt);
+--[ 2022.11.21.22.33.42.827.0 ]--
+r 149         if(current.p.dist(p) < nearPt.) {      //get distance to the query point from the partition point)
+--[ 2022.11.21.22.33.42.882.0 ]--
+r 149         if(current.p.dist(p) < nearPt.d) {      //get distance to the query point from the partition point)
+--[ 2022.11.21.22.33.43.515.0 ]--
+r 149         if(current.p.dist(p) < nearPt.d()) {      //get distance to the query point from the partition point)
+--[ 2022.11.21.22.33.50.069.0 ]--
+r 150             nearPt = current.p;
+--[ 2022.11.21.22.33.52.764.0 ]--
+r 150             nearPt. = current.p;
+--[ 2022.11.21.22.33.52.872.0 ]--
+r 150             nearPt.p = current.p;
+--[ 2022.11.21.22.33.55.300.0 ]--
+r 156                 nearPt = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.33.56.210.0 ]--
+r 156                 nearPt. = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.33.56.314.0 ]--
+r 156                 nearPt.p = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.33.56.803.0 ]--
+r 156                 nearPt.p() = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.33.59.279.0 ]--
+r 150             nearPt.p() = current.p;
+--[ 2022.11.21.22.34.01.580.0 ]--
+r 151             nearPt = current.p.dist(p);
+--[ 2022.11.21.22.34.02.703.0 ]--
+r 151             nearPt. = current.p.dist(p);
+--[ 2022.11.21.22.34.02.813.0 ]--
+r 151             nearPt.d = current.p.dist(p);
+--[ 2022.11.21.22.34.03.200.0 ]--
+r 151             nearPt.d() = current.p.dist(p);
+--[ 2022.11.21.22.34.17.122.0 ]--
+r 151             nearPt.d( = current.p.dist(p);
+--[ 2022.11.21.22.34.17.176.0 ]--
+r 151             nearPt.d = current.p.dist(p);
+--[ 2022.11.21.22.34.18.379.0 ]--
+r 150             nearPt.p( = current.p;
+--[ 2022.11.21.22.34.18.508.0 ]--
+r 150             nearPt.p = current.p;
+--[ 2022.11.21.22.35.15.826.0 ]--
+r 150             nearPt.p() = current.p;
+--[ 2022.11.21.22.35.20.776.0 ]--
+r 150 //            nearPt.p() = current.p;
+r 151 //            nearPt.d = current.p.dist(p);
+--[ 2022.11.21.22.35.25.415.0 ]--
++ 150             
+--[ 2022.11.21.22.35.26.836.0 ]--
+r 150             n
+--[ 2022.11.21.22.35.26.984.0 ]--
+r 150             ne
+--[ 2022.11.21.22.35.27.073.0 ]--
+r 150             nea
+--[ 2022.11.21.22.35.27.139.0 ]--
+r 150             near
+--[ 2022.11.21.22.35.27.762.0 ]--
+r 150             nearPt
+--[ 2022.11.21.22.35.28.341.0 ]--
+r 150             nearPt 
+--[ 2022.11.21.22.35.28.538.0 ]--
+r 150             nearPt =
+--[ 2022.11.21.22.35.28.834.0 ]--
+r 150             nearPt = 
+--[ 2022.11.21.22.35.29.268.0 ]--
+r 150             nearPt = c
+--[ 2022.11.21.22.35.29.351.0 ]--
+r 150             nearPt = cu
+--[ 2022.11.21.22.35.29.485.0 ]--
+r 150             nearPt = cur
+--[ 2022.11.21.22.35.29.603.0 ]--
+r 150             nearPt = curr
+--[ 2022.11.21.22.35.29.714.0 ]--
+r 150             nearPt = currr
+--[ 2022.11.21.22.35.29.803.0 ]--
+r 150             nearPt = currre
+--[ 2022.11.21.22.35.30.184.0 ]--
+r 150             nearPt = currr
+--[ 2022.11.21.22.35.30.257.0 ]--
+r 150             nearPt = curr
+--[ 2022.11.21.22.35.30.487.0 ]--
+r 150             nearPt = curre
+--[ 2022.11.21.22.35.30.616.0 ]--
+r 150             nearPt = curren
+--[ 2022.11.21.22.35.30.738.0 ]--
+r 150             nearPt = current
+--[ 2022.11.21.22.35.45.846.0 ]--
+r 150             nearPt = curren
+--[ 2022.11.21.22.35.46.388.0 ]--
+r 150             nearPt = curre
+--[ 2022.11.21.22.35.46.404.0 ]--
+r 150             nearPt = curr
+--[ 2022.11.21.22.35.46.465.0 ]--
+r 150             nearPt = cur
+--[ 2022.11.21.22.35.46.544.0 ]--
+r 150             nearPt = cu
+--[ 2022.11.21.22.35.46.641.0 ]--
+r 150             nearPt = c
+--[ 2022.11.21.22.35.46.939.0 ]--
+r 150             nearPt = 
+--[ 2022.11.21.22.35.47.361.0 ]--
+r 150             nearPt = n
+--[ 2022.11.21.22.35.47.416.0 ]--
+r 150             nearPt = ne
+--[ 2022.11.21.22.35.47.482.0 ]--
+r 150             nearPt = new
+--[ 2022.11.21.22.35.47.977.0 ]--
+r 150             nearPt = new 
+--[ 2022.11.21.22.35.48.773.0 ]--
+r 150             nearPt = new PointDist
+--[ 2022.11.21.22.35.48.791.0 ]--
+r 150             nearPt = new PointDist()
+--[ 2022.11.21.22.35.50.923.0 ]--
+r 150             nearPt = new PointDist(c)
+--[ 2022.11.21.22.35.51.007.0 ]--
+r 150             nearPt = new PointDist(cu)
+--[ 2022.11.21.22.35.51.175.0 ]--
+r 150             nearPt = new PointDist(cur)
+--[ 2022.11.21.22.35.51.320.0 ]--
+r 150             nearPt = new PointDist(curr)
+--[ 2022.11.21.22.35.51.492.0 ]--
+r 150             nearPt = new PointDist(curre)
+--[ 2022.11.21.22.35.51.621.0 ]--
+r 150             nearPt = new PointDist(curren)
+--[ 2022.11.21.22.35.51.738.0 ]--
+r 150             nearPt = new PointDist(current)
+--[ 2022.11.21.22.35.52.082.0 ]--
+r 150             nearPt = new PointDist(current.)
+--[ 2022.11.21.22.35.52.258.0 ]--
+r 150             nearPt = new PointDist(current.p)
+--[ 2022.11.21.22.35.52.688.0 ]--
+r 150             nearPt = new PointDist(current.p,)
+--[ 2022.11.21.22.35.52.793.0 ]--
+r 150             nearPt = new PointDist(current.p, )
+--[ 2022.11.21.22.35.53.839.0 ]--
+r 150             nearPt = new PointDist(current.p, c)
+--[ 2022.11.21.22.35.53.961.0 ]--
+r 150             nearPt = new PointDist(current.p, cu)
+--[ 2022.11.21.22.35.54.079.0 ]--
+r 150             nearPt = new PointDist(current.p, cur)
+--[ 2022.11.21.22.35.54.190.0 ]--
+r 150             nearPt = new PointDist(current.p, curr)
+--[ 2022.11.21.22.35.54.369.0 ]--
+r 150             nearPt = new PointDist(current.p, curre)
+--[ 2022.11.21.22.35.54.505.0 ]--
+r 150             nearPt = new PointDist(current.p, curren)
+--[ 2022.11.21.22.35.54.612.0 ]--
+r 150             nearPt = new PointDist(current.p, current)
+--[ 2022.11.21.22.35.54.767.0 ]--
+r 150             nearPt = new PointDist(current.p, current.)
+--[ 2022.11.21.22.35.55.015.0 ]--
+r 150             nearPt = new PointDist(current.p, current.p)
+--[ 2022.11.21.22.35.55.439.0 ]--
+r 150             nearPt = new PointDist(current.p, current.p.)
+--[ 2022.11.21.22.35.55.693.0 ]--
+r 150             nearPt = new PointDist(current.p, current.p.d)
+--[ 2022.11.21.22.35.55.808.0 ]--
+r 150             nearPt = new PointDist(current.p, current.p.di)
+--[ 2022.11.21.22.35.55.931.0 ]--
+r 150             nearPt = new PointDist(current.p, current.p.dis)
+--[ 2022.11.21.22.35.56.092.0 ]--
+r 150             nearPt = new PointDist(current.p, current.p.dist)
+--[ 2022.11.21.22.35.56.705.0 ]--
+r 150             nearPt = new PointDist(current.p, current.p.dist())
+--[ 2022.11.21.22.35.57.599.0 ]--
+r 150             nearPt = new PointDist(current.p, current.p.dist(p))
+--[ 2022.11.21.22.35.58.896.0 ]--
+r 150             nearPt = new PointDist(current.p, current.p.dist(p));
+--[ 2022.11.21.22.36.16.134.0 ]--
+r 157                 nearPt = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.36.24.324.0 ]--
+r 160                 nearPt = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.36.27.052.0 ]--
+r 161                 nearPt = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.36.31.098.0 ]--
+r 163             else nearPt = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.36.37.176.0 ]--
+r 169             if (nearPt =  > partDist) {
+--[ 2022.11.21.22.36.37.616.0 ]--
+r 169             if (nearPt = > partDist) {
+--[ 2022.11.21.22.36.37.794.0 ]--
+r 169             if (nearPt  > partDist) {
+--[ 2022.11.21.22.36.37.932.0 ]--
+r 169             if (nearPt > partDist) {
+--[ 2022.11.21.22.36.38.816.0 ]--
+r 169             if (nearPt. > partDist) {
+--[ 2022.11.21.22.36.38.956.0 ]--
+r 169             if (nearPt.d > partDist) {
+--[ 2022.11.21.22.36.40.031.0 ]--
+r 169             if (nearPt.d() > partDist) {
+--[ 2022.11.21.22.36.44.370.0 ]--
+r 170                 if (p.x() > current.p.x()) nearPt =  nearest(current.left, p, nearPt);
+--[ 2022.11.21.22.36.45.553.0 ]--
+r 170                 if (p.x() > current.p.x()) nearPt = nearest(current.left, p, nearPt);
+--[ 2022.11.21.22.36.48.132.0 ]--
+r 171                 else nearPt = nearest(current.right, p, nearPt);
+--[ 2022.11.21.22.36.51.530.0 ]--
+r 176                 nearPt = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.36.53.369.0 ]--
+r 179                 nearPt = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.36.55.576.0 ]--
+r 180                 nearPt = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.36.58.747.0 ]--
+r 182             else nearPt = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.37.01.788.0 ]--
+r 188             if (nearPt =  > partDist) {
+--[ 2022.11.21.22.37.02.571.0 ]--
+r 188             if (nearPt = > partDist) {
+--[ 2022.11.21.22.37.02.709.0 ]--
+r 188             if (nearPt  > partDist) {
+--[ 2022.11.21.22.37.03.143.0 ]--
+r 188             if (nearPt > partDist) {
+--[ 2022.11.21.22.37.03.590.0 ]--
+r 188             if (nearPt. > partDist) {
+--[ 2022.11.21.22.37.03.871.0 ]--
+r 188             if (nearPt.d > partDist) {
+--[ 2022.11.21.22.37.04.348.0 ]--
+r 188             if (nearPt.d() > partDist) {
+--[ 2022.11.21.22.37.08.939.0 ]--
+r 189                 if(p.y() > current.p.y()) nearPt = nearest(current.left, p,nearPt);
+--[ 2022.11.21.22.37.14.843.0 ]--
+r 190                 else nearPt =  nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.37.15.420.0 ]--
+r 190                 else nearPt = nearest(current.right, p,nearPt);
+--[ 2022.11.21.22.37.18.783.0 ]--
+r 194         return nearPt = ;
+--[ 2022.11.21.22.37.19.350.0 ]--
+r 194         return nearPt =;
+--[ 2022.11.21.22.37.19.480.0 ]--
+r 194         return nearPt ;
+--[ 2022.11.21.22.37.19.615.0 ]--
+r 194         return nearPt;
+--[ 2022.11.21.22.37.27.170.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.39.03.984.0 ]--
+- 167
+r 167 //       
+--[ 2022.11.21.22.39.05.666.0 ]--
+- 167
+--[ 2022.11.21.22.39.10.168.0 ]--
+- 152
+--[ 2022.11.21.22.39.11.817.0 ]--
+- 151
+--[ 2022.11.21.22.39.16.892.0 ]--
+r 144     //this returns a pointDist so that we can 
+--[ 2022.11.21.22.39.17.420.0 ]--
+r 144     //this returns a pointDist so that we can a
+--[ 2022.11.21.22.39.17.665.0 ]--
+r 144     //this returns a pointDist so that we can ac
+--[ 2022.11.21.22.39.17.788.0 ]--
+r 144     //this returns a pointDist so that we can acc
+--[ 2022.11.21.22.39.18.006.0 ]--
+r 144     //this returns a pointDist so that we can acce
+--[ 2022.11.21.22.39.18.193.0 ]--
+r 144     //this returns a pointDist so that we can acces
+--[ 2022.11.21.22.39.18.318.0 ]--
+r 144     //this returns a pointDist so that we can access
+--[ 2022.11.21.22.39.18.632.0 ]--
+r 144     //this returns a pointDist so that we can access 
+--[ 2022.11.21.22.39.19.564.0 ]--
+r 144     //this returns a pointDist so that we can access b
+--[ 2022.11.21.22.39.19.645.0 ]--
+r 144     //this returns a pointDist so that we can access bo
+--[ 2022.11.21.22.39.19.776.0 ]--
+r 144     //this returns a pointDist so that we can access bot
+--[ 2022.11.21.22.39.19.908.0 ]--
+r 144     //this returns a pointDist so that we can access both
+--[ 2022.11.21.22.39.20.024.0 ]--
+r 144     //this returns a pointDist so that we can access both 
+--[ 2022.11.21.22.39.20.465.0 ]--
+r 144     //this returns a pointDist so that we can access both t
+--[ 2022.11.21.22.39.20.543.0 ]--
+r 144     //this returns a pointDist so that we can access both th
+--[ 2022.11.21.22.39.20.659.0 ]--
+r 144     //this returns a pointDist so that we can access both the
+--[ 2022.11.21.22.39.20.808.0 ]--
+r 144     //this returns a pointDist so that we can access both the 
+--[ 2022.11.21.22.39.21.828.0 ]--
+r 144     //this returns a pointDist so that we can access both the n
+--[ 2022.11.21.22.39.21.893.0 ]--
+r 144     //this returns a pointDist so that we can access both the ne
+--[ 2022.11.21.22.39.22.065.0 ]--
+r 144     //this returns a pointDist so that we can access both the nea
+--[ 2022.11.21.22.39.22.134.0 ]--
+r 144     //this returns a pointDist so that we can access both the near
+--[ 2022.11.21.22.39.22.324.0 ]--
+r 144     //this returns a pointDist so that we can access both the neare
+--[ 2022.11.21.22.39.22.530.0 ]--
+r 144     //this returns a pointDist so that we can access both the neares
+--[ 2022.11.21.22.39.22.655.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest
+--[ 2022.11.21.22.39.22.769.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest 
+--[ 2022.11.21.22.39.22.951.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest p
+--[ 2022.11.21.22.39.23.084.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest po
+--[ 2022.11.21.22.39.23.286.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest poi
+--[ 2022.11.21.22.39.23.483.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest poin
+--[ 2022.11.21.22.39.23.611.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point
+--[ 2022.11.21.22.39.23.724.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point 
+--[ 2022.11.21.22.39.23.854.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point a
+--[ 2022.11.21.22.39.24.136.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point an
+--[ 2022.11.21.22.39.24.277.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point an 
+--[ 2022.11.21.22.39.24.686.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point an
+--[ 2022.11.21.22.39.24.755.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and
+--[ 2022.11.21.22.39.24.877.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and 
+--[ 2022.11.21.22.39.25.216.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and d
+--[ 2022.11.21.22.39.25.276.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and di
+--[ 2022.11.21.22.39.25.690.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and d
+--[ 2022.11.21.22.39.25.833.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and 
+--[ 2022.11.21.22.39.26.784.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and t
+--[ 2022.11.21.22.39.26.818.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and th
+--[ 2022.11.21.22.39.26.928.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the
+--[ 2022.11.21.22.39.27.022.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the 
+--[ 2022.11.21.22.39.27.179.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the d
+--[ 2022.11.21.22.39.27.261.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the di
+--[ 2022.11.21.22.39.27.382.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the dis
+--[ 2022.11.21.22.39.27.506.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the dist
+--[ 2022.11.21.22.39.27.683.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the dista
+--[ 2022.11.21.22.39.27.822.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the distan
+--[ 2022.11.21.22.39.27.948.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the distanc
+--[ 2022.11.21.22.39.28.146.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the distance
+--[ 2022.11.21.22.39.28.271.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the distance 
+--[ 2022.11.21.22.39.28.421.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the distance o
+--[ 2022.11.21.22.39.28.459.0 ]--
+r 144     //this returns a pointDist so that we can access both the nearest point and the distance of
+--[ 2022.11.21.22.39.28.956.0 ]--
++ 145     
+--[ 2022.11.21.22.39.35.687.0 ]--
+r 145     /
+--[ 2022.11.21.22.39.35.800.0 ]--
+r 145     //
+--[ 2022.11.21.22.39.36.484.0 ]--
+r 145     //t
+--[ 2022.11.21.22.39.36.596.0 ]--
+r 145     //th
+--[ 2022.11.21.22.39.36.676.0 ]--
+r 145     //tha
+--[ 2022.11.21.22.39.36.767.0 ]--
+r 145     //that
+--[ 2022.11.21.22.39.36.883.0 ]--
+r 145     //that 
+--[ 2022.11.21.22.39.37.091.0 ]--
+r 145     //that p
+--[ 2022.11.21.22.39.37.224.0 ]--
+r 145     //that po
+--[ 2022.11.21.22.39.37.300.0 ]--
+r 145     //that poi
+--[ 2022.11.21.22.39.37.523.0 ]--
+r 145     //that poin
+--[ 2022.11.21.22.39.37.655.0 ]--
+r 145     //that point
+--[ 2022.11.21.22.39.37.738.0 ]--
+r 145     //that point 
+--[ 2022.11.21.22.39.37.904.0 ]--
+r 145     //that point b
+--[ 2022.11.21.22.39.38.041.0 ]--
+r 145     //that point bo
+--[ 2022.11.21.22.39.38.336.0 ]--
+r 145     //that point bot
+--[ 2022.11.21.22.39.38.419.0 ]--
+r 145     //that point both
+--[ 2022.11.21.22.39.38.523.0 ]--
+r 145     //that point both 
+--[ 2022.11.21.22.39.38.721.0 ]--
+r 145     //that point both f
+--[ 2022.11.21.22.39.38.863.0 ]--
+r 145     //that point both fr
+--[ 2022.11.21.22.39.38.985.0 ]--
+r 145     //that point both fro
+--[ 2022.11.21.22.39.39.128.0 ]--
+r 145     //that point both from
+--[ 2022.11.21.22.39.39.271.0 ]--
+r 145     //that point both from 
+--[ 2022.11.21.22.39.39.557.0 ]--
+r 145     //that point both from t
+--[ 2022.11.21.22.39.39.680.0 ]--
+r 145     //that point both from th
+--[ 2022.11.21.22.39.39.750.0 ]--
+r 145     //that point both from the
+--[ 2022.11.21.22.39.39.857.0 ]--
+r 145     //that point both from the 
+--[ 2022.11.21.22.39.41.776.0 ]--
+r 145     //that point both from the o
+--[ 2022.11.21.22.39.41.923.0 ]--
+r 145     //that point both from the on
+--[ 2022.11.21.22.39.42.053.0 ]--
+r 145     //that point both from the one
+--[ 2022.11.21.22.39.42.170.0 ]--
+r 145     //that point both from the one 
+--[ 2022.11.21.22.39.42.316.0 ]--
+r 145     //that point both from the one v
+--[ 2022.11.21.22.39.42.560.0 ]--
+r 145     //that point both from the one va
+--[ 2022.11.21.22.39.42.638.0 ]--
+r 145     //that point both from the one var
+--[ 2022.11.21.22.39.42.753.0 ]--
+r 145     //that point both from the one vari
+--[ 2022.11.21.22.39.42.865.0 ]--
+r 145     //that point both from the one varia
+--[ 2022.11.21.22.39.43.060.0 ]--
+r 145     //that point both from the one variab
+--[ 2022.11.21.22.39.43.172.0 ]--
+r 145     //that point both from the one variabl
+--[ 2022.11.21.22.39.43.244.0 ]--
+r 145     //that point both from the one variable
+--[ 2022.11.21.22.39.55.926.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.21.22.41.15.903.0 ]--
+- 190
+--[ 2022.11.22.08.02.02.426.0 ]--
+DisposeComponent
+--[ 2022.11.22.08.02.36.835.0 ]--
+NewLogger: P05_KDTrees
+Version: 1.5
+--[ 2022.11.22.08.02.36.879.0 ]--
+InitTree:
+/out/production/P05_KDTrees/.donotlog
+/out/production/P05_KDTrees/algs4.jar
+/out/production/P05_KDTrees/stdlib.jar
+/out/production/P05_KDTrees/input1M.txt
+/out/production/P05_KDTrees/Mouse.class
+/out/production/P05_KDTrees/Point.class
+/out/production/P05_KDTrees/input100K.txt
+/out/production/P05_KDTrees/Point$1.class
+/out/production/P05_KDTrees/Point$2.class
+/out/production/P05_KDTrees/Point$3.class
+/out/production/P05_KDTrees/Point$4.class
+/out/production/P05_KDTrees/burgerking.csv
+/out/production/P05_KDTrees/KeyPress.class
+/out/production/P05_KDTrees/PSKDTree.class
+/out/production/P05_KDTrees/Partition.class
+/out/production/P05_KDTrees/PointDist.class
+/out/production/P05_KDTrees/Visualizer.class
+/out/production/P05_KDTrees/PointSearch.class
+/out/production/P05_KDTrees/PSBruteForce.class
+/out/production/P05_KDTrees/PSKDTree$Node.class
+/out/production/P05_KDTrees/FastFoodVisualizer.class
+/out/production/P05_KDTrees/Partition$Direction.class
+/out/production/P05_KDTrees/NearestNeighborVisualizer.class
+/src/algs4.jar
+/src/Mouse.java
+/src/Point.java
+/src/stdlib.jar
+/src/KeyPress.java
+/src/PSKDTree.java
+/src/Partition.java
+/src/PointDist.java
+/src/Visualizer.java
+/src/PointSearch.java
+/src/PSBruteForce.java
+/src/FastFoodVisualizer.java
+/src/NearestNeighborVisualizer.java
+/.git/info/exclude
+/.git/logs/refs/heads/main
+/.git/logs/refs/remotes/origin/HEAD
+/.git/logs/refs/remotes/origin/main
+/.git/logs/HEAD
+/.git/refs/heads/main
+/.git/refs/remotes/origin/HEAD
+/.git/refs/remotes/origin/main
+/.git/hooks/update.sample
+/.git/hooks/pre-push.sample
+/.git/hooks/commit-msg.sample
+/.git/hooks/pre-commit.sample
+/.git/hooks/pre-rebase.sample
+/.git/hooks/post-update.sample
+/.git/hooks/pre-receive.sample
+/.git/hooks/applypatch-msg.sample
+/.git/hooks/pre-applypatch.sample
+/.git/hooks/pre-merge-commit.sample
+/.git/hooks/push-to-checkout.sample
+/.git/hooks/fsmonitor-watchman.sample
+/.git/hooks/prepare-commit-msg.sample
+/.git/objects/09/bd3ab462c2a54f2f734a663b4d0d55dbefa856
+/.git/objects/0c/324b92a8f6c06aa72c7d1a7b6a4b3a471f2f9f
+/.git/objects/0c/55bcf14a37162c8cecdd8bb4226a147b847710
+/.git/objects/0d/90a95e4569ab236f012c54a903f79e23f7e45d
+/.git/objects/1a/49d62b998226393c172907eef021434d19be9a
+/.git/objects/1f/fc97640cccefe0b1a237033b6373d6267daafb
+/.git/objects/21/5f9d8b463f594d7a29686b9e9be2c095a4e415
+/.git/objects/26/3963a64f2a64659282fd9cbe561dd7a5e4a676
+/.git/objects/2b/146202332c98f33d1ab3db98dea03e6bbc1093
+/.git/objects/2b/5f9208bfadbbc9019b47a713b74462b9cd2613
+/.git/objects/2d/684a62c75f8da8fc231206420108d204cbe252
+/.git/objects/2d/a01175c002a7aca63ea26eac5644d92eff4262
+/.git/objects/2e/39673052a1f295d801c985e388b4f7474189b5
+/.git/objects/2e/d4fe70b4e088ec2c3ac33ca08f741ed2d35a97
+/.git/objects/35/3cb223ed1906f7fafb0088b405f95a94d48049
+/.git/objects/3a/467db814b5de23a11971dfafc2a31dab54402b
+/.git/objects/3e/ec82059c43fd48c2c87acbb5d3146919181ac4
+/.git/objects/42/2e8fe6a25b2cb1526a3b698f7bb6e4a6d6ab1f
+/.git/objects/47/2708597a52c84fb05917e78f58bfd5c9595103
+/.git/objects/54/0fd2392eaf74abc751e9970668bf235e56f803
+/.git/objects/57/21445f69b8abeb3fa1b24eafb39b339a66c987
+/.git/objects/63/f769006f85ce8b975f16e9c895bd3395504579
+/.git/objects/67/a3cbc10acb52f757cbd15ab1a2acaef561cf5d
+/.git/objects/68/33ac541d58999c846b37793c0ca6bb09e43f21
+/.git/objects/6a/13eb1367395cad1f3ae5b2219d4d1a970335e1
+/.git/objects/6e/10e3d8976dabc74255b1ddce2024336f50d7e2
+/.git/objects/6e/e6bdaf464e0f4adb373587a385e0875ebf8ba6
+/.git/objects/75/63d3f1a349009df7dbf21fee30194eead50ca0
+/.git/objects/77/c1c9e0460791004d21b231cb11397fa8405453
+/.git/objects/7c/f2891237ab51abd3dcfe41128b939aa54ae3a2
+/.git/objects/86/5b56d35df1dcfcbf5196eeddcef674c03a3a93
+/.git/objects/8d/e804238c33c653fe535bd162aabed440497ec7
+/.git/objects/9a/8c6aff1f8871e01cacec32f40b40f4107494d2
+/.git/objects/9a/e8d0c18cb848aa651381c33a3fa44eddc40bcb
+/.git/objects/a4/1f4cf11f0c1e522a76feaaea7dd201322b74b2
+/.git/objects/af/24b078cc669f5e4da5902ba1297a2ac0fa2339
+/.git/objects/b2/0a2737119fe126fc0fc4d4284bed106ad85463
+/.git/objects/b7/710fca979cfd5216bf2633dd1dfa8161d9f45f
+/.git/objects/b7/9e120aa750f1350aa5c9c92e567b92d1cb06ca
+/.git/objects/bd/dc962f4cacb8ce630d07f575b6668243250fb1
+/.git/objects/c2/259fdab2fede23add0f6b409611094fb0ae13a
+/.git/objects/c2/a99d32458bd15f0b79cff7dd46d99629763bed
+/.git/objects/c6/82756a1eb42ff4805cdfc29c84fac9230c11e5
+/.git/objects/c7/e29d8475f23acd8d328dc8074104b846f4bbbf
+/.git/objects/c7/ed19fcb2ed6617a23bd3e9a2efaa966bed42da
+/.git/objects/ca/22da9b6c126b0744cfde03b32ebdff29cb41ab
+/.git/objects/ca/9a474fc415e206e1d701688a299fa1b8bbd628
+/.git/objects/ce/2de51fa2f6dd8ca45683eb75ba132137da5a20
+/.git/objects/d2/e73db08c8563911c081a8651a77f67c4b48b43
+/.git/objects/d4/85126c43a458d604c41191c3cd216e30972972
+/.git/objects/d6/6b5e816c127d864df03b0dd33db812fa463679
+/.git/objects/e9/ce331a35ca02c33b0678d762c13fe57fe4a67a
+/.git/objects/ee/909fb82334c194c06fd779181ba31079f10d42
+/.git/objects/f1/f318c26c20a6cefd43a41e41a4c26c668d97ea
+/.git/objects/f5/001ef95b10cd55e1f28b609cd462b09cf24d06
+/.git/objects/f6/cca8a6084310f182dc287fadbb82c5ebcfffe8
+/.git/objects/fc/e1363a394e590b51c742706992bebecae53b2b
+/.git/objects/pack/pack-5320b6e6be866c618967d59f12c11bde247dfe82.idx
+/.git/objects/pack/pack-5320b6e6be866c618967d59f12c11bde247dfe82.pack
+/.git/HEAD
+/.git/index
+/.git/config
+/.git/ORIG_HEAD
+/.git/FETCH_HEAD
+/.git/description
+/.git/packed-refs
+/.git/COMMIT_EDITMSG
+/.log/history.log
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_22,_1_52_PM_[Changes]/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22,_10_01_AM_[Changes]/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_21_22__1_52_PM__Changes_.xml
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22__10_01_AM__Changes_.xml
+/.idea/copyright/profiles_settings.xml
+/.idea/libraries/algs4.xml
+/.idea/libraries/stdlib.xml
+/.idea/.name
+/.idea/vcs.xml
+/.idea/misc.xml
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/compiler.xml
+/.idea/workspace.xml
+/.idea/uiDesigner.xml
+/tests/.donotlog
+/tests/input1M.txt
+/tests/input100K.txt
+/tests/burgerking.csv
+/.cos265
+/readme.html
+/P05_KDTrees.iml
+/P05_KDTrees.zip
+
+--[ 2022.11.22.08.02.36.881.0 ]--
+InitFile: /src/Point.java
+import java.util.Comparator;
+
+/**
+ * Point is a simple tuple of doubles with some handy functions.  Point is useful for
+ * storing and computing 2D points.
+ */
+public final class Point implements Comparable<Point> {
+    private final double x;
+    private final double y;
+
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Point(Point p) {
+        this.x = p.x;
+        this.y = p.y;
+    }
+
+    // generates a Point with location chosen uniformly at random in the unit square [0,1]^2
+    public static Point uniform() {
+        return new Point(StdRandom.uniform(), StdRandom.uniform());
+    }
+
+    // generates a Point with location chosen with gaussian distribution in unit square [0,1]^2
+    // with mean of 0.5 and stddev of 0.12
+    public static Point gaussian() {
+        double x = -1, y = -1;
+        // do not return an x,y that is outside the unit square
+        while(x < 0 || y < 0 || x > 1 || y > 1) {
+            x = StdRandom.gaussian(0.5, 0.12);
+            y = StdRandom.gaussian(0.5, 0.12);
+        }
+        return new Point(x, y);
+    }
+
+
+    /**
+     * the functions below can be used to find the min/max x/y which
+     * can be used to find the bounding box of points
+     */
+
+    // returns a point with minimum component values
+    public static Point min(Point p0, Point p1) {
+        return new Point(Math.min(p0.x, p1.x), Math.min(p0.y, p1.y));
+    }
+
+    // returns a point with maximum component values
+    public static Point max(Point p0, Point p1) {
+        return new Point(Math.max(p0.x, p1.x), Math.max(p0.y, p1.y));
+    }
+
+
+    /**
+     * use the following functions to compare Points in different ways.
+     * Points are Comparable, so they know how to compareTo one another,
+     * but the other functions return Comparator objects which can compare
+     * Points in different ways.
+     */
+
+    // compares this to that, first by y component then by x
+    public int compareTo(Point that) {
+        if(this.y < that.y) return -1;
+        if(this.y > that.y) return +1;
+        if(this.x < that.x) return -1;
+        if(this.x > that.x) return +1;
+        return 0;
+    }
+
+    // do the components of this equal the components of that?
+    public boolean equals(Object that) {
+        if(this == that) return true;
+        if(that == null) return false;
+        if(that.getClass() != this.getClass()) return false;
+        Point thatp = (Point)that;
+        if(Double.compare(this.x, thatp.x) != 0) return false;
+        if(Double.compare(this.y, thatp.y) != 0) return false;
+        return true;
+    }
+
+    // returns a Comparator, comparing x first then y
+    public static Comparator<Point> xyComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                if(o0.x < o1.x) return -1;
+                if(o0.x > o1.x) return +1;
+                if(o0.y < o1.y) return -1;
+                if(o0.y > o1.y) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator, comparing y fist then x
+    public static Comparator<Point> yxComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                if(o0.y < o1.y) return -1;
+                if(o0.y > o1.y) return +1;
+                if(o0.x < o1.x) return -1;
+                if(o0.x > o1.x) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator, comparing the polar radius (dist from (0,0))
+    public static Comparator<Point> polarRadiusComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                double d0 = (o0.x*o0.x + o0.y*o0.y);
+                double d1 = (o1.x*o1.x + o1.y*o1.y);
+                if(d0 < d1) return -1;
+                if(d0 > d1) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator for this, comparing dist between first given
+    // point and this and dist between second given point and this
+    public Comparator<Point> distanceToComparator() {
+        return new Comparator<Point>() {
+            private final double ox = x;
+            private final double oy = y;
+            @Override
+            public int compare(Point o0, Point o1) {
+                double d0 = (o0.x-ox)*(o0.x-ox) + (o0.y-oy)*(o0.y-oy);
+                double d1 = (o1.x-ox)*(o1.x-ox) + (o1.y-oy)*(o1.y-oy);
+                if(d0 < d1) return -1;
+                if(d0 > d1) return +1;
+                return 0;
+            }
+        };
+    }
+
+
+    /**
+     * getters and setters
+     */
+
+    // getters of x and y
+    public double x() { return x; }
+    public double y() { return y; }
+
+    // getter of either x or y depending on dir
+    // dir = LEFTRIGHT => returns x
+    // dir = DOWNUP    => returns y
+    public double xy(Partition.Direction dir) {
+        if(dir == Partition.Direction.LEFTRIGHT) return x;
+        else return y;
+    }
+
+
+    /**
+     * functions for computing distances
+     */
+
+    // computes distance^2 between this point and (x,y)
+    public double distSquared(double x, double y) {
+        return (this.x-x)*(this.x-x) + (this.y-y)*(this.y-y);
+    }
+
+    // computes distance^2 between this point and another (p)
+    public double distSquared(Point p) {
+        return distSquared(p.x, p.y);
+    }
+
+    // computes distance between this point and (x,y)
+    public double dist(double x, double y) {
+        return Math.sqrt(distSquared(x, y));
+    }
+
+    // computes distance between this point and another (p)
+    public double dist(Point p) {
+        return dist(p.x, p.y);
+    }
+
+
+    /**
+     * misc functions
+     */
+
+    // returns a new point that has values added to components
+    public Point add(double x, double y) {
+        return new Point(this.x + x, this.y + y);
+    }
+
+    // returns a new point that has values added to components
+    public Point add(Point p) {
+        return add(p.x, p.y);
+    }
+
+    // returns whether point is within given min and max bounds
+    public boolean isInBounds(double x0, double y0, double x1, double y1) {
+        if(Double.compare(x,x0) <= 0) return false;
+        if(Double.compare(y,y0) <= 0) return false;
+        if(Double.compare(x1,x) <= 0) return false;
+        if(Double.compare(y1,y) <= 0) return false;
+        return true;
+    }
+
+    public boolean isInBounds(Point min, Point max) {
+        return isInBounds(min.x, min.y, max.x, max.y);
+    }
+
+    // produces a String representation of Point
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+}
+
+--[ 2022.11.22.08.02.36.881.1 ]--
+InitFile: /src/Partition.java
+/**
+ * Partition is a simple class that stores two points and a direction,
+ * where the two points make up a partition along the given direction.
+ */
+public final class Partition {
+    // enumeration of all partition directions: Left-Right and Up-Down
+    public enum Direction {
+        LEFTRIGHT,
+        DOWNUP
+    }
+
+    // returns the next direction in the enumeration
+    public static Direction nextDirection(Direction dir) {
+        if(dir == Direction.LEFTRIGHT) return Direction.DOWNUP;
+        return Direction.LEFTRIGHT;
+    }
+
+    private final Point p0;
+    private final Point p1;
+    private final Direction dir;
+
+    public Partition(Point p0, Point p1, Direction dir) {
+        this.p0 = p0;
+        this.p1 = p1;
+        this.dir = dir;
+    }
+
+    public Partition(double x0, double y0, double x1, double y1, Direction dir) {
+        this.p0 = new Point(x0, y0);
+        this.p1 = new Point(x1, y1);
+        this.dir = dir;
+    }
+
+    public Point p0() { return p0; }
+
+    public Point p1() { return p1; }
+
+    public Direction dir() { return dir; }
+}
+
+--[ 2022.11.22.08.02.36.882.0 ]--
+InitFile: /src/FastFoodVisualizer.java
+import java.awt.*;
+
+/**
+ * Loads and visualizes location data, and reports information on the closest
+ * data point to mouse cursor
+ */
+public class FastFoodVisualizer {
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    private static final Color cText = new Color(64,64,64);
+
+    private static void parseCSVLine(String line, String[] data) {
+        boolean inQuote = false;
+        int s = -1;
+        int j = 0;
+        for(int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if(c == ',' && !inQuote) {
+                if(line.charAt(s+1) == '"' && line.charAt(i-1) == '"') {
+                    data[j] = line.substring(s+2,i-1);
+                } else {
+                    data[j] = line.substring(s + 1, i);
+                }
+                j++;
+                s = i;
+                continue;
+            }
+            if(c=='"') {
+                inQuote = !inQuote;
+            }
+        }
+        int i = line.length();
+        if(s < i) {
+            if(line.charAt(s+1) == '"' && line.charAt(i-1) == '"') {
+                data[j] = line.substring(s+2,i-1);
+            } else {
+                data[j] = line.substring(s + 1, i);
+            }
+        }
+    }
+
+    private static String[][] readCSV(String filename, int m) {
+        String[] lines = (new In(filename)).readAllLines();
+        int n = lines.length;
+        String[][] a = new String[n][m];
+        for(int i = 0; i < n; i++) parseCSVLine(lines[i], a[i]);
+        return a;
+    }
+
+    private static void insertCSV(String filename, PointSearch<String[]> ps) {
+        String[][] data = readCSV(filename, 4);
+        for(int i = 0; i < data.length; i++) {
+            double longitude = Double.parseDouble(data[i][0]);
+            double latitude = Double.parseDouble(data[i][1]);
+            String[] loc = {data[i][2], data[i][3]};
+            ps.put(new Point(longitude, latitude), loc);
+        }
+    }
+
+    public static void main(String[] args) {
+        PointSearch<String[]> psBurgerKings = new PSKDTree<>();
+
+        insertCSV("burgerking.csv", psBurgerKings);
+
+        Visualizer.setScaling(psBurgerKings.min(), psBurgerKings.max());
+
+        StdDraw.show(0);
+
+        Mouse mouse = new Mouse(24, 36, 464, 464);
+
+        while(true) {
+            Point loc = Visualizer.xformInv(mouse.getLocation());
+
+            Visualizer.clear();
+            Visualizer.drawKDTree(psBurgerKings, false, false);
+            Visualizer.drawNeighbors(psBurgerKings, loc, true, 0);
+
+            StdDraw.setPenColor(cText);
+            int i = 464;
+            String[] value = psBurgerKings.getNearest(loc);
+            if(value != null) {
+                for (String l : value) {
+                    StdDraw.text(256, i, l);
+                    i -= 16;
+                }
+            }
+
+            StdDraw.show(DELAY);
+        }
+
+
+    }
+}
+
+--[ 2022.11.22.08.02.36.882.1 ]--
+InitFile: /src/PSBruteForce.java
+import java.util.Iterator;
+
+/**
+ * PSBruteForce is a Point collection that provides brute force
+ * nearest neighbor searching using red-black tree.
+ */
+
+// red-black trees
+
+public class PSBruteForce<Value> implements PointSearch<Value> {
+    // constructor makes empty collection
+
+    RedBlackBST<Point, Value> rbst;
+    double minx;
+    double miny;
+    double maxx;
+    double maxy;
+
+    public PSBruteForce() {
+        rbst = new RedBlackBST<>();
+    }
+
+    // add the given Point to KDTree
+    public void put(Point p, Value v) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        rbst.put(p,v);
+        if(rbst.size() == 1) {
+            minx = p.x();
+            miny = p.y();
+
+            maxx = p.x();
+            maxy = p.y();
+        }
+        else {
+            if(p.x() < minx) minx = p.x();
+            if(p.y() < miny) miny = p.y();
+
+            if(p.x() > maxx) maxx = p.x();
+            if(p.y() > maxy) maxy = p.y();
+        }
+    }
+
+    public Value get(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        return rbst.get(p);
+    }
+
+    public boolean contains(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        return rbst.contains(p);
+    }
+
+    // return an iterable of all points in collection
+    public Iterable<Point> points() {
+        return rbst.keys();
+    }
+
+    // return the Point that is closest to the given Point
+    public Point nearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        Point currentNear = null;
+        double nearDist = 0;
+        int idx = 0;
+        Iterable<Point> iter = points();
+
+        for( Point i : iter ) {
+
+            double distance = p.dist(i);
+            if(idx == 0 || distance < nearDist) {
+                nearDist = distance;
+                currentNear = i;
+            }
+            idx++;
+        }
+        return currentNear;
+    }
+
+    // return the Value associated to the Point that is closest to the given Point
+    public Value getNearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        Point nearestPoint = nearest(p);
+        return rbst.get(nearestPoint);
+    }
+
+    // return the min and max for all Points in collection.
+    // The min-max pair will form a bounding box for all Points.
+    // if KDTree is empty, return null.
+    public Point min() {
+        if(isEmpty()) return null;
+        //for each iterable loop, remember the min
+        return new Point(minx, miny);
+    }
+    public Point max() {
+        if(isEmpty()) return null;
+        //same as min, but with max
+        return new Point(maxx, maxy);
+    }
+
+
+    // return the k nearest Points to the given Point
+    public Iterable<Point> nearest(Point p, int k) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+
+        MaxPQ<PointDist> ptpq = new MaxPQ<>();
+
+        Iterable<Point> iter = points();
+        for( Point i : iter ) {
+
+                PointDist distance = new PointDist(i, p.dist(i));
+                ptpq.insert(distance);
+                while (ptpq.size()>k) ptpq.delMax();
+        }
+        Stack<Point> ptstack = new Stack<>();
+        for(PointDist pd : ptpq) {
+            ptstack.push(pd.p());
+        }
+        return ptstack;
+    }
+
+    public Iterable<Partition> partitions() { return null; }
+
+    // return the number of Points in KDTree
+    public int size() { return rbst.size(); }
+
+    // return whether the KDTree is empty
+    public boolean isEmpty() { return rbst.isEmpty(); }
+
+    // place your timing code or unit testing here
+    public static void main(String[] args) {
+        PSBruteForce<Integer> bf = new PSBruteForce<>();
+        Point p = new Point(1.0, 1.0);
+        Point t = new Point(2.0, 2.0);
+        Point q = new Point(3.0, 3.0);
+        bf.put(p, 10);
+        bf.put(t, 20);
+        bf.put(q, 30);
+        StdOut.println(bf.nearest(new Point (4.0,4.0)));
+
+    }
+}
+
+--[ 2022.11.22.08.02.36.882.2 ]--
+InitFile: /.cos265
+
+
+--[ 2022.11.22.08.02.36.882.3 ]--
+InitFile: /src/NearestNeighborVisualizer.java
+import java.awt.event.KeyEvent;
+
+/**
+ * Visualizes nearest neighbors to mouse cursor and partitioning data
+ */
+public class NearestNeighborVisualizer {
+
+    // number of dots to add at start
+    private final static int nGaussian = 10;
+    private final static int nUniform  = 10;
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    // creates a new PointSearch data structure
+    // note: you can swap between PSKDTree and PSBruteForce to debug your code
+    private static PointSearch<Character> createNewPS() {
+        return new PSKDTree<>();
+    }
+
+    public static void main(String[] args) {
+        PointSearch<Character> ps = createNewPS();
+
+        // add some random points
+        for(int i = 0; i < nGaussian; i++) ps.put(Point.gaussian(), 'g');
+        for(int i = 0; i < nUniform; i++) ps.put(Point.uniform(), 'u');
+
+        // add points to match assignment write-up
+        /*
+        ps.put(new Point(0.8, 0.9), 'A');
+        ps.put(new Point(0.5, 0.4), 'B');
+        ps.put(new Point(0.2, 0.6), 'C');
+        ps.put(new Point(0.3, 0.1), 'D');
+        ps.put(new Point(0.9, 0.4), 'E');
+        */
+
+        StdDraw.show(0);
+
+        int k = 1;
+        boolean drawClosest = true;
+        boolean drawPartitions = false;
+        boolean drawBoundingBox = false;
+
+        KeyPress keyP    = new KeyPress(KeyEvent.VK_P);
+        KeyPress keyUp   = new KeyPress(KeyEvent.VK_UP);
+        KeyPress keyDown = new KeyPress(KeyEvent.VK_DOWN);
+        KeyPress keyC    = new KeyPress(KeyEvent.VK_C);
+        KeyPress keyN    = new KeyPress(KeyEvent.VK_N);
+        KeyPress keyB    = new KeyPress(KeyEvent.VK_B);
+        Mouse    mouse   = new Mouse(24, 36, 464, 464);
+
+        while(true) {
+            Point loc = mouse.getLocation();
+
+            if(keyC.isPressed()) ps = createNewPS();
+            if(keyUp.isPressed()) k++;
+            if(keyDown.isPressed() && k > 0) k--;
+            if(keyN.isPressed()) drawClosest = !drawClosest;
+            if(keyP.isPressed()) drawPartitions = !drawPartitions;
+            if(keyB.isPressed()) drawBoundingBox = !drawBoundingBox;
+            if(mouse.isPressed()) ps.put(loc, 'm');
+
+            Visualizer.clear();
+            Visualizer.drawKDTree(ps, drawPartitions, drawBoundingBox);
+            Visualizer.drawNeighbors(ps, loc, drawClosest, k);
+
+            StdDraw.show(DELAY);
+        }
+    }
+}
+
+--[ 2022.11.22.08.02.36.882.4 ]--
+InitFile: /src/PSKDTree.java
+import java.util.Iterator;
+
+/**
+ * PSKDTree is a Point collection that provides nearest neighbor searching using
+ * 2d tree
+ */
+public class PSKDTree<Value> implements PointSearch<Value> {
+
+    private class Node {
+        Point p;
+        Value v;
+        Node left, right;
+        Partition.Direction dir;
+
+        public Node(Point pt, Value val) {
+            p = pt;
+            v = val;
+        }
+    }
+
+    BST<Point, Value> kdt;
+    int count=0;
+
+    double minx;
+    double miny;
+    double maxx;
+    double maxy;
+    Node root=null;
+
+
+    //point stack
+    Stack<Point> ps = new Stack<>();    //doesn't account for deletions
+    //stack of partitions
+    Stack<Partition> sp = new Stack<>();
+    // constructor makes empty kD-tree
+    public PSKDTree() { }
+
+    // add the given Point to kD-tree -- here is 2D (x and y)
+    public void put(Point p, Value v) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        if (v == null) { return; } // can't do anything with a null value
+
+        if(root==null) {
+            Node x = new Node(p,v);
+            x.left=null;
+            x.right=null;
+            x.dir= Partition.Direction.DOWNUP;
+            root=x;
+            minx = x.p.x();
+            miny = x.p.y();
+
+            maxx = x.p.x();
+            maxy = x.p.y();
+            ps.push(x.p);
+            sp.push(new Partition(x.p,x.p,x.dir));
+        }
+        else put(root, p, v, root);
+        count++;
+    }
+
+    private Node put(Node x, Point p, Value v, Node parent) {
+        if (x == null) {
+            Node newNode = new Node(p,v);
+            if(parent.dir == Partition.Direction.DOWNUP) {
+                newNode.dir = Partition.Direction.LEFTRIGHT;
+                newNode.left=null;
+                newNode.right=null;
+            }
+            else {
+                newNode.dir = Partition.Direction.DOWNUP;
+                newNode.left=null;
+                newNode.right=null;
+            }
+            if(newNode.p.x() < minx) minx = newNode.p.x();
+            if(newNode.p.y() < miny) miny = newNode.p.y();
+
+            if(newNode.p.x() > maxx) maxx = newNode.p.x();
+            if(newNode.p.y() > maxy) maxy = newNode.p.y();
+            ps.push(p);
+            sp.push(new Partition(newNode.p,newNode.p,newNode.dir));
+            return newNode;
+        }
+        else {
+            Partition.Direction parentDir = x.dir;
+
+            if (parentDir == Partition.Direction.DOWNUP) {
+                if (x.p.x() > p.x()) x.left = put(x.left, p, v, x);
+                else x.right = put(x.right, p, v, x);
+            } else {
+                if (x.p.y() > p.y()) x.left = put(x.left, p, v, x);
+                else x.right = put(x.right, p, v, x);
+            }
+            return x;
+        }
+    }
+
+    public Value get(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        if(isEmpty()) return null;
+        return get(root, p, root); //search through the tree instead of returning null
+    }
+
+    private Value get(Node current, Point p, Node parent) {
+        if(current==null) return null;
+        if(parent.dir == Partition.Direction.DOWNUP) {
+            if (parent.p.x() < current.p.x()) return get(parent.right, p, parent);
+            else if (parent.p.x() > current.p.x()) return get(parent.left, p, parent);
+            else return current.v;
+        }
+        else {
+            if (parent.p.y() < current.p.y()) return get(parent.right, p, parent);
+            else if (parent.p.y() > current.p.y()) return get(parent.left, p, parent);
+            else return current.v;
+        }
+    }
+
+    public boolean contains(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        return get(p)!=null; //searching again for p in the bst
+    }
+
+    public Value getNearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        if(isEmpty()) return null;
+        Point nearestPoint = nearest(p);
+        return get(nearestPoint);
+    }
+
+    // return an iterable of all points in collection
+    public Iterable<Point> points() { return ps; }
+
+    // return an iterable of all partitions that make up the kD-tree
+    //we didn't know what to do with two points in the partition constructor,
+    //so the points in each partition are the same
+    public Iterable<Partition> partitions() { return sp; }
+
+    // return the Point that is closest to the given Point
+    public Point nearest(Point p) {
+        if(p == null) throw new NullPointerException("p and root must be initialized");
+        if(isEmpty()) return null;
+        PointDist nearPt = new PointDist(root.p, root.p.dist(p));
+        return nearest(root, p, nearPt ).p();
+    }
+    //this returns a pointDist so that we can access both the nearest point and the distance of
+    //that point both from the one variable
+    private PointDist nearest(Node current, Point p, PointDist nearPt) {
+        if(current == null) return nearPt;
+
+        //1. Check against the current point...  closer?
+        if(current.p.dist(p) < nearPt.d()) {      //get distance to the query point from the partition point)
+            nearPt = new PointDist(current.p, current.p.dist(p));
+        }
+        //2. Check which side the query point is on
+        if(current.dir == Partition.Direction.DOWNUP) {
+            if(p.x() > current.p.x()) {
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else if(p.x() == current.p.x()) {
+                nearPt = nearest(current.right, p,nearPt);
+                nearPt = nearest(current.left, p,nearPt);
+            }
+            else nearPt = nearest(current.left, p,nearPt);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.x() - p.x();
+            if (nearPt.d() > partDist) {
+                if (p.x() > current.p.x()) nearPt = nearest(current.left, p, nearPt);
+                else nearPt = nearest(current.right, p, nearPt);
+            }
+        }
+        else {    // dir is LEFTRIGHT
+            if(p.y() > current.p.y()) {
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else if(p.y() == current.p.y()) {
+                nearPt = nearest(current.left, p,nearPt);
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else nearPt = nearest(current.left, p,nearPt);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.y() - p.y();
+//            if (partDist < 0) partDist = -1 * partDist;
+//            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (nearPt.d() > partDist) {
+                if(p.y() > current.p.y()) nearPt = nearest(current.left, p,nearPt);
+                else nearPt = nearest(current.right, p,nearPt);
+            }
+        }
+        return nearPt;
+    }
+
+    // return the k nearest Points to the given Point
+    public Iterable<Point> nearest(Point p, int k) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        //if(k <= 0) return null;
+//        if(root == null) throw new NullPointerException("Null root has no nearest");
+        MaxPQ<PointDist> ptpq = new MaxPQ<>();
+
+        //add things to the global maxpq!
+//        ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+        kNearest(root, p, k, ptpq);
+        Stack<Point> ptstack = new Stack<>();
+        for(PointDist pd : ptpq) {
+            ptstack.push(pd.p());
+        }
+        return ptstack;
+    }
+
+    private void kNearest(Node current, Point p, int k, MaxPQ<PointDist> ptpq) {
+        if(current == null) return;
+        if(k <= 0) return;
+        PointDist toAdd = new PointDist(current.p, current.p.dist(p));
+        //1. Check against the current point...  closer?
+        ptpq.insert(toAdd);
+        if( ptpq.size() > k ) {
+            ptpq.delMax();
+        }
+
+        //2. Check which side the query point is on
+        if(current.dir == Partition.Direction.DOWNUP) {
+            if(p.x() > current.p.x()) {
+                kNearest(current.right, p, k, ptpq);
+            }
+            else {
+                kNearest(current.left, p, k, ptpq);
+            }
+
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.x() - p.x();
+            if (ptpq.max().d() > partDist || ptpq.size() < k) {
+                if (p.x() > current.p.x()) kNearest(current.left, p, k, ptpq);
+                else kNearest(current.right, p, k, ptpq);
+            }
+        }
+        else {    // dir is LEFTRIGHT
+            if(p.y() > current.p.y()) {
+                kNearest(current.right, p, k, ptpq);
+            }
+            else {
+                kNearest(current.left, p, k, ptpq);
+            }
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.y() - p.y();
+//            if (partDist < 0) partDist = -1 * partDist;
+//            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (ptpq.max().d() > partDist || ptpq.size() < k) {
+                if (p.y() > current.p.y()) kNearest(current.left, p, k, ptpq);
+                else kNearest(current.right, p, k, ptpq);
+            }
+        }
+    }
+
+
+    // return the min and max for all Points in collection.
+    // The min-max pair will form a bounding box for all Points.
+    // if kD-tree is empty, return null.
+    public Point min() {
+        if(isEmpty()) return null;
+        return new Point(minx,miny);
+    }
+    public Point max() {
+        if(isEmpty()) return null;
+        return new Point(maxx,maxy);
+    }
+
+    // return the number of Points in kD-tree
+    public int size() { return count; }
+
+    // return whether the kD-tree is empty
+    public boolean isEmpty() { return count==0; }
+
+    // place your timing code or unit testing here
+    public static void main(String[] args) {
+        PSKDTree<Integer> pskd = new PSKDTree<>();
+        Point p = new Point(1.0, 1.0);
+        Point t = new Point(2.0, 2.0);
+        Point q = new Point(3.0, 3.0);
+        pskd.put(p, 10);
+        pskd.put(t, 20);
+        pskd.put(q, 30);
+        StdOut.println(pskd.nearest(new Point (0,0),0));
+
+    }
+
+}
+
+--[ 2022.11.22.08.02.36.882.5 ]--
+InitFile: /src/PointDist.java
+/**
+ * PointDist is a simple tuple of a Point and a dist.
+ * This class is helpful for storing, passing, or returning the pair.
+ */
+public final class PointDist implements Comparable<PointDist> {
+    private final Point p;
+    private final double d;
+
+    public PointDist(Point p, double d) {
+        this.p = p;
+        this.d = d;
+    }
+
+    public Point p() { return p; }
+
+    public double d() { return d; }
+
+    public int compareTo(PointDist that) {
+        return Double.compare(this.d, that.d);
+    }
+}
+
+--[ 2022.11.22.08.02.36.883.0 ]--
+InitFile: /src/KeyPress.java
+/**
+ * KeyPress is a helper class for detecting key presses (not just whether the key is pressed)
+ */
+public class KeyPress {
+    private final int key;
+    private boolean pressed;
+
+    public KeyPress(int key) {
+        this.key = key;
+    }
+
+    public boolean isDown() {
+        return StdDraw.isKeyPressed(this.key);
+    }
+
+    public boolean isUp() {
+        return !isDown();
+    }
+
+    public boolean isPressed() {
+        boolean p = StdDraw.isKeyPressed(this.key);
+        boolean v = !pressed && p;
+        pressed = p;
+        return v;
+    }
+}
+
+--[ 2022.11.22.08.02.36.883.1 ]--
+InitFile: /src/Mouse.java
+/**
+ * Mouse is a helper class for detecting mouse presses (not just whether the mouse is pressed)
+ * and for transforming the cursor location from window-space to program-space
+ */
+public class Mouse {
+    private boolean pressed;
+    private final int xOffset, yOffset, width, height;
+
+    public Mouse(int xOffset, int yOffset, int width, int height) {
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
+        this.width = width;
+        this.height = height;
+    }
+
+    public boolean isPressed() {
+        boolean p = StdDraw.mousePressed();
+        boolean v = !pressed && p;
+        pressed = p;
+        return v;
+    }
+
+    public Point getLocation() {
+        double mouseX = (StdDraw.mouseX() - (float)xOffset) / (float)width;
+        double mouseY = (StdDraw.mouseY() - (float)yOffset) / (float)height;
+        return new Point(mouseX, mouseY);
+    }
+}
+
+--[ 2022.11.22.08.02.36.883.2 ]--
+InitFile: /src/Visualizer.java
+import java.awt.*;
+
+/**
+ * Created by jdenning on 11/2/15.
+ */
+public class Visualizer {
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    // colors for vizualization
+    private static final Color cDot = new Color(64,64,64);      // point (small box)
+    private static final Color cKNN = new Color(200,200,255);   // k nearest neighbors
+    private static final Color cNN  = new Color(64,64,255);     // nearest neighbor
+    private static final Color cLR  = new Color(255,128,128);   // left-right partition
+    private static final Color cUD  = new Color(128,255,128);   // up-down partition
+    private static final Color cBox = new Color(192,192,192);   // bounding box
+
+    private static double offsetX = 0.0;
+    private static double offsetY = 0.0;
+    private static double scale = 1.0;
+
+    private static double dotSize = 1.0;
+
+    public static void setScale(double scale) { Visualizer.scale = scale; }
+    public static double getScale() { return Visualizer.scale; }
+    public static void setOffsetX(double offsetX) { Visualizer.offsetX = offsetX; };
+    public static double getOffsetX() { return Visualizer.offsetX; }
+    public static void setOffsetY(double offsetY) { Visualizer.offsetY = offsetY; };
+    public static double getOffsetY() { return Visualizer.offsetY; }
+    public static void setScaling(double minX, double minY, double maxX, double maxY) {
+        offsetX = minX; offsetY = minY;
+        double d = Math.max(maxX - minX, maxY - minY);
+        if(d == 0.0) scale = 0.0;
+        else scale = 1.0 / d;
+    }
+    public static void setScaling(Point min, Point max) {
+        if(min == null || max == null) return;
+        setScaling(min.x(), min.y(), max.x(), max.y());
+    }
+
+    public static double getDotSize() { return dotSize; }
+    public static void setDotSize(double dotSize) { Visualizer.dotSize = dotSize; }
+
+    public static void clear() {
+        StdDraw.clear();
+        StdDraw.setXscale(0, 512);
+        StdDraw.setYscale(0, 512);
+    }
+    public static void drawNeighbors(PointSearch ps, Point loc, boolean drawClosest, int k) {
+        if(ps.isEmpty()) return;
+
+        Iterable<Point> nearest = ps.nearest(loc, k);
+        if(nearest != null) {
+            StdDraw.setPenColor(cKNN);
+            for (Point p : nearest) drawLine(loc, p);
+        }
+
+        if(drawClosest) {
+            Point closest = ps.nearest(loc);
+            if (closest != null) {
+                StdDraw.setPenColor(cNN);
+                StdDraw.setPenRadius(0.005);
+                drawLine(loc, closest);
+                StdDraw.setPenRadius();
+            }
+        }
+    }
+    public static void drawKDTree(PointSearch ps, boolean drawPartitions, boolean drawBoundingBox) {
+        if(ps.isEmpty()) return;
+
+        if(drawBoundingBox) {
+            StdDraw.setPenColor(cBox);
+            drawBox(ps.min(), ps.max());
+        }
+
+        if(drawPartitions) {
+            Iterable<Partition> partitions = ps.partitions();
+            if(partitions != null) {
+                StdDraw.setPenRadius(0.005);
+                for (Partition p : partitions) {
+                    if (p.dir() == Partition.Direction.LEFTRIGHT) StdDraw.setPenColor(cLR);
+                    else StdDraw.setPenColor(cUD);
+                    drawLine(p.p0(), p.p1());
+                }
+                StdDraw.setPenRadius();
+            }
+        }
+
+        Iterable<Point> points = ps.points();
+        if(points != null) {
+            StdDraw.setPenColor(cDot);
+            setDotSize(Math.max(1.0, 5.0 / Math.pow(ps.size() + 1, 0.5)));
+            for (Point p : points) drawDot(p);
+        }
+    }
+
+    private static double xformX(double x) { return (x - offsetX) * scale; }
+    private static double xformY(double y) { return (y - offsetY) * scale; }
+    private static double xformInvX(double x) { return x / scale + offsetX; }
+    private static double xformInvY(double y) { return y / scale + offsetY; }
+    public static Point xform(Point p) {
+        return new Point(xformX(p.x()), xformY(p.y()));
+    }
+    public static Point xformInv(Point p) {
+        return new Point(xformInvX(p.x()), xformInvY(p.y()));
+    }
+
+
+    public static void drawDot(double x, double y) {
+        StdDraw.square(xformX(x) * 464 + 24, xformY(y) * 464 + 36, dotSize);
+    }
+    public static void drawDot(Point p) {
+        drawDot(p.x(), p.y());
+    }
+
+    public static void drawLine(double x0, double y0, double x1, double y1) {
+        StdDraw.line(
+                xformX(x0) * 464 + 24, xformY(y0) * 464 + 36,
+                xformX(x1) * 464 + 24, xformY(y1) * 464 + 36
+        );
+    }
+    public static void drawLine(Point p0, Point p1) {
+        drawLine(p0.x(), p0.y(), p1.x(), p1.y());
+    }
+
+    public static void drawBox(Point p0, Point p1) {
+        drawLine(p0.x(), p0.y(), p1.x(), p0.y());
+        drawLine(p1.x(), p0.y(), p1.x(), p1.y());
+        drawLine(p1.x(), p1.y(), p0.x(), p1.y());
+        drawLine(p0.x(), p1.y(), p0.x(), p0.y());
+    }
+
+}
+
+--[ 2022.11.22.08.02.36.883.3 ]--
+InitFile: /P05_KDTrees.iml
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="algs4" level="project" />
+    <orderEntry type="library" name="stdlib" level="project" />
+  </component>
+</module>
+
+--[ 2022.11.22.08.02.36.883.4 ]--
+InitFile: /src/PointSearch.java
+/**
+ * This interface defines the basic API for a 2D symbol table
+ * where the keys are Points and the values are the generic
+ * type Value
+ */
+public interface PointSearch<Value> {
+    boolean isEmpty();
+    int size();
+
+    Point min();
+    Point max();
+
+    void put(Point p, Value v);
+    Iterable<Point> points();
+    boolean contains(Point p);
+    Value get(Point p);
+    Value getNearest(Point p);
+
+    Point nearest(Point p);
+    Iterable<Point> nearest(Point p, int k);
+
+    Iterable<Partition> partitions();
+}
+
+--[ 2022.11.22.10.05.34.828.0 ]--
+:/src/PSKDTree.java
++ 79             
+--[ 2022.11.22.10.05.36.089.0 ]--
+r 79             i
+--[ 2022.11.22.10.05.36.188.0 ]--
+r 79             if
+--[ 2022.11.22.10.05.36.477.0 ]--
+r 79             if 
+--[ 2022.11.22.10.05.36.930.0 ]--
+r 79             if
+--[ 2022.11.22.10.05.37.327.0 ]--
+r 79             if()
+--[ 2022.11.22.10.05.37.741.0 ]--
+r 79             if(p)
+--[ 2022.11.22.10.05.37.863.0 ]--
+r 79             if(p )
+--[ 2022.11.22.10.05.38.111.0 ]--
+r 79             if(p n)
+--[ 2022.11.22.10.05.38.298.0 ]--
+r 79             if(p no)
+--[ 2022.11.22.10.05.38.442.0 ]--
+r 79             if(p not)
+--[ 2022.11.22.10.05.38.535.0 ]--
+r 79             if(p not )
+--[ 2022.11.22.10.05.38.659.0 ]--
+r 79             if(p not i)
+--[ 2022.11.22.10.05.38.879.0 ]--
+r 79             if(p not in)
+--[ 2022.11.22.10.05.39.002.0 ]--
+r 79             if(p not in )
+--[ 2022.11.22.10.05.40.923.0 ]--
+r 79             if(p not in p)
+--[ 2022.11.22.10.05.41.030.0 ]--
+r 79             if(p not in ps)
+--[ 2022.11.22.10.05.49.130.0 ]--
+r 79             /
+--[ 2022.11.22.10.05.49.241.0 ]--
+r 79             //
+--[ 2022.11.22.10.05.51.003.0 ]--
+r 79             //a
+--[ 2022.11.22.10.05.51.211.0 ]--
+r 79             //ad
+--[ 2022.11.22.10.05.51.354.0 ]--
+r 79             //add
+--[ 2022.11.22.10.05.51.548.0 ]--
+r 79             //add 
+--[ 2022.11.22.10.05.53.643.0 ]--
+r 79             //add p
+--[ 2022.11.22.10.05.54.065.0 ]--
+r 79             //add p 
+--[ 2022.11.22.10.05.54.315.0 ]--
+r 79             //add p t
+--[ 2022.11.22.10.05.54.378.0 ]--
+r 79             //add p to
+--[ 2022.11.22.10.05.54.500.0 ]--
+r 79             //add p to 
+--[ 2022.11.22.10.05.54.654.0 ]--
+r 79             //add p to p
+--[ 2022.11.22.10.05.54.749.0 ]--
+r 79             //add p to ps
+--[ 2022.11.22.10.05.54.917.0 ]--
+r 79             //add p to ps 
+--[ 2022.11.22.10.05.55.132.0 ]--
+r 79             //add p to ps o
+--[ 2022.11.22.10.05.55.292.0 ]--
+r 79             //add p to ps on
+--[ 2022.11.22.10.05.55.479.0 ]--
+r 79             //add p to ps onl
+--[ 2022.11.22.10.05.55.737.0 ]--
+r 79             //add p to ps only
+--[ 2022.11.22.10.05.55.877.0 ]--
+r 79             //add p to ps only 
+--[ 2022.11.22.10.05.56.267.0 ]--
+r 79             //add p to ps only i
+--[ 2022.11.22.10.05.56.392.0 ]--
+r 79             //add p to ps only if
+--[ 2022.11.22.10.05.56.551.0 ]--
+r 79             //add p to ps only if 
+--[ 2022.11.22.10.05.56.874.0 ]--
+r 79             //add p to ps only if i
+--[ 2022.11.22.10.05.57.005.0 ]--
+r 79             //add p to ps only if it
+--[ 2022.11.22.10.05.57.197.0 ]--
+r 79             //add p to ps only if it'
+--[ 2022.11.22.10.05.57.310.0 ]--
+r 79             //add p to ps only if it's
+--[ 2022.11.22.10.05.57.429.0 ]--
+r 79             //add p to ps only if it's 
+--[ 2022.11.22.10.05.57.589.0 ]--
+r 79             //add p to ps only if it's n
+--[ 2022.11.22.10.05.57.752.0 ]--
+r 79             //add p to ps only if it's no
+--[ 2022.11.22.10.05.57.940.0 ]--
+r 79             //add p to ps only if it's not
+--[ 2022.11.22.10.05.58.066.0 ]--
+r 79             //add p to ps only if it's not 
+--[ 2022.11.22.10.05.58.222.0 ]--
+r 79             //add p to ps only if it's not a
+--[ 2022.11.22.10.05.58.347.0 ]--
+r 79             //add p to ps only if it's not al
+--[ 2022.11.22.10.05.58.487.0 ]--
+r 79             //add p to ps only if it's not alr
+--[ 2022.11.22.10.05.58.890.0 ]--
+r 79             //add p to ps only if it's not alre
+--[ 2022.11.22.10.05.59.153.0 ]--
+r 79             //add p to ps only if it's not alrea
+--[ 2022.11.22.10.05.59.307.0 ]--
+r 79             //add p to ps only if it's not alread
+--[ 2022.11.22.10.05.59.484.0 ]--
+r 79             //add p to ps only if it's not already
+--[ 2022.11.22.10.05.59.616.0 ]--
+r 79             //add p to ps only if it's not already 
+--[ 2022.11.22.10.05.59.771.0 ]--
+r 79             //add p to ps only if it's not already i
+--[ 2022.11.22.10.05.59.970.0 ]--
+r 79             //add p to ps only if it's not already in
+--[ 2022.11.22.10.06.00.091.0 ]--
+r 79             //add p to ps only if it's not already in 
+--[ 2022.11.22.10.06.00.221.0 ]--
+r 79             //add p to ps only if it's not already in t
+--[ 2022.11.22.10.06.00.314.0 ]--
+r 79             //add p to ps only if it's not already in th
+--[ 2022.11.22.10.06.00.403.0 ]--
+r 79             //add p to ps only if it's not already in the
+--[ 2022.11.22.10.06.00.569.0 ]--
+r 79             //add p to ps only if it's not already in the 
+--[ 2022.11.22.10.06.01.800.0 ]--
+r 79             //add p to ps only if it's not already in the s
+--[ 2022.11.22.10.06.01.980.0 ]--
+r 79             //add p to ps only if it's not already in the st
+--[ 2022.11.22.10.06.02.105.0 ]--
+r 79             //add p to ps only if it's not already in the sta
+--[ 2022.11.22.10.06.02.320.0 ]--
+r 79             //add p to ps only if it's not already in the stac
+--[ 2022.11.22.10.06.02.425.0 ]--
+r 79             //add p to ps only if it's not already in the stack
+--[ 2022.11.22.10.06.02.794.0 ]--
+r 79             //add p to ps only if it's not already in the stack?

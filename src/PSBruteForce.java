@@ -128,7 +128,6 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
     // place your timing code or unit testing here
     public static void main(String[] args) {
         PSBruteForce<Integer> bf = new PSBruteForce<>();
-        RedBlackBST<Point, Integer> rb = new RedBlackBST<>();
         Point p = new Point(1.0, 1.0);
         Point t = new Point(2.0, 2.0);
         Point q = new Point(3.0, 3.0);

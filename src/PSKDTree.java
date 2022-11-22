@@ -76,6 +76,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
 
             if(newNode.p.x() > maxx) maxx = newNode.p.x();
             if(newNode.p.y() > maxy) maxy = newNode.p.y();
+            //add p to ps only if it's not already in the stack?
             ps.push(p);
             sp.push(new Partition(newNode.p,newNode.p,newNode.dir));
             return newNode;
@@ -95,8 +96,8 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     }
 
     public Value get(Point p) {
-        if(isEmpty()) return null;
         if(p == null) throw new NullPointerException("p must be initialized");
+        if(isEmpty()) return null;
         return get(root, p, root); //search through the tree instead of returning null
     }
 
@@ -120,8 +121,8 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     }
 
     public Value getNearest(Point p) {
-        if(isEmpty()) return null;
         if(p == null) throw new NullPointerException("p must be initialized");
+        if(isEmpty()) return null;
         Point nearestPoint = nearest(p);
         return get(nearestPoint);
     }
@@ -136,61 +137,69 @@ public class PSKDTree<Value> implements PointSearch<Value> {
 
     // return the Point that is closest to the given Point
     public Point nearest(Point p) {
+        if(p == null) throw new NullPointerException("p and root must be initialized");
         if(isEmpty()) return null;
-        if(p == null || root == null) throw new NullPointerException("p and root must be initialized");
-        return nearest(root, p, root.p, root.p.dist(p));
+        PointDist nearPt = new PointDist(root.p, root.p.dist(p));
+        return nearest(root, p, nearPt ).p();
     }
-    private Point nearest(Node current, Point p, Point currentNear, double nearDist) {
-        if(current == null) return currentNear;
+    //this returns a pointDist so that we can access both the nearest point and the distance of
+    //that point both from the one variable
+    private PointDist nearest(Node current, Point p, PointDist nearPt) {
+        if(current == null) return nearPt;
 
         //1. Check against the current point...  closer?
-        if(current.p.dist(p) < nearDist) {      //get distance to the query point from the partition point)
-            currentNear = current.p;
-            nearDist = current.p.dist(p);
+        if(current.p.dist(p) < nearPt.d()) {      //get distance to the query point from the partition point)
+            nearPt = new PointDist(current.p, current.p.dist(p));
         }
         //2. Check which side the query point is on
         if(current.dir == Partition.Direction.DOWNUP) {
             if(p.x() > current.p.x()) {
-                currentNear = nearest(current.right, p, currentNear, nearDist);
+                nearPt = nearest(current.right, p,nearPt);
             }
-            else currentNear = nearest(current.left, p, currentNear, nearDist);
+            else if(p.x() == current.p.x()) {
+                nearPt = nearest(current.right, p,nearPt);
+                nearPt = nearest(current.left, p,nearPt);
+            }
+            else nearPt = nearest(current.left, p,nearPt);
 
             //3. Check if we should check the other side!
             double partDist = current.p.x() - p.x();
-//            if (partDist < 0) partDist = -1 * partDist;
-//            if (nearDist < 0) nearDist = -1 * nearDist;
-            if (nearDist > partDist) {
-                if (p.x() > current.p.x()) nearest(current.left, p, currentNear, nearDist);
-                else nearest(current.right, p, currentNear, nearDist);
+            if (nearPt.d() > partDist) {
+                if (p.x() > current.p.x()) nearPt = nearest(current.left, p, nearPt);
+                else nearPt = nearest(current.right, p, nearPt);
             }
         }
         else {    // dir is LEFTRIGHT
             if(p.y() > current.p.y()) {
-                currentNear = nearest(current.right, p, currentNear, nearDist);
+                nearPt = nearest(current.right, p,nearPt);
             }
-            else currentNear = nearest(current.left, p, currentNear, nearDist);
+            else if(p.y() == current.p.y()) {
+                nearPt = nearest(current.left, p,nearPt);
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else nearPt = nearest(current.left, p,nearPt);
 
             //3. Check if we should check the other side!
             double partDist = current.p.y() - p.y();
 //            if (partDist < 0) partDist = -1 * partDist;
 //            if (nearDist < 0) nearDist = -1 * nearDist;
-            if (nearDist > partDist) {
-                if (p.y() > current.p.y()) nearest(current.left, p, currentNear, nearDist);
-                else nearest(current.right, p, currentNear, nearDist);
+            if (nearPt.d() > partDist) {
+                if(p.y() > current.p.y()) nearPt = nearest(current.left, p,nearPt);
+                else nearPt = nearest(current.right, p,nearPt);
             }
         }
-
-        return currentNear;
+        return nearPt;
     }
 
     // return the k nearest Points to the given Point
     public Iterable<Point> nearest(Point p, int k) {
         if(p == null) throw new NullPointerException("p must be initialized");
-        if(root == null) throw new NullPointerException("Null root has no nearest");
+        //if(k <= 0) return null;
+//        if(root == null) throw new NullPointerException("Null root has no nearest");
         MaxPQ<PointDist> ptpq = new MaxPQ<>();
 
         //add things to the global maxpq!
-        ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+//        ptpq.insert(new PointDist(root.p, root.p.dist(p)));
         kNearest(root, p, k, ptpq);
         Stack<Point> ptstack = new Stack<>();
         for(PointDist pd : ptpq) {
@@ -205,7 +214,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
         PointDist toAdd = new PointDist(current.p, current.p.dist(p));
         //1. Check against the current point...  closer?
         ptpq.insert(toAdd);
-        while( ptpq.size() > k ) {
+        if( ptpq.size() > k ) {
             ptpq.delMax();
         }
 
@@ -266,6 +275,15 @@ public class PSKDTree<Value> implements PointSearch<Value> {
 
     // place your timing code or unit testing here
     public static void main(String[] args) {
+        PSKDTree<Integer> pskd = new PSKDTree<>();
+        Point p = new Point(1.0, 1.0);
+        Point t = new Point(2.0, 2.0);
+        Point q = new Point(3.0, 3.0);
+        pskd.put(p, 10);
+        pskd.put(t, 20);
+        pskd.put(q, 30);
+        StdOut.println(pskd.nearest(new Point (0,0),0));
+
     }
 
 }
