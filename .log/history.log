@@ -28456,3 +28456,5183 @@ r 79             //add p to ps only if it's not already in the stac
 r 79             //add p to ps only if it's not already in the stack
 --[ 2022.11.22.10.06.02.794.0 ]--
 r 79             //add p to ps only if it's not already in the stack?
+--[ 2022.11.22.10.07.17.684.0 ]--
+:/src/NearestNeighborVisualizer.java
+r 9     private final static int nGaussian = 10;
+r 10     private final static int nUniform  = 10;
+r 39         int k = 1;
+--[ 2022.11.22.10.07.17.781.0 ]--
+:/src/PSBruteForce.java
++ 25         if(p == null) throw new NullPointerException("p must be initialized");
++ 44         if(p == null) throw new NullPointerException("p must be initialized");
++ 49         if(p == null) throw new NullPointerException("p must be initialized");
++ 60         if(p == null) throw new NullPointerException("p must be initialized");
++ 80         if(p == null) throw new NullPointerException("p must be initialized");
++ 102         if(p == null) throw new NullPointerException("p must be initialized");
++ 103 
+- 131
+--[ 2022.11.22.10.07.17.998.0 ]--
+:/src/PSKDTree.java
+- 29
+- 36
+- 36
+r 36     public PSKDTree() { }
++ 39     public void put(Point p, Value v) {
+r 40         if(p == null) throw new NullPointerException("p must be initialized");
++ 79             //add p to ps only if it's not already in the stack?
++ 99         if(p == null) throw new NullPointerException("p must be initialized");
++ 119         if(p == null) throw new NullPointerException("p must be initialized");
++ 124         if(p == null) throw new NullPointerException("p must be initialized");
++ 140         if(p == null) throw new NullPointerException("p and root must be initialized");
+r 142         PointDist nearPt = new PointDist(root.p, root.p.dist(p));
+r 143         return nearest(root, p, nearPt ).p();
++ 145     //this returns a pointDist so that we can access both the nearest point and the distance of
++ 146     //that point both from the one variable
+r 147     private PointDist nearest(Node current, Point p, PointDist nearPt) {
+r 148         if(current == null) return nearPt;
+- 151
+r 151         if(current.p.dist(p) < nearPt.d()) {      //get distance to the query point from the partition point)
+r 152             nearPt = new PointDist(current.p, current.p.dist(p));
++ 157                 nearPt = nearest(current.right, p,nearPt);
++ 158             }
++ 159             else if(p.x() == current.p.x()) {
++ 160                 nearPt = nearest(current.right, p,nearPt);
+r 161                 nearPt = nearest(current.left, p,nearPt);
+r 163             else nearPt = nearest(current.left, p,nearPt);
+- 167
+- 167
+r 167             if (nearPt.d() > partDist) {
+r 168                 if (p.x() > current.p.x()) nearPt = nearest(current.left, p, nearPt);
+r 169                 else nearPt = nearest(current.right, p, nearPt);
++ 174                 nearPt = nearest(current.right, p,nearPt);
++ 175             }
++ 176             else if(p.y() == current.p.y()) {
++ 177                 nearPt = nearest(current.left, p,nearPt);
+r 178                 nearPt = nearest(current.right, p,nearPt);
+r 180             else nearPt = nearest(current.left, p,nearPt);
+r 184 //            if (partDist < 0) partDist = -1 * partDist;
+r 185 //            if (nearDist < 0) nearDist = -1 * nearDist;
+r 186             if (nearPt.d() > partDist) {
+r 187                 if(p.y() > current.p.y()) nearPt = nearest(current.left, p,nearPt);
+r 188                 else nearPt = nearest(current.right, p,nearPt);
+- 191
+r 191         return nearPt;
++ 196         if(p == null) throw new NullPointerException("p must be initialized");
++ 197         //if(k <= 0) return null;
++ 198 //        if(root == null) throw new NullPointerException("Null root has no nearest");
++ 199         MaxPQ<PointDist> ptpq = new MaxPQ<>();
++ 200 
+r 202 //        ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+r 203         kNearest(root, p, k, ptpq);
+r 211     private void kNearest(Node current, Point p, int k, MaxPQ<PointDist> ptpq) {
++ 213         if(k <= 0) return;
+r 214         PointDist toAdd = new PointDist(current.p, current.p.dist(p));
+r 216         ptpq.insert(toAdd);
+r 217         if( ptpq.size() > k ) {
+r 218             ptpq.delMax();
+r 219         }
++ 224                 kNearest(current.right, p, k, ptpq);
++ 225             }
++ 226             else {
+r 227                 kNearest(current.left, p, k, ptpq);
+r 229 
+r 233             if (ptpq.max().d() > partDist || ptpq.size() < k) {
+r 234                 if (p.x() > current.p.x()) kNearest(current.left, p, k, ptpq);
+r 235                 else kNearest(current.right, p, k, ptpq);
+r 240                 kNearest(current.right, p, k, ptpq);
++ 242             else {
++ 243                 kNearest(current.left, p, k, ptpq);
+r 244             }
+r 250             if (ptpq.max().d() > partDist || ptpq.size() < k) {
+r 251                 if (p.y() > current.p.y()) kNearest(current.left, p, k, ptpq);
+r 252                 else kNearest(current.right, p, k, ptpq);
++ 278         PSKDTree<Integer> pskd = new PSKDTree<>();
++ 279         Point p = new Point(1.0, 1.0);
++ 280         Point t = new Point(2.0, 2.0);
++ 281         Point q = new Point(3.0, 3.0);
++ 282         pskd.put(p, 10);
++ 283         pskd.put(t, 20);
++ 284         pskd.put(q, 30);
++ 285         StdOut.println(pskd.nearest(new Point (0,0),0));
++ 286 
+--[ 2022.11.22.10.12.22.984.0 ]--
+UpdateTree (AD): 17 0
++ /.git/objects/09/bd3ab462c2a54f2f734a663b4d0d55dbefa856
++ /.git/objects/0c/324b92a8f6c06aa72c7d1a7b6a4b3a471f2f9f
++ /.git/objects/2e/39673052a1f295d801c985e388b4f7474189b5
++ /.git/objects/33/29e710a9d2d294d0f84a40c0633b7be4a3026a
++ /.git/objects/35/3cb223ed1906f7fafb0088b405f95a94d48049
++ /.git/objects/47/2708597a52c84fb05917e78f58bfd5c9595103
++ /.git/objects/4a/9775d73ccee16579f82f60842f1ec68e703dac
++ /.git/objects/54/a9050837f1727bb42ff80852d5672f04ae77e0
++ /.git/objects/63/f769006f85ce8b975f16e9c895bd3395504579
++ /.git/objects/68/33ac541d58999c846b37793c0ca6bb09e43f21
++ /.git/objects/78/3a4bd1695b06d6a609ec9b01d8c9b758f195c5
++ /.git/objects/8a/bbcdc86504fabb13251c37065ad9481cf251d5
++ /.git/objects/ad/9e0e30c3ce07a69853ebe6d96f2baaa8b40058
++ /.git/objects/c9/03bc28d810f9bd1bce4dabc68cfe49dd29b6e4
++ /.git/objects/f1/f318c26c20a6cefd43a41e41a4c26c668d97ea
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_22_22,_10_07_AM_[Default]/shelved.patch
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_22_22__10_07_AM__Default_.xml
+
+--[ 2022.11.22.10.18.48.856.0 ]--
+NewLogger: P05_KDTrees
+Version: 1.5
+--[ 2022.11.22.10.18.48.862.0 ]--
+InitTree:
+/out/production/P05_KDTrees/.donotlog
+/out/production/P05_KDTrees/algs4.jar
+/out/production/P05_KDTrees/stdlib.jar
+/out/production/P05_KDTrees/input1M.txt
+/out/production/P05_KDTrees/Mouse.class
+/out/production/P05_KDTrees/Point.class
+/out/production/P05_KDTrees/input100K.txt
+/out/production/P05_KDTrees/Point$1.class
+/out/production/P05_KDTrees/Point$2.class
+/out/production/P05_KDTrees/Point$3.class
+/out/production/P05_KDTrees/Point$4.class
+/out/production/P05_KDTrees/burgerking.csv
+/out/production/P05_KDTrees/KeyPress.class
+/out/production/P05_KDTrees/PSKDTree.class
+/out/production/P05_KDTrees/Partition.class
+/out/production/P05_KDTrees/PointDist.class
+/out/production/P05_KDTrees/Visualizer.class
+/out/production/P05_KDTrees/PointSearch.class
+/out/production/P05_KDTrees/PSBruteForce.class
+/out/production/P05_KDTrees/PSKDTree$Node.class
+/out/production/P05_KDTrees/FastFoodVisualizer.class
+/out/production/P05_KDTrees/Partition$Direction.class
+/out/production/P05_KDTrees/NearestNeighborVisualizer.class
+/src/algs4.jar
+/src/Mouse.java
+/src/Point.java
+/src/stdlib.jar
+/src/KeyPress.java
+/src/PSKDTree.java
+/src/Partition.java
+/src/PointDist.java
+/src/Visualizer.java
+/src/PointSearch.java
+/src/PSBruteForce.java
+/src/FastFoodVisualizer.java
+/src/NearestNeighborVisualizer.java
+/.git/info/exclude
+/.git/logs/refs/heads/main
+/.git/logs/refs/remotes/origin/main
+/.git/logs/HEAD
+/.git/refs/heads/main
+/.git/refs/remotes/origin/main
+/.git/hooks/update.sample
+/.git/hooks/pre-push.sample
+/.git/hooks/commit-msg.sample
+/.git/hooks/pre-commit.sample
+/.git/hooks/pre-rebase.sample
+/.git/hooks/post-update.sample
+/.git/hooks/pre-receive.sample
+/.git/hooks/applypatch-msg.sample
+/.git/hooks/pre-applypatch.sample
+/.git/hooks/pre-merge-commit.sample
+/.git/hooks/push-to-checkout.sample
+/.git/hooks/fsmonitor-watchman.sample
+/.git/hooks/prepare-commit-msg.sample
+/.git/objects/01/93c2673203020e3726e397a6870107f9e38aa9
+/.git/objects/05/054a55af449d7a3d22569a0d9278837d3116b7
+/.git/objects/05/aa0754159021ad4bb196249ebed23fcaee0f05
+/.git/objects/09/bd3ab462c2a54f2f734a663b4d0d55dbefa856
+/.git/objects/0c/324b92a8f6c06aa72c7d1a7b6a4b3a471f2f9f
+/.git/objects/0c/55bcf14a37162c8cecdd8bb4226a147b847710
+/.git/objects/0d/90a95e4569ab236f012c54a903f79e23f7e45d
+/.git/objects/0f/05624ad8de377d4bdf3ec1558d477af125661c
+/.git/objects/11/6f5b50e2bd7e5a645224f577c702fc62092122
+/.git/objects/1a/49d62b998226393c172907eef021434d19be9a
+/.git/objects/1f/b9dc988a5179e983b847d789447e3c5fa79e57
+/.git/objects/1f/fc97640cccefe0b1a237033b6373d6267daafb
+/.git/objects/21/5f9d8b463f594d7a29686b9e9be2c095a4e415
+/.git/objects/26/3963a64f2a64659282fd9cbe561dd7a5e4a676
+/.git/objects/2b/146202332c98f33d1ab3db98dea03e6bbc1093
+/.git/objects/2b/5f9208bfadbbc9019b47a713b74462b9cd2613
+/.git/objects/2d/684a62c75f8da8fc231206420108d204cbe252
+/.git/objects/2d/a01175c002a7aca63ea26eac5644d92eff4262
+/.git/objects/2e/39673052a1f295d801c985e388b4f7474189b5
+/.git/objects/2e/d4fe70b4e088ec2c3ac33ca08f741ed2d35a97
+/.git/objects/30/6f36bddc52f2e08ccf8a41536340870eb1829c
+/.git/objects/33/29e710a9d2d294d0f84a40c0633b7be4a3026a
+/.git/objects/34/c40469b8879baee4fbd8d7ee3c930ed59cb6f3
+/.git/objects/35/3cb223ed1906f7fafb0088b405f95a94d48049
+/.git/objects/39/5d98ffb25a1aa9df31eb7f0e6c2af2e28bc31d
+/.git/objects/3a/467db814b5de23a11971dfafc2a31dab54402b
+/.git/objects/3c/91061820fd12503e015c3c19cec90b78494358
+/.git/objects/3e/ec82059c43fd48c2c87acbb5d3146919181ac4
+/.git/objects/42/2e8fe6a25b2cb1526a3b698f7bb6e4a6d6ab1f
+/.git/objects/43/34e267d8776aabbeb38713c0a502fa328ceb68
+/.git/objects/47/2708597a52c84fb05917e78f58bfd5c9595103
+/.git/objects/49/554703073ae63a7122c05b80a894ac3ff48370
+/.git/objects/4a/9775d73ccee16579f82f60842f1ec68e703dac
+/.git/objects/4f/ce1d86b49521afe1cee4ed1c13b6396ebbc6f3
+/.git/objects/54/0fd2392eaf74abc751e9970668bf235e56f803
+/.git/objects/54/a9050837f1727bb42ff80852d5672f04ae77e0
+/.git/objects/57/21445f69b8abeb3fa1b24eafb39b339a66c987
+/.git/objects/5c/98b428844d9f7d529e2b6fb918d15bf072f3df
+/.git/objects/63/f769006f85ce8b975f16e9c895bd3395504579
+/.git/objects/65/427e6010f1b59257bc8ac509401e7eeb2698d4
+/.git/objects/67/a3cbc10acb52f757cbd15ab1a2acaef561cf5d
+/.git/objects/68/2820a134168b0d23787b376165bef89b511f00
+/.git/objects/68/33ac541d58999c846b37793c0ca6bb09e43f21
+/.git/objects/6a/13eb1367395cad1f3ae5b2219d4d1a970335e1
+/.git/objects/6e/10e3d8976dabc74255b1ddce2024336f50d7e2
+/.git/objects/6e/e6bdaf464e0f4adb373587a385e0875ebf8ba6
+/.git/objects/74/a6a5d585c5ea37685f0464c4d008732ed403d9
+/.git/objects/75/63d3f1a349009df7dbf21fee30194eead50ca0
+/.git/objects/77/c1c9e0460791004d21b231cb11397fa8405453
+/.git/objects/78/3a4bd1695b06d6a609ec9b01d8c9b758f195c5
+/.git/objects/7c/f2891237ab51abd3dcfe41128b939aa54ae3a2
+/.git/objects/7d/61ee6e1564fdc3e562582a8ca1c55185fd2b09
+/.git/objects/80/8df08d052527e9a626a08c732fb0fb470708c8
+/.git/objects/86/5b56d35df1dcfcbf5196eeddcef674c03a3a93
+/.git/objects/8a/bbcdc86504fabb13251c37065ad9481cf251d5
+/.git/objects/8b/e37e197c873cbcd2952f364d9e3a447bc4e692
+/.git/objects/8c/333a97e7dbd1f8d32d947ad097e8e247f9f041
+/.git/objects/8d/e804238c33c653fe535bd162aabed440497ec7
+/.git/objects/91/4c3a82a059ff11e1e2248c3ee1ce32a78bc63a
+/.git/objects/96/cc43efa6a0885098044e976cd780bb42c68a70
+/.git/objects/9a/8c6aff1f8871e01cacec32f40b40f4107494d2
+/.git/objects/9a/e8d0c18cb848aa651381c33a3fa44eddc40bcb
+/.git/objects/9c/780ff1eacdac600ca19795de4e5f1220a1bf3e
+/.git/objects/a4/1f4cf11f0c1e522a76feaaea7dd201322b74b2
+/.git/objects/aa/90a9d65e85ba8dedaeee57dbca845093794f15
+/.git/objects/aa/d3f0402094e10cd99e06ba2a544a57396b1919
+/.git/objects/ad/9e0e30c3ce07a69853ebe6d96f2baaa8b40058
+/.git/objects/ae/39a65a74d4111e721807c06e27bd6754992fbb
+/.git/objects/af/24b078cc669f5e4da5902ba1297a2ac0fa2339
+/.git/objects/b2/0a2737119fe126fc0fc4d4284bed106ad85463
+/.git/objects/b4/a758f2f8c8a18b851825e056e555c5620ae676
+/.git/objects/b6/90d19ac158bfa6e1ae11cef101f0d1a7434bd9
+/.git/objects/b7/710fca979cfd5216bf2633dd1dfa8161d9f45f
+/.git/objects/b7/9e120aa750f1350aa5c9c92e567b92d1cb06ca
+/.git/objects/bd/dc962f4cacb8ce630d07f575b6668243250fb1
+/.git/objects/c2/259fdab2fede23add0f6b409611094fb0ae13a
+/.git/objects/c2/828bc31a68ae45ce1922d19323206b232cbda4
+/.git/objects/c2/a99d32458bd15f0b79cff7dd46d99629763bed
+/.git/objects/c3/fde00d07458f153bdb5082ceb011de8dcc9721
+/.git/objects/c6/82756a1eb42ff4805cdfc29c84fac9230c11e5
+/.git/objects/c7/e29d8475f23acd8d328dc8074104b846f4bbbf
+/.git/objects/c7/ed19fcb2ed6617a23bd3e9a2efaa966bed42da
+/.git/objects/c9/03bc28d810f9bd1bce4dabc68cfe49dd29b6e4
+/.git/objects/ca/22da9b6c126b0744cfde03b32ebdff29cb41ab
+/.git/objects/ca/9a474fc415e206e1d701688a299fa1b8bbd628
+/.git/objects/ce/2de51fa2f6dd8ca45683eb75ba132137da5a20
+/.git/objects/d2/e73db08c8563911c081a8651a77f67c4b48b43
+/.git/objects/d4/85126c43a458d604c41191c3cd216e30972972
+/.git/objects/d6/6b5e816c127d864df03b0dd33db812fa463679
+/.git/objects/de/c87ed246fc3ca006dddb4db1972a0e1d67919e
+/.git/objects/e2/3a8b692a016f63a83e1997a2326d3be18d8d1e
+/.git/objects/e5/f5f06b6f0fb91e529051f1cb6651cc60ce2f48
+/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+/.git/objects/e7/bedf3377d40335424fd605124d4761390218bb
+/.git/objects/e9/6534fb27b68192f27f985d3879e173ec77adb8
+/.git/objects/e9/ce331a35ca02c33b0678d762c13fe57fe4a67a
+/.git/objects/ee/909fb82334c194c06fd779181ba31079f10d42
+/.git/objects/ef/89a8450022222b69a62814d66e3f6c8ecb5a60
+/.git/objects/f1/9e236587050cfbf8e8761a3460ac0c95e5fb0c
+/.git/objects/f1/f318c26c20a6cefd43a41e41a4c26c668d97ea
+/.git/objects/f5/001ef95b10cd55e1f28b609cd462b09cf24d06
+/.git/objects/f6/cca8a6084310f182dc287fadbb82c5ebcfffe8
+/.git/objects/fb/e4187a868130477a51ea5c1bc60e0dce69cec4
+/.git/objects/fc/e1363a394e590b51c742706992bebecae53b2b
+/.git/HEAD
+/.git/index
+/.git/config
+/.git/ORIG_HEAD
+/.git/FETCH_HEAD
+/.git/description
+/.git/COMMIT_EDITMSG
+/.log/history.log
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22,_8_38_PM_[Default]/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22,_11_28_AM_[Default]/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_22,_10_07_AM_[Default]/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22__8_38_PM__Default_.xml
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22__11_28_AM__Default_.xml
+/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_22__10_07_AM__Default_.xml
+/.idea/copyright/profiles_settings.xml
+/.idea/libraries/algs4.xml
+/.idea/libraries/stdlib.xml
+/.idea/.name
+/.idea/vcs.xml
+/.idea/misc.xml
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/compiler.xml
+/.idea/workspace.xml
+/.idea/uiDesigner.xml
+/tests/.donotlog
+/tests/input1M.txt
+/tests/input100K.txt
+/tests/burgerking.csv
+/.cos265
+/readme.html
+/P05_KDTrees.iml
+
+--[ 2022.11.22.10.18.48.863.0 ]--
+InitFile: /src/Partition.java
+/**
+ * Partition is a simple class that stores two points and a direction,
+ * where the two points make up a partition along the given direction.
+ */
+public final class Partition {
+    // enumeration of all partition directions: Left-Right and Up-Down
+    public enum Direction {
+        LEFTRIGHT,
+        DOWNUP
+    }
+
+    // returns the next direction in the enumeration
+    public static Direction nextDirection(Direction dir) {
+        if(dir == Direction.LEFTRIGHT) return Direction.DOWNUP;
+        return Direction.LEFTRIGHT;
+    }
+
+    private final Point p0;
+    private final Point p1;
+    private final Direction dir;
+
+    public Partition(Point p0, Point p1, Direction dir) {
+        this.p0 = p0;
+        this.p1 = p1;
+        this.dir = dir;
+    }
+
+    public Partition(double x0, double y0, double x1, double y1, Direction dir) {
+        this.p0 = new Point(x0, y0);
+        this.p1 = new Point(x1, y1);
+        this.dir = dir;
+    }
+
+    public Point p0() { return p0; }
+
+    public Point p1() { return p1; }
+
+    public Direction dir() { return dir; }
+}
+
+--[ 2022.11.22.10.18.48.864.0 ]--
+InitFile: /src/Mouse.java
+/**
+ * Mouse is a helper class for detecting mouse presses (not just whether the mouse is pressed)
+ * and for transforming the cursor location from window-space to program-space
+ */
+public class Mouse {
+    private boolean pressed;
+    private final int xOffset, yOffset, width, height;
+
+    public Mouse(int xOffset, int yOffset, int width, int height) {
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
+        this.width = width;
+        this.height = height;
+    }
+
+    public boolean isPressed() {
+        boolean p = StdDraw.mousePressed();
+        boolean v = !pressed && p;
+        pressed = p;
+        return v;
+    }
+
+    public Point getLocation() {
+        double mouseX = (StdDraw.mouseX() - (float)xOffset) / (float)width;
+        double mouseY = (StdDraw.mouseY() - (float)yOffset) / (float)height;
+        return new Point(mouseX, mouseY);
+    }
+}
+
+--[ 2022.11.22.10.18.48.864.1 ]--
+InitFile: /src/KeyPress.java
+/**
+ * KeyPress is a helper class for detecting key presses (not just whether the key is pressed)
+ */
+public class KeyPress {
+    private final int key;
+    private boolean pressed;
+
+    public KeyPress(int key) {
+        this.key = key;
+    }
+
+    public boolean isDown() {
+        return StdDraw.isKeyPressed(this.key);
+    }
+
+    public boolean isUp() {
+        return !isDown();
+    }
+
+    public boolean isPressed() {
+        boolean p = StdDraw.isKeyPressed(this.key);
+        boolean v = !pressed && p;
+        pressed = p;
+        return v;
+    }
+}
+
+--[ 2022.11.22.10.18.48.864.2 ]--
+InitFile: /src/NearestNeighborVisualizer.java
+import java.awt.event.KeyEvent;
+
+/**
+ * Visualizes nearest neighbors to mouse cursor and partitioning data
+ */
+public class NearestNeighborVisualizer {
+
+    // number of dots to add at start
+    private final static int nGaussian = 10;
+    private final static int nUniform  = 10;
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    // creates a new PointSearch data structure
+    // note: you can swap between PSKDTree and PSBruteForce to debug your code
+    private static PointSearch<Character> createNewPS() {
+        return new PSKDTree<>();
+    }
+
+    public static void main(String[] args) {
+        PointSearch<Character> ps = createNewPS();
+
+        // add some random points
+        for(int i = 0; i < nGaussian; i++) ps.put(Point.gaussian(), 'g');
+        for(int i = 0; i < nUniform; i++) ps.put(Point.uniform(), 'u');
+
+        // add points to match assignment write-up
+        /*
+        ps.put(new Point(0.8, 0.9), 'A');
+        ps.put(new Point(0.5, 0.4), 'B');
+        ps.put(new Point(0.2, 0.6), 'C');
+        ps.put(new Point(0.3, 0.1), 'D');
+        ps.put(new Point(0.9, 0.4), 'E');
+        */
+
+        StdDraw.show(0);
+
+        int k = 1;
+        boolean drawClosest = true;
+        boolean drawPartitions = false;
+        boolean drawBoundingBox = false;
+
+        KeyPress keyP    = new KeyPress(KeyEvent.VK_P);
+        KeyPress keyUp   = new KeyPress(KeyEvent.VK_UP);
+        KeyPress keyDown = new KeyPress(KeyEvent.VK_DOWN);
+        KeyPress keyC    = new KeyPress(KeyEvent.VK_C);
+        KeyPress keyN    = new KeyPress(KeyEvent.VK_N);
+        KeyPress keyB    = new KeyPress(KeyEvent.VK_B);
+        Mouse    mouse   = new Mouse(24, 36, 464, 464);
+
+        while(true) {
+            Point loc = mouse.getLocation();
+
+            if(keyC.isPressed()) ps = createNewPS();
+            if(keyUp.isPressed()) k++;
+            if(keyDown.isPressed() && k > 0) k--;
+            if(keyN.isPressed()) drawClosest = !drawClosest;
+            if(keyP.isPressed()) drawPartitions = !drawPartitions;
+            if(keyB.isPressed()) drawBoundingBox = !drawBoundingBox;
+            if(mouse.isPressed()) ps.put(loc, 'm');
+
+            Visualizer.clear();
+            Visualizer.drawKDTree(ps, drawPartitions, drawBoundingBox);
+            Visualizer.drawNeighbors(ps, loc, drawClosest, k);
+
+            StdDraw.show(DELAY);
+        }
+    }
+}
+
+--[ 2022.11.22.10.18.48.865.0 ]--
+InitFile: /src/Point.java
+import java.util.Comparator;
+
+/**
+ * Point is a simple tuple of doubles with some handy functions.  Point is useful for
+ * storing and computing 2D points.
+ */
+public final class Point implements Comparable<Point> {
+    private final double x;
+    private final double y;
+
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Point(Point p) {
+        this.x = p.x;
+        this.y = p.y;
+    }
+
+    // generates a Point with location chosen uniformly at random in the unit square [0,1]^2
+    public static Point uniform() {
+        return new Point(StdRandom.uniform(), StdRandom.uniform());
+    }
+
+    // generates a Point with location chosen with gaussian distribution in unit square [0,1]^2
+    // with mean of 0.5 and stddev of 0.12
+    public static Point gaussian() {
+        double x = -1, y = -1;
+        // do not return an x,y that is outside the unit square
+        while(x < 0 || y < 0 || x > 1 || y > 1) {
+            x = StdRandom.gaussian(0.5, 0.12);
+            y = StdRandom.gaussian(0.5, 0.12);
+        }
+        return new Point(x, y);
+    }
+
+
+    /**
+     * the functions below can be used to find the min/max x/y which
+     * can be used to find the bounding box of points
+     */
+
+    // returns a point with minimum component values
+    public static Point min(Point p0, Point p1) {
+        return new Point(Math.min(p0.x, p1.x), Math.min(p0.y, p1.y));
+    }
+
+    // returns a point with maximum component values
+    public static Point max(Point p0, Point p1) {
+        return new Point(Math.max(p0.x, p1.x), Math.max(p0.y, p1.y));
+    }
+
+
+    /**
+     * use the following functions to compare Points in different ways.
+     * Points are Comparable, so they know how to compareTo one another,
+     * but the other functions return Comparator objects which can compare
+     * Points in different ways.
+     */
+
+    // compares this to that, first by y component then by x
+    public int compareTo(Point that) {
+        if(this.y < that.y) return -1;
+        if(this.y > that.y) return +1;
+        if(this.x < that.x) return -1;
+        if(this.x > that.x) return +1;
+        return 0;
+    }
+
+    // do the components of this equal the components of that?
+    public boolean equals(Object that) {
+        if(this == that) return true;
+        if(that == null) return false;
+        if(that.getClass() != this.getClass()) return false;
+        Point thatp = (Point)that;
+        if(Double.compare(this.x, thatp.x) != 0) return false;
+        if(Double.compare(this.y, thatp.y) != 0) return false;
+        return true;
+    }
+
+    // returns a Comparator, comparing x first then y
+    public static Comparator<Point> xyComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                if(o0.x < o1.x) return -1;
+                if(o0.x > o1.x) return +1;
+                if(o0.y < o1.y) return -1;
+                if(o0.y > o1.y) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator, comparing y fist then x
+    public static Comparator<Point> yxComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                if(o0.y < o1.y) return -1;
+                if(o0.y > o1.y) return +1;
+                if(o0.x < o1.x) return -1;
+                if(o0.x > o1.x) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator, comparing the polar radius (dist from (0,0))
+    public static Comparator<Point> polarRadiusComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                double d0 = (o0.x*o0.x + o0.y*o0.y);
+                double d1 = (o1.x*o1.x + o1.y*o1.y);
+                if(d0 < d1) return -1;
+                if(d0 > d1) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator for this, comparing dist between first given
+    // point and this and dist between second given point and this
+    public Comparator<Point> distanceToComparator() {
+        return new Comparator<Point>() {
+            private final double ox = x;
+            private final double oy = y;
+            @Override
+            public int compare(Point o0, Point o1) {
+                double d0 = (o0.x-ox)*(o0.x-ox) + (o0.y-oy)*(o0.y-oy);
+                double d1 = (o1.x-ox)*(o1.x-ox) + (o1.y-oy)*(o1.y-oy);
+                if(d0 < d1) return -1;
+                if(d0 > d1) return +1;
+                return 0;
+            }
+        };
+    }
+
+
+    /**
+     * getters and setters
+     */
+
+    // getters of x and y
+    public double x() { return x; }
+    public double y() { return y; }
+
+    // getter of either x or y depending on dir
+    // dir = LEFTRIGHT => returns x
+    // dir = DOWNUP    => returns y
+    public double xy(Partition.Direction dir) {
+        if(dir == Partition.Direction.LEFTRIGHT) return x;
+        else return y;
+    }
+
+
+    /**
+     * functions for computing distances
+     */
+
+    // computes distance^2 between this point and (x,y)
+    public double distSquared(double x, double y) {
+        return (this.x-x)*(this.x-x) + (this.y-y)*(this.y-y);
+    }
+
+    // computes distance^2 between this point and another (p)
+    public double distSquared(Point p) {
+        return distSquared(p.x, p.y);
+    }
+
+    // computes distance between this point and (x,y)
+    public double dist(double x, double y) {
+        return Math.sqrt(distSquared(x, y));
+    }
+
+    // computes distance between this point and another (p)
+    public double dist(Point p) {
+        return dist(p.x, p.y);
+    }
+
+
+    /**
+     * misc functions
+     */
+
+    // returns a new point that has values added to components
+    public Point add(double x, double y) {
+        return new Point(this.x + x, this.y + y);
+    }
+
+    // returns a new point that has values added to components
+    public Point add(Point p) {
+        return add(p.x, p.y);
+    }
+
+    // returns whether point is within given min and max bounds
+    public boolean isInBounds(double x0, double y0, double x1, double y1) {
+        if(Double.compare(x,x0) <= 0) return false;
+        if(Double.compare(y,y0) <= 0) return false;
+        if(Double.compare(x1,x) <= 0) return false;
+        if(Double.compare(y1,y) <= 0) return false;
+        return true;
+    }
+
+    public boolean isInBounds(Point min, Point max) {
+        return isInBounds(min.x, min.y, max.x, max.y);
+    }
+
+    // produces a String representation of Point
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+}
+
+--[ 2022.11.22.10.18.48.874.0 ]--
+InitFile: /src/FastFoodVisualizer.java
+import java.awt.*;
+
+/**
+ * Loads and visualizes location data, and reports information on the closest
+ * data point to mouse cursor
+ */
+public class FastFoodVisualizer {
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    private static final Color cText = new Color(64,64,64);
+
+    private static void parseCSVLine(String line, String[] data) {
+        boolean inQuote = false;
+        int s = -1;
+        int j = 0;
+        for(int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if(c == ',' && !inQuote) {
+                if(line.charAt(s+1) == '"' && line.charAt(i-1) == '"') {
+                    data[j] = line.substring(s+2,i-1);
+                } else {
+                    data[j] = line.substring(s + 1, i);
+                }
+                j++;
+                s = i;
+                continue;
+            }
+            if(c=='"') {
+                inQuote = !inQuote;
+            }
+        }
+        int i = line.length();
+        if(s < i) {
+            if(line.charAt(s+1) == '"' && line.charAt(i-1) == '"') {
+                data[j] = line.substring(s+2,i-1);
+            } else {
+                data[j] = line.substring(s + 1, i);
+            }
+        }
+    }
+
+    private static String[][] readCSV(String filename, int m) {
+        String[] lines = (new In(filename)).readAllLines();
+        int n = lines.length;
+        String[][] a = new String[n][m];
+        for(int i = 0; i < n; i++) parseCSVLine(lines[i], a[i]);
+        return a;
+    }
+
+    private static void insertCSV(String filename, PointSearch<String[]> ps) {
+        String[][] data = readCSV(filename, 4);
+        for(int i = 0; i < data.length; i++) {
+            double longitude = Double.parseDouble(data[i][0]);
+            double latitude = Double.parseDouble(data[i][1]);
+            String[] loc = {data[i][2], data[i][3]};
+            ps.put(new Point(longitude, latitude), loc);
+        }
+    }
+
+    public static void main(String[] args) {
+        PointSearch<String[]> psBurgerKings = new PSKDTree<>();
+
+        insertCSV("burgerking.csv", psBurgerKings);
+
+        Visualizer.setScaling(psBurgerKings.min(), psBurgerKings.max());
+
+        StdDraw.show(0);
+
+        Mouse mouse = new Mouse(24, 36, 464, 464);
+
+        while(true) {
+            Point loc = Visualizer.xformInv(mouse.getLocation());
+
+            Visualizer.clear();
+            Visualizer.drawKDTree(psBurgerKings, false, false);
+            Visualizer.drawNeighbors(psBurgerKings, loc, true, 0);
+
+            StdDraw.setPenColor(cText);
+            int i = 464;
+            String[] value = psBurgerKings.getNearest(loc);
+            if(value != null) {
+                for (String l : value) {
+                    StdDraw.text(256, i, l);
+                    i -= 16;
+                }
+            }
+
+            StdDraw.show(DELAY);
+        }
+
+
+    }
+}
+
+--[ 2022.11.22.10.18.48.875.0 ]--
+InitFile: /src/PointSearch.java
+/**
+ * This interface defines the basic API for a 2D symbol table
+ * where the keys are Points and the values are the generic
+ * type Value
+ */
+public interface PointSearch<Value> {
+    boolean isEmpty();
+    int size();
+
+    Point min();
+    Point max();
+
+    void put(Point p, Value v);
+    Iterable<Point> points();
+    boolean contains(Point p);
+    Value get(Point p);
+    Value getNearest(Point p);
+
+    Point nearest(Point p);
+    Iterable<Point> nearest(Point p, int k);
+
+    Iterable<Partition> partitions();
+}
+
+--[ 2022.11.22.10.18.48.875.1 ]--
+InitFile: /src/Visualizer.java
+import java.awt.*;
+
+/**
+ * Created by jdenning on 11/2/15.
+ */
+public class Visualizer {
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    // colors for vizualization
+    private static final Color cDot = new Color(64,64,64);      // point (small box)
+    private static final Color cKNN = new Color(200,200,255);   // k nearest neighbors
+    private static final Color cNN  = new Color(64,64,255);     // nearest neighbor
+    private static final Color cLR  = new Color(255,128,128);   // left-right partition
+    private static final Color cUD  = new Color(128,255,128);   // up-down partition
+    private static final Color cBox = new Color(192,192,192);   // bounding box
+
+    private static double offsetX = 0.0;
+    private static double offsetY = 0.0;
+    private static double scale = 1.0;
+
+    private static double dotSize = 1.0;
+
+    public static void setScale(double scale) { Visualizer.scale = scale; }
+    public static double getScale() { return Visualizer.scale; }
+    public static void setOffsetX(double offsetX) { Visualizer.offsetX = offsetX; };
+    public static double getOffsetX() { return Visualizer.offsetX; }
+    public static void setOffsetY(double offsetY) { Visualizer.offsetY = offsetY; };
+    public static double getOffsetY() { return Visualizer.offsetY; }
+    public static void setScaling(double minX, double minY, double maxX, double maxY) {
+        offsetX = minX; offsetY = minY;
+        double d = Math.max(maxX - minX, maxY - minY);
+        if(d == 0.0) scale = 0.0;
+        else scale = 1.0 / d;
+    }
+    public static void setScaling(Point min, Point max) {
+        if(min == null || max == null) return;
+        setScaling(min.x(), min.y(), max.x(), max.y());
+    }
+
+    public static double getDotSize() { return dotSize; }
+    public static void setDotSize(double dotSize) { Visualizer.dotSize = dotSize; }
+
+    public static void clear() {
+        StdDraw.clear();
+        StdDraw.setXscale(0, 512);
+        StdDraw.setYscale(0, 512);
+    }
+    public static void drawNeighbors(PointSearch ps, Point loc, boolean drawClosest, int k) {
+        if(ps.isEmpty()) return;
+
+        Iterable<Point> nearest = ps.nearest(loc, k);
+        if(nearest != null) {
+            StdDraw.setPenColor(cKNN);
+            for (Point p : nearest) drawLine(loc, p);
+        }
+
+        if(drawClosest) {
+            Point closest = ps.nearest(loc);
+            if (closest != null) {
+                StdDraw.setPenColor(cNN);
+                StdDraw.setPenRadius(0.005);
+                drawLine(loc, closest);
+                StdDraw.setPenRadius();
+            }
+        }
+    }
+    public static void drawKDTree(PointSearch ps, boolean drawPartitions, boolean drawBoundingBox) {
+        if(ps.isEmpty()) return;
+
+        if(drawBoundingBox) {
+            StdDraw.setPenColor(cBox);
+            drawBox(ps.min(), ps.max());
+        }
+
+        if(drawPartitions) {
+            Iterable<Partition> partitions = ps.partitions();
+            if(partitions != null) {
+                StdDraw.setPenRadius(0.005);
+                for (Partition p : partitions) {
+                    if (p.dir() == Partition.Direction.LEFTRIGHT) StdDraw.setPenColor(cLR);
+                    else StdDraw.setPenColor(cUD);
+                    drawLine(p.p0(), p.p1());
+                }
+                StdDraw.setPenRadius();
+            }
+        }
+
+        Iterable<Point> points = ps.points();
+        if(points != null) {
+            StdDraw.setPenColor(cDot);
+            setDotSize(Math.max(1.0, 5.0 / Math.pow(ps.size() + 1, 0.5)));
+            for (Point p : points) drawDot(p);
+        }
+    }
+
+    private static double xformX(double x) { return (x - offsetX) * scale; }
+    private static double xformY(double y) { return (y - offsetY) * scale; }
+    private static double xformInvX(double x) { return x / scale + offsetX; }
+    private static double xformInvY(double y) { return y / scale + offsetY; }
+    public static Point xform(Point p) {
+        return new Point(xformX(p.x()), xformY(p.y()));
+    }
+    public static Point xformInv(Point p) {
+        return new Point(xformInvX(p.x()), xformInvY(p.y()));
+    }
+
+
+    public static void drawDot(double x, double y) {
+        StdDraw.square(xformX(x) * 464 + 24, xformY(y) * 464 + 36, dotSize);
+    }
+    public static void drawDot(Point p) {
+        drawDot(p.x(), p.y());
+    }
+
+    public static void drawLine(double x0, double y0, double x1, double y1) {
+        StdDraw.line(
+                xformX(x0) * 464 + 24, xformY(y0) * 464 + 36,
+                xformX(x1) * 464 + 24, xformY(y1) * 464 + 36
+        );
+    }
+    public static void drawLine(Point p0, Point p1) {
+        drawLine(p0.x(), p0.y(), p1.x(), p1.y());
+    }
+
+    public static void drawBox(Point p0, Point p1) {
+        drawLine(p0.x(), p0.y(), p1.x(), p0.y());
+        drawLine(p1.x(), p0.y(), p1.x(), p1.y());
+        drawLine(p1.x(), p1.y(), p0.x(), p1.y());
+        drawLine(p0.x(), p1.y(), p0.x(), p0.y());
+    }
+
+}
+
+--[ 2022.11.22.10.18.48.875.2 ]--
+InitFile: /src/PSBruteForce.java
+import java.util.Iterator;
+
+/**
+ * PSBruteForce is a Point collection that provides brute force
+ * nearest neighbor searching using red-black tree.
+ */
+
+// red-black trees
+
+public class PSBruteForce<Value> implements PointSearch<Value> {
+    // constructor makes empty collection
+
+    RedBlackBST<Point, Value> rbst;
+    double minx;
+    double miny;
+    double maxx;
+    double maxy;
+
+    public PSBruteForce() {
+        rbst = new RedBlackBST<>();
+    }
+
+    // add the given Point to KDTree
+    public void put(Point p, Value v) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        rbst.put(p,v);
+        if(rbst.size() == 1) {
+            minx = p.x();
+            miny = p.y();
+
+            maxx = p.x();
+            maxy = p.y();
+        }
+        else {
+            if(p.x() < minx) minx = p.x();
+            if(p.y() < miny) miny = p.y();
+
+            if(p.x() > maxx) maxx = p.x();
+            if(p.y() > maxy) maxy = p.y();
+        }
+    }
+
+    public Value get(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        return rbst.get(p);
+    }
+
+    public boolean contains(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        return rbst.contains(p);
+    }
+
+    // return an iterable of all points in collection
+    public Iterable<Point> points() {
+        return rbst.keys();
+    }
+
+    // return the Point that is closest to the given Point
+    public Point nearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        Point currentNear = null;
+        double nearDist = 0;
+        int idx = 0;
+        Iterable<Point> iter = points();
+
+        for( Point i : iter ) {
+
+            double distance = p.dist(i);
+            if(idx == 0 || distance < nearDist) {
+                nearDist = distance;
+                currentNear = i;
+            }
+            idx++;
+        }
+        return currentNear;
+    }
+
+    // return the Value associated to the Point that is closest to the given Point
+    public Value getNearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        Point nearestPoint = nearest(p);
+        return rbst.get(nearestPoint);
+    }
+
+    // return the min and max for all Points in collection.
+    // The min-max pair will form a bounding box for all Points.
+    // if KDTree is empty, return null.
+    public Point min() {
+        if(isEmpty()) return null;
+        //for each iterable loop, remember the min
+        return new Point(minx, miny);
+    }
+    public Point max() {
+        if(isEmpty()) return null;
+        //same as min, but with max
+        return new Point(maxx, maxy);
+    }
+
+
+    // return the k nearest Points to the given Point
+    public Iterable<Point> nearest(Point p, int k) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+
+        MaxPQ<PointDist> ptpq = new MaxPQ<>();
+
+        Iterable<Point> iter = points();
+        for( Point i : iter ) {
+
+                PointDist distance = new PointDist(i, p.dist(i));
+                ptpq.insert(distance);
+                while (ptpq.size()>k) ptpq.delMax();
+        }
+        Stack<Point> ptstack = new Stack<>();
+        for(PointDist pd : ptpq) {
+            ptstack.push(pd.p());
+        }
+        return ptstack;
+    }
+
+    public Iterable<Partition> partitions() { return null; }
+
+    // return the number of Points in KDTree
+    public int size() { return rbst.size(); }
+
+    // return whether the KDTree is empty
+    public boolean isEmpty() { return rbst.isEmpty(); }
+
+    // place your timing code or unit testing here
+    public static void main(String[] args) {
+        PSBruteForce<Integer> bf = new PSBruteForce<>();
+        Point p = new Point(1.0, 1.0);
+        Point t = new Point(2.0, 2.0);
+        Point q = new Point(3.0, 3.0);
+        bf.put(p, 10);
+        bf.put(t, 20);
+        bf.put(q, 30);
+        StdOut.println(bf.nearest(new Point (4.0,4.0)));
+
+    }
+}
+
+--[ 2022.11.22.10.18.48.875.3 ]--
+InitFile: /src/PSKDTree.java
+import java.util.Iterator;
+
+/**
+ * PSKDTree is a Point collection that provides nearest neighbor searching using
+ * 2d tree
+ */
+public class PSKDTree<Value> implements PointSearch<Value> {
+
+    private class Node {
+        Point p;
+        Value v;
+        Node left, right;
+        Partition.Direction dir;
+
+        public Node(Point pt, Value val) {
+            p = pt;
+            v = val;
+        }
+    }
+
+    BST<Point, Value> kdt;
+    int count=0;
+
+    double minx;
+    double miny;
+    double maxx;
+    double maxy;
+    Node root=null;
+
+
+    //point stack
+    Stack<Point> ps = new Stack<>();    //doesn't account for deletions
+    //stack of partitions
+    Stack<Partition> sp = new Stack<>();
+    // constructor makes empty kD-tree
+    public PSKDTree() { }
+
+    // add the given Point to kD-tree -- here is 2D (x and y)
+    public void put(Point p, Value v) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        if (v == null) { return; } // can't do anything with a null value
+
+        if(root==null) {
+            Node x = new Node(p,v);
+            x.left=null;
+            x.right=null;
+            x.dir= Partition.Direction.DOWNUP;
+            root=x;
+            minx = x.p.x();
+            miny = x.p.y();
+
+            maxx = x.p.x();
+            maxy = x.p.y();
+            ps.push(x.p);
+            sp.push(new Partition(x.p,x.p,x.dir));
+        }
+        else put(root, p, v, root);
+        count++;
+    }
+
+    private Node put(Node x, Point p, Value v, Node parent) {
+        if (x == null) {
+            Node newNode = new Node(p,v);
+            if(parent.dir == Partition.Direction.DOWNUP) {
+                newNode.dir = Partition.Direction.LEFTRIGHT;
+                newNode.left=null;
+                newNode.right=null;
+            }
+            else {
+                newNode.dir = Partition.Direction.DOWNUP;
+                newNode.left=null;
+                newNode.right=null;
+            }
+            if(newNode.p.x() < minx) minx = newNode.p.x();
+            if(newNode.p.y() < miny) miny = newNode.p.y();
+
+            if(newNode.p.x() > maxx) maxx = newNode.p.x();
+            if(newNode.p.y() > maxy) maxy = newNode.p.y();
+            //add p to ps only if it's not already in the stack?
+            ps.push(p);
+            sp.push(new Partition(newNode.p,newNode.p,newNode.dir));
+            return newNode;
+        }
+        else {
+            Partition.Direction parentDir = x.dir;
+
+            if (parentDir == Partition.Direction.DOWNUP) {
+                if (x.p.x() > p.x()) x.left = put(x.left, p, v, x);
+                else x.right = put(x.right, p, v, x);
+            } else {
+                if (x.p.y() > p.y()) x.left = put(x.left, p, v, x);
+                else x.right = put(x.right, p, v, x);
+            }
+            return x;
+        }
+    }
+
+    public Value get(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        if(isEmpty()) return null;
+        return get(root, p, root); //search through the tree instead of returning null
+    }
+
+    private Value get(Node current, Point p, Node parent) {
+        if(current==null) return null;
+        if(parent.dir == Partition.Direction.DOWNUP) {
+            if (parent.p.x() < current.p.x()) return get(parent.right, p, parent);
+            else if (parent.p.x() > current.p.x()) return get(parent.left, p, parent);
+            else return current.v;
+        }
+        else {
+            if (parent.p.y() < current.p.y()) return get(parent.right, p, parent);
+            else if (parent.p.y() > current.p.y()) return get(parent.left, p, parent);
+            else return current.v;
+        }
+    }
+
+    public boolean contains(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        return get(p)!=null; //searching again for p in the bst
+    }
+
+    public Value getNearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        if(isEmpty()) return null;
+        Point nearestPoint = nearest(p);
+        return get(nearestPoint);
+    }
+
+    // return an iterable of all points in collection
+    public Iterable<Point> points() { return ps; }
+
+    // return an iterable of all partitions that make up the kD-tree
+    //we didn't know what to do with two points in the partition constructor,
+    //so the points in each partition are the same
+    public Iterable<Partition> partitions() { return sp; }
+
+    // return the Point that is closest to the given Point
+    public Point nearest(Point p) {
+        if(p == null) throw new NullPointerException("p and root must be initialized");
+        if(isEmpty()) return null;
+        PointDist nearPt = new PointDist(root.p, root.p.dist(p));
+        return nearest(root, p, nearPt ).p();
+    }
+    //this returns a pointDist so that we can access both the nearest point and the distance of
+    //that point both from the one variable
+    private PointDist nearest(Node current, Point p, PointDist nearPt) {
+        if(current == null) return nearPt;
+
+        //1. Check against the current point...  closer?
+        if(current.p.dist(p) < nearPt.d()) {      //get distance to the query point from the partition point)
+            nearPt = new PointDist(current.p, current.p.dist(p));
+        }
+        //2. Check which side the query point is on
+        if(current.dir == Partition.Direction.DOWNUP) {
+            if(p.x() > current.p.x()) {
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else if(p.x() == current.p.x()) {
+                nearPt = nearest(current.right, p,nearPt);
+                nearPt = nearest(current.left, p,nearPt);
+            }
+            else nearPt = nearest(current.left, p,nearPt);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.x() - p.x();
+            if (nearPt.d() > partDist) {
+                if (p.x() > current.p.x()) nearPt = nearest(current.left, p, nearPt);
+                else nearPt = nearest(current.right, p, nearPt);
+            }
+        }
+        else {    // dir is LEFTRIGHT
+            if(p.y() > current.p.y()) {
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else if(p.y() == current.p.y()) {
+                nearPt = nearest(current.left, p,nearPt);
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else nearPt = nearest(current.left, p,nearPt);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.y() - p.y();
+//            if (partDist < 0) partDist = -1 * partDist;
+//            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (nearPt.d() > partDist) {
+                if(p.y() > current.p.y()) nearPt = nearest(current.left, p,nearPt);
+                else nearPt = nearest(current.right, p,nearPt);
+            }
+        }
+        return nearPt;
+    }
+
+    // return the k nearest Points to the given Point
+    public Iterable<Point> nearest(Point p, int k) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        //if(k <= 0) return null;
+//        if(root == null) throw new NullPointerException("Null root has no nearest");
+        MaxPQ<PointDist> ptpq = new MaxPQ<>();
+
+        //add things to the global maxpq!
+//        ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+        kNearest(root, p, k, ptpq);
+        Stack<Point> ptstack = new Stack<>();
+        for(PointDist pd : ptpq) {
+            ptstack.push(pd.p());
+        }
+        return ptstack;
+    }
+
+    private void kNearest(Node current, Point p, int k, MaxPQ<PointDist> ptpq) {
+        if(current == null) return;
+        if(k <= 0) return;
+        PointDist toAdd = new PointDist(current.p, current.p.dist(p));
+        //1. Check against the current point...  closer?
+        ptpq.insert(toAdd);
+        if( ptpq.size() > k ) {
+            ptpq.delMax();
+        }
+
+        //2. Check which side the query point is on
+        if(current.dir == Partition.Direction.DOWNUP) {
+            if(p.x() > current.p.x()) {
+                kNearest(current.right, p, k, ptpq);
+            }
+            else {
+                kNearest(current.left, p, k, ptpq);
+            }
+
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.x() - p.x();
+            if (ptpq.max().d() > partDist || ptpq.size() < k) {
+                if (p.x() > current.p.x()) kNearest(current.left, p, k, ptpq);
+                else kNearest(current.right, p, k, ptpq);
+            }
+        }
+        else {    // dir is LEFTRIGHT
+            if(p.y() > current.p.y()) {
+                kNearest(current.right, p, k, ptpq);
+            }
+            else {
+                kNearest(current.left, p, k, ptpq);
+            }
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.y() - p.y();
+//            if (partDist < 0) partDist = -1 * partDist;
+//            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (ptpq.max().d() > partDist || ptpq.size() < k) {
+                if (p.y() > current.p.y()) kNearest(current.left, p, k, ptpq);
+                else kNearest(current.right, p, k, ptpq);
+            }
+        }
+    }
+
+
+    // return the min and max for all Points in collection.
+    // The min-max pair will form a bounding box for all Points.
+    // if kD-tree is empty, return null.
+    public Point min() {
+        if(isEmpty()) return null;
+        return new Point(minx,miny);
+    }
+    public Point max() {
+        if(isEmpty()) return null;
+        return new Point(maxx,maxy);
+    }
+
+    // return the number of Points in kD-tree
+    public int size() { return count; }
+
+    // return whether the kD-tree is empty
+    public boolean isEmpty() { return count==0; }
+
+    // place your timing code or unit testing here
+    public static void main(String[] args) {
+        PSKDTree<Integer> pskd = new PSKDTree<>();
+        Point p = new Point(1.0, 1.0);
+        Point t = new Point(2.0, 2.0);
+        Point q = new Point(3.0, 3.0);
+        pskd.put(p, 10);
+        pskd.put(t, 20);
+        pskd.put(q, 30);
+        StdOut.println(pskd.nearest(new Point (0,0),0));
+
+    }
+
+}
+
+--[ 2022.11.22.10.18.48.876.0 ]--
+InitFile: /src/PointDist.java
+/**
+ * PointDist is a simple tuple of a Point and a dist.
+ * This class is helpful for storing, passing, or returning the pair.
+ */
+public final class PointDist implements Comparable<PointDist> {
+    private final Point p;
+    private final double d;
+
+    public PointDist(Point p, double d) {
+        this.p = p;
+        this.d = d;
+    }
+
+    public Point p() { return p; }
+
+    public double d() { return d; }
+
+    public int compareTo(PointDist that) {
+        return Double.compare(this.d, that.d);
+    }
+}
+
+--[ 2022.11.22.10.18.48.876.1 ]--
+InitFile: /P05_KDTrees.iml
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="algs4" level="project" />
+    <orderEntry type="library" name="stdlib" level="project" />
+  </component>
+</module>
+
+--[ 2022.11.22.10.18.48.876.2 ]--
+InitFile: /.cos265
+
+
+--[ 2022.11.22.10.18.52.265.0 ]--
+UpdateTree (AD): 191 0
++ /out/production/P05_KDTrees/.donotlog
++ /out/production/P05_KDTrees/algs4.jar
++ /out/production/P05_KDTrees/stdlib.jar
++ /out/production/P05_KDTrees/input1M.txt
++ /out/production/P05_KDTrees/Mouse.class
++ /out/production/P05_KDTrees/Point.class
++ /out/production/P05_KDTrees/input100K.txt
++ /out/production/P05_KDTrees/Point$1.class
++ /out/production/P05_KDTrees/Point$2.class
++ /out/production/P05_KDTrees/Point$3.class
++ /out/production/P05_KDTrees/Point$4.class
++ /out/production/P05_KDTrees/burgerking.csv
++ /out/production/P05_KDTrees/KeyPress.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/Partition.class
++ /out/production/P05_KDTrees/PointDist.class
++ /out/production/P05_KDTrees/Visualizer.class
++ /out/production/P05_KDTrees/PointSearch.class
++ /out/production/P05_KDTrees/PSBruteForce.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
++ /out/production/P05_KDTrees/FastFoodVisualizer.class
++ /out/production/P05_KDTrees/Partition$Direction.class
++ /out/production/P05_KDTrees/NearestNeighborVisualizer.class
++ /src/algs4.jar
++ /src/Mouse.java
++ /src/Point.java
++ /src/stdlib.jar
++ /src/KeyPress.java
++ /src/PSKDTree.java
++ /src/Partition.java
++ /src/PointDist.java
++ /src/Visualizer.java
++ /src/PointSearch.java
++ /src/PSBruteForce.java
++ /src/FastFoodVisualizer.java
++ /src/NearestNeighborVisualizer.java
++ /.git/info/exclude
++ /.git/logs/refs/heads/main
++ /.git/logs/refs/remotes/origin/main
++ /.git/logs/HEAD
++ /.git/refs/heads/main
++ /.git/refs/remotes/origin/main
++ /.git/hooks/update.sample
++ /.git/hooks/pre-push.sample
++ /.git/hooks/commit-msg.sample
++ /.git/hooks/pre-commit.sample
++ /.git/hooks/pre-rebase.sample
++ /.git/hooks/post-update.sample
++ /.git/hooks/pre-receive.sample
++ /.git/hooks/applypatch-msg.sample
++ /.git/hooks/pre-applypatch.sample
++ /.git/hooks/pre-merge-commit.sample
++ /.git/hooks/push-to-checkout.sample
++ /.git/hooks/fsmonitor-watchman.sample
++ /.git/hooks/prepare-commit-msg.sample
++ /.git/objects/01/93c2673203020e3726e397a6870107f9e38aa9
++ /.git/objects/05/054a55af449d7a3d22569a0d9278837d3116b7
++ /.git/objects/05/aa0754159021ad4bb196249ebed23fcaee0f05
++ /.git/objects/09/bd3ab462c2a54f2f734a663b4d0d55dbefa856
++ /.git/objects/0c/324b92a8f6c06aa72c7d1a7b6a4b3a471f2f9f
++ /.git/objects/0c/55bcf14a37162c8cecdd8bb4226a147b847710
++ /.git/objects/0d/90a95e4569ab236f012c54a903f79e23f7e45d
++ /.git/objects/0f/05624ad8de377d4bdf3ec1558d477af125661c
++ /.git/objects/11/6f5b50e2bd7e5a645224f577c702fc62092122
++ /.git/objects/1a/49d62b998226393c172907eef021434d19be9a
++ /.git/objects/1f/b9dc988a5179e983b847d789447e3c5fa79e57
++ /.git/objects/1f/fc97640cccefe0b1a237033b6373d6267daafb
++ /.git/objects/21/5f9d8b463f594d7a29686b9e9be2c095a4e415
++ /.git/objects/26/3963a64f2a64659282fd9cbe561dd7a5e4a676
++ /.git/objects/2b/146202332c98f33d1ab3db98dea03e6bbc1093
++ /.git/objects/2b/5f9208bfadbbc9019b47a713b74462b9cd2613
++ /.git/objects/2d/684a62c75f8da8fc231206420108d204cbe252
++ /.git/objects/2d/a01175c002a7aca63ea26eac5644d92eff4262
++ /.git/objects/2e/39673052a1f295d801c985e388b4f7474189b5
++ /.git/objects/2e/d4fe70b4e088ec2c3ac33ca08f741ed2d35a97
++ /.git/objects/30/6f36bddc52f2e08ccf8a41536340870eb1829c
++ /.git/objects/33/29e710a9d2d294d0f84a40c0633b7be4a3026a
++ /.git/objects/34/c40469b8879baee4fbd8d7ee3c930ed59cb6f3
++ /.git/objects/35/3cb223ed1906f7fafb0088b405f95a94d48049
++ /.git/objects/39/5d98ffb25a1aa9df31eb7f0e6c2af2e28bc31d
++ /.git/objects/3a/467db814b5de23a11971dfafc2a31dab54402b
++ /.git/objects/3c/91061820fd12503e015c3c19cec90b78494358
++ /.git/objects/3e/ec82059c43fd48c2c87acbb5d3146919181ac4
++ /.git/objects/42/2e8fe6a25b2cb1526a3b698f7bb6e4a6d6ab1f
++ /.git/objects/43/34e267d8776aabbeb38713c0a502fa328ceb68
++ /.git/objects/47/2708597a52c84fb05917e78f58bfd5c9595103
++ /.git/objects/49/554703073ae63a7122c05b80a894ac3ff48370
++ /.git/objects/4a/9775d73ccee16579f82f60842f1ec68e703dac
++ /.git/objects/4f/ce1d86b49521afe1cee4ed1c13b6396ebbc6f3
++ /.git/objects/54/0fd2392eaf74abc751e9970668bf235e56f803
++ /.git/objects/54/a9050837f1727bb42ff80852d5672f04ae77e0
++ /.git/objects/57/21445f69b8abeb3fa1b24eafb39b339a66c987
++ /.git/objects/5c/98b428844d9f7d529e2b6fb918d15bf072f3df
++ /.git/objects/63/f769006f85ce8b975f16e9c895bd3395504579
++ /.git/objects/65/427e6010f1b59257bc8ac509401e7eeb2698d4
++ /.git/objects/67/a3cbc10acb52f757cbd15ab1a2acaef561cf5d
++ /.git/objects/68/2820a134168b0d23787b376165bef89b511f00
++ /.git/objects/68/33ac541d58999c846b37793c0ca6bb09e43f21
++ /.git/objects/6a/13eb1367395cad1f3ae5b2219d4d1a970335e1
++ /.git/objects/6e/10e3d8976dabc74255b1ddce2024336f50d7e2
++ /.git/objects/6e/e6bdaf464e0f4adb373587a385e0875ebf8ba6
++ /.git/objects/74/a6a5d585c5ea37685f0464c4d008732ed403d9
++ /.git/objects/75/63d3f1a349009df7dbf21fee30194eead50ca0
++ /.git/objects/77/c1c9e0460791004d21b231cb11397fa8405453
++ /.git/objects/78/3a4bd1695b06d6a609ec9b01d8c9b758f195c5
++ /.git/objects/7c/f2891237ab51abd3dcfe41128b939aa54ae3a2
++ /.git/objects/7d/61ee6e1564fdc3e562582a8ca1c55185fd2b09
++ /.git/objects/80/8df08d052527e9a626a08c732fb0fb470708c8
++ /.git/objects/86/5b56d35df1dcfcbf5196eeddcef674c03a3a93
++ /.git/objects/8a/bbcdc86504fabb13251c37065ad9481cf251d5
++ /.git/objects/8b/e37e197c873cbcd2952f364d9e3a447bc4e692
++ /.git/objects/8c/333a97e7dbd1f8d32d947ad097e8e247f9f041
++ /.git/objects/8d/e804238c33c653fe535bd162aabed440497ec7
++ /.git/objects/91/4c3a82a059ff11e1e2248c3ee1ce32a78bc63a
++ /.git/objects/96/cc43efa6a0885098044e976cd780bb42c68a70
++ /.git/objects/9a/8c6aff1f8871e01cacec32f40b40f4107494d2
++ /.git/objects/9a/e8d0c18cb848aa651381c33a3fa44eddc40bcb
++ /.git/objects/9c/780ff1eacdac600ca19795de4e5f1220a1bf3e
++ /.git/objects/a4/1f4cf11f0c1e522a76feaaea7dd201322b74b2
++ /.git/objects/aa/90a9d65e85ba8dedaeee57dbca845093794f15
++ /.git/objects/aa/d3f0402094e10cd99e06ba2a544a57396b1919
++ /.git/objects/ad/9e0e30c3ce07a69853ebe6d96f2baaa8b40058
++ /.git/objects/ae/39a65a74d4111e721807c06e27bd6754992fbb
++ /.git/objects/af/24b078cc669f5e4da5902ba1297a2ac0fa2339
++ /.git/objects/b2/0a2737119fe126fc0fc4d4284bed106ad85463
++ /.git/objects/b4/a758f2f8c8a18b851825e056e555c5620ae676
++ /.git/objects/b6/90d19ac158bfa6e1ae11cef101f0d1a7434bd9
++ /.git/objects/b7/710fca979cfd5216bf2633dd1dfa8161d9f45f
++ /.git/objects/b7/9e120aa750f1350aa5c9c92e567b92d1cb06ca
++ /.git/objects/bd/dc962f4cacb8ce630d07f575b6668243250fb1
++ /.git/objects/c2/259fdab2fede23add0f6b409611094fb0ae13a
++ /.git/objects/c2/828bc31a68ae45ce1922d19323206b232cbda4
++ /.git/objects/c2/a99d32458bd15f0b79cff7dd46d99629763bed
++ /.git/objects/c3/fde00d07458f153bdb5082ceb011de8dcc9721
++ /.git/objects/c6/82756a1eb42ff4805cdfc29c84fac9230c11e5
++ /.git/objects/c7/e29d8475f23acd8d328dc8074104b846f4bbbf
++ /.git/objects/c7/ed19fcb2ed6617a23bd3e9a2efaa966bed42da
++ /.git/objects/c9/03bc28d810f9bd1bce4dabc68cfe49dd29b6e4
++ /.git/objects/ca/22da9b6c126b0744cfde03b32ebdff29cb41ab
++ /.git/objects/ca/9a474fc415e206e1d701688a299fa1b8bbd628
++ /.git/objects/ce/2de51fa2f6dd8ca45683eb75ba132137da5a20
++ /.git/objects/d2/e73db08c8563911c081a8651a77f67c4b48b43
++ /.git/objects/d4/85126c43a458d604c41191c3cd216e30972972
++ /.git/objects/d6/6b5e816c127d864df03b0dd33db812fa463679
++ /.git/objects/de/c87ed246fc3ca006dddb4db1972a0e1d67919e
++ /.git/objects/e2/3a8b692a016f63a83e1997a2326d3be18d8d1e
++ /.git/objects/e5/f5f06b6f0fb91e529051f1cb6651cc60ce2f48
++ /.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
++ /.git/objects/e7/bedf3377d40335424fd605124d4761390218bb
++ /.git/objects/e9/6534fb27b68192f27f985d3879e173ec77adb8
++ /.git/objects/e9/ce331a35ca02c33b0678d762c13fe57fe4a67a
++ /.git/objects/ee/909fb82334c194c06fd779181ba31079f10d42
++ /.git/objects/ef/89a8450022222b69a62814d66e3f6c8ecb5a60
++ /.git/objects/f1/9e236587050cfbf8e8761a3460ac0c95e5fb0c
++ /.git/objects/f1/f318c26c20a6cefd43a41e41a4c26c668d97ea
++ /.git/objects/f5/001ef95b10cd55e1f28b609cd462b09cf24d06
++ /.git/objects/f6/cca8a6084310f182dc287fadbb82c5ebcfffe8
++ /.git/objects/fb/e4187a868130477a51ea5c1bc60e0dce69cec4
++ /.git/objects/fc/e1363a394e590b51c742706992bebecae53b2b
++ /.git/HEAD
++ /.git/index
++ /.git/config
++ /.git/ORIG_HEAD
++ /.git/FETCH_HEAD
++ /.git/description
++ /.git/COMMIT_EDITMSG
++ /.log/history.log
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22,_8_38_PM_[Default]/shelved.patch
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22,_11_28_AM_[Default]/shelved.patch
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_22_22,_10_07_AM_[Default]/shelved.patch
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22__8_38_PM__Default_.xml
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_15_22__11_28_AM__Default_.xml
++ /.idea/shelf/Uncommitted_changes_before_Update_at_11_22_22__10_07_AM__Default_.xml
++ /.idea/copyright/profiles_settings.xml
++ /.idea/libraries/algs4.xml
++ /.idea/libraries/stdlib.xml
++ /.idea/.name
++ /.idea/vcs.xml
++ /.idea/misc.xml
++ /.idea/.gitignore
++ /.idea/modules.xml
++ /.idea/compiler.xml
++ /.idea/workspace.xml
++ /.idea/uiDesigner.xml
++ /tests/.donotlog
++ /tests/input1M.txt
++ /tests/input100K.txt
++ /tests/burgerking.csv
++ /.cos265
++ /readme.html
++ /P05_KDTrees.iml
+
+--[ 2022.11.22.10.18.52.266.0 ]--
+InitFile: /src/Mouse.java
+/**
+ * Mouse is a helper class for detecting mouse presses (not just whether the mouse is pressed)
+ * and for transforming the cursor location from window-space to program-space
+ */
+public class Mouse {
+    private boolean pressed;
+    private final int xOffset, yOffset, width, height;
+
+    public Mouse(int xOffset, int yOffset, int width, int height) {
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
+        this.width = width;
+        this.height = height;
+    }
+
+    public boolean isPressed() {
+        boolean p = StdDraw.mousePressed();
+        boolean v = !pressed && p;
+        pressed = p;
+        return v;
+    }
+
+    public Point getLocation() {
+        double mouseX = (StdDraw.mouseX() - (float)xOffset) / (float)width;
+        double mouseY = (StdDraw.mouseY() - (float)yOffset) / (float)height;
+        return new Point(mouseX, mouseY);
+    }
+}
+
+--[ 2022.11.22.10.18.52.266.1 ]--
+InitFile: /src/Point.java
+import java.util.Comparator;
+
+/**
+ * Point is a simple tuple of doubles with some handy functions.  Point is useful for
+ * storing and computing 2D points.
+ */
+public final class Point implements Comparable<Point> {
+    private final double x;
+    private final double y;
+
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Point(Point p) {
+        this.x = p.x;
+        this.y = p.y;
+    }
+
+    // generates a Point with location chosen uniformly at random in the unit square [0,1]^2
+    public static Point uniform() {
+        return new Point(StdRandom.uniform(), StdRandom.uniform());
+    }
+
+    // generates a Point with location chosen with gaussian distribution in unit square [0,1]^2
+    // with mean of 0.5 and stddev of 0.12
+    public static Point gaussian() {
+        double x = -1, y = -1;
+        // do not return an x,y that is outside the unit square
+        while(x < 0 || y < 0 || x > 1 || y > 1) {
+            x = StdRandom.gaussian(0.5, 0.12);
+            y = StdRandom.gaussian(0.5, 0.12);
+        }
+        return new Point(x, y);
+    }
+
+
+    /**
+     * the functions below can be used to find the min/max x/y which
+     * can be used to find the bounding box of points
+     */
+
+    // returns a point with minimum component values
+    public static Point min(Point p0, Point p1) {
+        return new Point(Math.min(p0.x, p1.x), Math.min(p0.y, p1.y));
+    }
+
+    // returns a point with maximum component values
+    public static Point max(Point p0, Point p1) {
+        return new Point(Math.max(p0.x, p1.x), Math.max(p0.y, p1.y));
+    }
+
+
+    /**
+     * use the following functions to compare Points in different ways.
+     * Points are Comparable, so they know how to compareTo one another,
+     * but the other functions return Comparator objects which can compare
+     * Points in different ways.
+     */
+
+    // compares this to that, first by y component then by x
+    public int compareTo(Point that) {
+        if(this.y < that.y) return -1;
+        if(this.y > that.y) return +1;
+        if(this.x < that.x) return -1;
+        if(this.x > that.x) return +1;
+        return 0;
+    }
+
+    // do the components of this equal the components of that?
+    public boolean equals(Object that) {
+        if(this == that) return true;
+        if(that == null) return false;
+        if(that.getClass() != this.getClass()) return false;
+        Point thatp = (Point)that;
+        if(Double.compare(this.x, thatp.x) != 0) return false;
+        if(Double.compare(this.y, thatp.y) != 0) return false;
+        return true;
+    }
+
+    // returns a Comparator, comparing x first then y
+    public static Comparator<Point> xyComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                if(o0.x < o1.x) return -1;
+                if(o0.x > o1.x) return +1;
+                if(o0.y < o1.y) return -1;
+                if(o0.y > o1.y) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator, comparing y fist then x
+    public static Comparator<Point> yxComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                if(o0.y < o1.y) return -1;
+                if(o0.y > o1.y) return +1;
+                if(o0.x < o1.x) return -1;
+                if(o0.x > o1.x) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator, comparing the polar radius (dist from (0,0))
+    public static Comparator<Point> polarRadiusComparator() {
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point o0, Point o1) {
+                double d0 = (o0.x*o0.x + o0.y*o0.y);
+                double d1 = (o1.x*o1.x + o1.y*o1.y);
+                if(d0 < d1) return -1;
+                if(d0 > d1) return +1;
+                return 0;
+            }
+        };
+    }
+
+    // returns a Comparator for this, comparing dist between first given
+    // point and this and dist between second given point and this
+    public Comparator<Point> distanceToComparator() {
+        return new Comparator<Point>() {
+            private final double ox = x;
+            private final double oy = y;
+            @Override
+            public int compare(Point o0, Point o1) {
+                double d0 = (o0.x-ox)*(o0.x-ox) + (o0.y-oy)*(o0.y-oy);
+                double d1 = (o1.x-ox)*(o1.x-ox) + (o1.y-oy)*(o1.y-oy);
+                if(d0 < d1) return -1;
+                if(d0 > d1) return +1;
+                return 0;
+            }
+        };
+    }
+
+
+    /**
+     * getters and setters
+     */
+
+    // getters of x and y
+    public double x() { return x; }
+    public double y() { return y; }
+
+    // getter of either x or y depending on dir
+    // dir = LEFTRIGHT => returns x
+    // dir = DOWNUP    => returns y
+    public double xy(Partition.Direction dir) {
+        if(dir == Partition.Direction.LEFTRIGHT) return x;
+        else return y;
+    }
+
+
+    /**
+     * functions for computing distances
+     */
+
+    // computes distance^2 between this point and (x,y)
+    public double distSquared(double x, double y) {
+        return (this.x-x)*(this.x-x) + (this.y-y)*(this.y-y);
+    }
+
+    // computes distance^2 between this point and another (p)
+    public double distSquared(Point p) {
+        return distSquared(p.x, p.y);
+    }
+
+    // computes distance between this point and (x,y)
+    public double dist(double x, double y) {
+        return Math.sqrt(distSquared(x, y));
+    }
+
+    // computes distance between this point and another (p)
+    public double dist(Point p) {
+        return dist(p.x, p.y);
+    }
+
+
+    /**
+     * misc functions
+     */
+
+    // returns a new point that has values added to components
+    public Point add(double x, double y) {
+        return new Point(this.x + x, this.y + y);
+    }
+
+    // returns a new point that has values added to components
+    public Point add(Point p) {
+        return add(p.x, p.y);
+    }
+
+    // returns whether point is within given min and max bounds
+    public boolean isInBounds(double x0, double y0, double x1, double y1) {
+        if(Double.compare(x,x0) <= 0) return false;
+        if(Double.compare(y,y0) <= 0) return false;
+        if(Double.compare(x1,x) <= 0) return false;
+        if(Double.compare(y1,y) <= 0) return false;
+        return true;
+    }
+
+    public boolean isInBounds(Point min, Point max) {
+        return isInBounds(min.x, min.y, max.x, max.y);
+    }
+
+    // produces a String representation of Point
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+}
+
+--[ 2022.11.22.10.18.52.267.0 ]--
+InitFile: /src/KeyPress.java
+/**
+ * KeyPress is a helper class for detecting key presses (not just whether the key is pressed)
+ */
+public class KeyPress {
+    private final int key;
+    private boolean pressed;
+
+    public KeyPress(int key) {
+        this.key = key;
+    }
+
+    public boolean isDown() {
+        return StdDraw.isKeyPressed(this.key);
+    }
+
+    public boolean isUp() {
+        return !isDown();
+    }
+
+    public boolean isPressed() {
+        boolean p = StdDraw.isKeyPressed(this.key);
+        boolean v = !pressed && p;
+        pressed = p;
+        return v;
+    }
+}
+
+--[ 2022.11.22.10.18.52.267.1 ]--
+InitFile: /src/PSKDTree.java
+import java.util.Iterator;
+
+/**
+ * PSKDTree is a Point collection that provides nearest neighbor searching using
+ * 2d tree
+ */
+public class PSKDTree<Value> implements PointSearch<Value> {
+
+    private class Node {
+        Point p;
+        Value v;
+        Node left, right;
+        Partition.Direction dir;
+
+        public Node(Point pt, Value val) {
+            p = pt;
+            v = val;
+        }
+    }
+
+    BST<Point, Value> kdt;
+    int count=0;
+
+    double minx;
+    double miny;
+    double maxx;
+    double maxy;
+    Node root=null;
+
+
+    //point stack
+    Stack<Point> ps = new Stack<>();    //doesn't account for deletions
+    //stack of partitions
+    Stack<Partition> sp = new Stack<>();
+    // constructor makes empty kD-tree
+    public PSKDTree() { }
+
+    // add the given Point to kD-tree -- here is 2D (x and y)
+    public void put(Point p, Value v) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        if (v == null) { return; } // can't do anything with a null value
+
+        if(root==null) {
+            Node x = new Node(p,v);
+            x.left=null;
+            x.right=null;
+            x.dir= Partition.Direction.DOWNUP;
+            root=x;
+            minx = x.p.x();
+            miny = x.p.y();
+
+            maxx = x.p.x();
+            maxy = x.p.y();
+            ps.push(x.p);
+            sp.push(new Partition(x.p,x.p,x.dir));
+        }
+        else put(root, p, v, root);
+        count++;
+    }
+
+    private Node put(Node x, Point p, Value v, Node parent) {
+        if (x == null) {
+            Node newNode = new Node(p,v);
+            if(parent.dir == Partition.Direction.DOWNUP) {
+                newNode.dir = Partition.Direction.LEFTRIGHT;
+                newNode.left=null;
+                newNode.right=null;
+            }
+            else {
+                newNode.dir = Partition.Direction.DOWNUP;
+                newNode.left=null;
+                newNode.right=null;
+            }
+            if(newNode.p.x() < minx) minx = newNode.p.x();
+            if(newNode.p.y() < miny) miny = newNode.p.y();
+
+            if(newNode.p.x() > maxx) maxx = newNode.p.x();
+            if(newNode.p.y() > maxy) maxy = newNode.p.y();
+            //add p to ps only if it's not already in the stack?
+            ps.push(p);
+            sp.push(new Partition(newNode.p,newNode.p,newNode.dir));
+            return newNode;
+        }
+        else {
+            Partition.Direction parentDir = x.dir;
+
+            if (parentDir == Partition.Direction.DOWNUP) {
+                if (x.p.x() > p.x()) x.left = put(x.left, p, v, x);
+                else x.right = put(x.right, p, v, x);
+            } else {
+                if (x.p.y() > p.y()) x.left = put(x.left, p, v, x);
+                else x.right = put(x.right, p, v, x);
+            }
+            return x;
+        }
+    }
+
+    public Value get(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        if(isEmpty()) return null;
+        return get(root, p, root); //search through the tree instead of returning null
+    }
+
+    private Value get(Node current, Point p, Node parent) {
+        if(current==null) return null;
+        if(parent.dir == Partition.Direction.DOWNUP) {
+            if (parent.p.x() < current.p.x()) return get(parent.right, p, parent);
+            else if (parent.p.x() > current.p.x()) return get(parent.left, p, parent);
+            else return current.v;
+        }
+        else {
+            if (parent.p.y() < current.p.y()) return get(parent.right, p, parent);
+            else if (parent.p.y() > current.p.y()) return get(parent.left, p, parent);
+            else return current.v;
+        }
+    }
+
+    public boolean contains(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        return get(p)!=null; //searching again for p in the bst
+    }
+
+    public Value getNearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        if(isEmpty()) return null;
+        Point nearestPoint = nearest(p);
+        return get(nearestPoint);
+    }
+
+    // return an iterable of all points in collection
+    public Iterable<Point> points() { return ps; }
+
+    // return an iterable of all partitions that make up the kD-tree
+    //we didn't know what to do with two points in the partition constructor,
+    //so the points in each partition are the same
+    public Iterable<Partition> partitions() { return sp; }
+
+    // return the Point that is closest to the given Point
+    public Point nearest(Point p) {
+        if(p == null) throw new NullPointerException("p and root must be initialized");
+        if(isEmpty()) return null;
+        PointDist nearPt = new PointDist(root.p, root.p.dist(p));
+        return nearest(root, p, nearPt ).p();
+    }
+    //this returns a pointDist so that we can access both the nearest point and the distance of
+    //that point both from the one variable
+    private PointDist nearest(Node current, Point p, PointDist nearPt) {
+        if(current == null) return nearPt;
+
+        //1. Check against the current point...  closer?
+        if(current.p.dist(p) < nearPt.d()) {      //get distance to the query point from the partition point)
+            nearPt = new PointDist(current.p, current.p.dist(p));
+        }
+        //2. Check which side the query point is on
+        if(current.dir == Partition.Direction.DOWNUP) {
+            if(p.x() > current.p.x()) {
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else if(p.x() == current.p.x()) {
+                nearPt = nearest(current.right, p,nearPt);
+                nearPt = nearest(current.left, p,nearPt);
+            }
+            else nearPt = nearest(current.left, p,nearPt);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.x() - p.x();
+            if (nearPt.d() > partDist) {
+                if (p.x() > current.p.x()) nearPt = nearest(current.left, p, nearPt);
+                else nearPt = nearest(current.right, p, nearPt);
+            }
+        }
+        else {    // dir is LEFTRIGHT
+            if(p.y() > current.p.y()) {
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else if(p.y() == current.p.y()) {
+                nearPt = nearest(current.left, p,nearPt);
+                nearPt = nearest(current.right, p,nearPt);
+            }
+            else nearPt = nearest(current.left, p,nearPt);
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.y() - p.y();
+//            if (partDist < 0) partDist = -1 * partDist;
+//            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (nearPt.d() > partDist) {
+                if(p.y() > current.p.y()) nearPt = nearest(current.left, p,nearPt);
+                else nearPt = nearest(current.right, p,nearPt);
+            }
+        }
+        return nearPt;
+    }
+
+    // return the k nearest Points to the given Point
+    public Iterable<Point> nearest(Point p, int k) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        //if(k <= 0) return null;
+//        if(root == null) throw new NullPointerException("Null root has no nearest");
+        MaxPQ<PointDist> ptpq = new MaxPQ<>();
+
+        //add things to the global maxpq!
+//        ptpq.insert(new PointDist(root.p, root.p.dist(p)));
+        kNearest(root, p, k, ptpq);
+        Stack<Point> ptstack = new Stack<>();
+        for(PointDist pd : ptpq) {
+            ptstack.push(pd.p());
+        }
+        return ptstack;
+    }
+
+    private void kNearest(Node current, Point p, int k, MaxPQ<PointDist> ptpq) {
+        if(current == null) return;
+        if(k <= 0) return;
+        PointDist toAdd = new PointDist(current.p, current.p.dist(p));
+        //1. Check against the current point...  closer?
+        ptpq.insert(toAdd);
+        if( ptpq.size() > k ) {
+            ptpq.delMax();
+        }
+
+        //2. Check which side the query point is on
+        if(current.dir == Partition.Direction.DOWNUP) {
+            if(p.x() > current.p.x()) {
+                kNearest(current.right, p, k, ptpq);
+            }
+            else {
+                kNearest(current.left, p, k, ptpq);
+            }
+
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.x() - p.x();
+            if (ptpq.max().d() > partDist || ptpq.size() < k) {
+                if (p.x() > current.p.x()) kNearest(current.left, p, k, ptpq);
+                else kNearest(current.right, p, k, ptpq);
+            }
+        }
+        else {    // dir is LEFTRIGHT
+            if(p.y() > current.p.y()) {
+                kNearest(current.right, p, k, ptpq);
+            }
+            else {
+                kNearest(current.left, p, k, ptpq);
+            }
+
+            //3. Check if we should check the other side!
+            double partDist = current.p.y() - p.y();
+//            if (partDist < 0) partDist = -1 * partDist;
+//            if (nearDist < 0) nearDist = -1 * nearDist;
+            if (ptpq.max().d() > partDist || ptpq.size() < k) {
+                if (p.y() > current.p.y()) kNearest(current.left, p, k, ptpq);
+                else kNearest(current.right, p, k, ptpq);
+            }
+        }
+    }
+
+
+    // return the min and max for all Points in collection.
+    // The min-max pair will form a bounding box for all Points.
+    // if kD-tree is empty, return null.
+    public Point min() {
+        if(isEmpty()) return null;
+        return new Point(minx,miny);
+    }
+    public Point max() {
+        if(isEmpty()) return null;
+        return new Point(maxx,maxy);
+    }
+
+    // return the number of Points in kD-tree
+    public int size() { return count; }
+
+    // return whether the kD-tree is empty
+    public boolean isEmpty() { return count==0; }
+
+    // place your timing code or unit testing here
+    public static void main(String[] args) {
+        PSKDTree<Integer> pskd = new PSKDTree<>();
+        Point p = new Point(1.0, 1.0);
+        Point t = new Point(2.0, 2.0);
+        Point q = new Point(3.0, 3.0);
+        pskd.put(p, 10);
+        pskd.put(t, 20);
+        pskd.put(q, 30);
+        StdOut.println(pskd.nearest(new Point (0,0),0));
+
+    }
+
+}
+
+--[ 2022.11.22.10.18.52.267.2 ]--
+InitFile: /src/Partition.java
+/**
+ * Partition is a simple class that stores two points and a direction,
+ * where the two points make up a partition along the given direction.
+ */
+public final class Partition {
+    // enumeration of all partition directions: Left-Right and Up-Down
+    public enum Direction {
+        LEFTRIGHT,
+        DOWNUP
+    }
+
+    // returns the next direction in the enumeration
+    public static Direction nextDirection(Direction dir) {
+        if(dir == Direction.LEFTRIGHT) return Direction.DOWNUP;
+        return Direction.LEFTRIGHT;
+    }
+
+    private final Point p0;
+    private final Point p1;
+    private final Direction dir;
+
+    public Partition(Point p0, Point p1, Direction dir) {
+        this.p0 = p0;
+        this.p1 = p1;
+        this.dir = dir;
+    }
+
+    public Partition(double x0, double y0, double x1, double y1, Direction dir) {
+        this.p0 = new Point(x0, y0);
+        this.p1 = new Point(x1, y1);
+        this.dir = dir;
+    }
+
+    public Point p0() { return p0; }
+
+    public Point p1() { return p1; }
+
+    public Direction dir() { return dir; }
+}
+
+--[ 2022.11.22.10.18.52.267.3 ]--
+InitFile: /src/PointDist.java
+/**
+ * PointDist is a simple tuple of a Point and a dist.
+ * This class is helpful for storing, passing, or returning the pair.
+ */
+public final class PointDist implements Comparable<PointDist> {
+    private final Point p;
+    private final double d;
+
+    public PointDist(Point p, double d) {
+        this.p = p;
+        this.d = d;
+    }
+
+    public Point p() { return p; }
+
+    public double d() { return d; }
+
+    public int compareTo(PointDist that) {
+        return Double.compare(this.d, that.d);
+    }
+}
+
+--[ 2022.11.22.10.18.52.267.4 ]--
+InitFile: /src/Visualizer.java
+import java.awt.*;
+
+/**
+ * Created by jdenning on 11/2/15.
+ */
+public class Visualizer {
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    // colors for vizualization
+    private static final Color cDot = new Color(64,64,64);      // point (small box)
+    private static final Color cKNN = new Color(200,200,255);   // k nearest neighbors
+    private static final Color cNN  = new Color(64,64,255);     // nearest neighbor
+    private static final Color cLR  = new Color(255,128,128);   // left-right partition
+    private static final Color cUD  = new Color(128,255,128);   // up-down partition
+    private static final Color cBox = new Color(192,192,192);   // bounding box
+
+    private static double offsetX = 0.0;
+    private static double offsetY = 0.0;
+    private static double scale = 1.0;
+
+    private static double dotSize = 1.0;
+
+    public static void setScale(double scale) { Visualizer.scale = scale; }
+    public static double getScale() { return Visualizer.scale; }
+    public static void setOffsetX(double offsetX) { Visualizer.offsetX = offsetX; };
+    public static double getOffsetX() { return Visualizer.offsetX; }
+    public static void setOffsetY(double offsetY) { Visualizer.offsetY = offsetY; };
+    public static double getOffsetY() { return Visualizer.offsetY; }
+    public static void setScaling(double minX, double minY, double maxX, double maxY) {
+        offsetX = minX; offsetY = minY;
+        double d = Math.max(maxX - minX, maxY - minY);
+        if(d == 0.0) scale = 0.0;
+        else scale = 1.0 / d;
+    }
+    public static void setScaling(Point min, Point max) {
+        if(min == null || max == null) return;
+        setScaling(min.x(), min.y(), max.x(), max.y());
+    }
+
+    public static double getDotSize() { return dotSize; }
+    public static void setDotSize(double dotSize) { Visualizer.dotSize = dotSize; }
+
+    public static void clear() {
+        StdDraw.clear();
+        StdDraw.setXscale(0, 512);
+        StdDraw.setYscale(0, 512);
+    }
+    public static void drawNeighbors(PointSearch ps, Point loc, boolean drawClosest, int k) {
+        if(ps.isEmpty()) return;
+
+        Iterable<Point> nearest = ps.nearest(loc, k);
+        if(nearest != null) {
+            StdDraw.setPenColor(cKNN);
+            for (Point p : nearest) drawLine(loc, p);
+        }
+
+        if(drawClosest) {
+            Point closest = ps.nearest(loc);
+            if (closest != null) {
+                StdDraw.setPenColor(cNN);
+                StdDraw.setPenRadius(0.005);
+                drawLine(loc, closest);
+                StdDraw.setPenRadius();
+            }
+        }
+    }
+    public static void drawKDTree(PointSearch ps, boolean drawPartitions, boolean drawBoundingBox) {
+        if(ps.isEmpty()) return;
+
+        if(drawBoundingBox) {
+            StdDraw.setPenColor(cBox);
+            drawBox(ps.min(), ps.max());
+        }
+
+        if(drawPartitions) {
+            Iterable<Partition> partitions = ps.partitions();
+            if(partitions != null) {
+                StdDraw.setPenRadius(0.005);
+                for (Partition p : partitions) {
+                    if (p.dir() == Partition.Direction.LEFTRIGHT) StdDraw.setPenColor(cLR);
+                    else StdDraw.setPenColor(cUD);
+                    drawLine(p.p0(), p.p1());
+                }
+                StdDraw.setPenRadius();
+            }
+        }
+
+        Iterable<Point> points = ps.points();
+        if(points != null) {
+            StdDraw.setPenColor(cDot);
+            setDotSize(Math.max(1.0, 5.0 / Math.pow(ps.size() + 1, 0.5)));
+            for (Point p : points) drawDot(p);
+        }
+    }
+
+    private static double xformX(double x) { return (x - offsetX) * scale; }
+    private static double xformY(double y) { return (y - offsetY) * scale; }
+    private static double xformInvX(double x) { return x / scale + offsetX; }
+    private static double xformInvY(double y) { return y / scale + offsetY; }
+    public static Point xform(Point p) {
+        return new Point(xformX(p.x()), xformY(p.y()));
+    }
+    public static Point xformInv(Point p) {
+        return new Point(xformInvX(p.x()), xformInvY(p.y()));
+    }
+
+
+    public static void drawDot(double x, double y) {
+        StdDraw.square(xformX(x) * 464 + 24, xformY(y) * 464 + 36, dotSize);
+    }
+    public static void drawDot(Point p) {
+        drawDot(p.x(), p.y());
+    }
+
+    public static void drawLine(double x0, double y0, double x1, double y1) {
+        StdDraw.line(
+                xformX(x0) * 464 + 24, xformY(y0) * 464 + 36,
+                xformX(x1) * 464 + 24, xformY(y1) * 464 + 36
+        );
+    }
+    public static void drawLine(Point p0, Point p1) {
+        drawLine(p0.x(), p0.y(), p1.x(), p1.y());
+    }
+
+    public static void drawBox(Point p0, Point p1) {
+        drawLine(p0.x(), p0.y(), p1.x(), p0.y());
+        drawLine(p1.x(), p0.y(), p1.x(), p1.y());
+        drawLine(p1.x(), p1.y(), p0.x(), p1.y());
+        drawLine(p0.x(), p1.y(), p0.x(), p0.y());
+    }
+
+}
+
+--[ 2022.11.22.10.18.52.267.5 ]--
+InitFile: /src/PointSearch.java
+/**
+ * This interface defines the basic API for a 2D symbol table
+ * where the keys are Points and the values are the generic
+ * type Value
+ */
+public interface PointSearch<Value> {
+    boolean isEmpty();
+    int size();
+
+    Point min();
+    Point max();
+
+    void put(Point p, Value v);
+    Iterable<Point> points();
+    boolean contains(Point p);
+    Value get(Point p);
+    Value getNearest(Point p);
+
+    Point nearest(Point p);
+    Iterable<Point> nearest(Point p, int k);
+
+    Iterable<Partition> partitions();
+}
+
+--[ 2022.11.22.10.18.52.267.6 ]--
+InitFile: /src/PSBruteForce.java
+import java.util.Iterator;
+
+/**
+ * PSBruteForce is a Point collection that provides brute force
+ * nearest neighbor searching using red-black tree.
+ */
+
+// red-black trees
+
+public class PSBruteForce<Value> implements PointSearch<Value> {
+    // constructor makes empty collection
+
+    RedBlackBST<Point, Value> rbst;
+    double minx;
+    double miny;
+    double maxx;
+    double maxy;
+
+    public PSBruteForce() {
+        rbst = new RedBlackBST<>();
+    }
+
+    // add the given Point to KDTree
+    public void put(Point p, Value v) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        rbst.put(p,v);
+        if(rbst.size() == 1) {
+            minx = p.x();
+            miny = p.y();
+
+            maxx = p.x();
+            maxy = p.y();
+        }
+        else {
+            if(p.x() < minx) minx = p.x();
+            if(p.y() < miny) miny = p.y();
+
+            if(p.x() > maxx) maxx = p.x();
+            if(p.y() > maxy) maxy = p.y();
+        }
+    }
+
+    public Value get(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        return rbst.get(p);
+    }
+
+    public boolean contains(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        return rbst.contains(p);
+    }
+
+    // return an iterable of all points in collection
+    public Iterable<Point> points() {
+        return rbst.keys();
+    }
+
+    // return the Point that is closest to the given Point
+    public Point nearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        Point currentNear = null;
+        double nearDist = 0;
+        int idx = 0;
+        Iterable<Point> iter = points();
+
+        for( Point i : iter ) {
+
+            double distance = p.dist(i);
+            if(idx == 0 || distance < nearDist) {
+                nearDist = distance;
+                currentNear = i;
+            }
+            idx++;
+        }
+        return currentNear;
+    }
+
+    // return the Value associated to the Point that is closest to the given Point
+    public Value getNearest(Point p) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+        Point nearestPoint = nearest(p);
+        return rbst.get(nearestPoint);
+    }
+
+    // return the min and max for all Points in collection.
+    // The min-max pair will form a bounding box for all Points.
+    // if KDTree is empty, return null.
+    public Point min() {
+        if(isEmpty()) return null;
+        //for each iterable loop, remember the min
+        return new Point(minx, miny);
+    }
+    public Point max() {
+        if(isEmpty()) return null;
+        //same as min, but with max
+        return new Point(maxx, maxy);
+    }
+
+
+    // return the k nearest Points to the given Point
+    public Iterable<Point> nearest(Point p, int k) {
+        if(p == null) throw new NullPointerException("p must be initialized");
+
+        MaxPQ<PointDist> ptpq = new MaxPQ<>();
+
+        Iterable<Point> iter = points();
+        for( Point i : iter ) {
+
+                PointDist distance = new PointDist(i, p.dist(i));
+                ptpq.insert(distance);
+                while (ptpq.size()>k) ptpq.delMax();
+        }
+        Stack<Point> ptstack = new Stack<>();
+        for(PointDist pd : ptpq) {
+            ptstack.push(pd.p());
+        }
+        return ptstack;
+    }
+
+    public Iterable<Partition> partitions() { return null; }
+
+    // return the number of Points in KDTree
+    public int size() { return rbst.size(); }
+
+    // return whether the KDTree is empty
+    public boolean isEmpty() { return rbst.isEmpty(); }
+
+    // place your timing code or unit testing here
+    public static void main(String[] args) {
+        PSBruteForce<Integer> bf = new PSBruteForce<>();
+        Point p = new Point(1.0, 1.0);
+        Point t = new Point(2.0, 2.0);
+        Point q = new Point(3.0, 3.0);
+        bf.put(p, 10);
+        bf.put(t, 20);
+        bf.put(q, 30);
+        StdOut.println(bf.nearest(new Point (4.0,4.0)));
+
+    }
+}
+
+--[ 2022.11.22.10.18.52.267.7 ]--
+InitFile: /src/FastFoodVisualizer.java
+import java.awt.*;
+
+/**
+ * Loads and visualizes location data, and reports information on the closest
+ * data point to mouse cursor
+ */
+public class FastFoodVisualizer {
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    private static final Color cText = new Color(64,64,64);
+
+    private static void parseCSVLine(String line, String[] data) {
+        boolean inQuote = false;
+        int s = -1;
+        int j = 0;
+        for(int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if(c == ',' && !inQuote) {
+                if(line.charAt(s+1) == '"' && line.charAt(i-1) == '"') {
+                    data[j] = line.substring(s+2,i-1);
+                } else {
+                    data[j] = line.substring(s + 1, i);
+                }
+                j++;
+                s = i;
+                continue;
+            }
+            if(c=='"') {
+                inQuote = !inQuote;
+            }
+        }
+        int i = line.length();
+        if(s < i) {
+            if(line.charAt(s+1) == '"' && line.charAt(i-1) == '"') {
+                data[j] = line.substring(s+2,i-1);
+            } else {
+                data[j] = line.substring(s + 1, i);
+            }
+        }
+    }
+
+    private static String[][] readCSV(String filename, int m) {
+        String[] lines = (new In(filename)).readAllLines();
+        int n = lines.length;
+        String[][] a = new String[n][m];
+        for(int i = 0; i < n; i++) parseCSVLine(lines[i], a[i]);
+        return a;
+    }
+
+    private static void insertCSV(String filename, PointSearch<String[]> ps) {
+        String[][] data = readCSV(filename, 4);
+        for(int i = 0; i < data.length; i++) {
+            double longitude = Double.parseDouble(data[i][0]);
+            double latitude = Double.parseDouble(data[i][1]);
+            String[] loc = {data[i][2], data[i][3]};
+            ps.put(new Point(longitude, latitude), loc);
+        }
+    }
+
+    public static void main(String[] args) {
+        PointSearch<String[]> psBurgerKings = new PSKDTree<>();
+
+        insertCSV("burgerking.csv", psBurgerKings);
+
+        Visualizer.setScaling(psBurgerKings.min(), psBurgerKings.max());
+
+        StdDraw.show(0);
+
+        Mouse mouse = new Mouse(24, 36, 464, 464);
+
+        while(true) {
+            Point loc = Visualizer.xformInv(mouse.getLocation());
+
+            Visualizer.clear();
+            Visualizer.drawKDTree(psBurgerKings, false, false);
+            Visualizer.drawNeighbors(psBurgerKings, loc, true, 0);
+
+            StdDraw.setPenColor(cText);
+            int i = 464;
+            String[] value = psBurgerKings.getNearest(loc);
+            if(value != null) {
+                for (String l : value) {
+                    StdDraw.text(256, i, l);
+                    i -= 16;
+                }
+            }
+
+            StdDraw.show(DELAY);
+        }
+
+
+    }
+}
+
+--[ 2022.11.22.10.18.52.267.8 ]--
+InitFile: /src/NearestNeighborVisualizer.java
+import java.awt.event.KeyEvent;
+
+/**
+ * Visualizes nearest neighbors to mouse cursor and partitioning data
+ */
+public class NearestNeighborVisualizer {
+
+    // number of dots to add at start
+    private final static int nGaussian = 10;
+    private final static int nUniform  = 10;
+
+    // delay in milliseconds (controls animation speed)
+    private final static int DELAY = 10;
+
+    // creates a new PointSearch data structure
+    // note: you can swap between PSKDTree and PSBruteForce to debug your code
+    private static PointSearch<Character> createNewPS() {
+        return new PSKDTree<>();
+    }
+
+    public static void main(String[] args) {
+        PointSearch<Character> ps = createNewPS();
+
+        // add some random points
+        for(int i = 0; i < nGaussian; i++) ps.put(Point.gaussian(), 'g');
+        for(int i = 0; i < nUniform; i++) ps.put(Point.uniform(), 'u');
+
+        // add points to match assignment write-up
+        /*
+        ps.put(new Point(0.8, 0.9), 'A');
+        ps.put(new Point(0.5, 0.4), 'B');
+        ps.put(new Point(0.2, 0.6), 'C');
+        ps.put(new Point(0.3, 0.1), 'D');
+        ps.put(new Point(0.9, 0.4), 'E');
+        */
+
+        StdDraw.show(0);
+
+        int k = 1;
+        boolean drawClosest = true;
+        boolean drawPartitions = false;
+        boolean drawBoundingBox = false;
+
+        KeyPress keyP    = new KeyPress(KeyEvent.VK_P);
+        KeyPress keyUp   = new KeyPress(KeyEvent.VK_UP);
+        KeyPress keyDown = new KeyPress(KeyEvent.VK_DOWN);
+        KeyPress keyC    = new KeyPress(KeyEvent.VK_C);
+        KeyPress keyN    = new KeyPress(KeyEvent.VK_N);
+        KeyPress keyB    = new KeyPress(KeyEvent.VK_B);
+        Mouse    mouse   = new Mouse(24, 36, 464, 464);
+
+        while(true) {
+            Point loc = mouse.getLocation();
+
+            if(keyC.isPressed()) ps = createNewPS();
+            if(keyUp.isPressed()) k++;
+            if(keyDown.isPressed() && k > 0) k--;
+            if(keyN.isPressed()) drawClosest = !drawClosest;
+            if(keyP.isPressed()) drawPartitions = !drawPartitions;
+            if(keyB.isPressed()) drawBoundingBox = !drawBoundingBox;
+            if(mouse.isPressed()) ps.put(loc, 'm');
+
+            Visualizer.clear();
+            Visualizer.drawKDTree(ps, drawPartitions, drawBoundingBox);
+            Visualizer.drawNeighbors(ps, loc, drawClosest, k);
+
+            StdDraw.show(DELAY);
+        }
+    }
+}
+
+--[ 2022.11.22.10.18.52.267.9 ]--
+InitFile: /.cos265
+
+
+--[ 2022.11.22.10.18.52.267.10 ]--
+InitFile: /P05_KDTrees.iml
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="algs4" level="project" />
+    <orderEntry type="library" name="stdlib" level="project" />
+  </component>
+</module>
+
+--[ 2022.11.22.10.49.53.533.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.10.55.06.781.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.10.58.06.430.0 ]--
+:/src/PSKDTree.java
+r 279 //        Point p = new Point(1.0, 1.0);
+r 280 //        Point t = new Point(2.0, 2.0);
+r 281 //        Point q = new Point(3.0, 3.0);
+r 282 //        pskd.put(p, 10);
+r 283 //        pskd.put(t, 20);
+r 284 //        pskd.put(q, 30);
+r 285 //        StdOut.println(pskd.nearest(new Point (0,0),0));
+--[ 2022.11.22.10.58.08.536.0 ]--
+r 286     
+--[ 2022.11.22.10.58.09.381.0 ]--
+r 286         
+--[ 2022.11.22.10.58.10.758.0 ]--
+r 286         I
+--[ 2022.11.22.10.58.10.808.0 ]--
+r 286         In
+--[ 2022.11.22.10.58.11.077.0 ]--
+r 286         In 
+--[ 2022.11.22.10.58.11.157.0 ]--
+r 286         In i
+--[ 2022.11.22.10.58.11.214.0 ]--
+r 286         In in
+--[ 2022.11.22.10.58.11.574.0 ]--
+r 286         In in 
+--[ 2022.11.22.10.58.11.851.0 ]--
+r 286         In in =
+--[ 2022.11.22.10.58.11.947.0 ]--
+r 286         In in = 
+--[ 2022.11.22.10.58.12.231.0 ]--
+r 286         In in = n
+--[ 2022.11.22.10.58.12.504.0 ]--
+r 286         In in = ne
+--[ 2022.11.22.10.58.12.530.0 ]--
+r 286         In in = new
+--[ 2022.11.22.10.58.13.106.0 ]--
+r 286         In in = new 
+--[ 2022.11.22.10.58.13.337.0 ]--
+r 286         In in = new I
+--[ 2022.11.22.10.58.13.448.0 ]--
+r 286         In in = new In
+--[ 2022.11.22.10.58.13.967.0 ]--
+r 286         In in = new In()
+--[ 2022.11.22.10.58.14.142.0 ]--
+r 286         In in = new In(a)
+--[ 2022.11.22.10.58.14.269.0 ]--
+r 286         In in = new In(ar)
+--[ 2022.11.22.10.58.14.511.0 ]--
+r 286         In in = new In(arg)
+--[ 2022.11.22.10.58.14.687.0 ]--
+r 286         In in = new In(arge)
+--[ 2022.11.22.10.58.15.424.0 ]--
+r 286         In in = new In(arg)
+--[ 2022.11.22.10.58.15.522.0 ]--
+r 286         In in = new In(args)
+--[ 2022.11.22.10.58.16.195.0 ]--
+r 286         In in = new In(args[])
+--[ 2022.11.22.10.58.16.354.0 ]--
+r 286         In in = new In(args[0])
+--[ 2022.11.22.10.58.17.880.0 ]--
+r 286         In in = new In(args[0]);
+--[ 2022.11.22.10.58.19.796.0 ]--
++ 287         
+--[ 2022.11.22.10.58.24.905.0 ]--
+r 287         i
+--[ 2022.11.22.10.58.25.059.0 ]--
+r 287         in
+--[ 2022.11.22.10.58.26.060.0 ]--
+r 287         int
+--[ 2022.11.22.10.58.27.633.0 ]--
+r 287         int[]
+--[ 2022.11.22.10.58.28.327.0 ]--
+r 287         int[] 
+--[ 2022.11.22.10.59.04.208.0 ]--
+r 287         int[] p
+--[ 2022.11.22.10.59.04.496.0 ]--
+r 287         int[] po
+--[ 2022.11.22.10.59.04.604.0 ]--
+r 287         int[] poi
+--[ 2022.11.22.10.59.04.681.0 ]--
+r 287         int[] poin
+--[ 2022.11.22.10.59.04.982.0 ]--
+r 287         int[] point
+--[ 2022.11.22.10.59.06.627.0 ]--
+r 287         int[] point 
+--[ 2022.11.22.10.59.06.789.0 ]--
+r 287         int[] point =
+--[ 2022.11.22.10.59.06.939.0 ]--
+r 287         int[] point = 
+--[ 2022.11.22.10.59.07.087.0 ]--
+r 287         int[] point = i
+--[ 2022.11.22.10.59.07.150.0 ]--
+r 287         int[] point = in
+--[ 2022.11.22.10.59.07.442.0 ]--
+r 287         int[] point = in.
+--[ 2022.11.22.10.59.12.907.0 ]--
+r 287         int[] point = in.readLine
+--[ 2022.11.22.10.59.12.958.0 ]--
+r 287         int[] point = in.readLine()
+--[ 2022.11.22.10.59.14.459.0 ]--
+r 287         int[] point = in.readLine();
+--[ 2022.11.22.10.59.14.944.0 ]--
+r 287         int[] point = in.readLine(); 
+--[ 2022.11.22.10.59.22.533.0 ]--
+r 287         in.readLine(); 
+--[ 2022.11.22.11.00.08.457.0 ]--
++ 287         
+--[ 2022.11.22.11.00.17.224.0 ]--
+r 287         P
+--[ 2022.11.22.11.00.17.347.0 ]--
+r 287         Po
+--[ 2022.11.22.11.00.17.453.0 ]--
+r 287         Poi
+--[ 2022.11.22.11.00.17.537.0 ]--
+r 287         Poin
+--[ 2022.11.22.11.00.18.044.0 ]--
+r 287         Point
+--[ 2022.11.22.11.00.18.172.0 ]--
+r 287         Point 
+--[ 2022.11.22.11.00.18.250.0 ]--
+r 287         Point p
+--[ 2022.11.22.11.00.18.725.0 ]--
+r 287         Point p 
+--[ 2022.11.22.11.00.18.816.0 ]--
+r 287         Point p =
+--[ 2022.11.22.11.00.18.909.0 ]--
+r 287         Point p = 
+--[ 2022.11.22.11.00.19.061.0 ]--
+r 287         Point p = n
+--[ 2022.11.22.11.00.19.192.0 ]--
+r 287         Point p = ne
+--[ 2022.11.22.11.00.19.271.0 ]--
+r 287         Point p = new
+--[ 2022.11.22.11.00.19.700.0 ]--
+r 287         Point p = new 
+--[ 2022.11.22.11.00.19.855.0 ]--
+r 287         Point p = new P
+--[ 2022.11.22.11.00.20.217.0 ]--
+r 287         Point p = new Poi
+--[ 2022.11.22.11.00.20.247.0 ]--
+r 287         Point p = new Poin
+--[ 2022.11.22.11.00.20.463.0 ]--
+r 287         Point p = new Point
+--[ 2022.11.22.11.00.21.217.0 ]--
+r 287         Point p = new Point)
+--[ 2022.11.22.11.00.21.534.0 ]--
+r 287         Point p = new Point
+--[ 2022.11.22.11.00.43.748.0 ]--
+r 287         /Point p = new Point
+--[ 2022.11.22.11.00.43.853.0 ]--
+r 287         //Point p = new Point
+--[ 2022.11.22.11.00.46.708.0 ]--
+r 288         Sin.readLine(); 
+--[ 2022.11.22.11.00.46.930.0 ]--
+r 288         Stin.readLine(); 
+--[ 2022.11.22.11.00.47.088.0 ]--
+r 288         Stdin.readLine(); 
+--[ 2022.11.22.11.00.47.401.0 ]--
+r 288         StdOin.readLine(); 
+--[ 2022.11.22.11.00.47.654.0 ]--
+r 288         StdOuin.readLine(); 
+--[ 2022.11.22.11.00.47.825.0 ]--
+r 288         StdOutin.readLine(); 
+--[ 2022.11.22.11.00.48.059.0 ]--
+r 288         StdOut.in.readLine(); 
+--[ 2022.11.22.11.00.48.348.0 ]--
+r 288         StdOut.pin.readLine(); 
+--[ 2022.11.22.11.00.48.387.0 ]--
+r 288         StdOut.prin.readLine(); 
+--[ 2022.11.22.11.00.48.476.0 ]--
+r 288         StdOut.priin.readLine(); 
+--[ 2022.11.22.11.00.48.549.0 ]--
+r 288         StdOut.prinin.readLine(); 
+--[ 2022.11.22.11.00.48.577.0 ]--
+r 288         StdOut.printin.readLine(); 
+--[ 2022.11.22.11.00.49.177.0 ]--
+r 288         StdOut.printlin.readLine(); 
+--[ 2022.11.22.11.00.49.230.0 ]--
+r 288         StdOut.printlnin.readLine(); 
+--[ 2022.11.22.11.00.49.722.0 ]--
+r 288         StdOut.println(in.readLine(); 
+--[ 2022.11.22.11.00.50.057.0 ]--
+r 288         StdOut.printlnin.readLine(); 
+--[ 2022.11.22.11.00.50.513.0 ]--
+r 288         StdOut.println(in.readLine(); 
+--[ 2022.11.22.11.00.51.903.0 ]--
+r 288         StdOut.println(in.readLine(); )
+--[ 2022.11.22.11.00.54.163.0 ]--
+r 288         StdOut.println(in.readLine();)
+--[ 2022.11.22.11.00.54.278.0 ]--
+r 288         StdOut.println(in.readLine())
+--[ 2022.11.22.11.00.55.312.0 ]--
+r 288         StdOut.println(in.readLine());
+--[ 2022.11.22.11.01.01.240.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.01.27.795.0 ]--
++ 288         
+--[ 2022.11.22.11.01.28.326.0 ]--
+r 288         i
+--[ 2022.11.22.11.01.28.417.0 ]--
+r 288         in
+--[ 2022.11.22.11.01.29.985.0 ]--
+r 288         in.
+--[ 2022.11.22.11.01.30.422.0 ]--
+r 288         in
+--[ 2022.11.22.11.01.30.463.0 ]--
+r 288         i
+--[ 2022.11.22.11.01.30.608.0 ]--
+r 288         
+--[ 2022.11.22.11.01.33.343.0 ]--
+r 288         v
+--[ 2022.11.22.11.01.33.764.0 ]--
+r 288         va
+--[ 2022.11.22.11.01.33.882.0 ]--
+r 288         var
+--[ 2022.11.22.11.01.34.042.0 ]--
+r 288         var 
+--[ 2022.11.22.11.01.34.150.0 ]--
+r 288         var =
+--[ 2022.11.22.11.01.34.264.0 ]--
+r 288         var = 
+--[ 2022.11.22.11.01.34.485.0 ]--
+r 288         var = i
+--[ 2022.11.22.11.01.34.585.0 ]--
+r 288         var = in
+--[ 2022.11.22.11.01.34.872.0 ]--
+r 288         var = in.
+--[ 2022.11.22.11.01.35.581.0 ]--
+r 288         var = in.r
+--[ 2022.11.22.11.01.35.722.0 ]--
+r 288         var = in.re
+--[ 2022.11.22.11.01.35.798.0 ]--
+r 288         var = in.rea
+--[ 2022.11.22.11.01.36.148.0 ]--
+r 288         var = in.read
+--[ 2022.11.22.11.01.36.547.0 ]--
+r 288         var = in.readL
+--[ 2022.11.22.11.01.36.719.0 ]--
+r 288         var = in.readLi
+--[ 2022.11.22.11.01.36.832.0 ]--
+r 288         var = in.readLin
+--[ 2022.11.22.11.01.37.764.0 ]--
+r 288         var = in.readLine
+--[ 2022.11.22.11.01.37.964.0 ]--
+r 288         var = in.readLine()
+--[ 2022.11.22.11.01.38.583.0 ]--
+r 288         var = in.readLine();
+--[ 2022.11.22.11.01.44.553.0 ]--
+r 288         dvar = in.readLine();
+--[ 2022.11.22.11.01.44.666.0 ]--
+r 288         dovar = in.readLine();
+--[ 2022.11.22.11.01.44.737.0 ]--
+r 288         douvar = in.readLine();
+--[ 2022.11.22.11.01.44.871.0 ]--
+r 288         doubvar = in.readLine();
+--[ 2022.11.22.11.01.44.983.0 ]--
+r 288         doublvar = in.readLine();
+--[ 2022.11.22.11.01.45.100.0 ]--
+r 288         doublevar = in.readLine();
+--[ 2022.11.22.11.01.45.459.0 ]--
+r 288         double var = in.readLine();
+--[ 2022.11.22.11.01.57.430.0 ]--
+r 288         S var = in.readLine();
+--[ 2022.11.22.11.01.57.562.0 ]--
+r 288         St var = in.readLine();
+--[ 2022.11.22.11.01.57.689.0 ]--
+r 288         Str var = in.readLine();
+--[ 2022.11.22.11.01.58.014.0 ]--
+r 288         Stri var = in.readLine();
+--[ 2022.11.22.11.01.58.046.0 ]--
+r 288         Strin var = in.readLine();
+--[ 2022.11.22.11.01.58.074.0 ]--
+r 288         String var = in.readLine();
+--[ 2022.11.22.11.02.01.701.0 ]--
++ 289         
+--[ 2022.11.22.11.02.02.519.0 ]--
+r 289         S
+--[ 2022.11.22.11.02.02.731.0 ]--
+r 289         St
+--[ 2022.11.22.11.02.03.147.0 ]--
+r 289         Std
+--[ 2022.11.22.11.02.03.824.0 ]--
+r 289         StdO
+--[ 2022.11.22.11.02.04.223.0 ]--
+r 289         StdOu
+--[ 2022.11.22.11.02.04.580.0 ]--
+r 289         StdOut
+--[ 2022.11.22.11.02.04.991.0 ]--
+r 289         StdOutp
+--[ 2022.11.22.11.02.05.286.0 ]--
+r 289         StdOut
+--[ 2022.11.22.11.02.05.778.0 ]--
+r 289         StdOut.
+--[ 2022.11.22.11.02.05.928.0 ]--
+r 289         StdOut.p
+--[ 2022.11.22.11.02.06.047.0 ]--
+r 289         StdOut.pr
+--[ 2022.11.22.11.02.06.205.0 ]--
+r 289         StdOut.pri
+--[ 2022.11.22.11.02.06.251.0 ]--
+r 289         StdOut.prin
+--[ 2022.11.22.11.02.06.309.0 ]--
+r 289         StdOut.print
+--[ 2022.11.22.11.02.06.590.0 ]--
+r 289         StdOut.println
+--[ 2022.11.22.11.02.06.956.0 ]--
+r 289         StdOut.println()
+--[ 2022.11.22.11.02.07.461.0 ]--
+r 289         StdOut.println(v)
+--[ 2022.11.22.11.02.07.635.0 ]--
+r 289         StdOut.println(va)
+--[ 2022.11.22.11.02.07.879.0 ]--
+r 289         StdOut.println(var)
+--[ 2022.11.22.11.02.08.267.0 ]--
+r 289         StdOut.println(var);
+--[ 2022.11.22.11.02.12.455.0 ]--
+r 289         StdOut.println(var.);
+--[ 2022.11.22.11.02.32.759.0 ]--
+r 289         StdOut.println(var.split);
+--[ 2022.11.22.11.02.32.801.0 ]--
+r 289         StdOut.println(var.split());
+--[ 2022.11.22.11.02.35.387.0 ]--
+r 289         StdOut.println(var.split(""));
+--[ 2022.11.22.11.02.35.462.0 ]--
+r 289         StdOut.println(var.split(" "));
+--[ 2022.11.22.11.02.44.429.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.02.56.965.0 ]--
+r 290         StdOut.println(v);
+--[ 2022.11.22.11.02.57.096.0 ]--
+r 290         StdOut.println(va);
+--[ 2022.11.22.11.02.57.281.0 ]--
+r 290         StdOut.println(var);
+--[ 2022.11.22.11.03.00.936.0 ]--
+r 289         var.split(" "));
+--[ 2022.11.22.11.03.02.240.0 ]--
+r 289         var.split(" ");
+--[ 2022.11.22.11.03.03.556.0 ]--
+r 290         StdOut.println(var[]);
+--[ 2022.11.22.11.03.03.885.0 ]--
+r 290         StdOut.println(var[0]);
+--[ 2022.11.22.11.03.07.476.0 ]--
+UpdateTree (AD): 0 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
+
+--[ 2022.11.22.11.03.07.479.0 ]--
+CompilationStatus (AEW): 0 1 0
+[Ljava.lang.String;@7d58a000
+--[ 2022.11.22.11.03.19.619.0 ]--
+r 289         vvar.split(" ");
+--[ 2022.11.22.11.03.19.627.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.19.653.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.19.687.0 ]--
+r 289         vavar.split(" ");
+--[ 2022.11.22.11.03.19.689.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.19.694.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.19.819.0 ]--
+r 289         varvar.split(" ");
+--[ 2022.11.22.11.03.19.821.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.19.827.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.052.0 ]--
+r 289         var var.split(" ");
+--[ 2022.11.22.11.03.20.054.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.062.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.064.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.070.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.327.0 ]--
+r 289         var =var.split(" ");
+--[ 2022.11.22.11.03.20.329.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.337.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.340.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.344.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.662.0 ]--
+r 289         var = var.split(" ");
+--[ 2022.11.22.11.03.20.664.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.20.668.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.31.381.0 ]--
+r 289         Svar = var.split(" ");
+--[ 2022.11.22.11.03.31.386.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.31.393.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.31.555.0 ]--
+r 289         Stvar = var.split(" ");
+--[ 2022.11.22.11.03.31.557.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.31.560.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.31.731.0 ]--
+r 289         Strvar = var.split(" ");
+--[ 2022.11.22.11.03.31.733.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.31.736.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.32.545.0 ]--
+r 289         Strivar = var.split(" ");
+--[ 2022.11.22.11.03.32.547.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.32.550.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.32.572.0 ]--
+r 289         Strinvar = var.split(" ");
+--[ 2022.11.22.11.03.32.574.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.32.576.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.32.691.0 ]--
+r 289         Stringvar = var.split(" ");
+--[ 2022.11.22.11.03.32.693.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.32.696.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.33.514.0 ]--
+r 289         String[var = var.split(" ");
+--[ 2022.11.22.11.03.33.518.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.33.522.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.33.585.0 ]--
+r 289         String[]var = var.split(" ");
+--[ 2022.11.22.11.03.33.587.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.33.590.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.33.592.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.33.595.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.33.597.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.33.605.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.34.124.0 ]--
+r 289         String[] var = var.split(" ");
+--[ 2022.11.22.11.03.34.126.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.34.131.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.40.679.0 ]--
+r 289         String[] var2 = var.split(" ");
+--[ 2022.11.22.11.03.40.681.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.40.685.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.44.094.0 ]--
+r 290         StdOut.println(var2[0]);
+--[ 2022.11.22.11.03.44.097.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.44.101.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.47.816.0 ]--
+UpdateTree (AD): 2 0
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.03.47.818.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.04.03.192.0 ]--
+r 289         (String[] var2 = var.split(" ");
+--[ 2022.11.22.11.04.04.587.0 ]--
+r 289         (String[] var2 = var.split(" "));
+--[ 2022.11.22.11.04.05.861.0 ]--
+r 289         D(String[] var2 = var.split(" "));
+--[ 2022.11.22.11.04.06.004.0 ]--
+r 289         Do(String[] var2 = var.split(" "));
+--[ 2022.11.22.11.04.06.108.0 ]--
+r 289         Dou(String[] var2 = var.split(" "));
+--[ 2022.11.22.11.04.06.192.0 ]--
+r 289         Doub(String[] var2 = var.split(" "));
+--[ 2022.11.22.11.04.06.413.0 ]--
+r 289         Doubl(String[] var2 = var.split(" "));
+--[ 2022.11.22.11.04.06.439.0 ]--
+r 289         Double(String[] var2 = var.split(" "));
+--[ 2022.11.22.11.04.09.784.0 ]--
+r 289         Double(String[] var2 = var.split(" ");
+--[ 2022.11.22.11.04.11.939.0 ]--
+r 289         String[] var2 = var.split(" ");
+--[ 2022.11.22.11.04.15.438.0 ]--
++ 290         
+--[ 2022.11.22.11.04.16.557.0 ]--
+r 290         va
+--[ 2022.11.22.11.04.16.852.0 ]--
+r 290         va2
+--[ 2022.11.22.11.04.17.981.0 ]--
+r 290         va2[]
+--[ 2022.11.22.11.04.18.181.0 ]--
+r 290         va2[0]
+--[ 2022.11.22.11.04.22.340.0 ]--
+r 290         va2[0].
+--[ 2022.11.22.11.04.22.553.0 ]--
+r 290         va2[0].p
+--[ 2022.11.22.11.04.22.692.0 ]--
+r 290         va2[0].pa
+--[ 2022.11.22.11.04.22.800.0 ]--
+r 290         va2[0].par
+--[ 2022.11.22.11.04.23.389.0 ]--
+r 290         va2[0].pars
+--[ 2022.11.22.11.04.23.530.0 ]--
+r 290         va2[0].parse
+--[ 2022.11.22.11.04.27.749.0 ]--
+r 290         va2[0].parseD
+--[ 2022.11.22.11.04.27.872.0 ]--
+r 290         va2[0].parseDb
+--[ 2022.11.22.11.04.28.042.0 ]--
+r 290         va2[0].parseDbo
+--[ 2022.11.22.11.04.28.127.0 ]--
+r 290         va2[0].parseDbou
+--[ 2022.11.22.11.04.28.508.0 ]--
+r 290         va2[0].parseDbo
+--[ 2022.11.22.11.04.28.579.0 ]--
+r 290         va2[0].parseDb
+--[ 2022.11.22.11.04.28.767.0 ]--
+r 290         va2[0].parseDb=
+--[ 2022.11.22.11.04.29.149.0 ]--
+r 290         va2[0].parseDb
+--[ 2022.11.22.11.04.29.230.0 ]--
+r 290         va2[0].parseD
+--[ 2022.11.22.11.04.29.735.0 ]--
+r 290         va2[0].parseDo
+--[ 2022.11.22.11.04.29.858.0 ]--
+r 290         va2[0].parseDou
+--[ 2022.11.22.11.04.31.073.0 ]--
+r 290         va2[0].parseDoub
+--[ 2022.11.22.11.04.31.203.0 ]--
+r 290         va2[0].parseDoubt
+--[ 2022.11.22.11.04.31.894.0 ]--
+r 290         va2[0].parseDoub
+--[ 2022.11.22.11.04.32.557.0 ]--
+r 290         va2[0].parseDoubl
+--[ 2022.11.22.11.04.32.661.0 ]--
+r 290         va2[0].parseDoublt
+--[ 2022.11.22.11.04.33.219.0 ]--
+r 290         va2[0].parseDoubl
+--[ 2022.11.22.11.04.33.346.0 ]--
+r 290         va2[0].parseDouble
+--[ 2022.11.22.11.04.35.446.0 ]--
+r 290         va2[0].parseDouble()
+--[ 2022.11.22.11.04.36.139.0 ]--
+r 290         va2[0].parseDouble();
+--[ 2022.11.22.11.04.37.736.0 ]--
+r 290         var2[0].parseDouble();
+--[ 2022.11.22.11.04.40.141.0 ]--
+r 290         dvar2[0].parseDouble();
+--[ 2022.11.22.11.04.40.305.0 ]--
+r 290         dovar2[0].parseDouble();
+--[ 2022.11.22.11.04.40.484.0 ]--
+r 290         douvar2[0].parseDouble();
+--[ 2022.11.22.11.04.40.641.0 ]--
+r 290         doubvar2[0].parseDouble();
+--[ 2022.11.22.11.04.40.777.0 ]--
+r 290         doublvar2[0].parseDouble();
+--[ 2022.11.22.11.04.40.923.0 ]--
+r 290         doublevar2[0].parseDouble();
+--[ 2022.11.22.11.04.41.722.0 ]--
+r 290         double var2[0].parseDouble();
+--[ 2022.11.22.11.04.43.093.0 ]--
+r 290         double x =var2[0].parseDouble();
+--[ 2022.11.22.11.05.12.137.0 ]--
+r 290         double x =var2[0].parseDouble(var2[0]);
+--[ 2022.11.22.11.05.15.364.0 ]--
+r 290         double x =D.parseDouble(var2[0]);
+--[ 2022.11.22.11.05.15.608.0 ]--
+r 290         double x =Do.parseDouble(var2[0]);
+--[ 2022.11.22.11.05.15.722.0 ]--
+r 290         double x =Dou.parseDouble(var2[0]);
+--[ 2022.11.22.11.05.16.098.0 ]--
+r 290         double x =Doub.parseDouble(var2[0]);
+--[ 2022.11.22.11.05.16.286.0 ]--
+r 290         double x =Doubl.parseDouble(var2[0]);
+--[ 2022.11.22.11.05.16.413.0 ]--
+r 290         double x =Double.parseDouble(var2[0]);
+--[ 2022.11.22.11.05.22.096.0 ]--
+r 290         double x = Double.parseDouble(var2[0]);
+--[ 2022.11.22.11.05.26.444.0 ]--
+r 291         StdOut.println(x);
+--[ 2022.11.22.11.05.30.178.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.05.38.136.0 ]--
++ 292         
+--[ 2022.11.22.11.05.38.174.0 ]--
++ 292         
+--[ 2022.11.22.11.05.38.666.0 ]--
+r 293         f
+--[ 2022.11.22.11.05.38.752.0 ]--
+r 293         fo
+--[ 2022.11.22.11.05.38.908.0 ]--
+r 293         for
+--[ 2022.11.22.11.05.39.077.0 ]--
+r 293         for()
+--[ 2022.11.22.11.05.39.976.0 ]--
+r 293         for(i)
+--[ 2022.11.22.11.05.40.047.0 ]--
+r 293         for(in)
+--[ 2022.11.22.11.05.40.175.0 ]--
+r 293         for(int)
+--[ 2022.11.22.11.05.40.307.0 ]--
+r 293         for(int )
+--[ 2022.11.22.11.05.40.917.0 ]--
+r 293         for(int i)
+--[ 2022.11.22.11.05.41.699.0 ]--
+r 293         for(int i=)
+--[ 2022.11.22.11.05.41.919.0 ]--
+r 293         for(int i=0)
+--[ 2022.11.22.11.05.42.208.0 ]--
+r 293         for(int i=0;)
+--[ 2022.11.22.11.05.42.543.0 ]--
+r 293         for(int i=0; )
+--[ 2022.11.22.11.05.42.717.0 ]--
+r 293         for(int i=0; i)
+--[ 2022.11.22.11.05.45.842.0 ]--
+r 293         for(int i=0; i<)
+--[ 2022.11.22.11.05.46.162.0 ]--
+r 293         for(int i=0; i<1)
+--[ 2022.11.22.11.05.48.587.0 ]--
+r 293         for(int i=0; i<)
+--[ 2022.11.22.11.05.48.718.0 ]--
+r 293         for(int i=0; i)
+--[ 2022.11.22.11.05.48.902.0 ]--
+r 293         for(int i=0; )
+--[ 2022.11.22.11.05.49.405.0 ]--
+r 293         for(int i=0;)
+--[ 2022.11.22.11.05.50.308.0 ]--
+r 293         for(int i=0; )
+--[ 2022.11.22.11.05.51.251.0 ]--
+r 293         for(int i=0; i)
+--[ 2022.11.22.11.05.51.918.0 ]--
+r 293         for(int i=0; )
+--[ 2022.11.22.11.05.55.971.0 ]--
+r 293         h
+--[ 2022.11.22.11.05.55.999.0 ]--
+r 293         hw
+--[ 2022.11.22.11.05.56.407.0 ]--
+r 293         h
+--[ 2022.11.22.11.05.56.520.0 ]--
+r 293         
+--[ 2022.11.22.11.05.56.656.0 ]--
+r 293         w
+--[ 2022.11.22.11.05.56.716.0 ]--
+r 293         wh
+--[ 2022.11.22.11.05.56.801.0 ]--
+r 293         whi
+--[ 2022.11.22.11.05.56.884.0 ]--
+r 293         whil
+--[ 2022.11.22.11.05.56.997.0 ]--
+r 293         while
+--[ 2022.11.22.11.05.57.901.0 ]--
+r 293         while()
+--[ 2022.11.22.11.05.59.145.0 ]--
+r 293         while(i)
+--[ 2022.11.22.11.05.59.208.0 ]--
+r 293         while(in)
+--[ 2022.11.22.11.06.01.034.0 ]--
+r 293         while(i)
+--[ 2022.11.22.11.06.01.132.0 ]--
+r 293         while()
+--[ 2022.11.22.11.06.01.585.0 ]--
+r 293         while(!)
+--[ 2022.11.22.11.06.02.030.0 ]--
+r 293         while(!i)
+--[ 2022.11.22.11.06.02.228.0 ]--
+r 293         while(!in)
+--[ 2022.11.22.11.06.02.513.0 ]--
+r 293         while(!in.)
+--[ 2022.11.22.11.06.02.902.0 ]--
+r 293         while(!in.i)
+--[ 2022.11.22.11.06.04.429.0 ]--
+r 293         while(!in.isEmpty)
+--[ 2022.11.22.11.06.04.445.0 ]--
+r 293         while(!in.isEmpty())
+--[ 2022.11.22.11.06.06.831.0 ]--
+r 293         while(!in.isEmpty()) 
+--[ 2022.11.22.11.06.07.058.0 ]--
+r 293         while(!in.isEmpty()) {
+--[ 2022.11.22.11.06.07.110.0 ]--
+r 293         while(!in.isEmpty()) {}
+--[ 2022.11.22.11.06.08.323.0 ]--
++ 293         while(!in.isEmpty()) {
+r 294         }
+--[ 2022.11.22.11.06.08.524.0 ]--
++ 294             
+--[ 2022.11.22.11.06.18.100.0 ]--
+r 286         
+--[ 2022.11.22.11.06.18.745.0 ]--
+r 292         In in = new In(args[0]);
+--[ 2022.11.22.11.06.19.743.0 ]--
++ 292         
+--[ 2022.11.22.11.06.27.852.0 ]--
+r 288         
+--[ 2022.11.22.11.06.28.605.0 ]--
+r 295             String var = in.readLine();
+--[ 2022.11.22.11.06.34.282.0 ]--
+r 289         
+--[ 2022.11.22.11.06.35.123.0 ]--
++ 296             
+--[ 2022.11.22.11.06.35.344.0 ]--
+r 296             String[] var2 = var.split(" ");
+--[ 2022.11.22.11.06.40.563.0 ]--
+r 290         
+--[ 2022.11.22.11.06.41.186.0 ]--
++ 297             
+--[ 2022.11.22.11.06.41.425.0 ]--
+r 297             double x = Double.parseDouble(var2[0]);
+--[ 2022.11.22.11.06.43.038.0 ]--
++ 298             
+--[ 2022.11.22.11.06.43.432.0 ]--
+r 298             double x = Double.parseDouble(var2[0]);
+--[ 2022.11.22.11.06.45.543.0 ]--
+r 298             double y = Double.parseDouble(var2[0]);
+--[ 2022.11.22.11.06.46.595.0 ]--
+r 298             double y = Double.parseDouble(var2[]);
+--[ 2022.11.22.11.06.46.754.0 ]--
+r 298             double y = Double.parseDouble(var2[1]);
+--[ 2022.11.22.11.06.49.122.0 ]--
+r 291 
+--[ 2022.11.22.11.06.49.933.0 ]--
+- 291
+--[ 2022.11.22.11.06.50.073.0 ]--
+- 288
+--[ 2022.11.22.11.06.50.273.0 ]--
+- 288
+--[ 2022.11.22.11.06.50.789.0 ]--
+- 288
+--[ 2022.11.22.11.06.52.553.0 ]--
++ 295             
+--[ 2022.11.22.11.06.53.181.0 ]--
+r 295             P
+--[ 2022.11.22.11.06.53.429.0 ]--
+r 295             Po
+--[ 2022.11.22.11.06.53.448.0 ]--
+r 295             Poi
+--[ 2022.11.22.11.06.53.565.0 ]--
+r 295             Poibn
+--[ 2022.11.22.11.06.53.617.0 ]--
+r 295             Poibnt
+--[ 2022.11.22.11.06.54.548.0 ]--
+r 295             Poib
+--[ 2022.11.22.11.06.54.781.0 ]--
+r 295             Poi
+--[ 2022.11.22.11.06.55.026.0 ]--
+r 295             Poin
+--[ 2022.11.22.11.06.55.163.0 ]--
+r 295             Point
+--[ 2022.11.22.11.06.55.974.0 ]--
+r 295             Point 
+--[ 2022.11.22.11.06.56.725.0 ]--
+r 295             Point
+--[ 2022.11.22.11.06.56.861.0 ]--
+r 295             Poin
+--[ 2022.11.22.11.06.57.004.0 ]--
+r 295             Poi
+--[ 2022.11.22.11.06.57.149.0 ]--
+r 295             Po
+--[ 2022.11.22.11.06.57.280.0 ]--
+r 295             P
+--[ 2022.11.22.11.06.57.424.0 ]--
+r 295             
+--[ 2022.11.22.11.06.58.678.0 ]--
+r 295             p
+--[ 2022.11.22.11.06.59.895.0 ]--
+r 295             ps
+--[ 2022.11.22.11.06.59.997.0 ]--
+r 295             psk
+--[ 2022.11.22.11.07.00.293.0 ]--
+r 295             pskd
+--[ 2022.11.22.11.07.00.538.0 ]--
+r 295             pskd.
+--[ 2022.11.22.11.07.00.721.0 ]--
+r 295             pskd.p
+--[ 2022.11.22.11.07.00.968.0 ]--
+r 295             pskd.pu
+--[ 2022.11.22.11.07.01.011.0 ]--
+r 295             pskd.put
+--[ 2022.11.22.11.07.01.672.0 ]--
+r 295             pskd.put()
+--[ 2022.11.22.11.07.05.337.0 ]--
+r 295             pskd.put(n)
+--[ 2022.11.22.11.07.05.403.0 ]--
+r 295             pskd.put(ne)
+--[ 2022.11.22.11.07.05.472.0 ]--
+r 295             pskd.put(new)
+--[ 2022.11.22.11.07.05.916.0 ]--
+r 295             pskd.put(new )
+--[ 2022.11.22.11.07.06.024.0 ]--
+r 295             pskd.put(new P)
+--[ 2022.11.22.11.07.06.169.0 ]--
+r 295             pskd.put(new Po)
+--[ 2022.11.22.11.07.06.317.0 ]--
+r 295             pskd.put(new Poi)
+--[ 2022.11.22.11.07.06.488.0 ]--
+r 295             pskd.put(new Poin)
+--[ 2022.11.22.11.07.06.607.0 ]--
+r 295             pskd.put(new Point)
+--[ 2022.11.22.11.07.06.958.0 ]--
+r 295             pskd.put(new Point())
+--[ 2022.11.22.11.07.07.668.0 ]--
+r 295             pskd.put(new Point(x))
+--[ 2022.11.22.11.07.07.703.0 ]--
+r 295             pskd.put(new Point(x,))
+--[ 2022.11.22.11.07.07.984.0 ]--
+r 295             pskd.put(new Point(x,y))
+--[ 2022.11.22.11.07.09.417.0 ]--
+r 295             pskd.put(new Point(x,y));
+--[ 2022.11.22.11.07.47.683.0 ]--
+r 289 //        In in = new In(args[0]);
+r 290 //        while(!in.isEmpty()) {
+r 291 //            String var = in.readLine();
+r 292 //            String[] var2 = var.split(" ");
+r 293 //            double x = Double.parseDouble(var2[0]);
+r 294 //            double y = Double.parseDouble(var2[1]);
+r 295 //            pskd.put(new Point(x,y));
+r 296 //        }
+--[ 2022.11.22.11.07.50.168.0 ]--
++ 297 
+--[ 2022.11.22.11.07.50.234.0 ]--
+r 297         
+--[ 2022.11.22.11.07.53.252.0 ]--
+r 297         I
+--[ 2022.11.22.11.07.53.360.0 ]--
+r 297         In
+--[ 2022.11.22.11.07.53.548.0 ]--
+r 297         In 
+--[ 2022.11.22.11.07.53.563.0 ]--
+r 297         In i
+--[ 2022.11.22.11.07.53.649.0 ]--
+r 297         In in
+--[ 2022.11.22.11.07.53.804.0 ]--
+r 297         In in 
+--[ 2022.11.22.11.07.54.454.0 ]--
+r 297         In in =
+--[ 2022.11.22.11.07.54.608.0 ]--
+r 297         In in = 
+--[ 2022.11.22.11.07.54.728.0 ]--
+r 297         In in = n
+--[ 2022.11.22.11.07.54.850.0 ]--
+r 297         In in = ne
+--[ 2022.11.22.11.07.54.949.0 ]--
+r 297         In in = new
+--[ 2022.11.22.11.07.56.562.0 ]--
+r 297         In in = new 
+--[ 2022.11.22.11.07.56.960.0 ]--
+r 297         In in = new I
+--[ 2022.11.22.11.07.57.034.0 ]--
+r 297         In in = new IN
+--[ 2022.11.22.11.07.57.601.0 ]--
+r 297         In in = new IN()
+--[ 2022.11.22.11.07.57.901.0 ]--
+r 297         In in = new IN("")
+--[ 2022.11.22.11.07.58.166.0 ]--
+r 297         In in = new IN("i")
+--[ 2022.11.22.11.07.58.211.0 ]--
+r 297         In in = new IN("in")
+--[ 2022.11.22.11.07.58.386.0 ]--
+r 297         In in = new IN("inp")
+--[ 2022.11.22.11.07.58.487.0 ]--
+r 297         In in = new IN("inpu")
+--[ 2022.11.22.11.07.58.593.0 ]--
+r 297         In in = new IN("input")
+--[ 2022.11.22.11.08.00.007.0 ]--
+r 297         In in = new IN("input1")
+--[ 2022.11.22.11.08.00.307.0 ]--
+r 297         In in = new IN("input10")
+--[ 2022.11.22.11.08.00.406.0 ]--
+r 297         In in = new IN("input100")
+--[ 2022.11.22.11.08.00.605.0 ]--
+r 297         In in = new IN("input100l")
+--[ 2022.11.22.11.08.00.894.0 ]--
+r 297         In in = new IN("input100")
+--[ 2022.11.22.11.08.01.016.0 ]--
+r 297         In in = new IN("input100k")
+--[ 2022.11.22.11.08.01.412.0 ]--
+r 297         In in = new IN("input100k.")
+--[ 2022.11.22.11.08.01.708.0 ]--
+r 297         In in = new IN("input100k.t")
+--[ 2022.11.22.11.08.03.339.0 ]--
+r 297         In in = new IN("input100k.tst")
+--[ 2022.11.22.11.08.03.867.0 ]--
+r 297         In in = new IN("input100k.ts")
+--[ 2022.11.22.11.08.03.901.0 ]--
+r 297         In in = new IN("input100k.t")
+--[ 2022.11.22.11.08.04.616.0 ]--
+r 297         In in = new IN("input100k.tx")
+--[ 2022.11.22.11.08.04.715.0 ]--
+r 297         In in = new IN("input100k.txt")
+--[ 2022.11.22.11.08.05.602.0 ]--
+r 297         In in = new IN("input100k.txt");
+--[ 2022.11.22.11.08.07.000.0 ]--
+r 297         In in = new I("input100k.txt");
+--[ 2022.11.22.11.08.07.294.0 ]--
+r 297         In in = new In("input100k.txt");
+--[ 2022.11.22.11.08.08.484.0 ]--
++ 298         
+--[ 2022.11.22.11.08.10.152.0 ]--
+r 298         d
+--[ 2022.11.22.11.08.10.451.0 ]--
+r 298         dou
+--[ 2022.11.22.11.08.10.563.0 ]--
+r 298         doub
+--[ 2022.11.22.11.08.10.905.0 ]--
+r 298         doubl
+--[ 2022.11.22.11.08.11.034.0 ]--
+r 298         double
+--[ 2022.11.22.11.08.12.138.0 ]--
+r 298         double[]
+--[ 2022.11.22.11.08.14.005.0 ]--
+r 298         double[] 
+--[ 2022.11.22.11.08.14.264.0 ]--
+r 298         double[] d
+--[ 2022.11.22.11.08.14.606.0 ]--
+r 298         double[] d 
+--[ 2022.11.22.11.08.14.817.0 ]--
+r 298         double[] d =
+--[ 2022.11.22.11.08.15.425.0 ]--
+r 298         double[] d =i
+--[ 2022.11.22.11.08.15.505.0 ]--
+r 298         double[] d =in
+--[ 2022.11.22.11.08.15.960.0 ]--
+r 298         double[] d =in.
+--[ 2022.11.22.11.08.16.241.0 ]--
+r 298         double[] d =in.r
+--[ 2022.11.22.11.08.16.370.0 ]--
+r 298         double[] d =in.re
+--[ 2022.11.22.11.08.16.464.0 ]--
+r 298         double[] d =in.rea
+--[ 2022.11.22.11.08.16.713.0 ]--
+r 298         double[] d =in.read
+--[ 2022.11.22.11.08.17.014.0 ]--
+r 298         double[] d =in.readA
+--[ 2022.11.22.11.08.17.135.0 ]--
+r 298         double[] d =in.readAl
+--[ 2022.11.22.11.08.17.264.0 ]--
+r 298         double[] d =in.readAll
+--[ 2022.11.22.11.08.17.648.0 ]--
+r 298         double[] d =in.readAllD
+--[ 2022.11.22.11.08.17.835.0 ]--
+r 298         double[] d =in.readAllDo
+--[ 2022.11.22.11.08.18.264.0 ]--
+r 298         double[] d =in.readAllDou
+--[ 2022.11.22.11.08.18.411.0 ]--
+r 298         double[] d =in.readAllDoub
+--[ 2022.11.22.11.08.18.540.0 ]--
+r 298         double[] d =in.readAllDoubl
+--[ 2022.11.22.11.08.18.663.0 ]--
+r 298         double[] d =in.readAllDouble
+--[ 2022.11.22.11.08.18.789.0 ]--
+r 298         double[] d =in.readAllDoubles
+--[ 2022.11.22.11.08.19.406.0 ]--
+r 298         double[] d =in.readAllDoubles{
+--[ 2022.11.22.11.08.19.437.0 ]--
+r 298         double[] d =in.readAllDoubles{}
+--[ 2022.11.22.11.08.20.270.0 ]--
+r 298         double[] d =in.readAllDoubles{
+--[ 2022.11.22.11.08.20.390.0 ]--
+r 298         double[] d =in.readAllDoubles
+--[ 2022.11.22.11.08.20.977.0 ]--
+r 298         double[] d =in.readAllDoubles()
+--[ 2022.11.22.11.08.21.610.0 ]--
+r 298         double[] d =in.readAllDoubles();
+--[ 2022.11.22.11.08.21.777.0 ]--
++ 299         
+--[ 2022.11.22.11.08.28.040.0 ]--
+- 278
+--[ 2022.11.22.11.08.29.793.0 ]--
++ 298                 PSKDTree<Integer> pskd = new PSKDTree<>();
+r 299 
+--[ 2022.11.22.11.08.29.846.0 ]--
+r 298         PSKDTree<Integer> pskd = new PSKDTree<>();
+--[ 2022.11.22.11.08.30.784.0 ]--
+r 299     
+--[ 2022.11.22.11.08.31.134.0 ]--
+r 299         
+--[ 2022.11.22.11.08.32.685.0 ]--
+r 299         f
+--[ 2022.11.22.11.08.32.738.0 ]--
+r 299         fo
+--[ 2022.11.22.11.08.32.832.0 ]--
+r 299         for
+--[ 2022.11.22.11.08.33.341.0 ]--
+r 299         for()
+--[ 2022.11.22.11.08.33.524.0 ]--
+r 299         for(i)
+--[ 2022.11.22.11.08.33.609.0 ]--
+r 299         for(in)
+--[ 2022.11.22.11.08.33.690.0 ]--
+r 299         for(int)
+--[ 2022.11.22.11.08.33.778.0 ]--
+r 299         for(int )
+--[ 2022.11.22.11.08.33.995.0 ]--
+r 299         for(int i)
+--[ 2022.11.22.11.08.34.529.0 ]--
+r 299         for(int i=)
+--[ 2022.11.22.11.08.34.962.0 ]--
+r 299         for(int i=0)
+--[ 2022.11.22.11.08.35.473.0 ]--
+r 299         for(int i=0;)
+--[ 2022.11.22.11.08.35.851.0 ]--
+r 299         for(int i=0; )
+--[ 2022.11.22.11.08.36.220.0 ]--
+r 299         for(int i=0; i)
+--[ 2022.11.22.11.08.36.731.0 ]--
+r 299         for(int i=0; i<)
+--[ 2022.11.22.11.08.37.865.0 ]--
+r 299         for(int i=0; i<d.)
+--[ 2022.11.22.11.08.38.219.0 ]--
+r 299         for(int i=0; i<d.l)
+--[ 2022.11.22.11.08.38.326.0 ]--
+r 299         for(int i=0; i<d.le)
+--[ 2022.11.22.11.08.38.466.0 ]--
+r 299         for(int i=0; i<d.len)
+--[ 2022.11.22.11.08.38.783.0 ]--
+r 299         for(int i=0; i<d.leng)
+--[ 2022.11.22.11.08.38.861.0 ]--
+r 299         for(int i=0; i<d.lengt)
+--[ 2022.11.22.11.08.38.940.0 ]--
+r 299         for(int i=0; i<d.length)
+--[ 2022.11.22.11.08.40.201.0 ]--
+r 299         for(int i=0; i<d.length;)
+--[ 2022.11.22.11.08.41.301.0 ]--
+r 299         for(int i=0; i<d.length; )
+--[ 2022.11.22.11.08.41.561.0 ]--
+r 299         for(int i=0; i<d.length; i)
+--[ 2022.11.22.11.08.41.940.0 ]--
+r 299         for(int i=0; i<d.length; i+)
+--[ 2022.11.22.11.08.42.238.0 ]--
+r 299         for(int i=0; i<d.length; i+=)
+--[ 2022.11.22.11.08.42.963.0 ]--
+r 299         for(int i=0; i<d.length; i+=2)
+--[ 2022.11.22.11.08.43.708.0 ]--
+r 299         for(int i=0; i<d.length; i+=2) 
+--[ 2022.11.22.11.08.43.902.0 ]--
+r 299         for(int i=0; i<d.length; i+=2) {
+--[ 2022.11.22.11.08.43.954.0 ]--
+r 299         for(int i=0; i<d.length; i+=2) {]
+--[ 2022.11.22.11.08.44.573.0 ]--
++ 299         for(int i=0; i<d.length; i+=2) {
++ 300 
+r 301 }]
+--[ 2022.11.22.11.08.44.615.0 ]--
+r 301         }]
+--[ 2022.11.22.11.08.44.649.0 ]--
+r 300             
+--[ 2022.11.22.11.08.46.575.0 ]--
+r 301         }
+--[ 2022.11.22.11.08.48.482.0 ]--
+r 300             k
+--[ 2022.11.22.11.08.48.916.0 ]--
+r 300             
+--[ 2022.11.22.11.08.49.577.0 ]--
+r 300             p
+--[ 2022.11.22.11.08.50.096.0 ]--
+r 300             ps
+--[ 2022.11.22.11.08.50.411.0 ]--
+r 300             psk
+--[ 2022.11.22.11.08.50.760.0 ]--
+r 300             pskd
+--[ 2022.11.22.11.08.56.341.0 ]--
+r 300             pskd()
+--[ 2022.11.22.11.08.57.533.0 ]--
+r 300             pskd
+--[ 2022.11.22.11.08.58.070.0 ]--
+r 300             pskd.
+--[ 2022.11.22.11.08.58.384.0 ]--
+r 300             pskd.p
+--[ 2022.11.22.11.08.58.554.0 ]--
+r 300             pskd.pu
+--[ 2022.11.22.11.08.58.671.0 ]--
+r 300             pskd.put
+--[ 2022.11.22.11.08.58.955.0 ]--
+r 300             pskd.put()
+--[ 2022.11.22.11.09.00.853.0 ]--
+r 300             pskd.put(d)
+--[ 2022.11.22.11.09.01.310.0 ]--
+r 300             pskd.put(d[])
+--[ 2022.11.22.11.09.02.345.0 ]--
+r 300             pskd.put(d[i])
+--[ 2022.11.22.11.09.04.357.0 ]--
+r 300             pskd.put(d[i],)
+--[ 2022.11.22.11.09.04.595.0 ]--
+r 300             pskd.put(d[i], )
+--[ 2022.11.22.11.09.05.511.0 ]--
+r 300             pskd.put(d[i], d)
+--[ 2022.11.22.11.09.06.117.0 ]--
+r 300             pskd.put(d[i], d[])
+--[ 2022.11.22.11.09.07.786.0 ]--
+r 300             pskd.put(d[i], d[i])
+--[ 2022.11.22.11.09.08.276.0 ]--
+r 300             pskd.put(d[i], d[i+])
+--[ 2022.11.22.11.09.08.477.0 ]--
+r 300             pskd.put(d[i], d[i+1])
+--[ 2022.11.22.11.09.10.415.0 ]--
+r 300             pskd.put(nd[i], d[i+1])
+--[ 2022.11.22.11.09.10.526.0 ]--
+r 300             pskd.put(ned[i], d[i+1])
+--[ 2022.11.22.11.09.10.670.0 ]--
+r 300             pskd.put(newd[i], d[i+1])
+--[ 2022.11.22.11.09.10.962.0 ]--
+r 300             pskd.put(newPd[i], d[i+1])
+--[ 2022.11.22.11.09.11.134.0 ]--
+r 300             pskd.put(newPod[i], d[i+1])
+--[ 2022.11.22.11.09.11.257.0 ]--
+r 300             pskd.put(newPoid[i], d[i+1])
+--[ 2022.11.22.11.09.11.366.0 ]--
+r 300             pskd.put(newPoind[i], d[i+1])
+--[ 2022.11.22.11.09.11.504.0 ]--
+r 300             pskd.put(newPointd[i], d[i+1])
+--[ 2022.11.22.11.09.12.167.0 ]--
+r 300             pskd.put(newPoint(d[i], d[i+1])
+--[ 2022.11.22.11.09.13.808.0 ]--
+r 300             pskd.put(newPoint(d[i], d[i+1])_)
+--[ 2022.11.22.11.09.14.389.0 ]--
+r 300             pskd.put(newPoint(d[i], d[i+1]))
+--[ 2022.11.22.11.09.15.876.0 ]--
+r 300             pskd.put(newPoint(d[i], d[i+1]),)
+--[ 2022.11.22.11.09.17.069.0 ]--
+r 300             pskd.put(new Point(d[i], d[i+1]),)
+--[ 2022.11.22.11.09.18.617.0 ]--
+r 300             pskd.put(new Point(d[i], d[i+1]), )
+--[ 2022.11.22.11.09.18.757.0 ]--
+r 300             pskd.put(new Point(d[i], d[i+1]), i)
+--[ 2022.11.22.11.09.23.189.0 ]--
+r 300             pskd.put(new Point(d[i], d[i+1]), i)l
+--[ 2022.11.22.11.09.23.424.0 ]--
+r 300             pskd.put(new Point(d[i], d[i+1]), i)
+--[ 2022.11.22.11.09.23.683.0 ]--
+r 300             pskd.put(new Point(d[i], d[i+1]), i);
+--[ 2022.11.22.11.09.30.166.0 ]--
+r 285 
+r 287 
+--[ 2022.11.22.11.09.56.619.0 ]--
+r 301         }\
+--[ 2022.11.22.11.09.57.086.0 ]--
+r 301         }
+--[ 2022.11.22.11.09.57.326.0 ]--
++ 302         
+--[ 2022.11.22.11.10.04.820.0 ]--
+r 302         s
+--[ 2022.11.22.11.10.05.156.0 ]--
+r 302         
+--[ 2022.11.22.11.10.05.419.0 ]--
+r 302         S
+--[ 2022.11.22.11.10.05.655.0 ]--
+r 302         St
+--[ 2022.11.22.11.10.05.705.0 ]--
+r 302         Sto
+--[ 2022.11.22.11.10.05.914.0 ]--
+r 302         Stop
+--[ 2022.11.22.11.10.06.217.0 ]--
+r 302         Stopw
+--[ 2022.11.22.11.10.06.387.0 ]--
+r 302         Stopwa
+--[ 2022.11.22.11.10.06.518.0 ]--
+r 302         Stopwat
+--[ 2022.11.22.11.10.06.744.0 ]--
+r 302         Stopwatc
+--[ 2022.11.22.11.10.06.850.0 ]--
+r 302         Stopwatch
+--[ 2022.11.22.11.10.07.015.0 ]--
+r 302         Stopwatch 
+--[ 2022.11.22.11.10.07.099.0 ]--
+r 302         Stopwatch s
+--[ 2022.11.22.11.10.07.253.0 ]--
+r 302         Stopwatch st
+--[ 2022.11.22.11.10.07.599.0 ]--
+r 302         Stopwatch sto
+--[ 2022.11.22.11.10.07.792.0 ]--
+r 302         Stopwatch stop
+--[ 2022.11.22.11.10.07.951.0 ]--
+r 302         Stopwatch stopw
+--[ 2022.11.22.11.10.08.152.0 ]--
+r 302         Stopwatch stopwa
+--[ 2022.11.22.11.10.08.260.0 ]--
+r 302         Stopwatch stopwat
+--[ 2022.11.22.11.10.08.607.0 ]--
+r 302         Stopwatch stopwatc
+--[ 2022.11.22.11.10.08.741.0 ]--
+r 302         Stopwatch stopwatch
+--[ 2022.11.22.11.10.09.116.0 ]--
+r 302         Stopwatch stopwatch=
+--[ 2022.11.22.11.10.09.443.0 ]--
+r 302         Stopwatch stopwatch=n
+--[ 2022.11.22.11.10.09.604.0 ]--
+r 302         Stopwatch stopwatch=ne
+--[ 2022.11.22.11.10.09.746.0 ]--
+r 302         Stopwatch stopwatch=new
+--[ 2022.11.22.11.10.10.446.0 ]--
+r 302         Stopwatch stopwatch=new 
+--[ 2022.11.22.11.10.11.090.0 ]--
+r 302         Stopwatch stopwatch=new S
+--[ 2022.11.22.11.10.11.476.0 ]--
+r 302         Stopwatch stopwatch=new St
+--[ 2022.11.22.11.10.11.798.0 ]--
+r 302         Stopwatch stopwatch=new Sto
+--[ 2022.11.22.11.10.11.940.0 ]--
+r 302         Stopwatch stopwatch=new Stop
+--[ 2022.11.22.11.10.12.289.0 ]--
+r 302         Stopwatch stopwatch=new Stopw
+--[ 2022.11.22.11.10.12.427.0 ]--
+r 302         Stopwatch stopwatch=new Stopwa
+--[ 2022.11.22.11.10.12.551.0 ]--
+r 302         Stopwatch stopwatch=new Stopwat
+--[ 2022.11.22.11.10.13.183.0 ]--
+r 302         Stopwatch stopwatch=new Stopwatc
+--[ 2022.11.22.11.10.13.216.0 ]--
+r 302         Stopwatch stopwatch=new Stopwatch
+--[ 2022.11.22.11.10.13.745.0 ]--
+r 302         Stopwatch stopwatch=new Stopwatch)
+--[ 2022.11.22.11.10.14.270.0 ]--
+r 302         Stopwatch stopwatch=new Stopwatch
+--[ 2022.11.22.11.10.14.720.0 ]--
+r 302         Stopwatch stopwatch=new Stopwatch()
+--[ 2022.11.22.11.10.15.128.0 ]--
+r 302         Stopwatch stopwatch=new Stopwatch();
+--[ 2022.11.22.11.10.15.505.0 ]--
+r 302         Stopwatch stopwatch=new Stopwatch(); 
+--[ 2022.11.22.11.10.18.730.0 ]--
++ 303         
+--[ 2022.11.22.11.10.18.834.0 ]--
++ 303         
+--[ 2022.11.22.11.10.19.217.0 ]--
+r 304         S
+--[ 2022.11.22.11.10.19.525.0 ]--
+r 304         St
+--[ 2022.11.22.11.10.19.593.0 ]--
+r 304         Std
+--[ 2022.11.22.11.10.19.898.0 ]--
+r 304         StdO
+--[ 2022.11.22.11.10.20.015.0 ]--
+r 304         StdOu
+--[ 2022.11.22.11.10.20.175.0 ]--
+r 304         StdOut
+--[ 2022.11.22.11.10.20.546.0 ]--
+r 304         StdOut.
+--[ 2022.11.22.11.10.20.920.0 ]--
+r 304         StdOut.r
+--[ 2022.11.22.11.10.21.195.0 ]--
+r 304         StdOut.
+--[ 2022.11.22.11.10.21.323.0 ]--
+r 304         StdOut
+--[ 2022.11.22.11.10.21.468.0 ]--
+r 304         StdOu
+--[ 2022.11.22.11.10.21.763.0 ]--
+r 304         StdO
+--[ 2022.11.22.11.10.21.921.0 ]--
+r 304         Std
+--[ 2022.11.22.11.10.22.091.0 ]--
+r 304         St
+--[ 2022.11.22.11.10.22.246.0 ]--
+r 304         S
+--[ 2022.11.22.11.10.22.411.0 ]--
+r 304         
+--[ 2022.11.22.11.10.23.774.0 ]--
+r 304         S
+--[ 2022.11.22.11.10.23.909.0 ]--
+r 304         St
+--[ 2022.11.22.11.10.24.102.0 ]--
+r 304         Std
+--[ 2022.11.22.11.10.24.320.0 ]--
+r 304         StdO
+--[ 2022.11.22.11.10.24.423.0 ]--
+r 304         StdOu
+--[ 2022.11.22.11.10.24.593.0 ]--
+r 304         StdOut
+--[ 2022.11.22.11.10.24.708.0 ]--
+r 304         StdOut.
+--[ 2022.11.22.11.10.24.970.0 ]--
+r 304         StdOut.p
+--[ 2022.11.22.11.10.25.049.0 ]--
+r 304         StdOut.pr
+--[ 2022.11.22.11.10.25.158.0 ]--
+r 304         StdOut.pri
+--[ 2022.11.22.11.10.25.264.0 ]--
+r 304         StdOut.prin
+--[ 2022.11.22.11.10.25.393.0 ]--
+r 304         StdOut.pring
+--[ 2022.11.22.11.10.25.968.0 ]--
+r 304         StdOut.prin
+--[ 2022.11.22.11.10.26.060.0 ]--
+r 304         StdOut.print
+--[ 2022.11.22.11.10.26.172.0 ]--
+r 304         StdOut.printl
+--[ 2022.11.22.11.10.26.265.0 ]--
+r 304         StdOut.println
+--[ 2022.11.22.11.10.26.825.0 ]--
+r 304         StdOut.println()
+--[ 2022.11.22.11.10.27.548.0 ]--
+r 304         StdOut.println(s)
+--[ 2022.11.22.11.10.27.718.0 ]--
+r 304         StdOut.println(st)
+--[ 2022.11.22.11.10.27.812.0 ]--
+r 304         StdOut.println(sto)
+--[ 2022.11.22.11.10.28.156.0 ]--
+r 304         StdOut.println(stop)
+--[ 2022.11.22.11.10.28.688.0 ]--
+r 304         StdOut.println(stopw)
+--[ 2022.11.22.11.10.28.849.0 ]--
+r 304         StdOut.println(stopwa)
+--[ 2022.11.22.11.10.28.921.0 ]--
+r 304         StdOut.println(stopwat)
+--[ 2022.11.22.11.10.29.202.0 ]--
+r 304         StdOut.println(stopwatc)
+--[ 2022.11.22.11.10.29.377.0 ]--
+r 304         StdOut.println(stopwatch)
+--[ 2022.11.22.11.10.29.641.0 ]--
+r 304         StdOut.println(stopwatch.)
+--[ 2022.11.22.11.10.32.326.0 ]--
+r 304         StdOut.println(stopwatch.elapsedTime)
+--[ 2022.11.22.11.10.32.347.0 ]--
+r 304         StdOut.println(stopwatch.elapsedTime())
+--[ 2022.11.22.11.10.33.763.0 ]--
+r 304         StdOut.println(stopwatch.elapsedTime());
+--[ 2022.11.22.11.10.46.187.0 ]--
+r 29     
+--[ 2022.11.22.11.10.46.556.0 ]--
++ 29     
+--[ 2022.11.22.11.10.47.145.0 ]--
+r 30     i
+--[ 2022.11.22.11.10.47.231.0 ]--
+r 30     in
+--[ 2022.11.22.11.10.47.355.0 ]--
+r 30     int
+--[ 2022.11.22.11.10.47.472.0 ]--
+r 30     int 
+--[ 2022.11.22.11.10.47.598.0 ]--
+r 30     int c
+--[ 2022.11.22.11.10.47.634.0 ]--
+r 30     int co
+--[ 2022.11.22.11.10.47.809.0 ]--
+r 30     int cou
+--[ 2022.11.22.11.10.47.888.0 ]--
+r 30     int coun
+--[ 2022.11.22.11.10.47.984.0 ]--
+r 30     int count
+--[ 2022.11.22.11.10.48.239.0 ]--
+r 30     int count;
+--[ 2022.11.22.11.10.54.171.0 ]--
+r 30     int ount;
+--[ 2022.11.22.11.10.54.389.0 ]--
+r 30     int Tount;
+--[ 2022.11.22.11.10.54.618.0 ]--
+r 30     int Tiount;
+--[ 2022.11.22.11.10.54.701.0 ]--
+r 30     int Timount;
+--[ 2022.11.22.11.10.55.087.0 ]--
+r 30     int Tiount;
+--[ 2022.11.22.11.10.55.205.0 ]--
+r 30     int Tount;
+--[ 2022.11.22.11.10.55.328.0 ]--
+r 30     int ount;
+--[ 2022.11.22.11.10.55.448.0 ]--
+r 30     int tount;
+--[ 2022.11.22.11.10.55.575.0 ]--
+r 30     int tiount;
+--[ 2022.11.22.11.10.55.629.0 ]--
+r 30     int timount;
+--[ 2022.11.22.11.10.55.716.0 ]--
+r 30     int timeount;
+--[ 2022.11.22.11.10.56.102.0 ]--
+r 30     int timeCount;
+--[ 2022.11.22.11.10.59.094.0 ]--
+r 30     int timeCount=;
+--[ 2022.11.22.11.10.59.211.0 ]--
+r 30     int timeCount=0;
+--[ 2022.11.22.11.11.34.694.0 ]--
++ 197         
+--[ 2022.11.22.11.11.36.461.0 ]--
+- 197
+--[ 2022.11.22.11.11.38.374.0 ]--
++ 198         
+--[ 2022.11.22.11.11.39.102.0 ]--
+r 198         t
+--[ 2022.11.22.11.11.39.213.0 ]--
+r 198         ti
+--[ 2022.11.22.11.11.39.365.0 ]--
+r 198         tim
+--[ 2022.11.22.11.11.39.686.0 ]--
+r 198         time
+--[ 2022.11.22.11.11.40.078.0 ]--
+r 198         timeC
+--[ 2022.11.22.11.11.40.234.0 ]--
+r 198         timeCo
+--[ 2022.11.22.11.11.40.348.0 ]--
+r 198         timeCou
+--[ 2022.11.22.11.11.40.520.0 ]--
+r 198         timeCoun
+--[ 2022.11.22.11.11.40.648.0 ]--
+r 198         timeCount
+--[ 2022.11.22.11.11.40.949.0 ]--
+r 198         timeCount+
+--[ 2022.11.22.11.11.41.412.0 ]--
+r 198         timeCount++
+--[ 2022.11.22.11.11.41.841.0 ]--
+r 198         timeCount++;
+--[ 2022.11.22.11.11.45.949.0 ]--
++ 143         
+--[ 2022.11.22.11.11.46.120.0 ]--
+r 143         t
+--[ 2022.11.22.11.11.46.271.0 ]--
+r 143         ti
+--[ 2022.11.22.11.11.46.325.0 ]--
+r 143         tim
+--[ 2022.11.22.11.11.46.438.0 ]--
+r 143         time
+--[ 2022.11.22.11.11.47.306.0 ]--
+r 143         timeCou
+--[ 2022.11.22.11.11.47.517.0 ]--
+r 143         timeCoun
+--[ 2022.11.22.11.11.47.687.0 ]--
+r 143         timeCount
+--[ 2022.11.22.11.11.48.145.0 ]--
+r 143         timeCount+
+--[ 2022.11.22.11.11.48.275.0 ]--
+r 143         timeCount++
+--[ 2022.11.22.11.11.48.541.0 ]--
+r 143         timeCount++;
+--[ 2022.11.22.11.11.48.566.0 ]--
+r 143         timeCount++;l
+--[ 2022.11.22.11.11.49.131.0 ]--
+r 143         timeCount++;
+--[ 2022.11.22.11.11.59.067.0 ]--
++ 308         
+--[ 2022.11.22.11.11.59.562.0 ]--
+r 308         S
+--[ 2022.11.22.11.11.59.813.0 ]--
+r 308         St
+--[ 2022.11.22.11.11.59.956.0 ]--
+r 308         Std
+--[ 2022.11.22.11.12.00.222.0 ]--
+r 308         StdO
+--[ 2022.11.22.11.12.00.335.0 ]--
+r 308         StdOu
+--[ 2022.11.22.11.12.00.530.0 ]--
+r 308         StdOut
+--[ 2022.11.22.11.12.00.774.0 ]--
+r 308         StdOut.
+--[ 2022.11.22.11.12.00.978.0 ]--
+r 308         StdOut.p
+--[ 2022.11.22.11.12.01.070.0 ]--
+r 308         StdOut.pr
+--[ 2022.11.22.11.12.01.214.0 ]--
+r 308         StdOut.pri
+--[ 2022.11.22.11.12.01.305.0 ]--
+r 308         StdOut.prin
+--[ 2022.11.22.11.12.01.348.0 ]--
+r 308         StdOut.print
+--[ 2022.11.22.11.12.01.561.0 ]--
+r 308         StdOut.printl
+--[ 2022.11.22.11.12.01.668.0 ]--
+r 308         StdOut.println
+--[ 2022.11.22.11.12.02.099.0 ]--
+r 308         StdOut.println()
+--[ 2022.11.22.11.12.03.005.0 ]--
+r 308         StdOut.println(t)
+--[ 2022.11.22.11.12.03.052.0 ]--
+r 308         StdOut.println(ti)
+--[ 2022.11.22.11.12.03.121.0 ]--
+r 308         StdOut.println(tim)
+--[ 2022.11.22.11.12.03.205.0 ]--
+r 308         StdOut.println(time)
+--[ 2022.11.22.11.12.03.602.0 ]--
+r 308         StdOut.println(timeC)
+--[ 2022.11.22.11.12.03.770.0 ]--
+r 308         StdOut.println(timeCo)
+--[ 2022.11.22.11.12.03.862.0 ]--
+r 308         StdOut.println(timeCou)
+--[ 2022.11.22.11.12.04.090.0 ]--
+r 308         StdOut.println(timeCoun)
+--[ 2022.11.22.11.12.04.238.0 ]--
+r 308         StdOut.println(timeCount)
+--[ 2022.11.22.11.12.08.285.0 ]--
+r 308         StdOut.println(ptimeCount)
+--[ 2022.11.22.11.12.08.795.0 ]--
+r 308         StdOut.println(pktimeCount)
+--[ 2022.11.22.11.12.08.974.0 ]--
+r 308         StdOut.println(pkstimeCount)
+--[ 2022.11.22.11.12.09.290.0 ]--
+r 308         StdOut.println(pksttimeCount)
+--[ 2022.11.22.11.12.09.598.0 ]--
+r 308         StdOut.println(pkstimeCount)
+--[ 2022.11.22.11.12.09.793.0 ]--
+r 308         StdOut.println(pksdtimeCount)
+--[ 2022.11.22.11.12.09.914.0 ]--
+r 308         StdOut.println(pksd.timeCount)
+--[ 2022.11.22.11.12.11.221.0 ]--
+r 308         StdOut.println(pksdtimeCount)
+--[ 2022.11.22.11.12.11.309.0 ]--
+r 308         StdOut.println(pkstimeCount)
+--[ 2022.11.22.11.12.11.386.0 ]--
+r 308         StdOut.println(pktimeCount)
+--[ 2022.11.22.11.12.11.524.0 ]--
+r 308         StdOut.println(ptimeCount)
+--[ 2022.11.22.11.12.11.821.0 ]--
+r 308         StdOut.println(pstimeCount)
+--[ 2022.11.22.11.12.12.452.0 ]--
+r 308         StdOut.println(psktimeCount)
+--[ 2022.11.22.11.12.12.863.0 ]--
+r 308         StdOut.println(pskdtimeCount)
+--[ 2022.11.22.11.12.13.216.0 ]--
+r 308         StdOut.println(pskd.timeCount)
+--[ 2022.11.22.11.12.14.420.0 ]--
+r 308         StdOut.println(pskd.timeCount);
+--[ 2022.11.22.11.12.17.548.0 ]--
++ 309         
+--[ 2022.11.22.11.12.17.753.0 ]--
+r 309         S
+--[ 2022.11.22.11.12.17.972.0 ]--
+r 309         St
+--[ 2022.11.22.11.12.18.124.0 ]--
+r 309         Std
+--[ 2022.11.22.11.12.18.407.0 ]--
+r 309         StdO
+--[ 2022.11.22.11.12.18.543.0 ]--
+r 309         StdOu
+--[ 2022.11.22.11.12.18.660.0 ]--
+r 309         StdOut
+--[ 2022.11.22.11.12.18.784.0 ]--
+r 309         StdOut.
+--[ 2022.11.22.11.12.19.134.0 ]--
+r 309         StdOut.p
+--[ 2022.11.22.11.12.19.449.0 ]--
+r 309         StdOut.pr
+--[ 2022.11.22.11.12.19.488.0 ]--
+r 309         StdOut.pri
+--[ 2022.11.22.11.12.19.836.0 ]--
+r 309         StdOut.prin
+--[ 2022.11.22.11.12.20.133.0 ]--
+r 309         StdOut.print
+--[ 2022.11.22.11.12.20.386.0 ]--
+r 309         StdOut.printl
+--[ 2022.11.22.11.12.20.453.0 ]--
+r 309         StdOut.println
+--[ 2022.11.22.11.12.20.832.0 ]--
+r 309         StdOut.println()
+--[ 2022.11.22.11.12.21.137.0 ]--
+r 309         StdOut.println("")
+--[ 2022.11.22.11.12.22.013.0 ]--
+r 309         StdOut.println()
+--[ 2022.11.22.11.12.22.354.0 ]--
+r 309         StdOut.println(t)
+--[ 2022.11.22.11.12.22.397.0 ]--
+r 309         StdOut.println(ti)
+--[ 2022.11.22.11.12.22.475.0 ]--
+r 309         StdOut.println(tim)
+--[ 2022.11.22.11.12.23.168.0 ]--
+r 309         StdOut.println(time)
+--[ 2022.11.22.11.12.23.343.0 ]--
+r 309         StdOut.println(timeC)
+--[ 2022.11.22.11.12.23.535.0 ]--
+r 309         StdOut.println(timeCo)
+--[ 2022.11.22.11.12.23.600.0 ]--
+r 309         StdOut.println(timeCou)
+--[ 2022.11.22.11.12.23.810.0 ]--
+r 309         StdOut.println(timeCoun)
+--[ 2022.11.22.11.12.23.914.0 ]--
+r 309         StdOut.println(timeCount)
+--[ 2022.11.22.11.12.24.101.0 ]--
+r 309         StdOut.println(timeCount/)
+--[ 2022.11.22.11.12.28.597.0 ]--
+r 309         StdOut.println(timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.12.30.044.0 ]--
+r 309         StdOut.println(ptimeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.12.30.307.0 ]--
+r 309         StdOut.println(pstimeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.12.30.618.0 ]--
+r 309         StdOut.println(psktimeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.12.30.795.0 ]--
+r 309         StdOut.println(pskdtimeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.12.32.005.0 ]--
+r 309         StdOut.println(pskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.12.40.483.0 ]--
+r 307         StdOut.println();
+--[ 2022.11.22.11.12.41.440.0 ]--
+r 306         stopwatch.elapsedTime()
+--[ 2022.11.22.11.12.41.488.0 ]--
+r 305         Stopwatch stopwatch=new Stopwatch();
+--[ 2022.11.22.11.12.44.216.0 ]--
+r 306         dstopwatch.elapsedTime()
+--[ 2022.11.22.11.12.44.293.0 ]--
+r 306         dostopwatch.elapsedTime()
+--[ 2022.11.22.11.12.44.365.0 ]--
+r 306         doustopwatch.elapsedTime()
+--[ 2022.11.22.11.12.44.456.0 ]--
+r 306         doubstopwatch.elapsedTime()
+--[ 2022.11.22.11.12.44.569.0 ]--
+r 306         doublstopwatch.elapsedTime()
+--[ 2022.11.22.11.12.44.707.0 ]--
+r 306         doublestopwatch.elapsedTime()
+--[ 2022.11.22.11.12.45.390.0 ]--
+r 306         double stopwatch.elapsedTime()
+--[ 2022.11.22.11.12.45.599.0 ]--
+r 306         double tstopwatch.elapsedTime()
+--[ 2022.11.22.11.12.45.670.0 ]--
+r 306         double tistopwatch.elapsedTime()
+--[ 2022.11.22.11.12.45.750.0 ]--
+r 306         double timstopwatch.elapsedTime()
+--[ 2022.11.22.11.12.45.805.0 ]--
+r 306         double timestopwatch.elapsedTime()
+--[ 2022.11.22.11.12.46.154.0 ]--
+r 306         double time stopwatch.elapsedTime()
+--[ 2022.11.22.11.12.46.319.0 ]--
+r 306         double time =stopwatch.elapsedTime()
+--[ 2022.11.22.11.12.46.408.0 ]--
+r 306         double time = stopwatch.elapsedTime()
+--[ 2022.11.22.11.12.47.936.0 ]--
+r 306         double time = stopwatch.elapsedTime();
+--[ 2022.11.22.11.12.50.524.0 ]--
+r 307         StdOut.println("");
+--[ 2022.11.22.11.12.51.221.0 ]--
+r 307         StdOut.println("T");
+--[ 2022.11.22.11.12.51.377.0 ]--
+r 307         StdOut.println("Ti");
+--[ 2022.11.22.11.12.51.721.0 ]--
+r 307         StdOut.println("Tim");
+--[ 2022.11.22.11.12.51.868.0 ]--
+r 307         StdOut.println("Time");
+--[ 2022.11.22.11.12.52.103.0 ]--
+r 307         StdOut.println("Time:");
+--[ 2022.11.22.11.12.52.264.0 ]--
+r 307         StdOut.println("Time: ");
+--[ 2022.11.22.11.12.52.941.0 ]--
+r 307         StdOut.println("Time: ",);
+--[ 2022.11.22.11.12.53.059.0 ]--
+r 307         StdOut.println("Time: ", );
+--[ 2022.11.22.11.12.53.221.0 ]--
+r 307         StdOut.println("Time: ", t);
+--[ 2022.11.22.11.12.53.285.0 ]--
+r 307         StdOut.println("Time: ", ti);
+--[ 2022.11.22.11.12.53.369.0 ]--
+r 307         StdOut.println("Time: ", tim);
+--[ 2022.11.22.11.12.53.440.0 ]--
+r 307         StdOut.println("Time: ", time);
+--[ 2022.11.22.11.12.56.163.0 ]--
+r 307         StdOut.println("Time: , time);
+--[ 2022.11.22.11.12.57.170.0 ]--
+r 307         StdOut.println("Time: ", time);
+--[ 2022.11.22.11.12.58.222.0 ]--
+r 307         StdOut.println("Time: ",time);
+--[ 2022.11.22.11.12.58.350.0 ]--
+r 307         StdOut.println("Time: "time);
+--[ 2022.11.22.11.12.58.838.0 ]--
+r 307         StdOut.println("Time: "+time);
+--[ 2022.11.22.11.13.02.544.0 ]--
+r 308         StdOut.println("pskd.timeCount);
+--[ 2022.11.22.11.13.02.782.0 ]--
+r 308         StdOut.println("Cpskd.timeCount);
+--[ 2022.11.22.11.13.02.924.0 ]--
+r 308         StdOut.println("Copskd.timeCount);
+--[ 2022.11.22.11.13.03.019.0 ]--
+r 308         StdOut.println("Coupskd.timeCount);
+--[ 2022.11.22.11.13.03.232.0 ]--
+r 308         StdOut.println("Counpskd.timeCount);
+--[ 2022.11.22.11.13.03.317.0 ]--
+r 308         StdOut.println("Countpskd.timeCount);
+--[ 2022.11.22.11.13.04.017.0 ]--
+r 308         StdOut.println("Count:pskd.timeCount);
+--[ 2022.11.22.11.13.04.278.0 ]--
+r 308         StdOut.println("Count: pskd.timeCount);
+--[ 2022.11.22.11.13.04.387.0 ]--
+r 308         StdOut.println("Count: "pskd.timeCount);
+--[ 2022.11.22.11.13.04.937.0 ]--
+r 308         StdOut.println("Count: "+pskd.timeCount);
+--[ 2022.11.22.11.13.06.603.0 ]--
+r 309         StdOut.println("pskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.07.145.0 ]--
+r 309         StdOut.println("Ratpskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.07.184.0 ]--
+r 309         StdOut.println("Ratipskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.07.243.0 ]--
+r 309         StdOut.println("Ratiopskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.07.294.0 ]--
+r 309         StdOut.println("Rationpskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.07.590.0 ]--
+r 309         StdOut.println("Ration:pskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.08.061.0 ]--
+r 309         StdOut.println("Rationpskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.08.125.0 ]--
+r 309         StdOut.println("Ratiopskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.08.403.0 ]--
+r 309         StdOut.println("Ratio:pskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.08.736.0 ]--
+r 309         StdOut.println("Ratio: pskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.08.863.0 ]--
+r 309         StdOut.println("Ratio: "pskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.09.448.0 ]--
+r 309         StdOut.println("Ratio: "+pskd.timeCount/stopwatch.elapsedTime())
+--[ 2022.11.22.11.13.12.915.0 ]--
+r 309         StdOut.println("Ratio: "+pskd.timeCount/t)
+--[ 2022.11.22.11.13.12.979.0 ]--
+r 309         StdOut.println("Ratio: "+pskd.timeCount/ti)
+--[ 2022.11.22.11.13.13.044.0 ]--
+r 309         StdOut.println("Ratio: "+pskd.timeCount/tim)
+--[ 2022.11.22.11.13.13.105.0 ]--
+r 309         StdOut.println("Ratio: "+pskd.timeCount/time)
+--[ 2022.11.22.11.13.14.034.0 ]--
+r 309         StdOut.println("Ratio: "+pskd.timeCount/time);
+--[ 2022.11.22.11.13.17.246.0 ]--
++ 306         
+--[ 2022.11.22.11.14.32.007.0 ]--
+r 306         n
+--[ 2022.11.22.11.14.32.059.0 ]--
+r 306         ne
+--[ 2022.11.22.11.14.32.114.0 ]--
+r 306         new
+--[ 2022.11.22.11.14.32.498.0 ]--
+r 306         new 
+--[ 2022.11.22.11.14.32.941.0 ]--
+r 306         new P
+--[ 2022.11.22.11.14.33.205.0 ]--
+r 306         new Po
+--[ 2022.11.22.11.14.33.273.0 ]--
+r 306         new Poi
+--[ 2022.11.22.11.14.33.452.0 ]--
+r 306         new Poin
+--[ 2022.11.22.11.14.33.564.0 ]--
+r 306         new Point
+--[ 2022.11.22.11.14.34.466.0 ]--
+r 306         new Point()
+--[ 2022.11.22.11.14.37.261.0 ]--
+r 306         new Point(S)
+--[ 2022.11.22.11.14.37.402.0 ]--
+r 306         new Point(St)
+--[ 2022.11.22.11.14.37.738.0 ]--
+r 306         new Point(Std)
+--[ 2022.11.22.11.14.37.934.0 ]--
+r 306         new Point(Std.)
+--[ 2022.11.22.11.14.38.742.0 ]--
+r 306         new Point(Std)
+--[ 2022.11.22.11.14.39.035.0 ]--
+r 306         new Point(StdR)
+--[ 2022.11.22.11.14.39.367.0 ]--
+r 306         new Point(StdRa)
+--[ 2022.11.22.11.14.39.429.0 ]--
+r 306         new Point(StdRan)
+--[ 2022.11.22.11.14.39.537.0 ]--
+r 306         new Point(StdRand)
+--[ 2022.11.22.11.14.39.972.0 ]--
+r 306         new Point(StdRando)
+--[ 2022.11.22.11.14.40.080.0 ]--
+r 306         new Point(StdRandom)
+--[ 2022.11.22.11.14.40.443.0 ]--
+r 306         new Point(StdRandom.)
+--[ 2022.11.22.11.14.40.612.0 ]--
+r 306         new Point(StdRandom.u)
+--[ 2022.11.22.11.14.40.831.0 ]--
+r 306         new Point(StdRandom.un)
+--[ 2022.11.22.11.14.40.914.0 ]--
+r 306         new Point(StdRandom.uni)
+--[ 2022.11.22.11.14.41.092.0 ]--
+r 306         new Point(StdRandom.univ)
+--[ 2022.11.22.11.14.41.199.0 ]--
+r 306         new Point(StdRandom.univo)
+--[ 2022.11.22.11.14.41.345.0 ]--
+r 306         new Point(StdRandom.univor)
+--[ 2022.11.22.11.14.41.921.0 ]--
+r 306         new Point(StdRandom.univo)
+--[ 2022.11.22.11.14.42.013.0 ]--
+r 306         new Point(StdRandom.univ)
+--[ 2022.11.22.11.14.42.126.0 ]--
+r 306         new Point(StdRandom.uni)
+--[ 2022.11.22.11.14.42.527.0 ]--
+r 306         new Point(StdRandom.unifo)
+--[ 2022.11.22.11.14.42.794.0 ]--
+r 306         new Point(StdRandom.unifor)
+--[ 2022.11.22.11.14.43.253.0 ]--
+r 306         new Point(StdRandom.uniform)
+--[ 2022.11.22.11.14.44.455.0 ]--
+r 306         new Point(StdRandom.uniform())
+--[ 2022.11.22.11.14.45.293.0 ]--
+r 306         new Point(StdRandom.uniform(),)
+--[ 2022.11.22.11.14.45.582.0 ]--
+r 306         new Point(StdRandom.uniform(), )
+--[ 2022.11.22.11.14.46.206.0 ]--
+r 306         new Point(StdRandom.uniform(), S)
+--[ 2022.11.22.11.14.46.498.0 ]--
+r 306         new Point(StdRandom.uniform(), St)
+--[ 2022.11.22.11.14.46.666.0 ]--
+r 306         new Point(StdRandom.uniform(), Std)
+--[ 2022.11.22.11.14.47.190.0 ]--
+r 306         new Point(StdRandom.uniform(), StdR)
+--[ 2022.11.22.11.14.47.628.0 ]--
+r 306         new Point(StdRandom.uniform(), StdRandom)
+--[ 2022.11.22.11.14.48.134.0 ]--
+r 306         new Point(StdRandom.uniform(), StdRandom.)
+--[ 2022.11.22.11.14.48.373.0 ]--
+r 306         new Point(StdRandom.uniform(), StdRandom.u)
+--[ 2022.11.22.11.14.48.594.0 ]--
+r 306         new Point(StdRandom.uniform(), StdRandom.uniform)
+--[ 2022.11.22.11.14.48.609.0 ]--
+r 306         new Point(StdRandom.uniform(), StdRandom.uniform())
+--[ 2022.11.22.11.14.50.042.0 ]--
+r 306         new Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.53.471.0 ]--
+r 306         nnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.53.526.0 ]--
+r 306         nenew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.53.628.0 ]--
+r 306         neanew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.53.722.0 ]--
+r 306         nearnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.53.931.0 ]--
+r 306         nearenew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.54.093.0 ]--
+r 306         nearnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.54.202.0 ]--
+r 306         neanew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.54.314.0 ]--
+r 306         nenew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.54.433.0 ]--
+r 306         nnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.54.556.0 ]--
+r 306         new Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.54.989.0 ]--
+r 306         pnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.55.145.0 ]--
+r 306         psnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.55.394.0 ]--
+r 306         psknew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.55.644.0 ]--
+r 306         pskdnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.56.809.0 ]--
+r 306         pskd(new Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.57.068.0 ]--
+r 306         pskdnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.57.440.0 ]--
+r 306         pskd.new Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.57.799.0 ]--
+r 306         pskd.nnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.57.847.0 ]--
+r 306         pskd.nenew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.57.924.0 ]--
+r 306         pskd.neanew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.57.991.0 ]--
+r 306         pskd.nearnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.58.148.0 ]--
+r 306         pskd.nearenew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.58.343.0 ]--
+r 306         pskd.nearesnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.58.431.0 ]--
+r 306         pskd.nearestnew Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.14.59.030.0 ]--
+r 306         pskd.nearest(new Point(StdRandom.uniform(), StdRandom.uniform());
+--[ 2022.11.22.11.15.02.013.0 ]--
+r 306         pskd.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.15.04.205.0 ]--
++ 306         
+--[ 2022.11.22.11.15.04.911.0 ]--
+r 306         f
+--[ 2022.11.22.11.15.04.992.0 ]--
+r 306         fo
+--[ 2022.11.22.11.15.05.109.0 ]--
+r 306         for
+--[ 2022.11.22.11.15.05.443.0 ]--
+r 306         for()
+--[ 2022.11.22.11.15.06.229.0 ]--
+r 306         for(i)
+--[ 2022.11.22.11.15.07.742.0 ]--
+r 306         for(in)
+--[ 2022.11.22.11.15.07.857.0 ]--
+r 306         for(int)
+--[ 2022.11.22.11.15.08.069.0 ]--
+r 306         for(int )
+--[ 2022.11.22.11.15.08.300.0 ]--
+r 306         for(int i)
+--[ 2022.11.22.11.15.08.452.0 ]--
+r 306         for(int i )
+--[ 2022.11.22.11.15.08.657.0 ]--
+r 306         for(int i =)
+--[ 2022.11.22.11.15.08.776.0 ]--
+r 306         for(int i = )
+--[ 2022.11.22.11.15.09.567.0 ]--
+r 306         for(int i = 0)
+--[ 2022.11.22.11.15.10.035.0 ]--
+r 306         for(int i = 0;)
+--[ 2022.11.22.11.15.10.161.0 ]--
+r 306         for(int i = 0; )
+--[ 2022.11.22.11.15.10.504.0 ]--
+r 306         for(int i = 0; i)
+--[ 2022.11.22.11.15.11.518.0 ]--
+r 306         for(int i = 0; i )
+--[ 2022.11.22.11.15.11.659.0 ]--
+r 306         for(int i = 0; i <)
+--[ 2022.11.22.11.15.11.911.0 ]--
+r 306         for(int i = 0; i < )
+--[ 2022.11.22.11.15.12.329.0 ]--
+r 306         for(int i = 0; i < 1)
+--[ 2022.11.22.11.15.12.453.0 ]--
+r 306         for(int i = 0; i < 10)
+--[ 2022.11.22.11.15.12.562.0 ]--
+r 306         for(int i = 0; i < 100)
+--[ 2022.11.22.11.15.12.690.0 ]--
+r 306         for(int i = 0; i < 1000)
+--[ 2022.11.22.11.15.14.153.0 ]--
+r 306         for(int i = 0; i < 1000;)
+--[ 2022.11.22.11.15.14.489.0 ]--
+r 306         for(int i = 0; i < 1000; )
+--[ 2022.11.22.11.15.14.944.0 ]--
+r 306         for(int i = 0; i < 1000; i)
+--[ 2022.11.22.11.15.15.576.0 ]--
+r 306         for(int i = 0; i < 1000; i+)
+--[ 2022.11.22.11.15.15.624.0 ]--
+r 306         for(int i = 0; i < 1000; i++)
+--[ 2022.11.22.11.15.17.054.0 ]--
+r 306         for(int i = 0; i < 1000; i++ )
+--[ 2022.11.22.11.15.17.838.0 ]--
+r 306         for(int i = 0; i < 1000; i++)
+--[ 2022.11.22.11.15.18.695.0 ]--
+r 306         for(int i = 0; i < 1000; i++){
+--[ 2022.11.22.11.15.20.266.0 ]--
++ 308         
+--[ 2022.11.22.11.15.20.691.0 ]--
+r 308         }
+--[ 2022.11.22.11.15.20.738.0 ]--
+r 306         for(int i = 0; i < 1000; i++) {
+--[ 2022.11.22.11.15.20.753.0 ]--
+r 307             pskd.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.15.26.952.0 ]--
++ 306         
+--[ 2022.11.22.11.15.40.915.0 ]--
+r 29 
+--[ 2022.11.22.11.15.40.921.0 ]--
+UpdateTree (AD): 0 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
+
+--[ 2022.11.22.11.15.40.933.0 ]--
+UpdateTree (AD): 2 2
+- /out/production/P05_KDTrees/PSKDTree$Node.class
+- /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.15.43.062.0 ]--
+UpdateTree (AD): 2 0
++ /out/production/P05_KDTrees/PSKDTree.class
++ /out/production/P05_KDTrees/PSKDTree$Node.class
+
+--[ 2022.11.22.11.15.43.062.1 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.16.39.754.0 ]--
+r 299         In in = new In("input100.txt");
+--[ 2022.11.22.11.16.40.637.0 ]--
+r 299         In in = new In("input100M.txt");
+--[ 2022.11.22.11.16.41.706.0 ]--
+r 299         In in = new In("input10M.txt");
+--[ 2022.11.22.11.16.41.869.0 ]--
+r 299         In in = new In("input1M.txt");
+--[ 2022.11.22.11.16.49.203.0 ]--
+r 306 
+--[ 2022.11.22.11.16.51.508.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.17.40.051.0 ]--
+:/src/PSBruteForce.java
+r 131 //        Point p = new Point(1.0, 1.0);
+r 132 //        Point t = new Point(2.0, 2.0);
+r 133 //        Point q = new Point(3.0, 3.0);
+r 134 //        bf.put(p, 10);
+r 135 //        bf.put(t, 20);
+r 136 //        bf.put(q, 30);
+r 137 //        StdOut.println(bf.nearest(new Point (4.0,4.0)));
+--[ 2022.11.22.11.17.42.005.0 ]--
++ 138 In in = new In("input1M.txt");
++ 139         double[] d =in.readAllDoubles();
++ 140         PSKDTree<Integer> pskd = new PSKDTree<>();
++ 141         for(int i=0; i<d.length; i+=2) {
++ 142             pskd.put(new Point(d[i], d[i+1]), i);
++ 143         }
++ 144         Stopwatch stopwatch=new Stopwatch();
++ 146         for(int i = 0; i < 1000; i++) {
++ 147             pskd.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
++ 148         }
++ 149         double time = stopwatch.elapsedTime();
++ 150         StdOut.println("Time: "+time);
++ 151         StdOut.println("Count: "+pskd.timeCount);
++ 152         StdOut.println("Ratio: "+pskd.timeCount/time);
++ 153     }
+--[ 2022.11.22.11.17.42.066.0 ]--
+r 138         In in = new In("input1M.txt");
+--[ 2022.11.22.11.17.48.411.0 ]--
+- 130
+--[ 2022.11.22.11.17.52.086.0 ]--
+r 139         PSBruteForce<Integer> bf = new PSBruteForce<>();
+--[ 2022.11.22.11.17.56.232.0 ]--
+r 141             bf.put(new Point(d[i], d[i+1]), i);
+--[ 2022.11.22.11.17.57.299.0 ]--
+r 146             pbkd.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.17.57.436.0 ]--
+r 146             pbfkd.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.17.58.305.0 ]--
+r 146             pbkd.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.17.58.711.0 ]--
+r 146             pkd.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.17.59.610.0 ]--
+r 146             pk.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.17.59.721.0 ]--
+r 146             p.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.18.00.264.0 ]--
+r 146             .nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.18.00.507.0 ]--
+r 146             b.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.18.01.118.0 ]--
+r 146             bf.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+--[ 2022.11.22.11.18.04.755.0 ]--
+r 150         StdOut.println("Count: "+b.timeCount);
+--[ 2022.11.22.11.18.04.805.0 ]--
+r 150         StdOut.println("Count: "+bf.timeCount);
+--[ 2022.11.22.11.18.06.311.0 ]--
+r 151         StdOut.println("Ratio: "+b.timeCount/time);
+--[ 2022.11.22.11.18.06.354.0 ]--
+r 151         StdOut.println("Ratio: "+b f.timeCount/time);
+--[ 2022.11.22.11.18.07.186.0 ]--
+r 151         StdOut.println("Ratio: "+b .timeCount/time);
+--[ 2022.11.22.11.18.07.254.0 ]--
+r 151         StdOut.println("Ratio: "+b.timeCount/time);
+--[ 2022.11.22.11.18.07.812.0 ]--
+r 151         StdOut.println("Ratio: "+bf.timeCount/time);
+--[ 2022.11.22.11.18.15.185.0 ]--
++ 19     
+--[ 2022.11.22.11.18.15.515.0 ]--
+r 19     d
+--[ 2022.11.22.11.18.15.865.0 ]--
+r 19     do
+--[ 2022.11.22.11.18.16.335.0 ]--
+r 19     dou
+--[ 2022.11.22.11.18.16.419.0 ]--
+r 19     doub
+--[ 2022.11.22.11.18.16.596.0 ]--
+r 19     doubl
+--[ 2022.11.22.11.18.16.895.0 ]--
+r 19     double
+--[ 2022.11.22.11.18.17.283.0 ]--
+r 19     double 
+--[ 2022.11.22.11.18.17.377.0 ]--
+r 19     double t
+--[ 2022.11.22.11.18.17.457.0 ]--
+r 19     double ti
+--[ 2022.11.22.11.18.17.531.0 ]--
+r 19     double tim
+--[ 2022.11.22.11.18.17.634.0 ]--
+r 19     double time
+--[ 2022.11.22.11.18.17.868.0 ]--
+r 19     double timeC
+--[ 2022.11.22.11.18.17.989.0 ]--
+r 19     double timeCo
+--[ 2022.11.22.11.18.18.077.0 ]--
+r 19     double timeCou
+--[ 2022.11.22.11.18.18.275.0 ]--
+r 19     double timeCoun
+--[ 2022.11.22.11.18.18.338.0 ]--
+r 19     double timeCount
+--[ 2022.11.22.11.18.20.549.0 ]--
+r 19     double timeCount=
+--[ 2022.11.22.11.18.20.582.0 ]--
+r 19     double timeCount=0
+--[ 2022.11.22.11.18.21.296.0 ]--
+r 19     double timeCount=0;
+--[ 2022.11.22.11.18.24.022.0 ]--
+r 19     i timeCount=0;
+--[ 2022.11.22.11.18.24.058.0 ]--
+r 19     in timeCount=0;
+--[ 2022.11.22.11.18.24.118.0 ]--
+r 19     int timeCount=0;
+--[ 2022.11.22.11.18.28.901.0 ]--
++ 62         
+--[ 2022.11.22.11.18.30.155.0 ]--
+r 62         t
+--[ 2022.11.22.11.18.30.246.0 ]--
+r 62         ti
+--[ 2022.11.22.11.18.30.347.0 ]--
+r 62         tim
+--[ 2022.11.22.11.18.30.428.0 ]--
+r 62         time
+--[ 2022.11.22.11.18.30.697.0 ]--
+r 62         timeC
+--[ 2022.11.22.11.18.30.858.0 ]--
+r 62         timeCo
+--[ 2022.11.22.11.18.30.943.0 ]--
+r 62         timeCou
+--[ 2022.11.22.11.18.31.134.0 ]--
+r 62         timeCoun
+--[ 2022.11.22.11.18.31.196.0 ]--
+r 62         timeCount
+--[ 2022.11.22.11.18.31.827.0 ]--
+r 62         timeCount+
+--[ 2022.11.22.11.18.31.940.0 ]--
+r 62         timeCount++
+--[ 2022.11.22.11.18.32.197.0 ]--
+r 62         timeCount++;
+--[ 2022.11.22.11.18.45.183.0 ]--
+r 105     
+--[ 2022.11.22.11.18.45.464.0 ]--
+r 105         
+--[ 2022.11.22.11.18.45.749.0 ]--
+r 105         t
+--[ 2022.11.22.11.18.45.897.0 ]--
+r 105         ti
+--[ 2022.11.22.11.18.45.941.0 ]--
+r 105         tim
+--[ 2022.11.22.11.18.46.013.0 ]--
+r 105         time
+--[ 2022.11.22.11.18.46.227.0 ]--
+r 105         timeC
+--[ 2022.11.22.11.18.46.369.0 ]--
+r 105         timeCo
+--[ 2022.11.22.11.18.46.462.0 ]--
+r 105         timeCou
+--[ 2022.11.22.11.18.46.646.0 ]--
+r 105         timeCoun
+--[ 2022.11.22.11.18.46.774.0 ]--
+r 105         timeCount
+--[ 2022.11.22.11.18.47.285.0 ]--
+r 105         timeCount+
+--[ 2022.11.22.11.18.47.401.0 ]--
+r 105         timeCount++
+--[ 2022.11.22.11.18.47.605.0 ]--
+r 105         timeCount++;
+--[ 2022.11.22.11.19.46.213.0 ]--
++ 156 }
+--[ 2022.11.22.11.19.46.235.0 ]--
+r 157         }
+--[ 2022.11.22.11.19.51.935.0 ]--
+r 156 
+--[ 2022.11.22.11.19.52.967.0 ]--
+r 157         
+--[ 2022.11.22.11.20.00.952.0 ]--
+r 139         In in = new In("input10M.txt");
+--[ 2022.11.22.11.20.01.052.0 ]--
+r 139         In in = new In("input100M.txt");
+--[ 2022.11.22.11.20.01.843.0 ]--
+r 139         In in = new In("input100.txt");
+--[ 2022.11.22.11.20.02.457.0 ]--
+r 139         In in = new In("input100K.txt");
+--[ 2022.11.22.11.20.09.600.0 ]--
+- 156
+- 156
+--[ 2022.11.22.11.20.11.642.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.20.24.710.0 ]--
+r 139         In in = new In("input10K.txt");
+--[ 2022.11.22.11.20.24.759.0 ]--
+r 139         In in = new In("input1K.txt");
+--[ 2022.11.22.11.20.25.789.0 ]--
+r 139         In in = new In("input1.txt");
+--[ 2022.11.22.11.20.26.139.0 ]--
+r 139         In in = new In("input1M.txt");
+--[ 2022.11.22.11.20.30.403.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.27.39.847.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.27.53.805.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.28.17.187.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.33.41.846.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.33.58.099.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.34.19.577.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.35.48.961.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.36.36.987.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.36.45.461.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.37.01.575.0 ]--
+CompilationStatus (AEW): 0 2 0
+[Ljava.lang.String;@67fa372b
+--[ 2022.11.22.11.37.17.663.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.37.40.373.0 ]--
+CompilationStatus (AEW): 0 0 0
+--[ 2022.11.22.11.37.52.630.0 ]--
+CompilationStatus (AEW): 0 0 0

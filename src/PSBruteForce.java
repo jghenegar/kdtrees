@@ -16,6 +16,7 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
     double maxx;
     double maxy;
 
+    int timeCount=0;
     public PSBruteForce() {
         rbst = new RedBlackBST<>();
     }
@@ -58,6 +59,7 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
     // return the Point that is closest to the given Point
     public Point nearest(Point p) {
         if(p == null) throw new NullPointerException("p must be initialized");
+        timeCount++;
         Point currentNear = null;
         double nearDist = 0;
         int idx = 0;
@@ -100,7 +102,7 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
     // return the k nearest Points to the given Point
     public Iterable<Point> nearest(Point p, int k) {
         if(p == null) throw new NullPointerException("p must be initialized");
-
+        timeCount++;
         MaxPQ<PointDist> ptpq = new MaxPQ<>();
 
         Iterable<Point> iter = points();
@@ -127,14 +129,29 @@ public class PSBruteForce<Value> implements PointSearch<Value> {
 
     // place your timing code or unit testing here
     public static void main(String[] args) {
+//        Point p = new Point(1.0, 1.0);
+//        Point t = new Point(2.0, 2.0);
+//        Point q = new Point(3.0, 3.0);
+//        bf.put(p, 10);
+//        bf.put(t, 20);
+//        bf.put(q, 30);
+//        StdOut.println(bf.nearest(new Point (4.0,4.0)));
+        In in = new In("input1M.txt");
+        double[] d =in.readAllDoubles();
         PSBruteForce<Integer> bf = new PSBruteForce<>();
-        Point p = new Point(1.0, 1.0);
-        Point t = new Point(2.0, 2.0);
-        Point q = new Point(3.0, 3.0);
-        bf.put(p, 10);
-        bf.put(t, 20);
-        bf.put(q, 30);
-        StdOut.println(bf.nearest(new Point (4.0,4.0)));
+        for(int i=0; i<d.length; i+=2) {
+            bf.put(new Point(d[i], d[i+1]), i);
+        }
+        Stopwatch stopwatch=new Stopwatch();
 
+        for(int i = 0; i < 1000; i++) {
+            bf.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+        }
+        double time = stopwatch.elapsedTime();
+        StdOut.println("Time: "+time);
+        StdOut.println("Count: "+bf.timeCount);
+        StdOut.println("Ratio: "+bf.timeCount/time);
     }
-}
+    }
+
+

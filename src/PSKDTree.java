@@ -27,6 +27,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     double maxy;
     Node root=null;
 
+    int timeCount=0;
 
     //point stack
     Stack<Point> ps = new Stack<>();    //doesn't account for deletions
@@ -139,6 +140,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     public Point nearest(Point p) {
         if(p == null) throw new NullPointerException("p and root must be initialized");
         if(isEmpty()) return null;
+        timeCount++;
         PointDist nearPt = new PointDist(root.p, root.p.dist(p));
         return nearest(root, p, nearPt ).p();
     }
@@ -194,6 +196,7 @@ public class PSKDTree<Value> implements PointSearch<Value> {
     // return the k nearest Points to the given Point
     public Iterable<Point> nearest(Point p, int k) {
         if(p == null) throw new NullPointerException("p must be initialized");
+        timeCount++;
         //if(k <= 0) return null;
 //        if(root == null) throw new NullPointerException("Null root has no nearest");
         MaxPQ<PointDist> ptpq = new MaxPQ<>();
@@ -275,15 +278,39 @@ public class PSKDTree<Value> implements PointSearch<Value> {
 
     // place your timing code or unit testing here
     public static void main(String[] args) {
-        PSKDTree<Integer> pskd = new PSKDTree<>();
-        Point p = new Point(1.0, 1.0);
-        Point t = new Point(2.0, 2.0);
-        Point q = new Point(3.0, 3.0);
-        pskd.put(p, 10);
-        pskd.put(t, 20);
-        pskd.put(q, 30);
-        StdOut.println(pskd.nearest(new Point (0,0),0));
+//        Point p = new Point(1.0, 1.0);
+//        Point t = new Point(2.0, 2.0);
+//        Point q = new Point(3.0, 3.0);
+//        pskd.put(p, 10);
+//        pskd.put(t, 20);
+//        pskd.put(q, 30);
+//        StdOut.println(pskd.nearest(new Point (0,0),0));
 
+        //Point p = new Point
+
+//        In in = new In(args[0]);
+//        while(!in.isEmpty()) {
+//            String var = in.readLine();
+//            String[] var2 = var.split(" ");
+//            double x = Double.parseDouble(var2[0]);
+//            double y = Double.parseDouble(var2[1]);
+//            pskd.put(new Point(x,y));
+//        }
+        In in = new In("input1M.txt");
+        double[] d =in.readAllDoubles();
+        PSKDTree<Integer> pskd = new PSKDTree<>();
+        for(int i=0; i<d.length; i+=2) {
+            pskd.put(new Point(d[i], d[i+1]), i);
+        }
+        Stopwatch stopwatch=new Stopwatch();
+
+        for(int i = 0; i < 1000; i++) {
+            pskd.nearest(new Point(StdRandom.uniform(), StdRandom.uniform()));
+        }
+        double time = stopwatch.elapsedTime();
+        StdOut.println("Time: "+time);
+        StdOut.println("Count: "+pskd.timeCount);
+        StdOut.println("Ratio: "+pskd.timeCount/time);
     }
 
 }
